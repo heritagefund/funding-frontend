@@ -78,6 +78,9 @@ specified in the application's `package.json` and `yarn.lock` files.
 Run `bundle exec rails db:setup` in your terminal.  If the database needs creating, run
 `psql` then `create database funding_frontend_development;`.
 
+Run `bundle exec rails db:seed` in your terminal. This will have the effect of populating
+relevant database tables with the necessary rows to run the application.
+
 ### Running the funding-frontend application
 
 Run `bundle exec rails server` (or `bundle exec rails s` for a shorter command) in your terminal. 
