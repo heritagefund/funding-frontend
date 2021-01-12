@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "Will your project achieve any of our other outcomes?"
+             page_title: t('outcomes.page_title')
          }
 %>
 
@@ -26,16 +26,18 @@
 
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
 
-        <span class="govuk-caption-xl">About your project</span>
+        <span class="govuk-caption-xl"> 
+          <%= t('funding_application.common.about_your_project') %> 
+        </span>
 
         <h1 class="govuk-fieldset__heading">
-          Will your project achieve any of our other outcomes?
+          <%= t('outcomes.page_heading') %>
         </h1>
 
       </legend>
 
       <span id="other-outcomes-hint" class="govuk-hint">
-        Check the outcomes you will achieve and describe how you will achieve them
+        <%= t('outcomes.page_hint') %>
       </span>
 
       <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -51,7 +53,10 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_2, "Heritage will be in a better condition", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_2, 
+            t("outcomes.checkboxes.heritage_will_be_in_better_condition"), 
+              class: "govuk-label govuk-checkboxes__label" 
+          %>
 
         </div>
 
@@ -62,7 +67,7 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_2_description,
-                          "How will you achieve this outcome?",
+                          t("outcomes.label_how_will_you_achive_this_outcome"),
                           class: "govuk-label"
               %>
 
@@ -74,7 +79,7 @@
 
               <span id="project_outcome_2_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -94,7 +99,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_3, "Heritage will be identified and better explained", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_3, 
+            t("outcomes.checkboxes.heritage_will_be_better_defined_and_explained"), 
+              class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -105,8 +112,8 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_3_description,
-                          "How will you achieve this outcome?",
-                          class: "govuk-label"
+                          t("outcomes.label_how_will_you_achive_this_outcome"),
+                            class: "govuk-label"
               %>
 
               <%= f.text_area :outcome_3_description, rows: 5,
@@ -117,7 +124,7 @@
 
               <span id="project_outcome_3_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -137,7 +144,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_4, "People will have developed skills", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_4, 
+            t("outcomes.checkboxes.people_will_have_developed_skills"), 
+              class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -148,7 +157,7 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_4_description,
-                          "How will you achieve this outcome?",
+                          t("outcomes.label_how_will_you_achive_this_outcome"),
                           class: "govuk-label"
               %>
 
@@ -160,7 +169,7 @@
 
               <span id="project_outcome_4_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -180,7 +189,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_5, "People will have learned about heritage, leading to change in ideas and actions", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_5, 
+            t("outcomes.checkboxes.people_will_have_learned_about_heritage"), 
+              class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -191,7 +202,7 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_5_description,
-                          "How will you achieve this outcome?",
+                           t("outcomes.label_how_will_you_achive_this_outcome"),
                           class: "govuk-label"
               %>
 
@@ -203,7 +214,7 @@
 
               <span id="project_outcome_5_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -223,7 +234,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_6, "People will have greater wellbeing", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_6, 
+            t("outcomes.checkboxes.people_will_have_greater_wellbeing"), 
+              class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -234,7 +247,7 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_6_description,
-                          "How will you achieve this outcome?",
+                           t("outcomes.label_how_will_you_achive_this_outcome"),
                           class: "govuk-label"
               %>
 
@@ -246,7 +259,7 @@
 
               <span id="project_outcome_6_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -266,7 +279,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_7, "The funded organisation will be more resilient", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_7, 
+            t("outcomes.checkboxes.funded_organisation_will_be_more_resilient"), 
+              class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -277,7 +292,7 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_7_description,
-                          "How will you achieve this outcome?",
+                           t("outcomes.label_how_will_you_achive_this_outcome"),
                           class: "govuk-label"
               %>
 
@@ -289,7 +304,7 @@
 
               <span id="project_outcome_7_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -309,7 +324,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_8, "The local area will be a better place to live, work or visit", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_8, 
+            t("outcomes.checkboxes.local_area_better_place"), 
+            class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -320,7 +337,7 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_8_description,
-                          "How will you achieve this outcome?",
+                          t("outcomes.label_how_will_you_achive_this_outcome"),
                           class: "govuk-label"
               %>
 
@@ -332,7 +349,7 @@
 
               <span id="project_outcome_8_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>
@@ -352,7 +369,9 @@
                           "true",
                           "false"
           %>
-          <%= f.label :project_outcome_9, "The local economy will be boosted", class: "govuk-label govuk-checkboxes__label" %>
+          <%= f.label :project_outcome_9, 
+            t("outcomes.checkboxes.the_local_economy_will_be_boosted"), 
+              class: "govuk-label govuk-checkboxes__label" %>
 
         </div>
 
@@ -363,8 +382,8 @@
             <div class="govuk-form-group">
 
               <%= f.label :outcome_9_description,
-                          "How will you achieve this outcome?",
-                          class: "govuk-label"
+                          t("outcomes.label_how_will_you_achive_this_outcome"),
+                            class: "govuk-label"
               %>
 
               <%= f.text_area :outcome_9_description, rows: 5,
@@ -375,7 +394,7 @@
 
               <span id="project_outcome_9_description-info" class="govuk-hint govuk-character-count__message"
                     aria-live="polite">
-                You can enter up to 300 words
+                <%= t('generic.word_count', max_words:300) %>
               </span>
 
             </div>

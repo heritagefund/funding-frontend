@@ -1,0 +1,15 @@
+en-GB:
+  outcomes:
+    page_title: "Will your project achieve any of our other outcomes?"
+    page_heading: "Will your project achieve any of our other outcomes?"
+    page_hint: "Check the outcomes you will achieve and describe how you will achieve them"
+    label_how_will_you_achive_this_outcome: "How will you achieve this outcome?"
+    checkboxes:
+      heritage_will_be_in_better_condition: "Heritage will be in a better condition"
+      heritage_will_be_better_defined_and_explained: "Heritage will be identified and better explained"
+      people_will_have_developed_skills: "People will have developed skills"
+      people_will_have_learned_about_heritage: "People will have learned about heritage, leading to change in ideas and actions"
+      people_will_have_greater_wellbeing: "People will have greater wellbeing"
+      funded_organisation_will_be_more_resilient: "The funded organisation will be more resilient"
+      local_area_better_place: "The local area will be a better place to live, work or visit"
+      the_local_economy_will_be_boosted: "The local economy will be boosted"
