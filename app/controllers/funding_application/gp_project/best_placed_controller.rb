@@ -37,11 +37,7 @@ class FundingApplication::GpProject::BestPlacedController < ApplicationControlle
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({project: {best_placed_description: ""}})
-    end
-
-    params.require(:project).permit(:best_placed_description)
+    params.fetch(:project, {}).permit(:best_placed_description)
 
   end
   

@@ -41,11 +41,7 @@ class FundingApplication::GpProject::GoverningDocumentsController < ApplicationC
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({ project: { governing_document_file: nil }})
-    end
-
-    params.require(:project).permit(:governing_document_file)
+    params.fetch(:project, {}).permit(:governing_document_file)
 
   end
 

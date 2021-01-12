@@ -37,11 +37,7 @@ class FundingApplication::GpProject::InvolvementController < ApplicationControll
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({project: {involvement_description: ""}})
-    end
-
-    params.require(:project).permit(:involvement_description)
+    params.fetch(:project, {}).permit(:involvement_description)
 
   end
 

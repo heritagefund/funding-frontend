@@ -40,11 +40,7 @@ class FundingApplication::GpProject::AccountsController < ApplicationController
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({ project: { accounts_files: nil }})
-    end
-
-    params.require(:project).permit(:accounts_files => [])
+    params.fetch(:project, {}).permit(:accounts_files => [])
 
   end
 

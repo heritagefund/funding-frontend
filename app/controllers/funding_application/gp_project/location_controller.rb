@@ -41,11 +41,8 @@ class FundingApplication::GpProject::LocationController < ApplicationController
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({project: {same_location: ""}})
-    end
+    params.fetch(:project, {}).permit(:same_location, :line1, :line2, :line3, :townCity, :county, :postcode)
 
-    params.require(:project).permit(:same_location, :line1, :line2, :line3, :townCity, :county, :postcode) 
   end
 
   # Replicates address data from the organisation model linked to the current user

@@ -50,11 +50,7 @@ class FundingApplication::GpProject::CapitalWorksController < ApplicationControl
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({ project: { capital_work: "" } })
-    end
-
-    params.require(:project).permit(:capital_work, :capital_work_file)
+    params.fetch(:project, {}).permit(:capital_work, :capital_work_file)
 
   end
 

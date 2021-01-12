@@ -107,11 +107,7 @@ class FundingApplication::GpProject::CashContributionsController < ApplicationCo
   private
   def question_params
 
-    unless params[:project].present?
-      params.merge!({project: {cash_contributions_question: ""}})
-    end
-
-    params.require(:project).permit(:cash_contributions_question)
+    params.fetch(:project, {}).permit(:cash_contributions_question)
 
   end
 

@@ -84,11 +84,7 @@ class FundingApplication::GpProject::DeclarationController < ApplicationControll
 
   def confirm_declaration_params
 
-    unless params[:project].present?
-      params.merge!({project: {confirm_declaration: ""}})
-    end
-
-    params.require(:project).permit(
+    params.fetch(:project, {}).permit(
         :confirm_declaration,
         :user_research_declaration
     )

@@ -51,15 +51,7 @@ class NewApplicationController < ApplicationController
 
   def new_application_params
 
-    # When no radio button is selected on the page no application_type
-    # key/value is passed in the form, meaning that the new_application hash
-    # is no longer passed through either. In this case, we need to add it
-    # manually to avoid triggering a 'param is missing or value is empty'
-    # exception
-    params.merge!(new_application: { application_type: '' }) unless
-        params[:new_application].present?
-
-    params.require(:new_application).permit(:application_type)
+    params.fetch(:new_application, {}).permit(:application_type)
 
   end
 

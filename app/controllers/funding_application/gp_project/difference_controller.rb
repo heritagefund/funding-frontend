@@ -35,11 +35,7 @@ class FundingApplication::GpProject::DifferenceController < ApplicationControlle
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({project: {difference: ""}})
-    end
-
-    params.require(:project).permit(:difference)
+    params.fetch(:project, {}).permit(:difference)
 
   end
 

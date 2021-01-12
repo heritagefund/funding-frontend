@@ -36,14 +36,7 @@ class Organisation::MissionController < ApplicationController
 
   def organisation_params
 
-    # When no checkbox is selected on the page no mission key/value is passed
-    # in the form, meaning that the organisation hash is no longer passed
-    # through either. In this case, we need to add it manually to avoid
-    # triggering a 'param is missing or value is empty' exception
-
-    params.merge!({ organisation: { mission: '' } }) unless params[:organisation].present?
-
-    params.require(:organisation).permit(:mission, mission: [])
+    params.fetch(:organisation, {}).permit(:mission, mission: [])
 
   end
 

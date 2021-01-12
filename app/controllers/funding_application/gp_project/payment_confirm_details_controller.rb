@@ -62,13 +62,7 @@ class FundingApplication::GpProject::PaymentConfirmDetailsController < Applicati
 
   def payment_details_params
 
-    unless params[:payment_details].present?
-      params.merge!(
-        { payment_details: { evidence_file: nil } }
-      )
-    end
-
-    params.require(:payment_details).permit(:evidence_file)
+    params.fetch(:payment_details, {}).permit(:evidence_file)
 
   end
 

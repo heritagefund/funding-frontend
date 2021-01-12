@@ -36,11 +36,7 @@ class FundingApplication::GpProject::HeritageController < ApplicationController
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({project: {heritage_description: ""}})
-    end
-
-    params.require(:project).permit(:heritage_description)
+    params.fetch(:project, {}).permit(:heritage_description)
 
   end
 

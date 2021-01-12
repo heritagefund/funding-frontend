@@ -32,11 +32,7 @@ class FundingApplication::GpProject::MatterController < ApplicationController
 
   def project_params
 
-    unless params[:project].present?
-      params.merge!({project: {matter: ""}})
-    end
-
-    params.require(:project).permit(:matter)
+    params.fetch(:project, {}).permit(:matter)
 
   end
 
