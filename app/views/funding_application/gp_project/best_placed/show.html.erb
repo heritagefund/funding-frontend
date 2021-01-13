@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "Why is your organisation best placed?"
+             page_title: t('best_placed.page_title')
          }
 %>
 
@@ -28,18 +28,17 @@
                              @funding_application.project.errors[:best_placed_description].any? %>">
 
       <h1 class="govuk-label-wrapper">
-        <span class="govuk-caption-xl">About your project</span>
+        <span class="govuk-caption-xl">
+          <%= t('funding_application.common.about_your_project') %>
+        </span>
         <%= f.label :best_placed_description,
-                    "Why is your organisation best placed to deliver this " \
-                    "project?",
+                    t('best_placed.page_heading'),
                     class: "govuk-label govuk-label--xl"
         %>
       </h1>
 
       <span id="project_best_placed_description-hint" class="govuk-hint">
-        Tell us why specifically your organisation should run this project.
-        Demonstrate that you have made contact with relevant projects and
-        organisations in your area.
+        <%= t('best_placed.page_hint') %>
       </span>
 
       <%=
@@ -63,7 +62,7 @@
       <span id="project_best_placed_description-info"
             class="govuk-hint govuk-character-count__message"
             aria-live="polite">
-        You can enter up to 500 words
+            <%= t('generic.word_count', max_words: 500) %>
       </span>
 
     </div>
