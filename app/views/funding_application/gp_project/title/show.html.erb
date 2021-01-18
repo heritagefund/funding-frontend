@@ -34,19 +34,23 @@
 
     </h1>
 
-    <span id="project-title-hint" class="govuk-hint">
+    <div id="project-title-hint" class="govuk-hint">
       <%= t('title.page_hint') %>
-    </span>
+    </div>
 
-    <%= render partial: "partials/form_input_errors",
-               locals: {form_object: @funding_application.project,
-                        input_field_id: :project_title} if @funding_application.project.errors[:project_title].any? %>
+    <%= 
+      render partial: "partials/form_input_errors",
+             locals: {
+               form_object: @funding_application.project,
+               input_field_id: :project_title
+              } if @funding_application.project.errors[:project_title].any?
+    %>
 
     <%=
       f.text_field :project_title,
-      class: "govuk-input #{'govuk-input--error' if 
+      class: "govuk-input#{' govuk-input--error' if 
         @funding_application.project.errors[:project_title].any?}",
-        'aria-described-by' => 'project-title-hint'
+        'aria-describedby' => 'project-title-hint'
     %>
 
   </div>
