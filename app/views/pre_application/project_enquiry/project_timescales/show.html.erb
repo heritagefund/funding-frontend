@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_project_enquiry,
-      page_title: t('project_timescales.page_title')
+      page_title: t('pa_project_enquiry.project_timescales.page_title')
          }
 %>
 
@@ -17,6 +17,8 @@
   method: :put do |f| 
 %>
 
+<div class="govuk-character-count" data-module="govuk-character-count"
+      data-maxwords="50">
   <div class="govuk-form-group <%= "govuk-form-group--error" if
     @pre_application.pa_project_enquiry.errors[:project_timescales].any? %>">
 
@@ -24,11 +26,15 @@
 
       <%= 
         f.label :project_timescales,
-        t('project_timescales.page_heading'),
+        t('pa_project_enquiry.project_timescales.page_heading'),
         class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
       %>
 
     </h1>
+
+    <span id="project_timescales-hint" class="govuk-hint">
+      <%= t('pa_project_enquiry.project_timescales.page_hint') %>
+    </span>
 
     <%=
       render partial: "partials/form_input_errors",
@@ -40,10 +46,18 @@
     <%=
       f.text_area :project_timescales,
                   rows: 10,
-                  class: "govuk-textarea " \
-                          "#{'govuk-textarea--error' if
-                      @pre_application.pa_project_enquiry.errors[:project_timescales].any?}"
+                  id: "pa_project_enquiry_project_timescales",
+                  class: "govuk-textarea govuk-js-character-count" \
+                          "#{' govuk-textarea--error' if
+                      @pre_application.pa_project_enquiry.errors[:project_timescales].any?}",
+                  "aria-describedby" => "project_timescales-hint pa_project_enquiry_project_timescales-info" 
     %>
+
+    <span id="pa_project_enquiry_project_timescales-info"
+          class="govuk-hint govuk-character-count__message",
+          aria-live="polite">
+      <%= t('generic.word_count', max_words: 50) %>
+    </span>
 
   </div>
 

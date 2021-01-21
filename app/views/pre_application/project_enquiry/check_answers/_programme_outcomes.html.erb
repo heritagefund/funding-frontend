@@ -1,0 +1,18 @@
+<div class="govuk-summary-list__row">
+
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <%= t('pa_project_enquiry.check_answers.table.row_headings.programme_outcomes') %>
+  </dt>
+
+  <dd class="govuk-summary-list__value">
+    <%= @pre_application.pa_project_enquiry.programme_outcomes? ? @pre_application.pa_project_enquiry.programme_outcomes : t('generic.not_answered') %>
+  </dd>
+
+  <%= render partial: 'pre_application/project_enquiry/check_answers/change_link',
+             locals: {
+                 link_url: pre_application_project_enquiry_programme_outcomes_path,
+                 link_hidden_label: t('pa_project_enquiry.check_answers.table.row_headings.programme_outcomes')
+             }
+  %>
+
+</div>

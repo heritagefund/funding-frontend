@@ -1,4 +1,7 @@
 en-GB:
-  programme_outcomes:
-    page_title: "What programme outcomes are you hoping to achieve?"
-    page_heading: "What programme outcomes are you hoping to achieve?"
+  pa_expression_of_interest:
+    programme_outcomes:
+      page_title: "What programme outcomes do you want to achieve?"
+      page_heading: "What programme outcomes do you want to achieve?"
+      page_hint_html: "An outcome is a result of what your project does. Tell us which of %{href} you plan to achieve."
+      page_hint_href: "our 9 outcomes"

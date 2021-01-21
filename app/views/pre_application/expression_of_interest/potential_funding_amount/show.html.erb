@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_expression_of_interest,
-      page_title: t('potential_funding_amount.page_title')
+      page_title: t('pa_expression_of_interest.potential_funding_amount.page_title')
          }
 %>
 
@@ -24,7 +24,7 @@
 
       <%= 
         f.label :potential_funding_amount,
-        t('potential_funding_amount.page_heading'),
+        t('pa_expression_of_interest.potential_funding_amount.page_heading'),
         class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
       %>
 
@@ -32,9 +32,10 @@
 
     <%=
       render partial: "partials/form_input_errors",
-               locals: {form_object: @pre_application.pa_expression_of_interest,
-                        input_field_id: :potential_funding_amount} if 
-                          @pre_application.pa_expression_of_interest.errors[:potential_funding_amount].any?
+               locals: {
+                 form_object: @pre_application.pa_expression_of_interest,
+                 input_field_id: :potential_funding_amount
+               } if @pre_application.pa_expression_of_interest.errors[:potential_funding_amount].any?
     %>
 
     <div class="nlhf-currency-denote">

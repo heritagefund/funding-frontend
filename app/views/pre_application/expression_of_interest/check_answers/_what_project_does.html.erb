@@ -1,0 +1,18 @@
+<div class="govuk-summary-list__row">
+
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <%= t('pa_expression_of_interest.check_answers.table.row_headings.what_project_does') %>
+  </dt>
+
+  <dd class="govuk-summary-list__value">
+    <%= @pre_application.pa_expression_of_interest.what_project_does? ? @pre_application.pa_expression_of_interest.what_project_does : t('generic.not_answered') %>
+  </dd>
+
+  <%= render partial: 'pre_application/expression_of_interest/check_answers/change_link',
+             locals: {
+                 link_url: pre_application_expression_of_interest_what_will_the_project_do_path,
+                 link_hidden_label: t('pa_expression_of_interest.check_answers.change_links.what_project_does')
+             }
+  %>
+
+</div>

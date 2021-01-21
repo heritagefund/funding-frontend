@@ -3,8 +3,8 @@ class PreApplication::ExpressionOfInterest::HeritageFocusController < Applicatio
   include PreApplicationContext, ObjectErrorsLogger
 
   # This method updates the heritage_focus attribute of a pa_expression_of_interest,
-  # redirecting to :pre_application_expression_of_interest_what_will_the_project_do if successful and
-  # re-rendering :show method if unsuccessful
+  # redirecting to :pre_application_expression_of_interest_what_is_the_need_for_this_project
+  # if successful and re-rendering :show method if unsuccessful
   def update
 
     logger.info 'Updating heritage_focus for ' \
@@ -12,14 +12,12 @@ class PreApplication::ExpressionOfInterest::HeritageFocusController < Applicatio
 
     @pre_application.pa_expression_of_interest.validate_heritage_focus = true
 
-    @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
-
-    if @pre_application.pa_expression_of_interest.valid?
+    if @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
 
       logger.info 'Finished updating heritage_focus for pa_expression_of_interest ID: ' \
                   "#{@pre_application.pa_expression_of_interest.id}"
 
-      redirect_to(:pre_application_expression_of_interest_what_will_the_project_do)
+      redirect_to(:pre_application_expression_of_interest_what_is_the_need_for_this_project)
 
     else
 

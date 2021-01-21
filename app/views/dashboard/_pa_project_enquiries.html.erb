@@ -1,0 +1,64 @@
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<h2 class="govuk-heading-l">
+  <%= t('dashboard.pa_project_enquiries.sub_heading') %>
+<h2>
+
+<% if @pa_project_enquiry_presence %>
+
+  <p class="govuk-body">
+    <%= I18n.t("dashboard.pa_project_enquiries.existing") %>
+  </p>
+
+  <ul class="govuk-list govuk-list--number nlhf-list nlhf-list--links govuk-!-margin-bottom-8">
+
+    <% @pre_applications.each do| pre_application | %>
+
+      <% if pre_application.pa_project_enquiry.present? %>
+
+        <li class="nlhf-list__item">
+
+          <%= link_to_unless(pre_application.submitted_on.present?, pre_application.pa_project_enquiry&.working_title.present? ? pre_application.pa_project_enquiry&.working_title : t('dashboard.pa_project_enquiries.untitled'), pre_application_project_enquiry_previous_contact_path(pre_application_id: pre_application.id), class: 'govuk-link govuk-link--no-visited-state') do |name|
+            "#{name} - #{I18n.t("dashboard.generic.submitted")}#{' - ' + I18n.t("dashboard.generic.reference") + ': '  + pre_application.project_reference_number if pre_application.project_reference_number.present?}"
+          end
+          %>
+
+        </li>
+
+      <% end %>
+
+    <% end %>
+
+  </ul>
+
+<% end %>
+
+<% if Flipper.enabled?(:project_enquiries_enabled) %>
+  
+  <h3 class="govuk-heading-m">
+    <%= I18n.t("dashboard.pa_project_enquiries.new.sub_heading") %>
+  </h3>
+
+  <p class="govuk-body">
+    <%= I18n.t("dashboard.pa_project_enquiries.new.sub_content") %>
+  </p>
+
+  <%= form_with(
+      url: pre_application_project_enquiry_start_url,
+      method: :post,
+      local: true
+    ) do |f| 
+  %>
+
+    <%= render(
+        ButtonComponent.new(
+          element: "button",
+          is_start_button: true,
+          text: t("dashboard.pa_project_enquiries.new.buttons.start")
+        )
+      ) if Flipper.enabled?(:project_enquiries_enabled) 
+    %>
+
+  <% end %>
+
+<% end %>

@@ -1,4 +1,6 @@
 en-GB:
-  what_project_does:
-    page_title: "What will the project do? (capital work and activities)"
-    page_heading: "What will the project do? (capital work and activities)"
+  pa_expression_of_interest:
+    what_project_does:
+      page_title: "Describe what you will do during the project"
+      page_heading: "Describe what you will do during the project"
+      page_hint: "Include any tasks you have to do to achieve the project goal."

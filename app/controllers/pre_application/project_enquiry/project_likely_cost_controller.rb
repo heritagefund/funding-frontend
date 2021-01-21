@@ -12,9 +12,7 @@ class PreApplication::ProjectEnquiry::ProjectLikelyCostController < ApplicationC
 
     @pre_application.pa_project_enquiry.validate_project_likely_cost = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating project_likely_cost for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"

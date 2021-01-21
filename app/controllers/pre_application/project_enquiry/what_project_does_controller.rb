@@ -3,8 +3,8 @@ class PreApplication::ProjectEnquiry::WhatProjectDoesController < ApplicationCon
   include PreApplicationContext, ObjectErrorsLogger
 
   # This method updates the what_project_does attribute of a pa_project_enquiry,
-  # redirecting to :pre_application_project_enquiry_what_will_the_project_do if successful and
-  # re-rendering :show method if unsuccessful
+  # redirecting to :pre_application_project_enquiry_do_you_have_a_working_title
+  # if successful and re-rendering :show method if unsuccessful
   def update
 
     logger.info 'Updating what_project_does for ' \
@@ -12,14 +12,12 @@ class PreApplication::ProjectEnquiry::WhatProjectDoesController < ApplicationCon
 
     @pre_application.pa_project_enquiry.validate_what_project_does = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating what_project_does for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"
 
-      redirect_to(:pre_application_project_enquiry_programme_outcomes)
+      redirect_to(:pre_application_project_enquiry_do_you_have_a_working_title)
 
     else
 

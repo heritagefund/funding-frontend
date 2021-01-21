@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_project_enquiry,
-      page_title: t('programme_outcomes.page_title')
+      page_title: t('pa_project_enquiry.programme_outcomes.page_title')
          }
 %>
 
@@ -17,6 +17,8 @@
   method: :put do |f| 
 %>
 
+<div class="govuk-character-count" data-module="govuk-character-count"
+      data-maxwords="200">
   <div class="govuk-form-group <%= "govuk-form-group--error" if
     @pre_application.pa_project_enquiry.errors[:programme_outcomes].any? %>">
 
@@ -24,11 +26,24 @@
 
       <%= 
         f.label :programme_outcomes,
-        t('programme_outcomes.page_heading'),
+        t('pa_project_enquiry.programme_outcomes.page_heading'),
         class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
       %>
 
     </h1>
+
+    <span id="programme_outcomes-hint" class="govuk-hint">
+      <%=
+        t(
+          'pa_project_enquiry.programme_outcomes.page_hint_html',
+          href:
+            link_to(
+              t('pa_project_enquiry.programme_outcomes.page_hint_href'),
+              'https://www.heritagefund.org.uk/funding/outcomes',
+            )
+        )
+      %>
+    </span>
 
     <%=
       render partial: "partials/form_input_errors",
@@ -40,12 +55,21 @@
     <%=
       f.text_area :programme_outcomes,
                   rows: 10,
-                  class: "govuk-textarea " \
-                          "#{'govuk-textarea--error' if
-                      @pre_application.pa_project_enquiry.errors[:programme_outcomes].any?}"
+                  id: "pa_project_enquiry_programme_outcomes",
+                  class: "govuk-textarea govuk-js-character-count" \
+                          "#{' govuk-textarea--error' if
+                      @pre_application.pa_project_enquiry.errors[:programme_outcomes].any?}",
+                  "aria-describedby" => "programme_outcomes-hint pa_project_enquiry_programme_outcomes-info" 
     %>
 
+    <span id="pa_project_enquiry_programme_outcomes-info"
+          class="govuk-hint govuk-character-count__message"
+          aria-live="polite">
+      <%= t('generic.word_count', max_words: 200) %>
+    </span>
+
   </div>
+</div>
 
   <%= 
     render(

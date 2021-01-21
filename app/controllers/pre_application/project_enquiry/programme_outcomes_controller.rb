@@ -3,7 +3,7 @@ class PreApplication::ProjectEnquiry::ProgrammeOutcomesController < ApplicationC
   include PreApplicationContext, ObjectErrorsLogger
   
   # This method updates the programme_outcomes attribute of a pa_project_enquiry,
-  # redirecting to : pre_application_project_enquiry_why_you_want_to_do_this_project if successful and
+  # redirecting to : pre_application_project_enquiry_who_will_be_involved if successful and
   # re-rendering :show method if unsuccessful
   def update
 
@@ -12,14 +12,12 @@ class PreApplication::ProjectEnquiry::ProgrammeOutcomesController < ApplicationC
 
     @pre_application.pa_project_enquiry.validate_programme_outcomes = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating programme_outcomes for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"
 
-      redirect_to(:pre_application_project_enquiry_why_you_want_to_do_this_project)
+      redirect_to(:pre_application_project_enquiry_who_will_be_involved)
 
     else
 

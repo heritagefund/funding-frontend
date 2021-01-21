@@ -1,0 +1,6 @@
+en-GB:
+  pa_project_enquiry:
+    working_title:
+      page_title: "Do you have a title for the project?"
+      page_heading: "Do you have a title for the project?"
+      page_hint: "This can be changed at any time. Don't worry if the project does not have a title yet, you can leave this blank."

@@ -1,4 +1,6 @@
 en-GB:
-  project_timescales:
-    page_title: "Timescales (including likely start and end dates)"
-    page_heading: "Timescales (including likely start and end dates)"
+  pa_project_enquiry:
+    project_timescales:
+      page_title: "How long do you think the project will take?"
+      page_heading: "How long do you think the project will take?"
+      page_hint: "Tell us an estimated start and end date if you have them."

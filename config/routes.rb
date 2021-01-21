@@ -94,9 +94,6 @@ Rails.application.routes.draw do
   scope '/pre-application', module: 'pre_application', as: :pre_application do
     
     scope 'project-enquiry', module: 'project_enquiry', as: :project_enquiry do
-    
-      get 'start', to: 'start#show', constraints: lambda { Flipper.enabled?(:project_enquiries_enabled) }
-      get 'start', to: redirect('/', status: 302), constraints: lambda { !Flipper.enabled?(:project_enquiries_enabled) }
 
       post 'start', to: 'start#update'
 
@@ -104,14 +101,16 @@ Rails.application.routes.draw do
 
         get 'previous-contact', to: 'previous_contact_name#show'
         put 'previous-contact', to: 'previous_contact_name#update'
-        get 'heritage-focus', to: 'heritage_focus#show'
-        put 'heritage-focus', to: 'heritage_focus#update'
+        get 'what-is-the-need-for-this-project', to: 'project_reasons#show'
+        put 'what-is-the-need-for-this-project', to: 'project_reasons#update'
         get 'what-will-the-project-do', to: 'what_project_does#show'
         put 'what-will-the-project-do', to: 'what_project_does#update'
+        get 'do-you-have-a-working-title', to: 'working_title#show'
+        put 'do-you-have-a-working-title', to: 'working_title#update'
+        get 'heritage-focus', to: 'heritage_focus#show'
+        put 'heritage-focus', to: 'heritage_focus#update'
         get 'programme-outcomes', to: 'programme_outcomes#show'
         put 'programme-outcomes', to: 'programme_outcomes#update'
-        get 'why-you-want-to-do-this-project', to: 'project_reasons#show'
-        put 'why-you-want-to-do-this-project', to: 'project_reasons#update'
         get 'who-will-be-involved', to: 'project_participants#show'
         put 'who-will-be-involved', to: 'project_participants#update'
         get 'timescales', to: 'project_timescales#show'
@@ -120,6 +119,8 @@ Rails.application.routes.draw do
         put 'likely-cost', to: 'project_likely_cost#update'
         get 'likely-ask', to: 'potential_funding_amount#show'
         put 'likely-ask', to: 'potential_funding_amount#update'
+        get 'check-your-answers', to: 'check_answers#show'
+        put 'check-your-answers', to: 'check_answers#update'
         get 'submitted', to: 'submitted#show'
 
       end
@@ -128,31 +129,32 @@ Rails.application.routes.draw do
 
     scope 'expression-of-interest', module: 'expression_of_interest', as: :expression_of_interest do
 
-      get 'start', to: 'start#show', constraints: lambda { Flipper.enabled?(:expressions_of_interest_enabled) }
-      get 'start', to: redirect('/', status: 302), constraints: lambda { !Flipper.enabled?(:expressions_of_interest_enabled) }
-
       post 'start', to: 'start#update'
 
       scope '/:pre_application_id' do
         
-        get 'heritage-focus', to: 'heritage_focus#show'
-        put 'heritage-focus', to: 'heritage_focus#update'
+        get 'previous-contact', to: 'previous_contact_name#show'
+        put 'previous-contact', to: 'previous_contact_name#update'
         get 'what-will-the-project-do', to: 'what_project_does#show'
         put 'what-will-the-project-do', to: 'what_project_does#update'
+        get 'do-you-have-a-working-title', to: 'working_title#show'
+        put 'do-you-have-a-working-title', to: 'working_title#update'
         get 'programme-outcomes', to: 'programme_outcomes#show'
         put 'programme-outcomes', to: 'programme_outcomes#update'
-        get 'why-you-want-to-do-this-project', to: 'project_reasons#show'
-        put 'why-you-want-to-do-this-project', to: 'project_reasons#update'
-        get 'feasibility-or-options-work', to: 'feasibility_or_options_work#show'
-        put 'feasibility-or-options-work', to: 'feasibility_or_options_work#update'
+        get 'heritage-focus', to: 'heritage_focus#show'
+        put 'heritage-focus', to: 'heritage_focus#update'
+        get 'what-is-the-need-for-this-project', to: 'project_reasons#show'
+        put 'what-is-the-need-for-this-project', to: 'project_reasons#update'
         get 'timescales', to: 'project_timescales#show'
         put 'timescales', to: 'project_timescales#update'
-        get 'overall_cost', to: 'overall_cost#show'
-        put 'overall_cost', to: 'overall_cost#update'
+        get 'overall-cost', to: 'overall_cost#show'
+        put 'overall-cost', to: 'overall_cost#update'
         get 'likely-ask', to: 'potential_funding_amount#show'
         put 'likely-ask', to: 'potential_funding_amount#update'
         get 'likely-submission-description', to: 'likely_submission_description#show'
         put 'likely-submission-description', to: 'likely_submission_description#update'
+        get 'check-your-answers', to: 'check_answers#show'
+        put 'check-your-answers', to: 'check_answers#update'
         get 'submitted', to: 'submitted#show'
       end
 

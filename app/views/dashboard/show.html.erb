@@ -41,70 +41,8 @@
   </div>
 <% end %>
 
-<h1 class="govuk-heading-xl">
-  <%= I18n.t("dashboard.page_heading") %>
-</h1>
+<%= render 'dashboard/funding_applications' %>
 
-<% unless @funding_applications.present? %>
+<%= render 'dashboard/pa_project_enquiries' %>
 
-  <div class="nlhf-panel nlhf-alert nlhf-alert--slim govuk-!-margin-bottom-8">
-
-    <h2 class="govuk-heading-m">
-      <%= I18n.t("dashboard.no_applications_sub_heading") %>
-    </h2>
-
-    <p class="govuk-body">
-      <%= I18n.t("dashboard.no_applications_text") %>
-    </p>
-
-  </div>
-
-<% else %>
-
-  <p class="govuk-body">
-    <%= I18n.t("dashboard.associated_applications_text") %>
-  </p>
-
-  <% if @funding_applications.present? %>
-
-    <h3 class="govuk-heading-m">
-      <%= "#{I18n.t("funding_programmes.open_small_three_to_ten_k")} #{I18n.t("dashboard.applications")}" %>
-    </h3>
-
-    <ul class="govuk-list govuk-list--number nlhf-list nlhf-list--links govuk-!-margin-bottom-8">
-
-      <% @funding_applications.each do| funding_application | %>
-
-        <li class="nlhf-list__item">
-
-          <%= link_to_unless(funding_application.submitted_on.present?, funding_application.project&.project_title.present? ? funding_application.project&.project_title : "Untitled application", funding_application_gp_project_title_path(application_id: funding_application.id), class: 'govuk-link govuk-link--no-visited-state') do |name|
-            "#{name} - #{I18n.t("dashboard.submitted")}#{' - ' + I18n.t("dashboard.reference") + ': '  + funding_application.project_reference_number if funding_application.project_reference_number.present?}"
-          end
-          %>
-
-        </li>
-
-      <% end %>
-
-    </ul>
-
-  <% end %>
-
-<% end %>
-
-<% if  Flipper.enabled?(:new_applications_enabled) %>
-  <p class="govuk-body">
-    <%= I18n.t("dashboard.you_can_also") %>
-  </p>
-<% end %>
-
-<%=
-  render(
-      ButtonComponent.new(
-          element: "a",
-          "href": orchestrate_dashboard_journey_url,
-          is_start_button: true,
-          text: I18n.t("dashboard.start_a_new_application_button")
-      )
-  ) if Flipper.enabled?(:new_applications_enabled)
-%>
+<%= render 'dashboard/pa_expressions_of_interest' %>

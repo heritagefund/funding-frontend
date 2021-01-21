@@ -12,9 +12,7 @@ class PreApplication::ProjectEnquiry::ProjectTimescalesController < ApplicationC
 
     @pre_application.pa_project_enquiry.validate_project_timescales = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating project_timescales for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"

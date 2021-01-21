@@ -8,8 +8,10 @@ class CreatePaExpressionsOfInterest < ActiveRecord::Migration[6.0]
       t.text :project_reasons
       t.text :project_timescales
       t.text :overall_cost
+      t.text :working_title
       t.integer :potential_funding_amount
       t.text :likely_submission_description
+      t.text :previous_contact_name
       t.timestamps
     end
   end

@@ -1,4 +1,6 @@
 en-GB:
-  heritage_focus:
-    page_title: "Heritage focus"
-    page_heading: "Heritage focus"
+  pa_project_enquiry:
+    heritage_focus:
+      page_title: "Tell us about the heritage of the project"
+      page_heading: "Tell us about the heritage of the project"
+      page_hint: "Include who it is important to and why."

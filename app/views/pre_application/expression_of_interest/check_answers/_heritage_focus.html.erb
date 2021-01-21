@@ -1,0 +1,18 @@
+<div class="govuk-summary-list__row">
+
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <%= t('pa_expression_of_interest.check_answers.table.row_headings.heritage_focus') %>
+  </dt>
+
+  <dd class="govuk-summary-list__value">
+    <%= @pre_application.pa_expression_of_interest.heritage_focus? ? @pre_application.pa_expression_of_interest.heritage_focus : t('generic.not_answered') %>
+  </dd>
+
+  <%= render partial: 'pre_application/expression_of_interest/check_answers/change_link',
+             locals: {
+                 link_url: pre_application_expression_of_interest_heritage_focus_path,
+                 link_hidden_label: t('pa_expression_of_interest.check_answers.change_links.heritage_focus')
+             }
+  %>
+
+</div>

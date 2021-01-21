@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_084939) do
+ActiveRecord::Schema.define(version: 2021_01_19_135437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -219,8 +219,10 @@ ActiveRecord::Schema.define(version: 2021_01_06_084939) do
     t.text "project_reasons"
     t.text "project_timescales"
     t.text "overall_cost"
+    t.text "working_title"
     t.integer "potential_funding_amount"
     t.text "likely_submission_description"
+    t.text "previous_contact_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pre_application_id"], name: "index_pa_expressions_of_interest_on_pre_application_id"
@@ -236,6 +238,7 @@ ActiveRecord::Schema.define(version: 2021_01_06_084939) do
     t.text "project_participants"
     t.text "project_timescales"
     t.text "project_likely_cost"
+    t.text "working_title"
     t.integer "potential_funding_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -282,15 +285,6 @@ ActiveRecord::Schema.define(version: 2021_01_06_084939) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organisation_id"], name: "index_pre_applications_on_organisation_id"
     t.index ["user_id"], name: "index_pre_applications_on_user_id"
-  end
-
-  create_table "pre_applications_dclrtns", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "declaration_id", null: false
-    t.uuid "pre_application_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["declaration_id"], name: "index_pre_applications_dclrtns_on_declaration_id"
-    t.index ["pre_application_id"], name: "index_pre_applications_dclrtns_on_pre_application_id"
   end
 
   create_table "project_costs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -426,8 +420,6 @@ ActiveRecord::Schema.define(version: 2021_01_06_084939) do
   add_foreign_key "people_addresses", "people"
   add_foreign_key "pre_applications", "organisations"
   add_foreign_key "pre_applications", "users"
-  add_foreign_key "pre_applications_dclrtns", "declarations"
-  add_foreign_key "pre_applications_dclrtns", "pre_applications"
   add_foreign_key "project_costs", "projects"
   add_foreign_key "projects", "funding_applications"
   add_foreign_key "projects", "users"

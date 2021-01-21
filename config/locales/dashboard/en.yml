@@ -1,12 +1,37 @@
 en-GB:
   dashboard:
     page_title: "Application dashboard"
-    page_heading: "Your applications"
-    no_applications_sub_heading: "No applications"
-    no_applications_text: "This account currently has no active applications with The National Lottery Heritage Fund"
-    associated_applications_text: "The following applications are associated with your account:"
-    submitted: "Submitted"
-    reference: "Reference"
-    you_can_also: "You can also:"
-    start_a_new_application_button: "Start a new application"
-    applications: "applications"
+    generic:
+      reference: "Reference"
+      submitted: "Submitted on"
+      applications: "applications"
+      you_can_also: "You can also:"
+    funding_applications:
+      sub_heading: "Your funding applications"
+      untitled: "Untitled application"
+      none:
+        sub_heading: "No applications"
+        sub_content: "This account currently has no active funding applications with The National Lottery Heritage Fund"
+      existing:
+        sub_content: "The following applications are in your account:"
+      buttons:
+        start: "Start a new application"
+    pa_project_enquiries:
+      untitled: "Untitled Project Enquiry Form"
+      sub_heading: "Your Project Enquiry forms"
+      existing: "The following Project Enquiry forms are in your account:"
+      new:
+        sub_heading: "Get advice for a project idea between £10,000 and £250,000"
+        sub_content: "Submit a Project Enquiry Form for a project idea between £10,000 and £250,000 to get advice before you start a full application."
+        buttons:
+          start: "Start a Project Enquiry"
+    pa_expressions_of_interest:
+      untitled: "Untitled Expression of Interest"
+      sub_heading: "Your Expression of Interest forms"
+      existing: "The following Expression of Interest forms are in your account:"
+      new:
+        sub_heading: "Get advice and support for funding of £250,000 and above"
+        sub_content: "Completing an Expression of Interest is a mandatory first step to start an application for grants of £250,000 and above. The information you share will help us understand if your heritage project is something we can fund."
+        resubmit_criteria: "You cannot resubmit an Expression of Interest within 3 months of an unsuccessful submission."
+        buttons:
+          start: "Start an Expression of Interest"

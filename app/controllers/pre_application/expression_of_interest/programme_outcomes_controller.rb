@@ -3,7 +3,7 @@ class PreApplication::ExpressionOfInterest::ProgrammeOutcomesController < Applic
   include PreApplicationContext, ObjectErrorsLogger
   
   # This method updates the programme_outcomes attribute of a pa_expression_of_interest,
-  # redirecting to :pre_application_expression_of_interest_what_will_the_project_do if successful and
+  # redirecting to :pre_application_expression_of_interest_heritage_focus if successful and
   # re-rendering :show method if unsuccessful
   def update
 
@@ -12,14 +12,12 @@ class PreApplication::ExpressionOfInterest::ProgrammeOutcomesController < Applic
 
     @pre_application.pa_expression_of_interest.validate_programme_outcomes = true
 
-    @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
-
-    if @pre_application.pa_expression_of_interest.valid?
+    if @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
 
       logger.info 'Finished updating programme_outcomes for pa_expression_of_interest ID: ' \
                   "#{@pre_application.pa_expression_of_interest.id}"
 
-      redirect_to(:pre_application_expression_of_interest_why_you_want_to_do_this_project)
+      redirect_to(:pre_application_expression_of_interest_heritage_focus)
 
     else
 

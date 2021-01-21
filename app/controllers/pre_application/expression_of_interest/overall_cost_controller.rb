@@ -12,9 +12,7 @@ class PreApplication::ExpressionOfInterest::OverallCostController < ApplicationC
 
     @pre_application.pa_expression_of_interest.validate_overall_cost = true
 
-    @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
-
-    if @pre_application.pa_expression_of_interest.valid?
+    if @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
 
       logger.info 'Finished updating overall_cost for pa_expression_of_interest ID: ' \
                   "#{@pre_application.pa_expression_of_interest.id}"

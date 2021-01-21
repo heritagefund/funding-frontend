@@ -23,6 +23,7 @@ en-GB:
     select_one_option: "Select one option"
     delete: "Delete"
     there_is_a_problem: "There is a problem"
+    not_answered: "Not answered"
   views:
     funding_application:
       common:
@@ -267,39 +268,57 @@ en-GB:
           attributes:
             heritage_focus:
               blank: "Enter the focus of your heritage"
+              too_long: "Description of project heritage must be %{word_count} words or fewer"
             what_project_does:
               blank: "Enter what the project does"
+              too_long: "Description of what you will do during your project must be %{word_count} words or fewer"
             programme_outcomes:
               blank: "Enter the programme outcomes you are hoping to achieve"
+              too_long: "Description of programme outcomes must be %{word_count} words or fewer"
             project_reasons:
               blank: "Enter the reasons you want to do your project"
+              too_long: "Description of the need for your project must be %{word_count} words or fewer"
             project_participants:
               blank: "Enter the people who will be involved in your project"
+              too_long: "Description of who will be involved must be %{word_count} words or fewer"
             project_timescales:
               blank: "Enter the timescales for your project"
+              too_long: "Description of project timescales must be %{word_count} words or fewer"
             project_likely_cost:
               blank: "Enter how much your project is likely to cost"
+              too_long: "Description of your project's likely cost must be %{word_count} words or fewer"
             potential_funding_amount:
               not_a_number: "Amount must be a number, like 500"
               greater_than: "Enter an amount greater than 0"
+              less_than: "Enter an amount less than 2147483648"
+            working_title:    
+              too_long: "Working project title must be %{count} characters or fewer"
         pa_expression_of_interest:
           attributes:
             heritage_focus:
               blank: "Enter the focus of your heritage"
+              too_long: "Description of project heritage must be %{word_count} words or fewer"
             what_project_does:
               blank: "Enter what the project does"
+              too_long: "Description of what you will do during your project must be %{word_count} words or fewer"
+            working_title:
+              too_long: "Working project title must be %{count} characters or fewer"
             programme_outcomes:
               blank: "Enter the programme outcomes you are hoping to achieve"
+              too_long: "Description of programme outcomes must be %{word_count} words or fewer"
             project_reasons:
               blank: "Enter the reasons you want to do your project"
-            feasibility_or_options_work:
-              blank: "Enter the feasibility or options work"
+              too_long: "Description of the need for your project must be %{word_count} words or fewer"
             project_timescales:
               blank: "Enter the timescales for your project"
+              too_long: "Description of project timescales must be %{word_count} words or fewer"
             overall_cost:
               blank: "Enter your overall cost"
+              too_long: "Description of project costs must be %{word_count} words or fewer"
             potential_funding_amount:
               not_a_number: "Amount must be a number, like 500"
               greater_than: "Enter an amount greater than 0"
+              less_than: "Enter an amount less than 2147483648"
             likely_submission_description:
               blank: "Enter a likely submission description"
+              too_long: "Description of likely submission must be %{word_count} words or fewer"

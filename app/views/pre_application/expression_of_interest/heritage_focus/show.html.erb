@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_expression_of_interest,
-      page_title: t('heritage_focus.page_title')
+      page_title: t('pa_expression_of_interest.heritage_focus.page_title')
          }
 %>
 
@@ -17,33 +17,50 @@
   method: :put do |f| 
 %>
 
-  <div class="govuk-form-group <%= "govuk-form-group--error" if
-    @pre_application.pa_expression_of_interest.errors[:heritage_focus].any? %>">
+  <div class="govuk-character-count" data-module="govuk-character-count"
+        data-maxwords="100">
 
-    <h1 class="govuk-label-wrapper">
+    <div class="govuk-form-group <%= "govuk-form-group--error" if
+      @pre_application.pa_expression_of_interest.errors[:heritage_focus].any? %>">
 
-      <%= 
-        f.label :heritage_focus,
-        t('heritage_focus.page_heading'),
-        class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+      <h1 class="govuk-label-wrapper">
+
+        <%= 
+          f.label :heritage_focus,
+          t('pa_expression_of_interest.heritage_focus.page_heading'),
+          class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+        %>
+
+      </h1>
+
+      <div id="heritage_focus-hint" class="govuk-hint">
+        <%= t('pa_expression_of_interest.heritage_focus.page_hint') %>
+      </div>
+
+      <%=
+        render partial: "partials/form_input_errors",
+                locals: {
+                  form_object: @pre_application.pa_expression_of_interest,
+                  input_field_id: :heritage_focus
+                  } if @pre_application.pa_expression_of_interest.errors[:heritage_focus].any?
       %>
 
-    </h1>
+      <%=
+        f.text_area :heritage_focus,
+                    rows: 10,
+                    class: "govuk-textarea govuk-js-character-count" \
+                            "#{' govuk-textarea--error' if
+                        @pre_application.pa_expression_of_interest.errors[:heritage_focus].any?}",
+                    "aria-describedby" => "heritage_focus-hint pa_expression_of_interest_heritage_focus-info"
+      %>
 
-    <%=
-      render partial: "partials/form_input_errors",
-               locals: {form_object: @pre_application.pa_expression_of_interest,
-                        input_field_id: :heritage_focus} if 
-                          @pre_application.pa_expression_of_interest.errors[:heritage_focus].any?
-    %>
+      <div id="pa_expression_of_interest_heritage_focus-info"
+            class="govuk-hint govuk-character-count__message"
+            aria-live="polite">
+        <%= t('generic.word_count', max_words: 100) %>
+      </div>
 
-    <%=
-      f.text_area :heritage_focus,
-                  rows: 10,
-                  class: "govuk-textarea " \
-                          "#{'govuk-textarea--error' if
-                      @pre_application.pa_expression_of_interest.errors[:heritage_focus].any?}"
-    %>
+    </div>
 
   </div>
 

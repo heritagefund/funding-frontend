@@ -3,25 +3,19 @@ class PreApplication::ProjectEnquiry::PreviousContactNameController < Applicatio
   include PreApplicationContext, ObjectErrorsLogger
 
   # This method updates the previous_contact_name attribute of a pa_project_enquiry,
-  # redirecting to :pre_application_project_enquiry_heritage_focus if successful and
-  # re-rendering :show method if unsuccessful
+  # redirecting to :pre_application_project_enquiry_what_is_the_need_for_this_project
+  # if successful and re-rendering :show method if unsuccessful
   def update
 
     logger.info 'Updating previous_contact_name for ' \
                 "pa_project_enquiry ID: #{@pre_application.pa_project_enquiry.id}"
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating previous_contact_name for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"
 
-      redirect_to(
-        pre_application_project_enquiry_heritage_focus_path(
-          @pre_application.id
-        )
-      )
+      redirect_to(:pre_application_project_enquiry_what_is_the_need_for_this_project)
 
     else
 

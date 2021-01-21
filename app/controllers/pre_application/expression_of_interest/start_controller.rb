@@ -4,7 +4,7 @@ class PreApplication::ExpressionOfInterest::StartController < ApplicationControl
 
   # Method used to create new PreApplication and PaExpressionOfInterest objects
   # before redirecting the user to 
-  # :pre_application_pa_expression_of_interest_heritage_focus_path
+  # :pre_application_pa_expression_of_interest_previous_contact_path
   def update
   
     @pre_application = PreApplication.create(
@@ -15,7 +15,7 @@ class PreApplication::ExpressionOfInterest::StartController < ApplicationControl
     PaExpressionOfInterest.create(pre_application_id: @pre_application.id)
   
     redirect_to(
-      pre_application_expression_of_interest_heritage_focus_path(
+      pre_application_expression_of_interest_previous_contact_path(
         @pre_application.id
       )
     )

@@ -1,0 +1,61 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @pre_application.pa_expression_of_interest,
+             page_title: t('pa_expression_of_interest.check_answers.page_title')
+         }
+%>
+
+<%=
+  render partial: "partials/summary_errors",
+         locals: {
+             form_object: @pre_application.pa_expression_of_interest
+         } if @pre_application.pa_expression_of_interest.errors.any?
+%>
+
+<h1 class="govuk-heading-xl">
+  <%= t('pa_expression_of_interest.check_answers.page_heading') %>
+</h1>
+
+<dl class="govuk-summary-list">
+
+  <%= render 'pre_application/expression_of_interest/check_answers/previous_contact_name' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/what_project_does' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/title' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/programme_outcomes' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/heritage_focus' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/project_reasons' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/project_timescales' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/overall_cost' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/potential_funding_amount' %>
+  <%= render 'pre_application/expression_of_interest/check_answers/likely_submission_description' %>
+
+</dl>
+
+<%=
+  form_with model: @pre_application.pa_expression_of_interest,
+            url: :pre_application_expression_of_interest_check_your_answers,
+            method: :put,
+            local: true do |f|
+%>
+
+  <%=
+    render(
+        ButtonComponent.new(
+            element: "input",
+            text: t('pa_expression_of_interest.check_answers.buttons.submit'),
+            attributes: [
+                {
+                    attribute: "aria-label",
+                    value: "Submit Expression of Interest button"
+                },
+                {
+                    attribute: ("disabled" unless Flipper.enabled?(:expressions_of_interest_enabled)),
+                    value: ("disabled" unless Flipper.enabled?(:expressions_of_interest_enabled))
+                }
+            ]
+        )
+    )
+  %>
+
+<% end %>

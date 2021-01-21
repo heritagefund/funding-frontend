@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_project_enquiry,
-             page_title: t('previous_contact_name.page_title')
+             page_title: t('pa_project_enquiry.previous_contact_name.page_title')
          }
 %>
 
@@ -24,14 +24,14 @@
 
       <%= 
         f.label :previous_contact_name,
-        t('previous_contact_name.page_heading'),
+        t('pa_project_enquiry.previous_contact_name.page_heading'),
         class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
       %>
 
     </h1>
 
     <span id="previous-contact-hint" class="govuk-hint">
-      <%= t('previous_contact_name.page_hint') %>
+      <%= t('pa_project_enquiry.previous_contact_name.page_hint') %>
     </span>
 
     <%=

@@ -3,7 +3,7 @@ class PreApplication::ProjectEnquiry::HeritageFocusController < ApplicationContr
   include PreApplicationContext, ObjectErrorsLogger
 
   # This method updates the heritage_focus attribute of a pa_project_enquiry,
-  # redirecting to :pre_application_project_enquiry_what_will_the_project_do if successful and
+  # redirecting to :pre_application_project_enquiry_programme_outcomes if successful and
   # re-rendering :show method if unsuccessful
   def update
 
@@ -12,14 +12,12 @@ class PreApplication::ProjectEnquiry::HeritageFocusController < ApplicationContr
 
     @pre_application.pa_project_enquiry.validate_heritage_focus = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating heritage_focus for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"
 
-      redirect_to(:pre_application_project_enquiry_what_will_the_project_do)
+      redirect_to(:pre_application_project_enquiry_programme_outcomes)
 
     else
 

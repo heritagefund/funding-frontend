@@ -11,7 +11,16 @@ class DashboardController < ApplicationController
       @projects = current_user.projects
 
       # A user may not have an associated organisation at this point
-      @funding_applications = current_user.organisations.first.funding_applications if current_user.organisations.any?
+      if current_user.organisations.any?
+
+        @funding_applications = current_user.organisations.first.funding_applications
+
+        @pre_applications = current_user.organisations.first.pre_applications
+
+        @pa_project_enquiry_presence = get_pa_project_enquiry_presence(@pre_applications)
+        @pa_expression_of_interest_presence = get_pa_expression_of_interest_presence(@pre_applications)
+
+      end
 
     else
 
@@ -35,6 +44,44 @@ class DashboardController < ApplicationController
   end
 
   private
+
+  # Determines whether a pa_project_enquiry object association
+  # exists within a collection of PreApplication objects
+  #
+  # @param [ActiveRecord::Collection] pre_applications A collection of pre_applications
+  def get_pa_project_enquiry_presence(pre_applications)
+
+    presence = false
+
+    pre_applications.each do |pa|
+      if pa.pa_project_enquiry.present?
+        presence = true
+        break
+      end
+    end
+
+    presence
+
+  end
+
+  # Determines whether a pa_expression_of_interest object association
+  # exists within a collection of PreApplication objects
+  #
+  # @param [ActiveRecord::Collection] pre_applications A collection of pre_applications
+  def get_pa_expression_of_interest_presence(pre_applications)
+
+    presence = false
+
+    pre_applications.each do |pa|
+      if pa.pa_expression_of_interest.present?
+        presence = true
+        break
+      end
+    end
+
+    presence
+
+  end
 
   # Checks for the presence of mandatory fields on a given user.
   # Returns true if all mandatory fields are present, otherwise

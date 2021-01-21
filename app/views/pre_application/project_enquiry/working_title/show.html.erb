@@ -1,0 +1,61 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @pre_application.pa_project_enquiry,
+      page_title: t('pa_project_enquiry.working_title.page_title')
+         }
+%>
+
+<%= render partial: "partials/summary_errors", locals: {
+    form_object: @pre_application.pa_project_enquiry,
+    first_form_element: :pa_project_enquiry_working_title
+} if @pre_application.pa_project_enquiry.errors.any? %>
+
+<%=
+  form_for @pre_application.pa_project_enquiry,
+  url: :pre_application_project_enquiry_do_you_have_a_working_title,
+  method: :put do |f| 
+%>
+
+  <div class="govuk-form-group <%= "govuk-form-group--error" if
+    @pre_application.pa_project_enquiry.errors[:working_title].any? %>">
+
+    <h1 class="govuk-label-wrapper">
+
+      <%= 
+        f.label :working_title,
+        t('pa_project_enquiry.working_title.page_heading'),
+        class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+      %>
+
+    </h1>
+
+    <span id="working_title-hint" class="govuk-hint">
+      <%= t('pa_project_enquiry.working_title.page_hint') %>
+    </span>
+
+    <%=
+      render partial: "partials/form_input_errors",
+               locals: {form_object: @pre_application.pa_project_enquiry,
+                        input_field_id: :working_title} if 
+                          @pre_application.pa_project_enquiry.errors[:working_title].any?
+    %>
+
+    <%=
+      f.text_field :working_title,
+                  class: "govuk-input " \
+                          "#{'govuk-input--error' if
+                      @pre_application.pa_project_enquiry.errors[:working_title].any?}"
+    %>
+
+  </div>
+
+  <%= 
+    render(
+      ButtonComponent.new(
+        element: "button"
+      )
+    ) 
+  %>
+
+<% end %>

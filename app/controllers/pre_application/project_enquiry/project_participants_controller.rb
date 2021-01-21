@@ -12,9 +12,7 @@ class PreApplication::ProjectEnquiry::ProjectParticipantsController < Applicatio
 
     @pre_application.pa_project_enquiry.validate_project_participants = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating project_participants for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"

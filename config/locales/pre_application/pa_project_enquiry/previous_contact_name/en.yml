@@ -1,5 +1,6 @@
 en-GB:
-  previous_contact_name:
-    page_title: "Have you previously talked to anyone?"
-    page_heading: "Have you previously talked to anyone in our Development Team about your project idea?"
-    page_hint: "If so, what was their name?"
+  pa_project_enquiry:
+    previous_contact_name:
+      page_title: "Have you spoken to anyone at the fund about your idea?"
+      page_heading: "Have you spoken to anyone at the fund about your idea?"
+      page_hint: "If so, tell us their name."

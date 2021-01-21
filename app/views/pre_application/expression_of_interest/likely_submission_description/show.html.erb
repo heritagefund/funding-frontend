@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_expression_of_interest,
-      page_title: t('likely_submission_description.page_title')
+      page_title: t('pa_expression_of_interest.likely_submission_description.page_title')
          }
 %>
 
@@ -17,33 +17,45 @@
   method: :put do |f| 
 %>
 
-  <div class="govuk-form-group <%= "govuk-form-group--error" if
-    @pre_application.pa_expression_of_interest.errors[:likely_submission_description].any? %>">
+  <div class="govuk-character-count" data-module="govuk-character-count"
+       data-maxwords="50">
 
-    <h1 class="govuk-label-wrapper">
+    <div class="govuk-form-group <%= "govuk-form-group--error" if
+      @pre_application.pa_expression_of_interest.errors[:likely_submission_description].any? %>">
 
-      <%= 
-        f.label :likely_submission_description,
-        t('likely_submission_description.page_heading'),
-        class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+      <h1 class="govuk-label-wrapper">
+
+        <%= 
+          f.label :likely_submission_description, 
+          t('pa_expression_of_interest.likely_submission_description.page_heading'),
+          class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+        %>
+
+      </h1>
+
+      <%=
+        render partial: "partials/form_input_errors",
+                locals: {form_object: @pre_application.pa_expression_of_interest,
+                          input_field_id: :likely_submission_description} if 
+                            @pre_application.pa_expression_of_interest.errors[:likely_submission_description].any?
       %>
 
-    </h1>
+      <%=
+        f.text_area :likely_submission_description,
+                    rows: 10,
+                    class: "govuk-textarea govuk-js-character-count" \
+                            "#{' govuk-textarea--error' if
+                        @pre_application.pa_expression_of_interest.errors[:likely_submission_description].any?}",
+                    "aria-describedby" => "pa_expression_of_interest_likely_submission_description-info"
+      %>
 
-    <%=
-      render partial: "partials/form_input_errors",
-               locals: {form_object: @pre_application.pa_expression_of_interest,
-                        input_field_id: :likely_submission_description} if 
-                          @pre_application.pa_expression_of_interest.errors[:likely_submission_description].any?
-    %>
+      <div id="pa_expression_of_interest_likely_submission_description-info"
+            class="govuk-hint govuk-character-count__message"
+            aria-live="polite">
+        <%= t('generic.word_count', max_words: 50) %>
+      </div>
 
-    <%=
-      f.text_area :likely_submission_description,
-                  rows: 10,
-                  class: "govuk-textarea " \
-                          "#{'govuk-textarea--error' if
-                      @pre_application.pa_expression_of_interest.errors[:likely_submission_description].any?}"
-    %>
+    </div>
 
   </div>
 

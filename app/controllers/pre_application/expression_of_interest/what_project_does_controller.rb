@@ -3,8 +3,8 @@ class PreApplication::ExpressionOfInterest::WhatProjectDoesController < Applicat
   include PreApplicationContext, ObjectErrorsLogger
 
   # This method updates the what_project_does attribute of a pa_expression_of_interest,
-  # redirecting to : pre_application_expression_of_interest_programme_outcomes if successful and
-  # re-rendering :show method if unsuccessful
+  # redirecting to : pre_application_expression_of_interest_do_you_have_a_working_title
+  # if successful and re-rendering :show method if unsuccessful
   def update
 
     logger.info 'Updating what_project_does for ' \
@@ -12,14 +12,12 @@ class PreApplication::ExpressionOfInterest::WhatProjectDoesController < Applicat
 
     @pre_application.pa_expression_of_interest.validate_what_project_does = true
 
-    @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
-
-    if @pre_application.pa_expression_of_interest.valid?
+    if @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
 
       logger.info 'Finished updating what_project_does for pa_expression_of_interest ID: ' \
                   "#{@pre_application.pa_expression_of_interest.id}"
 
-      redirect_to(:pre_application_expression_of_interest_programme_outcomes)
+      redirect_to(:pre_application_expression_of_interest_do_you_have_a_working_title)
 
     else
 

@@ -1,4 +1,6 @@
 en-GB:
-  project_participants:
-    page_title: "Who will be involved in your project?"
-    page_heading: "Who will be involved in your project?"
+  pa_project_enquiry:
+    project_participants:
+      page_title: "Who will be involved in the project?"
+      page_heading: "Who will be involved in the project?"
+      page_hint: "Tell us about who will run the project, any partnerships and if people will volunteer on the project."

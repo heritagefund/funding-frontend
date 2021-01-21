@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @pre_application.pa_expression_of_interest,
-      page_title: t('project_reasons.page_title')
+      page_title: t('pa_expression_of_interest.project_reasons.page_title')
          }
 %>
 
@@ -13,37 +13,54 @@
 
 <%=
   form_for @pre_application.pa_expression_of_interest,
-  url: :pre_application_expression_of_interest_why_you_want_to_do_this_project,
+  url: :pre_application_expression_of_interest_what_is_the_need_for_this_project,
   method: :put do |f| 
 %>
 
-  <div class="govuk-form-group <%= "govuk-form-group--error" if
-    @pre_application.pa_expression_of_interest.errors[:project_reasons].any? %>">
+  <div class="govuk-character-count" data-module="govuk-character-count"
+       data-maxwords="200">
 
-    <h1 class="govuk-label-wrapper">
+    <div class="govuk-form-group <%= "govuk-form-group--error" if
+      @pre_application.pa_expression_of_interest.errors[:project_reasons].any? %>">
 
-      <%= 
-        f.label :project_reasons,
-        t('project_reasons.page_heading'),
-        class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+      <h1 class="govuk-label-wrapper">
+
+        <%= 
+          f.label :project_reasons,
+          t('pa_expression_of_interest.project_reasons.page_heading'),
+          class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+        %>
+
+      </h1>
+
+      <div id="project_reasons-hint" class="govuk-hint">
+        <%= t('pa_expression_of_interest.project_reasons.page_hint') %>
+      </div>
+
+      <%=
+        render partial: "partials/form_input_errors",
+                locals: {
+                  form_object: @pre_application.pa_expression_of_interest,
+                  input_field_id: :project_reasons
+                } if @pre_application.pa_expression_of_interest.errors[:project_reasons].any?
       %>
 
-    </h1>
+      <%=
+        f.text_area :project_reasons,
+                    rows: 10,
+                    class: "govuk-textarea govuk-js-character-count" \
+                            "#{' govuk-textarea--error' if
+                        @pre_application.pa_expression_of_interest.errors[:project_reasons].any?}",
+                    "aria-describedby" => "project_reasons-hint pa_expression_of_interest_project_reasons-info"
+      %>
 
-    <%=
-      render partial: "partials/form_input_errors",
-               locals: {form_object: @pre_application.pa_expression_of_interest,
-                        input_field_id: :project_reasons} if 
-                          @pre_application.pa_expression_of_interest.errors[:project_reasons].any?
-    %>
+      <div id="pa_expression_of_interest_project_reasons-info"
+            class="govuk-hint govuk-character-count__message"
+            aria-live="polite">
+        <%= t('generic.word_count', max_words: 200) %>
+      </div>
 
-    <%=
-      f.text_area :project_reasons,
-                  rows: 10,
-                  class: "govuk-textarea " \
-                          "#{'govuk-textarea--error' if
-                      @pre_application.pa_expression_of_interest.errors[:project_reasons].any?}"
-    %>
+    </div>
 
   </div>
 

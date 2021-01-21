@@ -1,4 +1,6 @@
 en-GB:
-  project_reasons:
-    page_title: "Why do you want to do this project? (what is the need and demand)"
-    page_heading: "Why do you want to do this project? (what is the need and demand)"
+  pa_project_enquiry:
+    project_reasons:
+      page_title: "What is the need for this project?"
+      page_heading: "What is the need for this project?"
+      page_hint: "For example, is there a risk of loss to your heritage? Or, is there an opportunity to tie in with an anniversary or commemoration? Tell us about any research you have done with your audience."

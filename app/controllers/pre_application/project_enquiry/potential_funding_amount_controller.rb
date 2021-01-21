@@ -3,7 +3,7 @@ class PreApplication::ProjectEnquiry::PotentialFundingAmountController < Applica
   include PreApplicationContext, ObjectErrorsLogger
   
   # This method updates the potential_funding_amount attribute of a pa_project_enquiry,
-  # redirecting to : pre_application_project_enquiry_submitted if successful and
+  # redirecting to :pre_application_project_enquiry_check_your_answers if successful and
   # re-rendering :show method if unsuccessful
   def update
 
@@ -19,7 +19,7 @@ class PreApplication::ProjectEnquiry::PotentialFundingAmountController < Applica
       logger.info 'Finished updating potential_funding_amount for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"
 
-      redirect_to(:pre_application_project_enquiry_submitted)
+      redirect_to(:pre_application_project_enquiry_check_your_answers)
 
     else
 

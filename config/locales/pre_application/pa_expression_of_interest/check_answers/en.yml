@@ -1,0 +1,30 @@
+en-GB:
+  pa_expression_of_interest:
+    check_answers:
+      page_title: "Check your answers"
+      page_heading: "Check your answers"
+      buttons:
+        submit: "Submit Expression of Interest"
+      table:
+        row_headings:
+          previous_contact_name: "Have you spoken to anyone at the Fund about your idea?"
+          what_project_does: "Describe what you will do during the project"
+          working_title: "Project title"
+          programme_outcomes: "What outcomes do you want to achieve?"
+          heritage_focus: "Tell us about the heritage of the project"
+          project_reasons: "What is the need for this project?"
+          project_timescales: "How long do you think the project will take?"
+          overall_cost: "How much is your project likely to cost?"
+          potential_funding_amount: "How much funding are you planning to apply to us for?"
+          likely_submission_description: "When are you likely to submit a funding application, if asked to do so?"
+      change_links:
+        previous_contact_name: "previous Fund contact name"
+        what_project_does: "description of what you will do during the project"
+        working_title: "working project title"
+        programme_outcomes: "description of the outcomes you want to achieve"
+        heritage_focus: "description of the heritage of the project"
+        project_reasons: "description of the need for this project"
+        project_timescales: "description of your project timescales"
+        overall_cost: "description of how much your project is likely to cost"
+        potential_funding_amount: "how much funding you are planning to apply to us for"
+        likely_submission_description: "description of when you are likely to submit a funding application, if asked to do so"

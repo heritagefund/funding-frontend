@@ -23,9 +23,9 @@ RSpec.feature 'Organisation', type: :feature do
       login_as(user, :scope => :user)
 
       visit '/'
-      expect(page).to have_text I18n.t("dashboard.start_a_new_application_button")
+      expect(page).to have_text I18n.t("dashboard.funding_applications.buttons.start")
 
-      click_link_or_button I18n.t("dashboard.start_a_new_application_button")
+      click_link_or_button I18n.t("dashboard.funding_applications.buttons.start")
           
       expect(page)
           .to have_text 'What type of organisation will be running your project'

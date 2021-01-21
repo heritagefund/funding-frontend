@@ -1,4 +1,6 @@
 en-GB:
-  overall_cost:
-    page_title: "Overall cost"
-    page_heading: "Overall cost including a short breakdown of key items of expenditure."
+  pa_expression_of_interest:
+    overall_cost:
+      page_title: "How much is your project likely to cost?"
+      page_heading: "How much is your project likely to cost?"
+      page_hint: "If you know, tell us about the most important costs. These costs can be estimated."

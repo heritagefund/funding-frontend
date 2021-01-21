@@ -12,9 +12,7 @@ class PreApplication::ExpressionOfInterest::PotentialFundingAmountController < A
 
     @pre_application.pa_expression_of_interest.validate_potential_funding_amount = true
 
-    @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
-
-    if @pre_application.pa_expression_of_interest.valid?
+    if @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
 
       logger.info 'Finished updating potential_funding_amount for pa_expression_of_interest ID: ' \
                   "#{@pre_application.pa_expression_of_interest.id}"

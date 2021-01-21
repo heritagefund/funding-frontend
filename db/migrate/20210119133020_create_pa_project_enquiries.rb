@@ -10,6 +10,7 @@ class CreatePaProjectEnquiries < ActiveRecord::Migration[6.0]
       t.text :project_participants
       t.text :project_timescales
       t.text :project_likely_cost
+      t.text :working_title
       t.integer :potential_funding_amount
       t.timestamps
     end

@@ -1,0 +1,61 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @pre_application.pa_expression_of_interest,
+             page_title: t('pa_expression_of_interest.previous_contact_name.page_title')
+         }
+%>
+
+<%= render partial: "partials/summary_errors", locals: {
+    form_object: @pre_application.pa_expression_of_interest,
+    first_form_element: :previous_contact_name
+} if @pre_application.pa_expression_of_interest.errors.any? %>
+
+<%=
+  form_for @pre_application.pa_expression_of_interest,
+  url: :pre_application_expression_of_interest_previous_contact,
+  method: :put do |f| 
+%>
+
+  <div class="govuk-form-group <%= "govuk-form-group--error" if
+    @pre_application.pa_expression_of_interest.errors[:previous_contact_name].any? %>">
+
+    <h1 class="govuk-label-wrapper">
+
+      <%= 
+        f.label :previous_contact_name,
+        t('pa_expression_of_interest.previous_contact_name.page_heading'),
+        class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+      %>
+
+    </h1>
+
+    <span id="previous-contact-hint" class="govuk-hint">
+      <%= t('pa_expression_of_interest.previous_contact_name.page_hint') %>
+    </span>
+
+    <%=
+      render partial: "partials/form_input_errors",
+               locals: {
+                 form_object: @pre_application.project,
+                 input_field_id: :previous_contact_name
+               } if @pre_application.pa_expression_of_interest.errors[:previous_contact_name].any?
+    %>
+
+    <%=
+      f.text_field :previous_contact_name,
+      class: "govuk-input #{'govuk-input--error' if 
+        @pre_application.pa_expression_of_interest.errors[:previous_contact_name].any?}"
+    %>
+
+  </div>
+
+  <%= 
+    render(
+      ButtonComponent.new(
+        element: "button"
+      )
+    ) 
+  %>
+
+<% end %>

@@ -1,4 +1,5 @@
 en-GB:
-  likely_submission_description:
-    page_title: "Likely submission description"
-    page_heading: "When are you likely to submit a development phase application if invited to do so? "
+  pa_expression_of_interest:
+    likely_submission_description:
+      page_title: "Likely submission description"
+      page_heading: "When are you likely to submit a development phase application if invited to do so? "

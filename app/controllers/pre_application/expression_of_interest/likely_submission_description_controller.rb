@@ -3,7 +3,7 @@ class PreApplication::ExpressionOfInterest::LikelySubmissionDescriptionControlle
   include PreApplicationContext, ObjectErrorsLogger
   
   # This method updates the likely_submission_description attribute of a pa_expression_of_interest,
-  # redirecting to :pre_application_project_enquiry_likely_cost if successful and
+  # redirecting to :pre_application_expression_of_interest_check_your_answers if successful and
   # re-rendering :show method if unsuccessful
   def update
 
@@ -12,14 +12,12 @@ class PreApplication::ExpressionOfInterest::LikelySubmissionDescriptionControlle
 
     @pre_application.pa_expression_of_interest.validate_likely_submission_description = true
 
-    @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
-
-    if @pre_application.pa_expression_of_interest.valid?
+    if @pre_application.pa_expression_of_interest.update(pa_expression_of_interest_params)
 
       logger.info 'Finished updating likely_submission_description for pa_expression_of_interest ID: ' \
                   "#{@pre_application.pa_expression_of_interest.id}"
 
-      redirect_to(:pre_application_expression_of_interest_submitted)
+      redirect_to(:pre_application_expression_of_interest_check_your_answers)
 
     else
 

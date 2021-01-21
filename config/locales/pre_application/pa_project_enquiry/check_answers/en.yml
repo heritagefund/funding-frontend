@@ -1,0 +1,21 @@
+en-GB:
+  pa_project_enquiry:
+    check_answers:
+      page_title: "Check your answers"
+      page_heading: "Check your answers"
+      buttons:
+        submit: "Submit Project Enquiry Form"
+      table:
+        row_headings:
+          previous_contact_name: "Have you spoken to anyone at the Fund about your idea?"
+          what_project_does: "Describe what you will do during the project"
+          working_title: "Project title"
+          programme_outcomes: "What outcomes do you want to achieve?"
+          heritage_focus: "Tell us about the heritage of the project"
+          project_reasons: "What is the need for this project?"
+          project_timescales: "How long do you think the project will take?"
+          overall_cost: "How much is your project likely to cost?"
+          potential_funding_amount: "How much funding are you planning to apply to us for?"
+          likely_submission_description: "When are you likely to submit a funding application, if asked to do so?"
+          project_participants: "Who will be involved in the project?"
+          project_likely_cost: "How much is your project likely to cost?"

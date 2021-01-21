@@ -3,7 +3,7 @@ class PreApplication::ProjectEnquiry::ProjectReasonsController < ApplicationCont
   include PreApplicationContext, ObjectErrorsLogger
 
   # This method updates the project_reasons attribute of a pa_project_enquiry,
-  # redirecting to :pre_application_project_enquiry_who_will_be_involved if successful and
+  # redirecting to :pre_application_project_enquiry_what_will_the_project_do if successful and
   # re-rendering :show method if unsuccessful
   def update
 
@@ -12,14 +12,12 @@ class PreApplication::ProjectEnquiry::ProjectReasonsController < ApplicationCont
 
     @pre_application.pa_project_enquiry.validate_project_reasons = true
 
-    @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
-
-    if @pre_application.pa_project_enquiry.valid?
+    if @pre_application.pa_project_enquiry.update(pa_project_enquiry_params)
 
       logger.info 'Finished updating project_reasons for pa_project_enquiry ID: ' \
                   "#{@pre_application.pa_project_enquiry.id}"
 
-      redirect_to(:pre_application_project_enquiry_who_will_be_involved)
+      redirect_to(:pre_application_project_enquiry_what_will_the_project_do)
 
     else
 
