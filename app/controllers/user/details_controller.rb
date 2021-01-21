@@ -96,7 +96,9 @@ class User::DetailsController < ApplicationController
       :dob_day,
       :dob_month,
       :dob_year,
-      :phone_number
+      :phone_number,
+      :communication_needs,
+      :language_preference
     )
   end
 

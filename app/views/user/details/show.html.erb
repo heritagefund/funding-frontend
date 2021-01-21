@@ -196,6 +196,85 @@
 
     </div>
 
+    <div class="govuk-character-count" data-module="govuk-character-count"
+        data-maxwords="50">
+
+      <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
+        current_user.errors[:communication_needs].any?}" %>">
+
+        <%=
+          f.label :communication_needs,
+          t('details.label_communication_needs'),
+          class: "govuk-label"
+        %>
+
+        <%=
+          render partial: "partials/form_input_errors",
+                locals: {
+                  form_object: current_user,
+                  input_field_id: :communication_needs
+                  } if current_user.errors[:communication_needs].any?
+        %>
+
+        <%=
+          f.text_area :communication_needs,
+          rows: 5,
+          class:"govuk-textarea govuk-js-character-count#{' govuk-textarea--error' if
+            current_user.errors[:communication_needs].any?}",
+          "aria-describedby" => "user_communication_needs-info"
+        %>
+
+        <div id="user_communication_needs-info"
+              class="govuk-hint govuk-character-count__message"
+              aria-live="polite">
+          <%= t('generic.word_count', max_words: 50) %>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-form-group <%= "govuk-form-group--error" if current_user.errors[:language_preference].any? %>">
+
+      <fieldset class="govuk-fieldset">
+
+        <%=
+          f.label :language_preference,
+          t('details.label_language_preference'),
+          class: "govuk-label"
+        %>
+
+        <%=
+          render partial: "partials/form_input_errors",
+                locals: {
+                  form_object: current_user,
+                  input_field_id: :language_preference
+                  } if current_user.errors[:language_preference].any?
+        %>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+
+          <div class="govuk-radios__item">
+            <%= f.radio_button :language_preference, "english", class: "govuk-radios__input" %>
+            <%= f.label :language_preference_english, "English", class: "govuk-label govuk-radios__label" %>
+          </div>
+
+          <div class="govuk-radios__item">
+            <%= f.radio_button :language_preference, "welsh", class: "govuk-radios__input" %>
+            <%= f.label :language_preference_welsh, "Welsh", class: "govuk-label govuk-radios__label" %>
+          </div>
+
+          <div class="govuk-radios__item">
+            <%= f.radio_button :language_preference, "both", class: "govuk-radios__input" %>
+            <%= f.label :language_preference_both, "Both", class: "govuk-label govuk-radios__label" %>
+          </div>
+
+        </div>
+
+      </fieldset>
+
+    </div>
+
   </fieldset>
 
   <div class="govuk-inset-text govuk-!-margin-top-0">

@@ -110,6 +110,10 @@ en-GB:
               blank: "Enter the county where you live"
             postcode:
               blank: "Enter the postcode where you live"
+            language_preference:
+              inclusion: "Select a language we should use to communicate with you if your project is based in Wales"
+            communication_needs:
+              too_long: "Description of your communication needs must be fewer than 50 words"
         organisation:
           attributes:
             org_type:

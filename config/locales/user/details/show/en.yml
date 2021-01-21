@@ -10,6 +10,8 @@ en-GB:
     label_day: "Day"
     label_month: "Month"
     label_year: "Year"
+    label_language_preference: "For projects based in Wales, which language should we use to communicate with you?"
+    label_communication_needs: "Tell us about any communication needs you have"
     fair_processing_1: "The personal information we collect from you will be shared with fraud prevention agencies who will use it to prevent fraud and money-laundering and to verify your identity. If fraud is detected, you could be refused a grant or loan."
     fair_processing_2_html: "Further details of how your information will be used by us and these fraud prevention agencies, and your data protection rights, can be found by contacting %{href}."
     fair_processing_2_href: "fair.processing@heritagefund.org.uk"
