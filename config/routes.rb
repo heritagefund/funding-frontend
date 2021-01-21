@@ -122,6 +122,7 @@ Rails.application.routes.draw do
         get 'check-your-answers', to: 'check_answers#show'
         put 'check-your-answers', to: 'check_answers#update'
         get 'submitted', to: 'submitted#show'
+        put 'submitted', to: 'submitted#update'
 
       end
 
@@ -156,6 +157,8 @@ Rails.application.routes.draw do
         get 'check-your-answers', to: 'check_answers#show'
         put 'check-your-answers', to: 'check_answers#update'
         get 'submitted', to: 'submitted#show'
+        put 'submitted', to: 'submitted#update'
+
       end
 
     end

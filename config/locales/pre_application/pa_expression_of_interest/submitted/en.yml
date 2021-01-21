@@ -11,4 +11,11 @@ en-GB:
       did_you_know_sub_description_1: "For potential applicants we also send out information about our grant programmes."
       did_you_know_sub_heading_2: "We organise user research"
       did_you_know_sub_description_2: "We run qualitative user research to help us to develop our products and services. This could be from a 20 minute survey to a 2 hour interview."
+      labels:
+        agrees_to_contact: "Tick this box if you would like to receive invites to events, or information about our grant programmes."
+        agrees_to_user_research: "Tick this box if you would like to be involved in our research, or find out more."
+      buttons:
+        send_preferences: "Send preferences"
+      notifications:
+        success: "Preferences submitted successfully."
       
