@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_135437) do
+ActiveRecord::Schema.define(version: 2021_01_21_080143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -376,6 +376,10 @@ ActiveRecord::Schema.define(version: 2021_01_19_135437) do
     t.string "postcode"
     t.string "phone_number"
     t.uuid "person_id"
+    t.text "communication_needs"
+    t.string "language_preference"
+    t.boolean "agrees_to_contact"
+    t.boolean "agrees_to_user_research"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id"
