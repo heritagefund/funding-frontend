@@ -11,11 +11,6 @@ class PreApplication < ApplicationRecord
 
   accepts_nested_attributes_for :organisation, :declarations
 
-  # attr_accessor :validate_declarations
-
-  # validates_associated :organisation
-  # validates_associated :declarations, if: :validate_declarations?
-
   def to_salesforce_json
 
     if self.pa_project_enquiry.present?
@@ -26,6 +21,7 @@ class PreApplication < ApplicationRecord
         project_enquiry:
           { 
             previous_contact_name: self.pa_project_enquiry.previous_contact_name,
+            working_title: self.pa_project_enquiry.working_title,
             heritage_focus: self.pa_project_enquiry.heritage_focus,
             what_project_does: self.pa_project_enquiry.what_project_does,
             programme_outcomes: self.pa_project_enquiry.programme_outcomes,
@@ -45,11 +41,12 @@ class PreApplication < ApplicationRecord
       form_hash = {
         expression_of_interest:
           { 
+            previous_contact_name: self.pa_expression_of_interest.previous_contact_name,
+            working_title: self.pa_expression_of_interest.working_title,
             heritage_focus: self.pa_expression_of_interest.heritage_focus,
             what_project_does: self.pa_expression_of_interest.what_project_does,
             programme_outcomes: self.pa_expression_of_interest.programme_outcomes,
             project_reasons: self.pa_expression_of_interest.project_reasons,
-            feasibility_or_options_work: self.pa_expression_of_interest.feasibility_or_options_work,
             project_timescales: self.pa_expression_of_interest.project_timescales,
             overall_cost: self.pa_expression_of_interest.overall_cost,
             potential_funding_amount: self.pa_expression_of_interest.potential_funding_amount,
@@ -86,6 +83,10 @@ class PreApplication < ApplicationRecord
         json.set!('mainContactDateOfBirth', self.user.date_of_birth)
         json.set!('mainContactEmail', self.user.email)
         json.set!('mainContactPhone', self.user.phone_number)
+        json.set!('mainContactCommunicationNeeds', self.user.communication_needs)
+        json.set!('mainContactLanguagePreference', self.user.language_preference)
+        json.set!('mainContactAgreesToContact', self.user.agrees_to_contact)
+        json.set!('mainContactAgreesToUserResearch', self.user.agrees_to_user_research)
 
         json.mainContactAddress do
 
@@ -126,29 +127,6 @@ class PreApplication < ApplicationRecord
           json.townCity self.user.organisations.first.townCity
           json.postcode self.user.organisations.first.postcode
 
-        end
-
-        set_legal_signatory_fields = -> (ls) {
-
-            json.set!("name", ls.name)
-            json.set!("email", ls.email_address)
-            json.set!("phone", ls.phone_number)
-            # Salesforce uses this flag to determine whether or not to create a single Contact object
-            json.set!("isAlsoApplicant", self.user.email == ls.email_address)
-            json.set!("role", "")
-
-        }
-
-        @ls_one = self.user.organisations.first.legal_signatories.first
-        json.authorisedSignatoryOneDetails do
-            set_legal_signatory_fields.call(@ls_one)
-        end
-
-        @ls_two = self.user.organisations.first.legal_signatories.second
-        if @ls_two.present?
-          json.authorisedSignatoryTwoDetails do
-              set_legal_signatory_fields.call(@ls_two)
-          end
         end
 
       end
