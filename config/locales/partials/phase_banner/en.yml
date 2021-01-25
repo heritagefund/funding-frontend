@@ -1,0 +1,5 @@
+en-GB:
+  phase_banner:
+    beta: "beta"
+    content_html: "This is a new service, %{href} will help us to improve it."
+    content_href: "your feedback"

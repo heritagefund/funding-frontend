@@ -1,10 +1,24 @@
-  <div class="govuk-phase-banner">
-      <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">
-          beta
-        </strong>
-        <span class="govuk-phase-banner__text">
-          This is a new service, <%= link_to("your feedback", question_or_feedback_path, class: "govuk-link--no-visited-state") %> will help us to improve it.
-        </span>
-      </p>
-    </div>  
+<div class="govuk-phase-banner">
+
+  <p class="govuk-phase-banner__content">
+
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      <%= t('phase_banner.beta') %>
+    </strong>
+
+    <span class="govuk-phase-banner__text">
+      <%=
+        t(
+          'phase_banner.content_html',
+          href: link_to(
+            t('phase_banner.content_href'),
+            question_or_feedback_path,
+            class: 'govuk-link--no-visited-state'
+          )
+        )
+      %>
+    </span>
+
+  </p>
+
+</div>
