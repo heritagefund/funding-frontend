@@ -35,6 +35,7 @@ module FundingFrontendRuby
     # For each additional subdirectory, we will need to appened to config.autoload_paths
     config.autoload_paths += Dir[Rails.root.join("app", "models", "application", "common")]
     config.autoload_paths += Dir[Rails.root.join("app", "models", "pre_application")]
+    config.autoload_paths += Dir[Rails.root.join("lib", "apis", "salesforce")]
 
     # Load locale dictionaries from subdirectories in the config/locales directory. We 
     # have to apply this setting, as the default locale loading mechanism in Rails does not 
