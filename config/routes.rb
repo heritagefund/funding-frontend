@@ -167,6 +167,43 @@ Rails.application.routes.draw do
 
   # Application section of the service
   scope '/application', module: 'funding_application', as: :funding_application do
+
+    scope '/:application_id' do
+
+      scope '/payment-request', module: 'payment_requests', as: 'payment_request' do
+
+        get 'start', to: 'start#show', constraints: lambda { Flipper.enabled?(:payment_requests_enabled) }
+        post 'start', to: 'start#update', constraints: lambda { Flipper.enabled?(:payment_requests_enabled) }
+
+        scope '/:payment_request_id' do
+
+          get 'have-your-bank-details-changed', to: 'have_bank_details_changed#show'
+          put 'have-your-bank-details-changed', to: 'have_bank_details_changed#update'
+
+          # get 'details', to: 'payment_details#show'
+          # put 'details', to: 'payment_details#update'
+          get 'bank-details', to: 'enter_bank_details#show'
+          put 'bank-details', to: 'enter_bank_details#update'
+
+          # get 'confirm-details', to: 'payment_confirm_details#show'
+          # put 'confirm-details', to: 'payment_confirm_details#update'
+          get 'confirm-bank-details', to: 'confirm_bank_details#show'
+          put 'confirm-bank-details', to: 'confirm_bank_details#update'
+          put 'confirm-bank-details-submitted', to: 'confirm_bank_details#save_and_continue'
+
+          get 'review-your-project-spend', to: 'review_spend#show'
+          get 'tell-us-what-you-have-spent', to: 'evidence_of_spend#show'
+          get 'add-an-item-of-spend', to: 'add_item_of_spend#show'
+          get 'edit-an-item-of-spend', to: 'edit_item_of_spend#show'
+          get 'confirm-what-you-have-spend', to: 'confirm_evidence_of_spend#show'
+
+          get 'submitted', to: 'submitted#show'
+          
+        end
+
+      end
+
+    end
  
     scope 'gp-project', module: 'gp_project', as: :gp_project do
 
@@ -246,22 +283,19 @@ Rails.application.routes.draw do
         put 'declaration', to: redirect('/', status: 302), constraints: lambda { !Flipper.enabled?(:new_applications_enabled) }
         get 'application-submitted', to: 'application_submitted#show'
 
-        scope '/payment', as: 'payment' do
+        # Scope for payment-details not related to a payment request
+        # scope 'payment-details', as: 'payment_details' do
 
-          get 'details', to: 'payment_details#show'
-          put 'details', to: 'payment_details#update'
+        #   get 'details', to: 'payment_details#show'
+        #   put 'details', to: 'payment_details#update'
 
-          get 'confirm-details', to: 'payment_confirm_details#show'
-          put 'confirm-details', to: 'payment_confirm_details#update'
-          put 'confirm-details-submitted', to: 'payment_confirm_details#save_and_continue'
+        #   get 'confirm-details', to: 'payment_confirm_details#show'
+        #   put 'confirm-details', to: 'payment_confirm_details#update'
+        #   # TODO: Not sending at this point, remove this?
+        #   put 'confirm-details-submitted', to: 'payment_confirm_details#save_and_continue'
+        # get 'submitted', to: 'payment_details_submitted#show'
 
-          get 'how-is-your-project-progressing', to: 'progress#show'
-          get 'tell-us-what-you-have-spent', to: 'current_spend#show'
-          get 'review-your-spending', to: 'review_spend#show'
-
-          get 'submitted', to: 'payment_details_submitted#show'
-
-        end
+        # end are you finished?
 
       end
 

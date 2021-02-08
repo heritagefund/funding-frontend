@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_140613) do
+ActiveRecord::Schema.define(version: 2021_02_05_100117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -143,6 +143,15 @@ ActiveRecord::Schema.define(version: 2021_02_03_140613) do
     t.index ["funding_application_id"], name: "index_funding_applications_dclrtns_on_funding_application_id"
   end
 
+  create_table "funding_applications_pay_reqs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "funding_application_id", null: false
+    t.uuid "payment_request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["funding_application_id"], name: "index_funding_applications_pay_reqs_on_funding_application_id"
+    t.index ["payment_request_id"], name: "index_funding_applications_pay_reqs_on_payment_request_id"
+  end
+
   create_table "funding_applications_people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "person_id", null: false
     t.uuid "funding_application_id", null: false
@@ -256,6 +265,13 @@ ActiveRecord::Schema.define(version: 2021_02_03_140613) do
     t.text "payment_reference"
     t.string "replay_number"
     t.index ["funding_application_id"], name: "index_payment_details_on_funding_application_id"
+  end
+
+  create_table "payment_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "amount_requested"
+    t.jsonb "payload_submitted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -416,6 +432,8 @@ ActiveRecord::Schema.define(version: 2021_02_03_140613) do
   add_foreign_key "funding_applications", "organisations"
   add_foreign_key "funding_applications_dclrtns", "declarations"
   add_foreign_key "funding_applications_dclrtns", "funding_applications"
+  add_foreign_key "funding_applications_pay_reqs", "funding_applications"
+  add_foreign_key "funding_applications_pay_reqs", "payment_requests"
   add_foreign_key "funding_applications_people", "funding_applications"
   add_foreign_key "funding_applications_people", "people"
   add_foreign_key "non_cash_contributions", "projects"

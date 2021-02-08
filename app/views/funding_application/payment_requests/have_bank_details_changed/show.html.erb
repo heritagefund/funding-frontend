@@ -1,0 +1,71 @@
+<%=
+  form_for @funding_application,
+           url: :funding_application_payment_request_have_your_bank_details_changed,
+           method: :put do |f|
+%>
+
+<div class="govuk-form-group <%= "govuk-form-group--error" if
+                                       @funding_application.errors.any? %>">
+
+    <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+        <h1 class="govuk-fieldset__heading">
+          Have your bank details changed? (Stub)
+        </h1>
+      </legend>
+
+      <%=
+        render partial: "partials/form_group_errors",
+               locals: {
+                   form_object: @funding_application
+               } if @funding_application.errors.any?
+      %>
+
+      <span id="project[cash_contributions_question]-hint" class="govuk-hint">
+        Select one option.
+      </span>
+
+      <div class="govuk-radios" data-module="govuk-radios">
+
+        <div class="govuk-radios__item">
+
+          <%=
+            f.radio_button :payment_still_details_question,
+                           true,
+                           class: "govuk-radios__input"
+          %>
+
+          <%=
+            f.label :payment_still_details_question_true,
+                    "Yes, my bank details have changed",
+                    class: "govuk-label govuk-radios__label"
+          %>
+
+        </div>
+
+        <div class="govuk-radios__item">
+
+          <%=
+            f.radio_button :payment_still_details_question,
+                           false,
+                           class: "govuk-radios__input"
+          %>
+
+          <%=
+            f.label :payment_still_details_question_false,
+                    "No, my bank details have not changed",
+                    class: "govuk-label govuk-radios__label"
+          %>
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+  </div>
+
+  <%= render(ButtonComponent.new()) %>
+
+<% end %>

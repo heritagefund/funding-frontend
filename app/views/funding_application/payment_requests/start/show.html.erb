@@ -1,0 +1,21 @@
+<h1 class="govuk-heading-xl">
+  Payment request start stub
+</h1>
+
+<%= form_tag(
+    url: :funding_application_payment_request_start,
+    method: :post,
+    local: true
+  ) do |f| 
+%>
+
+  <%= render(
+      ButtonComponent.new(
+        element: "button",
+        is_start_button: true,
+        text: t("buttons.labels.start_now")
+      )
+    ) 
+  %>
+
+<% end %>

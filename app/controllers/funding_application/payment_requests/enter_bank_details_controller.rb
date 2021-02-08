@@ -1,4 +1,4 @@
-class FundingApplication::GpProject::PaymentDetailsController < ApplicationController
+class FundingApplication::PaymentRequests::EnterBankDetailsController < ApplicationController
   include FundingApplicationContext, ObjectErrorsLogger
   
   def show
@@ -24,7 +24,7 @@ class FundingApplication::GpProject::PaymentDetailsController < ApplicationContr
 
         logger.info "Finished updating payment details for funding_application ID: #{@funding_application.id}"
 
-        redirect_to(:funding_application_gp_project_payment_confirm_details)
+        redirect_to(:funding_application_payment_request_confirm_bank_details)
 
       else
 

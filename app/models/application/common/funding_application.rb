@@ -12,10 +12,15 @@ class FundingApplication < ApplicationRecord
   has_many :funding_applications_dclrtns, inverse_of: :funding_application
   has_many :declarations, through: :funding_applications_dclrtns
 
+  has_many :funding_applications_pay_reqs, inverse_of: :funding_application
+  has_many :payment_requests, through: :funding_applications_pay_reqs
+
   accepts_nested_attributes_for :organisation, :people, :declarations
 
   attr_accessor :validate_people
   attr_accessor :validate_declarations
+
+  attr_accessor :payment_still_details_question
 
   validates_associated :organisation
   validates_associated :people if :validate_people

@@ -1,0 +1,3 @@
+class FundingApplication::PaymentRequests::ConfirmEvidenceOfSpendController < ApplicationController
+  include FundingApplicationContext, ObjectErrorsLogger
+end

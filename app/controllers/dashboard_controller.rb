@@ -1,4 +1,4 @@
-# Controller for the service dashboard page
+  # Controller for the service dashboard page
 class DashboardController < ApplicationController
   before_action :authenticate_user!
 

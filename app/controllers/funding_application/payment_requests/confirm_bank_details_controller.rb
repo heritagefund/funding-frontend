@@ -1,5 +1,8 @@
-class FundingApplication::GpProject::PaymentConfirmDetailsController < ApplicationController
-    include FundingApplicationContext, ObjectErrorsLogger
+class FundingApplication::PaymentRequests::ConfirmBankDetailsController < ApplicationController
+    include FundingApplicationContext
+    include ObjectErrorsLogger
+    include PaymentDetailsAndRequestHelper
+    include PaymentRequestContext
 
   def update
 
@@ -15,7 +18,7 @@ class FundingApplication::GpProject::PaymentConfirmDetailsController < Applicati
       logger.info "Finished updating payments_details for ID: " \
                   "#{@funding_application.payment_details.id}"
 
-      redirect_to :funding_application_gp_project_payment_confirm_details
+      redirect_to :funding_application_payment_request_confirm_bank_details
       
     else
 
@@ -45,7 +48,7 @@ class FundingApplication::GpProject::PaymentConfirmDetailsController < Applicati
                   'navigating past payment details confirmation screen for '
                   "ID: #{@funding_application.payment_details.id}"
 
-      redirect_to :funding_application_gp_project_payment_how_is_your_project_progressing
+      orchestrate_redirect_or_submission(@funding_application, @payment_request)
 
     else
 

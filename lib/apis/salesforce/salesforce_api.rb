@@ -60,6 +60,30 @@ module SalesforceApi
 
     end
 
+    def get_agreed_project_costs(id)
+
+      Rails.logger.info("Retrieving agreed project costs for project ID: #{id}")
+
+      # TODO: remove 
+      id = '37da105a-a899-4868-9a26-7a1329b5ef0a'
+
+      begin
+
+        # Equivalent of "SELECT SUM(Costs__c), Cost_heading__c FROM Project_Cost__c WHERE Case__r.ApplicationId__c= '#{id}' GROUP BY Cost_heading__c" 
+        restforce_response = @client.query("SELECT SUM(Costs__c), Cost_heading__c FROM Project_Cost__c WHERE Case__r.ApplicationId__c= '#{id}' GROUP BY Cost_heading__c")
+
+      rescue Restforce::MatchesMultipleError, Restforce::UnauthorizedError,
+        Restforce::EntityTooLargeError, Restforce::ResponseError => e
+
+        Rails.logger.error("Exception occured when retrieving agreed project costs for project ID: #{id}: (#{e})")
+
+        # Raise and allow global exception handler to catch
+        raise
+
+      end
+
+    end
+
     private
 
     # Method to initialise a new Restforce client, called as part of object instantiation

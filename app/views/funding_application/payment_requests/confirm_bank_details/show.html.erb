@@ -82,14 +82,14 @@
   <%=
     link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
       #{t('payment_confirm_details.change_span')}</span>".html_safe,
-            :funding_application_gp_project_payment_details,
+            :funding_application_payment_request_bank_details,
             class: "govuk-link govuk-link--no-visited-state"
   %>
 </p>
 
 <%=
   form_with model: @funding_application.payment_details,
-            url: :funding_application_gp_project_payment_confirm_details,
+            url: :funding_application_payment_request_confirm_bank_details,
             method: :put,
             remote: no_js ? false : true do |f|
 %>
@@ -194,7 +194,7 @@
 
   <%=
     form_with model: @funding_application.payment_details,
-              url: :funding_application_gp_project_payment_confirm_details_submitted,
+              url: :funding_application_payment_request_confirm_bank_details_submitted,
               method: :put,
               remote: no_js ? false : true do |f|
   %>
