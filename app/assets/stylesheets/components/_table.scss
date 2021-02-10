@@ -1,0 +1,109 @@
+// to be used in conjunction with the mark-up for a standard .govuk-table
+// from the govuk design system: https://design-system.service.gov.uk/components/table/
+.nlhf-table {
+
+    &--responsive-columns {
+
+        .nlhf-table__head,
+        .nlhf-table__body,
+        .nlhf-table__foot {
+          width: 100%;
+        }
+        
+        .nlhf-table__row {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          width: 100%;
+          @media (min-width: 768px) {
+            flex-direction: row;
+          }
+        }
+        
+        .nlhf-table__header, .nlhf-table__cell {
+            flex: 1 0 0;
+            &-data__item {
+                &:not(:last-child) {
+                    margin-bottom: 0.75em;
+                }
+            }
+        }  
+        
+        @include govuk-media-query($until: tablet) {
+            .nlhf-table__body {
+                .nlhf-table__row {
+                    border: 2px solid #000;
+                    margin-bottom: 1.25em;
+                }
+                .nlhf-table__header, .nlhf-table__cell {
+                    padding: 1em 1em;
+                    display: flex;
+                }  
+                .nlhf-table__cell {
+                    &-stacked-until-tablet{
+                        display: block;
+                        .nlhf-table__col-header,
+                        .nlhf-table__cell-data {
+                            padding: 0;
+                            margin: 0;
+                            display: block;
+                            width: 100%;
+                            margin-bottom: 0.25em;
+                            > *:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+            
+        .nlhf-table__body {
+            .nlhf-table__col-header {
+                flex: 0 0 140px;
+                width: 140px;
+                padding: 1em;
+                margin: -1em 1em -1em -1em;
+                font-weight: bold;
+            }
+        }        
+
+        @include govuk-media-query($until: tablet) {
+            // even if table headers are visually hidden, 
+            // it's necessary to set row as block level to 
+            // avoid weird bug on VoiceOver
+            .nlhf-table__head {
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                clip: rect(1px, 1px, 1px, 1px);
+            }
+        }
+
+
+        @include govuk-media-query($from: tablet) {
+            /* HIDE INVIDUAL CELL HEADING */
+            .nlhf-table__body .nlhf-table__col-header {
+            display: none;
+            }
+        }
+        
+    }
+}
+
+.nlhf-table__actions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    &-item {
+        display: block;
+        margin: 0;
+        &:not(:last-child) {
+            margin-bottom: 0.5em;
+        }
+    }
+    &-link {
+        display: inline-block;
+        padding: 0.2em 0;
+    }
+}

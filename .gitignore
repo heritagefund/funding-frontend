@@ -38,3 +38,5 @@ yarn-debug.log*
 
 # Ignore Mac specific files
 .DS_Store
+
+/package-lock.json
