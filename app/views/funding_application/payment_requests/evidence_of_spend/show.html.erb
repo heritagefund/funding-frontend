@@ -10,11 +10,42 @@
   <%= t('current_spend.page_heading') %>
 </h1>
 
-<%=
-  render(
-    ButtonComponent.new(
-        element: "a",
-        href: funding_application_payment_request_review_your_spending_url
-    )
+<p class="govuk-body">
+  <%= t('current_spend.page_hint') %>
+</p>
+
+<h2 class="govuk-heading-l">
+  <%= t('current_spend.project_spend_heading') %>
+</h2>
+
+<p class="govuk-body">
+  <%= link_to(
+        t('current_spend.add_spend'),
+        funding_application_payment_request_add_an_item_of_spend_url,
+        class: 'govuk-link--no-visited-state'
   )
+  %>
+</p>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<p class="govuk-body">
+  If you have finished adding evidence of project spend
+</p>
+
+<%= form_tag(
+    url: :funding_application_payment_request_tell_us_what_you_have_spent,
+    method: :post,
+    local: true
+  ) do |f| 
 %>
+
+  <%=
+    render(
+      ButtonComponent.new(
+          text: 'Continue to spending summary'
+      )
+    )
+  %>
+
+<% end %>

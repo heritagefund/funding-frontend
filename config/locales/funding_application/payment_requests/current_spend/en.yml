@@ -1,0 +1,10 @@
+en-GB:
+  current_spend:
+    page_title: 'Tell us what you have spent'
+    page_heading: 'Tell us what you have spent'
+    page_hint: 'Before we give you the next part of your grant, you need to tell us what you have spent so far and provide evidence.'
+    project_spend_heading: 'Project spend'
+    no_items_added: 'You have not added any items of project spend.'
+    add_spend: 'Add spend'
+    save_and_continue_hint: 'If you have finished adding evidence of project spend'
+

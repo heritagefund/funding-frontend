@@ -1,0 +1,43 @@
+class AddStaticCostTypes < ActiveRecord::Migration[6.0]
+  def up
+    execute "insert into cost_types (name, created_at, updated_at) values ('New staff', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Professional fees', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Recruitment', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Purchase price of heritage items', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Repair and conservation work', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Event costs', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Digital outputs', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Equipment and materials including learning materials', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Training for staff', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Training for volunteers', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Travel for staff', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Travel for volunteers', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Expenses for staff', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Expenses for volunteers', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Other', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Publicity and promotion', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Evaluation', now(), now());"
+    execute "insert into cost_types (name, created_at, updated_at) values ('Contingency', now(), now());"
+  end
+
+  def down
+    execute "delete from cost_types where name = 'New staff';"
+    execute "delete from cost_types where name = 'Professional fees';"
+    execute "delete from cost_types where name = 'Recruitment';"
+    execute "delete from cost_types where name = 'Purchase price of heritage items';"
+    execute "delete from cost_types where name = 'Repair and conservation work';"
+    execute "delete from cost_types where name = 'Event costs';"
+    execute "delete from cost_types where name = 'Digital outputs';"
+    execute "delete from cost_types where name = 'Equipment and materials including learning materials';"
+    execute "delete from cost_types where name = 'Training for staff';"
+    execute "delete from cost_types where name = 'Training for volunteers';"
+    execute "delete from cost_types where name = 'Travel for staff';"
+    execute "delete from cost_types where name = 'Travel for volunteers';"
+    execute "delete from cost_types where name = 'Expenses for staff';"
+    execute "delete from cost_types where name = 'Expenses for volunteers';"
+    execute "delete from cost_types where name = 'Other';"
+    execute "delete from cost_types where name = 'Publicity and promotion';"
+    execute "delete from cost_types where name = 'Evaluation';"
+    execute "delete from cost_types where name = 'Contingency';"
+  end
+end

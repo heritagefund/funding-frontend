@@ -87,6 +87,18 @@ class NotifyMailer < Mail::Notify::Mailer
     )
   end
 
+  # @param [Project] project
+  def payment_request_submission_confirmation(project)
+    template_mai(
+      'e35a0532-8b51-4447-bc6d-d39f705bd24c',
+      to: project.user.email,
+      reply_to_id: @reply_to_id,
+      personalisation: {
+        project_reference_number: project.funding_application.project_reference_number
+      }
+    )
+  end
+
   def report_a_problem(message, name, email)
     template_mail("4d789cc6-bd6a-499f-bae2-502b633c098b",
                   to: Rails.configuration.x.support_email_address,

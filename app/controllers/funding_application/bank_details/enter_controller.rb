@@ -1,6 +1,7 @@
-class FundingApplication::PaymentRequests::EnterBankDetailsController < ApplicationController
-  include FundingApplicationContext, ObjectErrorsLogger
-  
+class FundingApplication::BankDetails::EnterController < ApplicationController
+    include FundingApplicationContext
+    include ObjectErrorsLogger
+    
   def show
     @funding_application.payment_details = PaymentDetails.new unless
       @funding_application.payment_details.present?
@@ -26,7 +27,7 @@ class FundingApplication::PaymentRequests::EnterBankDetailsController < Applicat
 
         logger.info "Finished updating payment details for funding_application ID: #{@funding_application.id}"
 
-        redirect_to(:funding_application_payment_request_confirm_bank_details)
+        redirect_to(:funding_application_bank_details_confirm)
 
       else
 

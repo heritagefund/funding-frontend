@@ -11,8 +11,14 @@
 
       <% form_object.errors.each do |attr, msg| %>
         <li>
+          <% if attr.to_s == 'custom_date_of_spend' %>
+            <a href='#spend_custom_date_of_spend(3i)'>
+          <% elsif attr.to_s == 'cost_type' %>
+            <a href='#spend_cost_type_id' %>
+          <% else %>
           <a href='#<%= form_object.errors.size == 1 ? first_form_element :
                             "#{defined?(form_object_name) && form_object_name.size ? form_object_name : form_object.class.name.downcase}_#{attr.to_s}" %>'>
+          <% end %>
             <%= msg %>
           </a>
         </li>

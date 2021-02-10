@@ -17,7 +17,7 @@
 
 <%= 
   form_with model: @funding_application.payment_details,
-  url: :funding_application_payment_request_bank_details,
+  url: :funding_application_bank_details_enter,
   method: :put,
   local: true do |f|
 %>
@@ -52,7 +52,7 @@
           f.text_field :account_name,
                         class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:account_name].present?}",
                           'aria-describedby' => 'account_paid_into-hint',
-                          value: @funding_application.payment_details.decrypt_account_name, "autocomplete" => "off"
+                            value: @funding_application.payment_details.decrypt_account_name, "autocomplete" => "off"
         %>
 
       </div>
@@ -75,8 +75,8 @@
 
         <%=
           f.text_field :sort_code,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:sort_code].present?}", 
-                         'aria-describedby' => 'sort_code_hint',
+                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:sort_code].present?}",
+                          'aria-describedby' => 'sort_code_hint',
                             value: @funding_application.payment_details.decrypt_sort_code, "autocomplete" => "off", "spellcheck" => "false"
         %>
 

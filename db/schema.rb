@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_100117) do
+ActiveRecord::Schema.define(version: 2021_02_09_131311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 2021_02_05_100117) do
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "project_id", null: false
     t.index ["project_id"], name: "index_cash_contributions_on_project_id"
+  end
+
+  create_table "cost_types", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "declarations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -274,6 +280,15 @@ ActiveRecord::Schema.define(version: 2021_02_05_100117) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "payment_requests_spends", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "payment_request_id", null: false
+    t.uuid "spend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_request_id"], name: "index_payment_requests_spends_on_payment_request_id"
+    t.index ["spend_id"], name: "index_payment_requests_spends_on_spend_id"
+  end
+
   create_table "people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.date "date_of_birth"
@@ -374,6 +389,18 @@ ActiveRecord::Schema.define(version: 2021_02_05_100117) do
     t.index ["project_id"], name: "index_released_forms_on_project_id"
   end
 
+  create_table "spends", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "description"
+    t.date "date_of_spend"
+    t.decimal "net_amount"
+    t.decimal "vat_amount"
+    t.decimal "gross_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "cost_type_id", null: false
+    t.index ["cost_type_id"], name: "index_spends_on_cost_type_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -442,6 +469,8 @@ ActiveRecord::Schema.define(version: 2021_02_05_100117) do
   add_foreign_key "pa_expressions_of_interest", "pre_applications"
   add_foreign_key "pa_project_enquiries", "pre_applications"
   add_foreign_key "payment_details", "funding_applications"
+  add_foreign_key "payment_requests_spends", "payment_requests"
+  add_foreign_key "payment_requests_spends", "spends"
   add_foreign_key "people_addresses", "addresses"
   add_foreign_key "people_addresses", "people"
   add_foreign_key "pre_applications", "organisations"
@@ -449,6 +478,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_100117) do
   add_foreign_key "project_costs", "projects"
   add_foreign_key "projects", "funding_applications"
   add_foreign_key "projects", "users"
+  add_foreign_key "spends", "cost_types"
   add_foreign_key "users", "people"
   add_foreign_key "users_organisations", "organisations"
   add_foreign_key "users_organisations", "users"

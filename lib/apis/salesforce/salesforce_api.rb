@@ -72,6 +72,18 @@ module SalesforceApi
         # Equivalent of "SELECT SUM(Costs__c), Cost_heading__c FROM Project_Cost__c WHERE Case__r.ApplicationId__c= '#{id}' GROUP BY Cost_heading__c" 
         restforce_response = @client.query("SELECT SUM(Costs__c), Cost_heading__c FROM Project_Cost__c WHERE Case__r.ApplicationId__c= '#{id}' GROUP BY Cost_heading__c")
 
+        if restforce_response.length == 0
+
+          error_msg = "No project costs found when retrieving agreed project costs for project ID: #{id}"
+
+          Rails.logger.error(error_msg)
+
+          raise Restforce::NotFoundError.new(error_msg, { status: 500 } )
+
+        end
+
+        restforce_response
+
       rescue Restforce::MatchesMultipleError, Restforce::UnauthorizedError,
         Restforce::EntityTooLargeError, Restforce::ResponseError => e
 

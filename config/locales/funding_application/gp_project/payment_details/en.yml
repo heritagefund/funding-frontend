@@ -8,5 +8,9 @@ en-GB:
     account_paid_into: "This is the account your grant will be paid into."
     sort_code_hint: "Must be 6 digits long"
     account_number_hint: "Must be between 6 and 8 digits long"
+    building_society_roll_number_label: "Building society roll number (if you have one)"
+    building_society_roll_number_hint: "You can find it on your card, statement or passbook"
+    payment_reference_label: "Payment reference"
+    payment_reference_hint: "We can add a reference to help you identify the grant payment in your organisation's bank account"
     button:
       text: "Confirm bank details"

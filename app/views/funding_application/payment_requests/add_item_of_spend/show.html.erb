@@ -1,0 +1,430 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @spend,
+             page_title: 'Add an item of spend to your list'
+         }
+%>
+
+<h1 class="govuk-heading-xl">
+  Add an item of spend to your list
+</h1>
+
+<%= render partial: "partials/summary_errors", locals: {
+    form_object: @spend,
+    first_form_element: :spend_cost_type_id
+} if @spend.errors.any? %>
+
+<p class="govuk-body">
+  Enter details of one project cost that you want the grant to cover.
+</p>
+
+<p class="govuk-body">
+  You will need to upload a receipt or invoice.
+</p>
+
+<p class="govuk-body">
+  This will be added to the list of what your project has spent so far.
+</p>
+
+<%= 
+  render(
+    partial: 'partials/cost_types',
+    locals: {
+      name: 'spend'
+    }
+  )
+%>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<h2 class="govuk-heading-l">
+  Tell us about your spend item
+</h2>
+
+<%=
+  form_with model: @spend,
+  url: :funding_application_payment_request_add_an_item_of_spend,
+  method: :put,
+  local: true do |f|
+%>
+
+  <div class="govuk-form-group <%= 'govuk-form-group--error' if @spend.errors[:cost_type].present? %>">
+
+    <%=
+      f.label :cost_type_id,
+      'Type of spend',
+      class: 'govuk-label govuk-!-font-weight-bold'
+    %>
+
+    <%=
+      render partial: "partials/form_input_errors",
+              locals: {
+                form_object: @spend,
+                input_field_id: :cost_type
+              } if @spend.errors[:cost_type].any?
+      %>
+
+    <div class="govuk-hint" id="cost_type_id_info">
+      What did you spend the money on?
+    </div>
+
+    <%=
+      f.select :cost_type_id,
+      options_from_collection_for_select(CostType.all, 'id', 'name'),
+      {
+        "aria-describedby" => "cost_type_id_info"
+      },
+      { class: "govuk-select #{ 'govuk-select--error' if @spend.errors[:cost_type].present?}" }
+    %>
+
+  </div>
+
+  <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="500">
+
+    <div class="govuk-form-group <%= "govuk-form-group--error" if
+        @spend.errors[:description].any? %>">
+
+      <%= 
+        f.label :description,
+        'Description of spend',
+        class: "govuk-label govuk-!-font-weight-bold govuk-!-margin-bottom-4"
+      %>
+
+      <%=
+      render partial: "partials/form_input_errors",
+              locals: {
+                form_object: @spend,
+                input_field_id: :description
+              } if @spend.errors[:description].any?
+      %>
+
+      <%=
+        f.text_area :description,
+                    rows: 10,
+                    class: "govuk-textarea govuk-js-character-count" \
+                            "#{' govuk-textarea--error' if
+                        @spend.errors[:description].any?}",
+                    "aria-describedby" => "spend_description-info"
+      %>
+
+      <div id="spend_description-info"
+        class="govuk-hint govuk-character-count__message"
+        aria-live="polite">
+        <%= t('generic.word_count', max_words: 500) %>
+      </div>
+
+    </div>
+
+  </div>
+  <%# description of spend end%>
+  
+  <%# Date of spend start%>
+  <div class="govuk-date-input govuk-form-group <%= 'govuk-form-group--error' if @spend.errors[:custom_date_of_spend].present? %>" id="date-of-spend">
+
+    <%=
+      f.label :custom_date_of_spend,
+      'Date of spend',
+      class: 'govuk-label govuk-!-font-weight-bold'
+    %>
+
+    <%=
+      render partial: "partials/form_input_errors",
+              locals: {
+                form_object: @spend,
+                input_field_id: :custom_date_of_spend
+              } if @spend.errors[:custom_date_of_spend].any?
+    %>
+
+    <div class="govuk-date-input__item">
+
+      <div class="govuk-form-group">
+
+        <%=
+          f.label 'custom_date_of_spend(3i)',
+                  t('dates.day'),
+                  class: "govuk-label govuk-date-input__label"
+        %>
+
+        <%= 
+          f.number_field 'custom_date_of_spend(3i)',
+          class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
+          value: "#{@spend.custom_date_of_spend[3] if @spend.custom_date_of_spend.present?}"
+        %>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-date-input__item">
+
+      <div class="govuk-form-group">
+
+        <%=
+          f.label 'custom_date_of_spend(2i)',
+                  t('dates.month'),
+                  class: "govuk-label govuk-date-input__label"
+        %>
+
+        <%= 
+          f.number_field 'custom_date_of_spend(2i)',
+          class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
+          value: "#{@spend.custom_date_of_spend[2] if @spend.custom_date_of_spend.present?}"
+        %>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-date-input__item">
+
+      <div class="govuk-form-group">
+
+        <%=
+          f.label 'custom_date_of_spend(1i)',
+                  t('dates.year'),
+                  class: "govuk-label govuk-date-input__label"
+        %>
+
+        <%= 
+          f.number_field 'custom_date_of_spend(1i)',
+          class: "govuk-input govuk-date-input__input govuk-input--width-4 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
+          value: "#{@spend.custom_date_of_spend[1] if @spend.custom_date_of_spend.present?}"
+        %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <%# Date of spend end%>
+
+  <p class="govuk-body">
+    Only include costs that relate to your project. If the invoice or receipt show other costs
+    outside of the project, do not list these amounts.
+  </p>
+
+  <%# NET amount start%>
+  <div class="govuk-form-group <%= "govuk-form-group--error" if
+      @spend.errors[:net_amount].any? %>">
+
+    <%=
+      f.label :net_amount,
+      'Net amount',
+      class: "govuk-label govuk-!-font-weight-bold govuk-!-margin-bottom-4"
+    %>
+
+    <%=
+      render partial: "partials/form_input_errors",
+             locals: {
+                form_object: @spend,
+                input_field_id: :net_amount
+                } if @spend.errors[:net_amount].any?
+    %>
+
+    <div class="nlhf-currency-denote">
+
+      <div class="nlhf-currency-denote__symbol">
+        &pound;
+      </div>
+
+      <div class="nlhf-currency-denote__capture">
+
+        <%=
+          f.text_field :net_amount,
+                        "autocomplete" => "off",
+                        class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if
+                          @spend.errors['net_amount'].any?}"
+        %>
+
+      </div>
+
+    </div>
+
+  </div>
+  <%# NET amount end%>
+
+  <%# VAT amount start%>
+  <div class="govuk-form-group <%= "govuk-form-group--error" if
+      @spend.errors[:vat_amount].any? %>">
+
+    <%=
+      f.label :vat_amount,
+      'VAT amount',
+      class: "govuk-label govuk-!-font-weight-bold govuk-!-margin-bottom-4"
+    %>
+
+    <%=
+      render partial: "partials/form_input_errors",
+             locals: {
+                form_object: @spend,
+                input_field_id: :vat_amount
+                } if @spend.errors[:vat_amount].any?
+    %>
+
+    <div class="nlhf-currency-denote">
+
+      <div class="nlhf-currency-denote__symbol">
+        &pound;
+      </div>
+
+      <div class="nlhf-currency-denote__capture">
+
+        <%=
+          f.text_field :vat_amount,
+                        "autocomplete" => "off",
+                        class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if
+                          @spend.errors['vat_amount'].any?}"
+        %>
+
+      </div>
+
+    </div>
+
+  </div>
+  <%# VAT amount end%>
+
+  <%# gross amount start%>
+  <div class="govuk-form-group <%= "govuk-form-group--error" if
+      @spend.errors[:gross_amount].any? %>">
+
+    <%=
+      f.label :gross_amount,
+      'Gross amount',
+      class: "govuk-label govuk-!-font-weight-bold govuk-!-margin-bottom-4"
+    %>
+
+    <%=
+      render partial: "partials/form_input_errors",
+             locals: {
+                form_object: @spend,
+                input_field_id: :gross_amount
+                } if @spend.errors[:gross_amount].any?
+    %>
+
+    <div class="nlhf-currency-denote">
+
+      <div class="nlhf-currency-denote__symbol">
+        &pound;
+      </div>
+
+      <div class="nlhf-currency-denote__capture">
+
+        <%=
+          f.text_field :gross_amount,
+                        "autocomplete" => "off",
+                        class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if
+                          @spend.errors['gross_amount'].any?}"
+        %>
+
+      </div>
+
+    </div>
+
+  </div>
+  <%# gross amount end%>
+
+  <h2 class="govuk-heading-l">
+  Add evidence of spend
+  </h2>
+
+  <p class="govuk-body govuk-!-font-weight-bold">
+    Upload evidence of spend
+  </p>
+
+  <div class="govuk-hint" id="cost_type_id_info">
+    This could be a receipt, invoice, or screengrab of a digital receipt, to show what you bought with your grant money.
+  </div>
+
+  <%# file attachment start%>
+  <div class="govuk-form-group nlhf-highlight-content govuk-!-margin-bottom-6">
+
+    <div class="govuk-form-group <%= "govuk-form-group--error" if @spend.errors['evidence_of_spend_file'].any? %>" id="evidence_of_spend_file-form-group" data-form-group="file">
+
+      <%=
+        render partial: "partials/form_input_errors",
+                locals: {
+                    form_object: @spend,
+                    input_field_id: :evidence_of_spend_file
+                } if @spend.errors['evidence_of_spend_file'].any?
+      %>
+
+      <div class="govuk-form-group">
+
+        <%=
+          f.label :evidence_file,
+                  'Upload file',
+                  class: "govuk-label nlhf-content-highlight__title"
+        %>
+
+        <div id="evidence_of_spend_file-errors"></div>
+
+        <%=
+          f.file_field :evidence_of_spend_file,
+                      multiple: false,
+                      direct_upload: true,
+                      class: "govuk-file-upload #{"govuk-file-upload--error" if @spend.errors['evidence_of_spend_file'].any?}",
+                      'data-input-identifier': 'file',
+                      'data-attribute': :evidence_of_spend_file,
+                      'data-model': :spend,
+                      'autocomplete' => 'off'
+        %>
+
+        <% if @spend.evidence_of_spend_file.attached? %>
+
+          <table class="govuk-table">
+
+            <thead class="govuk-table__head">
+
+              <tr class="govuk-table__row">
+
+                <th scope="col" class="govuk-table__header">
+                 
+                  This was attached
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="govuk-table__body">
+
+              <tr>
+
+                <td>
+                  <%= link_to(@spend.evidence_of_spend_file.blob.filename,
+                              rails_blob_path(@spend.evidence_of_spend_file,
+                                              disposition: "attachment"))
+                  %>
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        <% end %>
+
+      </div>
+
+      <%# See https://blog.yorkxin.org/2014/02/06/ajax-with-formdata-is-broken-on-ie10-ie11.html
+          for the reasoning behind this workaround %>
+      <input type="hidden" name="ieworkaround">
+
+    </div>
+
+  </div> 
+  <%# file attachment end%>
+
+<%= 
+    render(
+      ButtonComponent.new(
+        element: 'button',
+        text: 'Add spend'
+      )
+    ) 
+  %>
+
+<% end %>

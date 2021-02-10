@@ -9,6 +9,8 @@ class PaymentDetails < ApplicationRecord
   attr_accessor :validate_sort_code_presence
   attr_accessor :validate_sort_code_format
   attr_accessor :encrypt_account_name
+  attr_accessor :validate_building_society_roll_number_format
+  attr_accessor :validate_payment_reference_format
   attr_accessor :validate_evidence_file
 
   has_one_attached :evidence_file
@@ -20,6 +22,8 @@ class PaymentDetails < ApplicationRecord
   validate :validate_encrypt_and_set_account_number_format, if: :validate_account_number_format?
   validate :validate_encrypt_and_set_sort_code_format, if: :validate_sort_code_format?
   validate :encrypt_and_set_account_name, if: :encrypt_account_name?
+  validate :validate_encrypt_and_set_building_society_roll_number_format, if: :validate_building_society_roll_number_format?
+  validate :validate_encrypt_and_set_payment_reference, if: :validate_payment_reference_format?
 
   # Runs when the payment details model is lazy loaded in.
   KEY = ActiveSupport::KeyGenerator.new(
@@ -60,6 +64,14 @@ class PaymentDetails < ApplicationRecord
 
   def validate_sort_code_format?
     validate_sort_code_format == true
+  end
+
+  def validate_building_society_roll_number_format?
+    validate_building_society_roll_number_format == true
+  end
+
+  def validate_payment_reference_format?
+    validate_payment_reference_format == true
   end
 
   def encrypt_account_name?
@@ -115,6 +127,62 @@ class PaymentDetails < ApplicationRecord
     end
   end
 
+  def validate_encrypt_and_set_building_society_roll_number_format
+
+    if self.building_society_roll_number.present?
+
+      tmp = self.building_society_roll_number.gsub(/\D/, '')
+
+      if tmp.length < 1 || tmp.length > 18
+
+        errors.add(
+          :building_society_roll_number,
+          I18n.t('activerecord.errors.models.payment_details.attributes.building_society_roll_number.invalid_format')
+        )
+
+      else
+
+        self.validate_building_society_roll_number_format = false
+        self.building_society_roll_number = encryptor.encrypt_and_sign(tmp)
+
+      end
+
+    end
+
+  end
+
+  def validate_encrypt_and_set_payment_reference
+
+    if self.payment_reference.present?
+
+      tmp = self.payment_reference
+
+      # TODO: Validate here
+      if tmp.length > 18
+
+        errors.add(
+          :payment_reference,
+          I18n.t('activerecord.errors.models.payment_details.attributes.payment_reference.too_long')
+        )
+
+      elsif tmp.match(/\A\p{Alnum}+\z/) == nil
+
+        errors.add(
+          :payment_reference,
+          I18n.t('activerecord.errors.models.payment_details.attributes.payment_reference.invalid_format')
+        )
+
+      else
+
+        self.validate_payment_reference_format = false
+        self.payment_reference = encryptor.encrypt_and_sign(tmp)
+
+      end
+
+    end
+
+  end
+
   # Encrypts the account name, if it is present.
   # Set encryption toggle to false, before encrypting.  This prevents 
   # encryption happening more that once until the controller's show function runs again.
@@ -157,6 +225,38 @@ class PaymentDetails < ApplicationRecord
         encryptor.decrypt_and_verify(self.sort_code)
       else
         self.sort_code
+      end
+    else
+      ''
+    end
+  end
+
+  # Decrypts an encrypted building society roll number, or returns a blank string or in memory value.
+  # If the building_society_roll_number is present, proceed. If not, return blank string.
+  # If payment details contain errors within this field, display the in memory value
+  # rather than the encrypted value on the database
+  def decrypt_building_society_roll_number
+    if self.building_society_roll_number.present?
+      unless self.errors[:building_society_roll_number].present?
+        encryptor.decrypt_and_verify(self.building_society_roll_number)
+      else
+        self.building_society_roll_number
+      end
+    else
+      ''
+    end
+  end
+
+  # Decrypts an encrypted payment_reference, or returns a blank string or in memory value.
+  # If the payment_reference is present, proceed. If not, return blank string.
+  # If payment_details contain errors within this field, display the in memory value
+  # rather than the encrypted value on the database
+  def decrypt_payment_reference
+    if self.payment_reference.present?
+      unless self.errors[:payment_reference].present?
+        encryptor.decrypt_and_verify(self.payment_reference)
+      else
+        self.payment_reference
       end
     else
       ''

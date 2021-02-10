@@ -1,0 +1,30 @@
+<% if @funding_application.payment_details.errors.any? %>
+
+  document.title = "Error: Confirm your bank details";
+
+  createSummaryErrorsSkeleton();
+
+  var errorKeys = [];
+
+  <% @funding_application.payment_details.errors.each do |attr, msg| %>
+
+    errorKeys.push("<%= attr.to_s %>");
+
+    addSummaryError(
+      false,
+      "<%= attr %>",
+      "<%= msg %>",
+      "payment_details"
+    );
+
+    addFormGroupError(
+      "<%= attr %>-form-group",
+      "<%= attr %>-errors",
+      "<%= attr %>",
+      "<%= msg %>",
+      "payment_details"
+    );
+
+  <% end %>
+
+<% end %>

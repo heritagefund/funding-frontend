@@ -23,8 +23,33 @@ flipper_gates_sql = <<-EOL
     INSERT INTO flipper_gates (feature_key, key, value, created_at, updated_at) VALUES ('payment_requests_enabled', 'boolean', 'true', now(), now());
 EOL
 
+cost_types_sql = <<-EOL
+    insert into cost_types (name, created_at, updated_at) values ('New staff', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Professional fees', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Recruitment', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Purchase price of heritage items', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Repair and conservation work', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Event costs', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Digital outputs', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Equipment and materials including learning materials', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Training for staff', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Training for volunteers', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Travel for staff', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Travel for volunteers', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Expenses for staff', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Expenses for volunteers', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Other', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Publicity and promotion', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Evaluation', now(), now());
+    insert into cost_types (name, created_at, updated_at) values ('Contingency', now(), now());
+EOL
+
 connection = ActiveRecord::Base.connection()
 
 flipper_gates_sql.split(';').each do |s|
+    connection.execute(s.strip) unless s.strip.empty?
+end
+
+cost_types_sql.split(';').each do |s|
     connection.execute(s.strip) unless s.strip.empty?
 end

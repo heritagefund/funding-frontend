@@ -180,26 +180,42 @@ Rails.application.routes.draw do
           get 'have-your-bank-details-changed', to: 'have_bank_details_changed#show'
           put 'have-your-bank-details-changed', to: 'have_bank_details_changed#update'
 
-          # get 'details', to: 'payment_details#show'
-          # put 'details', to: 'payment_details#update'
           get 'bank-details', to: 'enter_bank_details#show'
           put 'bank-details', to: 'enter_bank_details#update'
 
-          # get 'confirm-details', to: 'payment_confirm_details#show'
-          # put 'confirm-details', to: 'payment_confirm_details#update'
           get 'confirm-bank-details', to: 'confirm_bank_details#show'
           put 'confirm-bank-details', to: 'confirm_bank_details#update'
           put 'confirm-bank-details-submitted', to: 'confirm_bank_details#save_and_continue'
 
           get 'review-your-project-spend', to: 'review_spend#show'
+
           get 'tell-us-what-you-have-spent', to: 'evidence_of_spend#show'
+          post 'tell-us-what-you-have-spent', to: 'evidence_of_spend#update'
+
           get 'add-an-item-of-spend', to: 'add_item_of_spend#show'
+          put 'add-an-item-of-spend', to: 'add_item_of_spend#update'
+
           get 'edit-an-item-of-spend', to: 'edit_item_of_spend#show'
-          get 'confirm-what-you-have-spend', to: 'confirm_evidence_of_spend#show'
+
+          get 'confirm-what-you-have-spent', to: 'confirm_evidence_of_spend#show'
 
           get 'submitted', to: 'submitted#show'
           
         end
+
+      end
+
+      scope 'bank-details', module: 'bank_details', as: 'bank_details' do
+
+        get 'enter', to: 'enter#show'
+        put 'enter', to: 'enter#update'
+
+        get 'confirm', to: 'confirm#show'
+        put 'confirm', to: 'confirm#update'
+
+        put 'confirm-submitted', to: 'confirm#save_and_continue'
+
+        get 'submitted', to: 'submitted#show'
 
       end
 
@@ -283,20 +299,6 @@ Rails.application.routes.draw do
         put 'declaration', to: redirect('/', status: 302), constraints: lambda { !Flipper.enabled?(:new_applications_enabled) }
         get 'application-submitted', to: 'application_submitted#show'
 
-        # Scope for payment-details not related to a payment request
-        # scope 'payment-details', as: 'payment_details' do
-
-        #   get 'details', to: 'payment_details#show'
-        #   put 'details', to: 'payment_details#update'
-
-        #   get 'confirm-details', to: 'payment_confirm_details#show'
-        #   put 'confirm-details', to: 'payment_confirm_details#update'
-        #   # TODO: Not sending at this point, remove this?
-        #   put 'confirm-details-submitted', to: 'payment_confirm_details#save_and_continue'
-        # get 'submitted', to: 'payment_details_submitted#show'
-
-        # end are you finished?
-
       end
 
     end
@@ -316,6 +318,7 @@ Rails.application.routes.draw do
     get 'question-or-feedback', to: 'support#question_or_feedback'
     post 'question-or-feedback', to: 'support#process_question'
   end
+
   # Endpoint for released forms webhook
   post 'consumer' => 'released_form#receive' do
     header "Content-Type", "application/json"

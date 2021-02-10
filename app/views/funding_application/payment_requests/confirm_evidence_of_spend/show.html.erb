@@ -1,63 +1,120 @@
 <%=
   render partial: "partials/page_title",
          locals: {
-             model_object: @funding_application,
-             page_title: t('review_spend.page_title')
+            model_object: nil,
+            page_title: 'Review your project spend'
          }
 %>
 
-<h1 class="govuk-heading-l">
-  <%= t('review_spend.page_heading') %>
+<h1 class="govuk-heading-xl">
+  Review your project spend
 </h1>
 
-<%# TODO: Remove additional buttons and replace with a single 'Save and continue' button %>
+<p class="govuk-body">
+  Here is what we know about your spending so far, compared to your agreed project budget.
+</p>
+
+<p class="govuk-body">
+  To request another payment, please add details of project spend since your last payment.
+</p>
+
+<table class="govuk-table">
+
+  <caption class="govuk-table__caption">
+
+    <h2 class="govuk-heading-m">
+      Summary of total grant spend
+    </h2>
+
+  </caption>
+
+  <thead class="govuk-table__head">
+
+    <tr class="govuk-table__row">
+
+      <th scope="col" class="govuk-table__header">
+        Type of spend
+      </th>
+
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">
+        Agreed project budget
+      </th>
+
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">
+        Spend so far
+      </th>
+
+    </tr>
+
+    <% @agreed_project_costs.each do |pc| %>
+
+      <tr class="govuk-table__row">
+
+        <td class="govuk-table__cell">
+          <%= pc[:Cost_heading__c] %>
+        </td>
+
+        <td class="govuk-table__cell govuk-table__cell--numeric">
+
+          <%=
+            number_to_currency(
+              pc[:expr0],
+              precision: 2,
+              unit: '£'
+            )
+          %>
+
+        </td>
+
+        <td class="govuk-table__cell govuk-table__cell--numeric">
+          &pound;0
+        </td>
+
+      </tr>
+
+    <% end %>
+
+    <tr class="govuk-table__row">
+
+      <th scope="row" class="govuk-table__header govuk-table__header--numeric">
+
+        Totals
+
+      </td>
+
+      <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">
+
+        <%=
+          number_to_currency(
+            @agreed_project_costs_total,
+            precision: 2,
+            unit: '£')
+        %>
+
+      </td>
+
+      <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">
+
+        &pound;0
+
+      </td>
+
+    </tr>
+
+  </thead>
+
+</table>
+
+<p class="govuk-body">
+  If this summary of total grant spend is now up-to-date you can submit this to us for review before we send your next payment or you can <a class="govuk-link--no-visited-state" href="<%= "#{funding_application_payment_request_tell_us_what_you_have_spent_url}" %>">add more items of spend</a>
+</p>
 
 <%=
   render(
     ButtonComponent.new(
-        element: "a",
-        href: "#{funding_application_gp_project_payment_submitted_url}&scenario=1",
-        text: 'Save and continue - below £10k, 100% grant upfront'
-    )
-  )
-%>
-
-<%=
-  render(
-    ButtonComponent.new(
-        element: "a",
-        href: "#{funding_application_gp_project_payment_submitted_url}&scenario=2",
-        text: 'Save and continue - first payment / payment schedule'
-    )
-  )
-%>
-
-<%=
-  render(
-    ButtonComponent.new(
-        element: "a",
-        href: "#{funding_application_gp_project_payment_submitted_url}&scenario=3",
-        text: 'Save and continue - second payment / payment schedule, or in arrears, or custom payment schedule'
-    )
-  )
-%>
-
-<%=
-  render(
-    ButtonComponent.new(
-        element: "a",
-        href: "#{funding_application_gp_project_payment_submitted_url}&scenario=4",
-        text: 'Save and continue - third payment / payment schedule, final payment in arrears, and, final payment custom payment schedule'
-    )
-  )
-%>
-
-<%=
-  render(
-    ButtonComponent.new(
-        element: "a",
-        href: "#{funding_application_gp_project_payment_submitted_url}&scenario=5",
-        text: 'Save and continue - custom payment schedule - first payment schedule upfront'
+        element: 'a',
+        href: funding_application_payment_request_tell_us_what_you_have_spent_url,
+        text: 'Submit payment request'
     )
   )
 %>

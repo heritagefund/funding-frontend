@@ -266,6 +266,11 @@ en-GB:
             sort_code:
               blank: "Enter the sort code"
               invalid_format: "Enter a valid sort code like 309430"
+            building_society_roll_number:
+              invalid_format: "Building society roll number must not be greater than 18 characters"
+            payment_reference:
+              too_long: "Payment reference must not be greater than 18 characters"
+              invalid_format: "Payment reference must only contain letters and numbers"
             evidence_file:
               inclusion: "Add evidence of bank account details"
         pa_project_enquiry:
@@ -326,3 +331,18 @@ en-GB:
             likely_submission_description:
               blank: "Enter a likely submission description"
               too_long: "Description of likely submission must be %{word_count} words or fewer"
+        spend:
+          attributes:
+            cost_type:
+              inclusion: 'Select a valid type of spend'
+            description:
+              blank: "Enter the description of your spend item"
+              too_long: "Description of spend item must be %{word_count} words or fewer"
+            evidence_of_spend_file:
+              inclusion: "Add evidence of spend file"
+            net_amount:
+              not_a_number: "Net amount must be a number"
+            vat_amount:
+              not_a_number: "VAT amount must be a number"
+            gross_amount:
+              not_a_number: "Gross amount must be a number"

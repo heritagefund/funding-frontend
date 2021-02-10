@@ -1,0 +1,212 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @funding_application.payment_details,
+             page_title: t('payment_confirm_details.page_title')
+         }
+%>
+
+<noscript><% no_js = true %></noscript>
+
+<div id="summary-errors"></div>
+
+<%=
+  render partial: "partials/summary_errors",
+         locals: {
+             form_object: @funding_application.payment_details,
+             first_form_element: :payment_details_evidence_file
+         } if @funding_application.payment_details.errors.any?
+%>
+
+<h1 class="govuk-heading-xl">
+  <%= t('payment_confirm_details.page_heading') %>
+</h1>
+
+<p class="govuk-body">
+  <%= t('payment_confirm_details.confirm_details_are_correct') %>
+</p>
+
+<p class="govuk-body">
+  <%= t('payment_confirm_details.bank_statements') %>
+</p>
+
+<h2 class="govuk-heading-l">
+  <%= t('payment_confirm_details.page_sub_heading') %>
+</h2>
+
+<table class="govuk-table">
+
+    <thead class="govuk-table__head">
+
+        <tr class="govuk-table__row">
+
+            <th scope="col" class="govuk-table__header">
+              <%= t('payment_confirm_details.name_on_account') %>
+            </th>
+
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric">
+              <%= t('payment_confirm_details.account_number') %>
+            </th>
+
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric">
+              <%= t('payment_confirm_details.sort_code') %>
+            </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <%= @funding_application.payment_details.decrypt_account_name %>
+            </td>
+
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <%= @funding_application.payment_details.decrypt_account_number %>
+            </td>
+
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <%= @funding_application.payment_details.decrypt_sort_code %>
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+<p class="govuk-body">
+  <%=
+    link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
+      #{t('payment_confirm_details.change_span')}</span>".html_safe,
+            :funding_application_bank_details_enter,
+            class: "govuk-link govuk-link--no-visited-state"
+  %>
+</p>
+
+<%=
+  form_with model: @funding_application.payment_details,
+            url: :funding_application_bank_details_confirm,
+            method: :put,
+            remote: no_js ? false : true do |f|
+%>
+
+  <div class="govuk-form-group nlhf-highlight-content govuk-!-margin-bottom-6">
+
+    <div class="govuk-form-group <%= "govuk-form-group--error" if @funding_application.payment_details.errors.any? %>" id="evidence_file-form-group" data-form-group="file">
+
+      <%=
+        render partial: "partials/form_group_errors",
+                locals: {
+                    form_object: @funding_application.payment_details
+                } if @funding_application.payment_details.errors.any?
+      %>
+
+      <div class="govuk-form-group">
+
+        <%=
+          f.label :evidence_file,
+                  t('payment_confirm_details.evidence_file_label'),
+                  class: "govuk-heading-m nlhf-content-hightlight__title"
+        %>
+
+        <div id="evidence_file-errors"></div>
+
+        <%=
+          f.file_field :evidence_file,
+                      multiple: false,
+                      direct_upload: true,
+                      class: "govuk-file-upload #{"govuk-file-upload--error" if @funding_application.payment_details.errors.any?}",
+                      'data-input-identifier': 'file',
+                      'data-attribute': :evidence_file,
+                      'data-model': :funding_application,
+                      'autocomplete' => 'off'
+        %>
+
+      </div>
+
+      <%# See https://blog.yorkxin.org/2014/02/06/ajax-with-formdata-is-broken-on-ie10-ie11.html
+          for the reasoning behind this workaround %>
+      <input type="hidden" name="ieworkaround">
+
+      <div class="govuk-form-group">
+
+        <%=
+          render(ButtonComponent.new(
+              text: t('payment_confirm_details.buttons.add_evidence.text'),
+              classes: "govuk-button--secondary",
+              ))
+        %>
+      
+      </div>
+
+    </div>
+
+    <% unless @funding_application.payment_details.evidence_file.attached? %>
+
+      <p class="govuk-body">
+        <%= t('payment_confirm_details.no_evidence_uploaded') %>
+      </p>
+
+    <% else %>
+
+    <table class="govuk-table">
+
+      <thead class="govuk-table__head">
+
+        <tr class="govuk-table__row">
+
+          <th scope="col" class="govuk-table__header">
+            <%= I18n.t("payment_confirm_details.evidence_file") %>
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <tr>
+
+          <td>
+            <%= link_to(@funding_application.payment_details.evidence_file.blob.filename,
+                        rails_blob_path(@funding_application.payment_details.evidence_file,
+                                        disposition: "attachment"))
+            %>
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <% end %>
+
+  </div>
+
+<% end %>
+
+<div class="govuk-form-group">
+
+  <%=
+    form_with model: @funding_application.payment_details,
+              url: :funding_application_bank_details_confirm_submitted,
+              method: :put,
+              remote: no_js ? false : true do |f|
+  %>
+
+    <%=
+      render(
+        ButtonComponent.new(
+            element: "input"
+        )
+      )
+    %>
+
+  <% end %>
+
+</div>
