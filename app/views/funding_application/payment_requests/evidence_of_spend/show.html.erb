@@ -6,7 +6,7 @@
          }
 %>
 
-<h1 class="govuk-heading-l">
+<h1 class="govuk-heading-xl">
   <%= t('current_spend.page_heading') %>
 </h1>
 
@@ -141,11 +141,24 @@
             </div>
             <ul class="nlhf-table__actions">
               <li class="nlhf-table__actions-item">
-                <a href="#" class="nlhf-table__actions-link">Edit</a>
+              <%=
+                link_to(
+                  'Edit',
+                  funding_application_payment_request_edit_spend_item_path(spend_id: s.id),
+                  class: 'govuk-link--no-visited-state'
+                )
+              %>
               </li>
               <li class="nlhf-table__actions-item">
-                <a href="#" class="nlhf-table__actions-link">Delete</a>
-              </li>
+                <%=
+                  link_to(
+                    'Delete',
+                    funding_application_payment_request_delete_spend_item_path(spend_id: s.id),
+                    class: "govuk-link govuk-link--no-visited-state"
+                  )
+                %>
+                </li>
+                </li>
             </ul>
           </td>
 

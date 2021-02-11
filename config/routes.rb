@@ -200,6 +200,22 @@ Rails.application.routes.draw do
           get 'confirm-what-you-have-spent', to: 'confirm_evidence_of_spend#show'
 
           get 'submitted', to: 'submitted#show'
+
+          scope '/spend' do
+
+            scope '/:spend_id' do
+
+              get 'edit-spend-item', to: 'edit_item_of_spend#show'
+              put 'edit-spend-item', to: 'edit_item_of_spend#update'
+
+              get 'delete-spend-item', to: 'delete_spend_item#show'
+              put 'delete-spend-item', to: 'delete_spend_item#delete'
+
+            end
+
+              get 'spend-item-deleted', to: 'spend_item_deleted#show'
+
+          end
           
         end
 

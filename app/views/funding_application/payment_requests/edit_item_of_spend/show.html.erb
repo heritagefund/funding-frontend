@@ -2,30 +2,18 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @spend,
-             page_title: 'Add an item of spend to your list'
+             page_title: 'Edit spend'
          }
 %>
 
 <h1 class="govuk-heading-xl">
-  Add an item of spend to your list
+  Edit spend
 </h1>
 
 <%= render partial: "partials/summary_errors", locals: {
     form_object: @spend,
     first_form_element: :spend_cost_type_id
 } if @spend.errors.any? %>
-
-<p class="govuk-body">
-  Enter details of one project cost that you want the grant to cover.
-</p>
-
-<p class="govuk-body">
-  You will need to upload a receipt or invoice.
-</p>
-
-<p class="govuk-body">
-  This will be added to the list of what your project has spent so far.
-</p>
 
 <%= 
   render(
@@ -44,7 +32,7 @@
 
 <%=
   form_with model: @spend,
-  url: :funding_application_payment_request_add_an_item_of_spend,
+  url: :funding_application_payment_request_edit_spend_item,
   method: :put,
   local: true do |f|
 %>
@@ -117,9 +105,7 @@
     </div>
 
   </div>
-  <%# description of spend end%>
-  
-  <%# Date of spend start%>
+
   <div class="govuk-date-input govuk-form-group <%= 'govuk-form-group--error' if @spend.errors[:custom_date_of_spend].present? %>" id="date-of-spend">
 
     <%=
@@ -149,7 +135,7 @@
         <%= 
           f.number_field 'custom_date_of_spend(3i)',
           class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
-          value: "#{@spend.custom_date_of_spend[3] if @spend.custom_date_of_spend.present?}"
+          value: "#{@spend.custom_date_of_spend.present? ? @spend.custom_date_of_spend[3] : @spend.date_of_spend.day}"
         %>
 
       </div>
@@ -169,7 +155,7 @@
         <%= 
           f.number_field 'custom_date_of_spend(2i)',
           class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
-          value: "#{@spend.custom_date_of_spend[2] if @spend.custom_date_of_spend.present?}"
+          value: "#{@spend.custom_date_of_spend.present? ? @spend.custom_date_of_spend[2] : @spend.date_of_spend.month }"
         %>
 
       </div>
@@ -189,7 +175,7 @@
         <%= 
           f.number_field 'custom_date_of_spend(1i)',
           class: "govuk-input govuk-date-input__input govuk-input--width-4 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
-          value: "#{@spend.custom_date_of_spend[1] if @spend.custom_date_of_spend.present?}"
+          value: "#{@spend.custom_date_of_spend.present? ? @spend.custom_date_of_spend[1] : @spend.date_of_spend.year}"
         %>
 
       </div>
@@ -418,13 +404,21 @@
   </div> 
   <%# file attachment end%>
 
-<%= 
+  <%= 
     render(
       ButtonComponent.new(
         element: 'button',
-        text: 'Add spend'
+        text: 'Update spend'
       )
     ) 
   %>
 
 <% end %>
+
+<%=
+  link_to(
+    '← Return to project spend summary',
+    :funding_application_payment_request_tell_us_what_you_have_spent,
+    class: 'govuk-link--no-visited-state'
+  )
+%>

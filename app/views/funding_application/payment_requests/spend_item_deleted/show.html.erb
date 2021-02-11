@@ -1,0 +1,144 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: nil,
+             page_title: 'Item spend deleted'
+         }
+%>
+
+<h1 class="govuk-heading-xl">
+  Item spend deleted
+</h1>
+
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+     aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+
+  <div class="govuk-notification-banner__header">
+
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+
+  </div>
+
+  <div class="govuk-notification-banner__content">
+
+    <p class="govuk-notification-banner__heading">
+      This spend has been deleted
+    </p>
+
+  </div>
+
+</div>
+
+<table class="govuk-table nlhf-table nlhf-table--responsive-columns" role="table">
+
+  <thead class="govuk-table__head nlhf-table__head">
+
+    <tr class="govuk-table__row nlhf-table__row">
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Things you have spent money on
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Date of spend
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Net amount
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        <abbr title="Value added tax">VAT</abbr> amount
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Gross amount
+      </th>
+    </tr>
+
+  </thead>
+
+  <tbody class="govuk-table__body nlhf-table__body">
+
+    <tr class="govuk-table__row nlhf-table__row">
+
+      <td class="govuk-table__cell nlhf-table__cell nlhf-table__cell-stacked-until-tablet">
+        <div class="nlhf-table__cell-data">
+          <div class="nlhf-table__cell-data__item">
+            <p class="govuk-body govuk-!-font-weight-bold">
+              Type of spend
+            </p>
+            <p class="govuk-body">
+              <%= @deleted_spend_item[:cost_type] %>
+            </p>
+          </div>
+          <div class="nlhf-table__cell-data__item">
+            <p class="govuk-body govuk-!-font-weight-bold">
+              Description of spend
+            </p>
+            <p class="govuk-body">
+              <%= @deleted_spend_item[:description] %>
+            </p>
+          </div>
+          <div class="nlhf-table__cell-data__item">
+            <p class="govuk-body govuk-!-font-weight-bold">
+              Evidence of spend
+            </p>
+            <p class="govuk-body">
+              <%= @deleted_spend_item[:evidence_of_spend_filename] %>
+            </p>
+          </div>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          Date of spend 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= @deleted_spend_item[:date_of_spend] %>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          Net amount 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= number_to_currency(@deleted_spend_item[:net_amount], precision: 2, unit: '£') %> 
+        </div>
+
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          VAT Amount 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= number_to_currency(@deleted_spend_item[:vat_amount], precision: 2, unit: '£') %>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          Gross amount 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= number_to_currency(@deleted_spend_item[:gross_amount], precision: 2, unit: '£') %>
+        </div>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+<%=
+  render(
+    ButtonComponent.new(
+        element: 'a',
+        text: 'Continue',
+        href: funding_application_payment_request_tell_us_what_you_have_spent_url
+    )
+  )
+%>
