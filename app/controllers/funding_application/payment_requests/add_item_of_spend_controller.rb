@@ -25,6 +25,14 @@ class FundingApplication::PaymentRequests::AddItemOfSpendController < Applicatio
 
     if @spend.update(add_spend_params)
 
+      # .update method does not create row on payment_requests_spend table,
+      # therefore we create a record after @spend has been successfully
+      # build and validated
+      PaymentRequestsSpend.create(
+        payment_request_id: @payment_request.id,
+        spend_id: @spend.id
+      )
+
       logger.info("Finished updating evidence of spend ID: #{@spend.id})")
 
       redirect_to(:funding_application_payment_request_tell_us_what_you_have_spent)
