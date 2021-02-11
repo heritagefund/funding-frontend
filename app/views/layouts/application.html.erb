@@ -34,45 +34,7 @@
       </div>
     </main>
   </div>
- <footer class="govuk-footer nlhf-footer" role="contentinfo">
-  <div class="govuk-width-container">  
-    <div class="govuk-footer__meta">
-      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">          
-        <ul class="govuk-footer__inline-list">
-          <li class="govuk-footer__inline-list-item">
-            <%= link_to("Get support", support_path, class: "govuk-footer__link") %>
-          </li>
-          <li class="govuk-footer__inline-list-item">
-            <%= link_to("Accessibility statement", :accessibility_statement, class: "govuk-footer__link") %>
-          </li>
-          <li class="govuk-footer__inline-list-item">
-            <%= link_to("Cookie settings", help_cookies_path, class: "govuk-footer__link") %>
-          </li>
-          <li class="govuk-footer__inline-list-item">
-            <%= 
-              link_to(
-                "English",
-                replace_locale_in_url(request.url, 'en-GB'),
-                class: "govuk-footer__link") 
-            %>
-          </li>
-          <li class="govuk-footer__inline-list-item">
-            <%= 
-              link_to(
-                "Cymraeg",
-                replace_locale_in_url(request.url, 'cy'),
-                class: "govuk-footer__link") 
-            %>
-          </li>
-        </ul>
-        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-        <div class="govuk-footer__meta-custom">
-          &copy; Trustees of the National Heritage Memorial Fund
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+  <%= render "partials/footer" %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-suppress-warning':'true', 'data-turbolinks-eval': "false", 'data-turbolinks-track': 'reload' %>
   <%= javascript_tag("fileUploadHandlingHooks()") if @has_file_upload %>
 </body>

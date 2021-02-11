@@ -1,0 +1,9 @@
+cy:
+  footer:
+    copyright: "Trustees of the National Heritage Memorial Fund"
+    links:
+      english: "English"
+      welsh: "Cymraeg"
+      cookie_settings: "Cookie settings"
+      accessibility_statement: "Accessibility statement"
+      get_support: "Get support"

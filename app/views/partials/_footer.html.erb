@@ -1,0 +1,39 @@
+<footer class="govuk-footer nlhf-footer" role="contentinfo">
+  <div class="govuk-width-container">  
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">          
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to(t('footer.get_support'), support_path, class: "govuk-footer__link") %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to(t('footer.links.accessibility_statement'), :accessibility_statement, class: "govuk-footer__link") %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to(t('footer.links.cookie_settings'), help_cookies_path, class: "govuk-footer__link") %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= 
+              link_to(
+                t('footer.links.english'),
+                replace_locale_in_url(request.url, 'en-GB'),
+                class: "govuk-footer__link") 
+            %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= 
+              link_to(
+                t('footer.links.welsh'),
+                replace_locale_in_url(request.url, 'cy'),
+                class: "govuk-footer__link") 
+            %>
+          </li>
+        </ul>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <div class="govuk-footer__meta-custom">
+          &copy; <%= t('footer.copyright') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
