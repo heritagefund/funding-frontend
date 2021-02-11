@@ -1,0 +1,39 @@
+en-GB:
+  cookie_details:
+    page_title: "Cookie details"
+    page_heading: "How cookies are used on Apply for Funding (funding.heritagefund.org.uk)"
+    intro:
+      p1: "Cookies are files saved on your phone, tablet or computer when you visit a website."
+      p2: "We use cookies to make the service work and collect information about how you use our service."
+    headings:
+      1: "Cookie policy settings"
+      2: "Session cookies"
+      measuring_website_usage: "Measuring website usage"
+      change_your_settings: "Change your settings"
+    table:
+      th:
+        name: "Name"
+        purpose: "Purpose"
+        expires: "Expires"
+      td:
+        stores_your_cookie_preferences: "Stores your cookie preferences"
+        1_year: "1 year"
+        tells_us_if_youve_used_the_service_before: "Tells us if you’ve used the service before"
+        tells_us_which_activity_is_related_to_an_individual_session: "Tells us which activity is related to an individual session"
+        when_you_close_your_browser: "When you close your browser"
+    text:
+      session_cookies_overview: "We store session cookies on your computer to help keep your information secure while you use the service."
+      stores_encrypted_session_data: "Stores encrypted session data"
+      when_you_close_your_browser: "When you close your browser"
+      1: "With your permission, we use Hotjar to collect data about how you use Apply for Funding. This information helps us to improve our service."
+      2: "Hotjar is not allowed to use or share our analytics data with anyone."
+      3: "Hotjar stores anonymised information about:"
+    links:
+      change_which_cookies_youre_happy_for_us_to_use: "change which cookies you’re happy for us to use"
+    li:
+      1: "the pages you visit on Apply for Funding and how long you spend on each page,"
+      2: "how you navigate around the pages you look at on Apply for Funding,"
+      3: "what you click on while you’re using the service,"
+      4: "how you fill in the form in Apply for Funding,"
+      5: "your keystrokes, and any address or financial data you input, are not recorded or stored."
+    error: "Error:"
