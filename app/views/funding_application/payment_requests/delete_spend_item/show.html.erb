@@ -1,0 +1,142 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @spend,
+             page_title: 'Item spend deleted'
+         }
+%>
+
+<h1 class="govuk-heading-xl">
+  Are you sure you want to delete this spend item?
+</h1>
+
+<table class="govuk-table nlhf-table nlhf-table--responsive-columns" role="table">
+
+  <thead class="govuk-table__head nlhf-table__head">
+
+    <tr class="govuk-table__row nlhf-table__row">
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Things you have spent money on
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Date of spend
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Net amount
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        <abbr title="Value added tax">VAT</abbr> amount
+      </th>
+      <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
+        Gross amount
+      </th>
+    </tr>
+
+  </thead>
+
+  <tbody class="govuk-table__body nlhf-table__body">
+
+    <tr class="govuk-table__row nlhf-table__row">
+
+      <td class="govuk-table__cell nlhf-table__cell nlhf-table__cell-stacked-until-tablet">
+        <div class="nlhf-table__cell-data">
+          <div class="nlhf-table__cell-data__item">
+            <p class="govuk-body govuk-!-font-weight-bold">
+              Type of spend
+            </p>
+            <p class="govuk-body">
+              <%= CostType.find_by_id(@spend.cost_type.id).name %>
+            </p>
+          </div>
+          <div class="nlhf-table__cell-data__item">
+            <p class="govuk-body govuk-!-font-weight-bold">
+              Description of spend
+            </p>
+            <p class="govuk-body">
+              <%= @spend.description %>
+            </p>
+          </div>
+          <div class="nlhf-table__cell-data__item">
+            <p class="govuk-body govuk-!-font-weight-bold">
+              Evidence of spend
+            </p>
+            <p class="govuk-body">
+              <%= link_to(@spend.evidence_of_spend_file.blob.filename,
+                          rails_blob_path(@spend.evidence_of_spend_file,
+                                          disposition: "attachment"))
+              %>
+            </p>
+          </div>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          Date of spend 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= @spend.date_of_spend.strftime('%d/%m/%Y') %>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          Net amount 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= number_to_currency(@spend.net_amount, precision: 2, unit: '£') %> 
+        </div>
+
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          VAT Amount 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= number_to_currency(@spend.vat_amount, precision: 2, unit: '£') %>
+        </div>
+      </td>
+
+      <td class="govuk-table__cell nlhf-table__cell">
+        <div class="nlhf-table__col-header" aria-hidden="true">
+          Gross amount 
+        </div>
+        <div class="nlhf-table__cell-data">
+          <%= number_to_currency(@spend.gross_amount, precision: 2, unit: '£') %>
+        </div>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+<%=
+  form_with model: @spend,
+  url: funding_application_payment_request_delete_spend_item_path(spend_id: @spend.id),
+  method: :put,
+  local: true do |f|
+%>
+
+  <%= 
+      render(
+      ButtonComponent.new(
+          element: 'button',
+          text: 'Confirm and delete'
+      )
+      ) 
+  %>
+
+<% end %>
+
+<%=
+  link_to(
+    '← Return to project spend summary',
+    :funding_application_payment_request_tell_us_what_you_have_spent,
+    class: 'govuk-link--no-visited-state'
+  )
+%>
