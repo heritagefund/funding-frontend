@@ -28,6 +28,7 @@ cy:
       1: "With your permission, we use Hotjar to collect data about how you use Apply for Funding. This information helps us to improve our service."
       2: "Hotjar is not allowed to use or share our analytics data with anyone."
       3: "Hotjar stores anonymised information about:"
+      you_can: "You can"
     links:
       change_which_cookies_youre_happy_for_us_to_use: "change which cookies you’re happy for us to use"
     li:
