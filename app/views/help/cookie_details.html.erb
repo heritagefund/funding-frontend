@@ -2,80 +2,94 @@
   render partial: "partials/page_title",
          locals: {
              model_object: nil,
-             page_title: "Cookies"
+             page_title: t('cookie_details.page_title')
          }
 %>
 
 <h1 class="govuk-heading-l">
-  How cookies are used on Apply for Funding (funding.heritagefund.org.uk)
+  <%= t('cookie_details.page_heading') %>
 </h1>
 
 <p class="govuk-body">
-  Cookies are files saved on your phone, tablet or computer when you visit a website.
+<%= t('cookie_details.intro.p1') %>
 </p>
 
 <p class="govuk-body">
-  We use cookies to make the service work and collect information about how you use our service.
+  <%= t('cookie_details.intro.p2') %>
 </p>
 
 <h2 class="govuk-heading-m">
-  Cookie policy settings
+  <%= t('cookie_details.headings.1') %>
 </h2>
+
 <table class="govuk-table">
   <thead class="govuk-table__head">
   <tr class="govuk-table__row">
-    <th scope="col" class="govuk-table__header">Name</th>
-    <th scope="col" class="govuk-table__header">Purpose</th>
-    <th scope="col" class="govuk-table__header">Expires</th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.name') %></th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.purpose') %></th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.expires') %></th>
   </tr>
   </thead>
   <tbody class="govuk-table__body">
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">nlhf_policy</th>
-    <td class="govuk-table__cell">Stores your cookie preferences</td>
-    <td class="govuk-table__cell">1 year</td>
+    <td class="govuk-table__cell"><%= t('cookie_details.table.td.stores_your_cookie_preferences') %></td>
+    <td class="govuk-table__cell"><%= t('cookie_details.table.td.1_year') %></td>
   </tr>
   </tbody>
 </table>
 
 <h2 class="govuk-heading-m">
-  Session cookies
+  <%= t('cookie_details.headings.2') %>
 </h2>
+
 <p class="govuk-body">
-  We store session cookies on your computer to help keep your information secure while you use the service.
+  <%= t('cookie_details.text.session_cookies_overview') %>
 </p>
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
   <tr class="govuk-table__row">
-    <th scope="col" class="govuk-table__header">Name</th>
-    <th scope="col" class="govuk-table__header">Purpose</th>
-    <th scope="col" class="govuk-table__header">Expires</th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.name') %></th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.purpose') %></th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.expires') %></th>
   </tr>
   </thead>
   <tbody class="govuk-table__body">
   <tr class="govuk-table__row">
     <td class="govuk-table__cell">_funding_frontend_ruby_session</th>
-    <td class="govuk-table__cell">Stores encrypted session data</td>
-    <td class="govuk-table__cell">When you close your browser</td>
+    <td class="govuk-table__cell"><%= t('cookie_details.table.td.stores_encrypted_session_data') %></td>
+    <td class="govuk-table__cell"> <%= t('cookie_details.table.td.when_you_close_your_browser') %></td>
   </tr>
   </tbody>
 </table>
 
-<h2 class="govuk-heading-m">Measuring website usage</h2>
-<p class="govuk-body">With your permission, we use Hotjar to collect data about how you use Apply for Funding. This information helps us to improve our service.</p>
-<p class="govuk-body">Hotjar is not allowed to use or share our analytics data with anyone. </p>
-<p class="govuk-body">Hotjar stores anonymised information about:</p>
+<h2 class="govuk-heading-m">
+  <%= t('cookie_details.headings.measuring_website_usage') %>
+</h2>
+
+<p class="govuk-body">
+  <%= t('cookie_details.text.1') %>
+</p>
+
+<p class="govuk-body">
+  <%= t('cookie_details.text.2') %>
+</p>
+
+<p class="govuk-body">
+  <%= t('cookie_details.text.3') %>
+</p>
+
 <ul class="govuk-list govuk-list--bullet">
   <li>
-  the pages you visit on Apply for Funding and how long you spend on each page,
+  <%= t('cookie_details.li.1') %>
 </li>
-  <li>how you navigate around the pages you look at on Apply for Funding,</li>
-  <li>what you click on while you’re using the service,</li>
-  <li>how you fill in the form in Apply for Funding,</li>
+  <li><%= t('cookie_details.li.2') %></li>
+  <li><%= t('cookie_details.li.3') %></li>
+  <li><%= t('cookie_details.li.4') %></li>
   <ul>
    <li>
-    your keystrokes, and any address or financial data you input, are not recorded or stored.
+    <%= t('cookie_details.li.5') %>
    </li>
   </ul>
 </li>
@@ -84,23 +98,23 @@
 <tbody class="govuk-table__body">
 <thead class="govuk-table__head">
   <tr class="govuk-table__row">
-    <th scope="col" class="govuk-table__header">Name</th>
-    <th scope="col" class="govuk-table__header">Purpose</th>
-    <th scope="col" class="govuk-table__header">Expires</th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.name') %></th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.purpose') %></th>
+    <th scope="col" class="govuk-table__header"><%= t('cookie_details.table.th.expires') %></th>
   </tr>
   </thead>
 <tr class="govuk-table__row">
   <td class="govuk-table__cell">_hjid</th>
-  <td class="govuk-table__cell">Tells us if you’ve used the service before</td>
-  <td class="govuk-table__cell">1 year</td>
+  <td class="govuk-table__cell"><%= t('cookie_details.table.td.tells_us_if_youve_used_the_service_before') %></td>
+  <td class="govuk-table__cell"><%= t('cookie_details.table.td.1_year') %></td>
 </tr>
 <tr class="govuk-table__row">
   <td class="govuk-table__cell">_hjIncludedInSample</th>
-  <td class="govuk-table__cell">Tells us which activity is related to an individual session</td>
-  <td class="govuk-table__cell">When you close your browser</td>
+  <td class="govuk-table__cell"><%= t('cookie_details.table.td.tells_us_which_activity_is_related_to_an_individual_session') %></td>
+  <td class="govuk-table__cell"><%= t('cookie_details.table.td.when_you_close_your_browser') %></td>
 </tr>
 </tbody>
 </table>
 
-<h2 class="govuk-heading-m">Change your settings</h2>
-<p class="govuk-body">You can <%=link_to 'change which cookies you’re happy for us to use', help_cookies_path %>.</p>
+<h2 class="govuk-heading-m"><%= t('cookie_details.headings.change_your_settings') %></h2>
+<p class="govuk-body"><%= t('cookie_details.text.you_can') %> <%= link_to t('cookie_details.links.change_which_cookies_youre_happy_for_us_to_use'), help_cookies_path %>.</p>
