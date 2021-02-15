@@ -171,12 +171,19 @@
   If this summary of total grant spend is now up-to-date you can submit this to us for review before we send your next payment or you can <a class="govuk-link--no-visited-state" href="<%= "#{funding_application_payment_request_tell_us_what_you_have_spent_url}" %>">add more items of spend</a>
 </p>
 
-<%=
-  render(
-    ButtonComponent.new(
-        element: 'a',
-        href: funding_application_payment_request_tell_us_what_you_have_spent_url,
-        text: 'Submit payment request'
-    )
-  )
+<%= form_tag(
+    url: :funding_application_payment_request_confirm_what_you_have_spent,
+    method: :put,
+    local: true
+  ) do |f| 
 %>
+
+  <%= render(
+      ButtonComponent.new(
+        element: "button",
+        text: 'Submit payment request'
+      )
+    ) 
+  %>
+
+<% end %>

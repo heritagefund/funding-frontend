@@ -1,3 +1,60 @@
-<h1 class="govuk-heading-xl">
-    SUBMITTED
-</h1>
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @funding_application,
+             page_title: t('payment_details_submitted.page_title')
+         }
+%>
+
+<div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-9">
+  <h1 class="govuk-panel__title">
+    Awaiting payment
+  </h1>
+</div>
+
+<p class="govuk-body">
+  <%= t('payment_details_submitted.thank_you_for_confirming') %>
+</p>
+
+<% if @award_type == 'grant_award_under_10000' || @award_type == 'grant_award_between_10000_and_100000' %>
+  <p class="govuk-body">
+    We will check your details and aim to pay you within 10 working days.
+  </p>
+<% elsif @award_type == 'grant_award_over_100000' %>
+  <p class="govuk-body">
+    We will check your bank details and look at what you’ve spent so far. If we have any questions about your spending, we will be in touch. After we’ve done our checks, we’ll aim to pay you within 10 working days.
+  </p>
+<% end %>
+
+<ul class="govuk-list govuk-list--bullet">
+
+  <li>
+    You will be paid <%= number_to_currency(@payment_request.amount_requested, precision: 2, unit: '£') %>, which is <%= @payment_request_percentage %>% of your total grant awarded
+  </li>
+
+</ul>
+
+<h2 class="govuk-heading-m">
+  <%= t('payment_details_submitted.page_sub_heading') %>
+</h2>
+
+<p class="govuk-body">
+
+  <% if @award_type == 'grant_award_under_10000' || @award_type == 'grant_award_between_10000_and_100000' %>
+    <%= t('payment_details_submitted.email_to_confirm_plus') %>
+  <% else %>
+    <%= t('payment_details_submitted.email_to_confirm') %>
+  <% end %>
+
+</p>
+
+<%=
+  render(
+    ButtonComponent.new(
+        element: "a",
+        href: destroy_user_session_path,
+        text: 'Sign out',
+        data_method: 'delete'
+    )
+  )
+%>

@@ -198,6 +198,7 @@ Rails.application.routes.draw do
           get 'edit-an-item-of-spend', to: 'edit_item_of_spend#show'
 
           get 'confirm-what-you-have-spent', to: 'confirm_evidence_of_spend#show'
+          post 'confirm-what-you-have-spent', to: 'confirm_evidence_of_spend#update'
 
           get 'submitted', to: 'submitted#show'
 

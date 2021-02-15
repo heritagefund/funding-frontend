@@ -78,7 +78,40 @@ module PaymentDetailsAndRequestHelper
 
   end
 
-  # Helper method to redirect a user to the 'evidence of spend' route
+  # keep logic to decide grant award logic in one place.  Used to determine the flow
+  # of the payment journey and determine what content is shown on the payment submitted form.
+
+  # @param funding_application [FundingApplication] An instance of a FundingApplication
+  # @return String Describing the payment type scenario: 
+  # TODO - change to enum or class.
+  # TODO - change the above function to use this function and logic rather than replicate logic
+  def get_grant_award_type(funding_application)
+
+    payment_related_details = retrieve_payment_related_details(funding_application)
+
+    grant_award = payment_related_details[:grant_award]
+
+    case
+    when grant_award > 0 && grant_award <= 10000
+      {
+        grant_award_type: 'grant_award_under_10000',
+        payment_request_percentage: 100
+      }
+    when grant_award > 10000 && grant_award <= 100000
+      {
+        grant_award_type: 'grant_award_between_10000_and_100000',
+        payment_request_percentage: 50
+      }
+    when grant_award > 100000
+      {
+        grant_award_type: 'grant_award_over_100000',
+        payment_request_percentage: payment_related_details[:grant_percentage].to_f / 100.to_f
+      } 
+    end
+
+  end
+
+  # Helper method to redirect a user to the evidence of spend' route
   def redirect_to_evidence_of_spend
 
     logger.info('Redirecting to the evidence of spend page(s)')
@@ -99,7 +132,7 @@ module PaymentDetailsAndRequestHelper
 
     # TODO: Replace hard-coded Hash used in testing with above dynamic call to SalesforceApiClient
     {
-      'grant_award': 250000,
+      'grant_award': 10001,
       'grant_percentage': 100
     }
 
@@ -187,7 +220,7 @@ module PaymentDetailsAndRequestHelper
 
     if count == 1
 
-      payment_request_amount = grant_award / 2
+      payment_request_amount = grant_award / 2.to_f
 
       update_payment_request_amount(payment_request, payment_request_amount)
 
@@ -201,6 +234,21 @@ module PaymentDetailsAndRequestHelper
       )
 
     end
+
+  end
+
+  # Helper method to calculate the payment request value for a funding application with a total
+  # grant award over £100,000
+  #
+  # @param payment_request [PaymentRequest] An instance of a PaymentRequest
+  # @param grant_percentage [Float] The grant_percentage used to calculate the payment request amount
+  def calculate_payment_request_over_100000(payment_request, grant_percentage)
+
+    total_spend_evidenced = payment_request.spends.sum(:gross_amount)
+
+    payment_request_amount = total_spend_evidenced * (grant_percentage.to_f / 100.to_f)
+
+    update_payment_request_amount(payment_request, payment_request_amount)
 
   end
 
