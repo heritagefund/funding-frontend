@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "The heritage of your project"
+             page_title: t('application.heritage.page_title')
          }
 %>
 
@@ -27,23 +27,20 @@
                                 @funding_application.project.errors[:heritage_description].any? %>">
 
       <h1 class="govuk-label-wrapper">
-        <span class="govuk-caption-xl">About your project</span>
+        <span class="govuk-caption-xl"><%= t('views.funding_application.common.about_your_project') %></span>
         <%=
           f.label :heritage_description,
-                  "The heritage of your project: how do you plan to make it " \
-                  "available once the project is over?",
+                  t('application.heritage.page_heading'),
                   class: "govuk-label govuk-label--xl"
         %>
       </h1>
 
       <span id="project_heritage_description-hint" class="govuk-hint">
-        This helps us understand how you plan to preserve the heritage of your
-        project and the difference it will make after the project ends.
+        <%= t('application.heritage.text.1') %>
       </span>
 
       <span id="project_heritage_description-hint" class="govuk-hint">
-        We use this section to assess the value for money of our investment in
-        your project.
+        <%= t('application.heritage.text.2') %>
       </span>
 
       <%=
@@ -67,7 +64,7 @@
       <span id="project_heritage_description-info"
             class="govuk-hint govuk-character-count__message"
             aria-live="polite">
-        You can enter up to 500 words
+        <%= t('generic.word_count', max_words: 500) %>
       </span>
 
     </div>
