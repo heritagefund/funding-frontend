@@ -1,6 +1,6 @@
 <%
   content_for :page_title,
-              flash[:errors].present? ? "Error: Report a problem" : "Report a problem"
+              flash[:errors].present? ? (t('generic.error') + ": " + t('report_a_problem.page_title')).html_safe : (t('report_a_problem.page_title')).html_safe
 %>
 
 <%=
@@ -13,7 +13,7 @@
 <% if flash[:success] %>
   <div class="nlhf-panel nlhf-panel--border-wide nlhf-alert--success govuk-!-margin-bottom-6">
     <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
-      Your message was sent successfully
+      <%= t('report_a_problem.text.your_message_was_sent_successfully') %>
     </h2>
   </div>
 <% end %>
@@ -27,14 +27,23 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
 
         <h1 class="govuk-fieldset__heading">
-          Report a problem
+          <%= t('report_a_problem.page_heading') %>
         </h1>
 
       </legend>
 
       <div class="govuk-inset-text">
-        <a href="https://www.heritagefund.org.uk/service-status">Check our service status page</a>
-        to see if there are any known issues.
+        <%=
+          t(
+            "report_a_problem.text.service_status.html",
+            href: link_to(
+                    t("report_a_problem.text.service_status.text"),
+                    "https://www.heritagefund.org.uk/service-status",
+                    target: "_blank",
+                    class: "govuk-link"
+            )
+          )
+        %>
       </div>
 
       <div class="govuk-form-group <%= "govuk-form-group--error" if
@@ -47,7 +56,7 @@
                  } if flash[:errors].present? && flash[:errors][:support_problem_message].present?
         %>
 
-        <%= label_tag :support_problem_message, "Your message", class: "govuk-label" %>
+        <%= label_tag :support_problem_message, t('report_a_problem.form.your_message'), class: "govuk-label" %>
         <%=
           text_area_tag :support_problem_message,
                         flash[:support_problem_message].present? ? flash[:support_problem_message] : nil,
@@ -67,7 +76,7 @@
                  } if flash[:errors].present? && flash[:errors][:support_problem_name].present?
         %>
 
-        <%= label_tag :support_problem_name, "Your name", class: "govuk-label" %>
+        <%= label_tag :support_problem_name, t('report_a_problem.form.your_name'), class: "govuk-label" %>
         <%=
           text_field_tag :support_problem_name,
                          flash[:support_problem_name].present? ? flash[:support_problem_name] : nil,
@@ -86,7 +95,7 @@
                  } if flash[:errors].present? && flash[:errors][:support_problem_email].present?
         %>
 
-        <%= label_tag :support_problem_email, "Your email address", class: "govuk-label" %>
+        <%= label_tag :support_problem_email, t('report_a_problem.form.your_email_address'), class: "govuk-label" %>
         <%=
           text_field_tag :support_problem_email,
                           flash[:support_problem_email].present? ? flash[:support_problem_email] : nil,
@@ -100,10 +109,9 @@
   </div>
 
   <%=
-    submit_tag "Send",
+    submit_tag t('buttons.labels.send'),
                class: 'govuk-button',
                role: 'button',
-               'aria-label' => 'Send button',
                'data-module' => 'govuk-button'
   %>
 

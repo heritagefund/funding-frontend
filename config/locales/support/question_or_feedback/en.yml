@@ -1,0 +1,14 @@
+en-GB:
+  question_or_feedback:
+    page_title: "Ask a question or give feedback"
+    page_heading: "Ask a question or give feedback"
+    headings:
+      do_you_want_a_reply: "Do you want a reply?"
+    text:
+      ask_a_question_or_give_feedback: "Ask a question or give feedback"
+      your_message_was_sent_successfully: "Your message was sent successfully"
+      leave_your_details_below: "Leave your details below if you’d like a response."
+    labels:
+      your_message: "Your message"
+      your_name: "Your name"
+      your_email_address: "Your email address"

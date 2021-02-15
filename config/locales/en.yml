@@ -11,6 +11,8 @@ en-GB:
     labels:
       default: "Save and continue"
       start_now: "Start now"
+      send: "Send"
+      continue: "Continue"
   generic:
     x_yes: "Yes"
     x_no: "No"

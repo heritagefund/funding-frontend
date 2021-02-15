@@ -3,3 +3,5 @@ cy:
     labels:
       default: "Arbed a pharhau"
       start_now: "Dechrau nawr"
+      send: "Send"
+      continue: "Continue"

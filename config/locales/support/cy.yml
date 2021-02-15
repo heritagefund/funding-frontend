@@ -1,0 +1,21 @@
+cy:
+  support:
+    page_title: "Support"
+    page_heading: "Support"
+    headings:
+      2: "How can we help you?"
+      3: "Help and guidance"
+      4: "Other ways to contact us"
+      5: "Phone"
+      6: "Text phone"
+    items:
+      1: "Report a problem"
+      2: "Ask a question or give feedback"
+    links:
+      1: "Check what we fund"
+      2: "Get clear about your project outcomes"
+      3: "Explore our funding programmes"
+    text:
+      support_hours:
+        1: "We can only provide support during office hours which are 9:00am to 5:00pm, Monday to Friday."
+        2: "Outside office hours, your query will be stored for us to read the next working day."

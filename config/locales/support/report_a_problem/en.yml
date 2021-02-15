@@ -1,0 +1,13 @@
+en-GB:
+  report_a_problem:
+    page_title: "Report a problem"
+    page_heading: "Report a problem"
+    text:
+      your_message_was_sent_successfully: "Your message was sent successfully"
+      service_status:
+        html: "%{href} to see if there are any known issues."
+        text: "Check our service status page"
+    form:
+      your_name: "Your name"
+      your_message: "Your message"
+      your_email_address: "Your email address"

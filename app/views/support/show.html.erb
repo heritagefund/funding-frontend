@@ -1,6 +1,6 @@
 <%
   content_for :page_title,
-              flash[:errors].present? ? "Error: Support" : "Support"
+              flash[:errors].present? ? (t('generic.error') + ": " + t('support.page_title')).html_safe : (t('support.page_title')).html_safe
 %>
 
 <%=
@@ -19,13 +19,13 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
 
         <h1 class="govuk-fieldset__heading">
-          Support
+          <%= t('support.page_heading') %>
         </h1>
 
       </legend>
 
       <span id="changed-name-hint" class="govuk-hint">
-        How can we help you?
+        <%= t('support.headings.2') %>
       </span>
 
       <div class="govuk-radios">
@@ -33,14 +33,14 @@
         <div class="govuk-radios__item">
 
           <%= radio_button_tag :support_type, "report_a_problem", false, class: "govuk-radios__input" %>
-          <%= label_tag :support_type_report_a_problem, "Report a problem", class: "govuk-label govuk-radios__label" %>
+          <%= label_tag :support_type_report_a_problem, t('support.items.1'), class: "govuk-label govuk-radios__label" %>
 
         </div>
 
         <div class="govuk-radios__item">
 
           <%= radio_button_tag :support_type, "ask_a_question", false, class: "govuk-radios__input" %>
-          <%= label_tag :support_type_ask_a_question, "Ask a question or give feedback", class: "govuk-label govuk-radios__label" %>
+          <%= label_tag :support_type_ask_a_question, t('support.items.2'), class: "govuk-label govuk-radios__label" %>
 
         </div>
 
@@ -51,10 +51,9 @@
   </div>
 
   <%=
-    submit_tag "Continue",
+    submit_tag t('buttons.labels.continue'),
              class: 'govuk-button',
              role: 'button',
-             'aria-label' => 'Continue button',
              'data-module' => 'govuk-button'
   %>  
 
@@ -62,27 +61,40 @@
 
     <div class="govuk-inset-text govuk-!-margin-top-2 govuk-!-margin-bottom-6">
       <p class="govuk-body">
-        We can only provide support during office hours which are <br>
-          9:00am to 5:00pm, Monday to Friday.
+        <%= t('support.text.support_hours.1') %>
       </p>
-      <p class="govuk-body">Outside office hours, your query will be stored for us to read the next working day.</p>
+      <p class="govuk-body">
+        <%= t('support.text.support_hours.2') %>
+      </p>
     </div>
 
     <hr class="govuk-section-break govuk-!-margin-bottom-7 govuk-section-break--visible">
     
-    <h2 class="govuk-heading-m">Help and guidance</h2>
+    <h2 class="govuk-heading-m"><%= t('support.headings.3') %></h2>
 
     <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-      <li><a href="https://www.heritagefund.org.uk/funding/check-what-we-fund">Check what we fund</a></li>
-      <li><a href="https://www.heritagefund.org.uk/funding/outcomes">Get clear about your project outcomes</a></li>
-      <li><a href="https://www.heritagefund.org.uk/funding">Explore our funding programmes</a></li>
+      <li>
+        <a href="https://www.heritagefund.org.uk/funding/check-what-we-fund">
+          <%= t('support.links.1') %>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.heritagefund.org.uk/funding/outcomes">
+          <%= t('support.links.2') %>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.heritagefund.org.uk/funding">
+          <%= t('support.links.3') %>
+        </a>
+      </li>
     </ul>
 
 
-    <h2 class="govuk-heading-m">Other ways to contact us</h2>
+    <h2 class="govuk-heading-m"><%= t('support.headings.4') %></h2>
 
-    <h3 class="govuk-heading-s">Phone</h3>
+    <h3 class="govuk-heading-s"><%= t('support.headings.5') %></h3>
     <p class="govuk-body">020 7591 6044</p>
 
-    <h3 class="govuk-heading-s">Text phone</h3>
+    <h3 class="govuk-heading-s"><%= t('support.headings.6') %></h3>
     <p class="govuk-body">020 7591 6255</p>
