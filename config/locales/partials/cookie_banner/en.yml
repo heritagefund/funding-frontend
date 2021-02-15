@@ -1,0 +1,16 @@
+en-GB:
+  cookie_banner:
+    heading: "Can we store analytics cookies on your device?"
+    info_text: "Analytics cookies help us understand how our website is being used."
+    how_we_use_cookies: "How Apply for Funding uses cookies"
+    change_text:
+      part1: "You can"
+      part2: "at any time."
+    links:
+      change_your_cookie_settings: "change your cookie settings"
+    buttons:
+      hide: "hide"
+      yes_button:
+        description: "Apply for Funding can store analytics cookies on your device"
+      no_button:
+        description: "Apply for Funding cannot store analytics cookies on your device"

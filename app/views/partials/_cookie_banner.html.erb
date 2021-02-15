@@ -1,22 +1,24 @@
 <div id="nlhf-cookie-banner" class="nlhf-cookie-banner govuk-width-container" data-module="nlhf-cookie-banner" role="region" aria-describedby="nlhf-cookie-banner__heading">
   <div class="nlhf-cookie-banner__wrapper">
     <h2 class="nlhf-cookie-banner__heading govuk-heading-m" id="nlhf-cookie-banner__heading">
-      Can we store analytics cookies on your device?
+      <%= t('cookie_banner.heading') %>
     </h2>
     <p class="govuk-body">
-      Analytics cookies help us understand how our website is being used.
+      <%= t('cookie_banner.info_text') %>
     </p>
     <div class="nlhf-cookie-banner__buttons">
-      <%= render(ButtonComponent.new(text: 'Yes<span class="govuk-visually-hidden">, Apply for Funding can store analytics cookies on your device</span>'.html_safe, classes: 'nlhf-cookie-banner__button nlhf-cookie-banner__button--accept', attributes: [{attribute: 'data-accept-cookies', value: true} , {attribute: 'aria-describedby', value: 'nlhf-cookie-banner__heading'} ] )) %>
-      <%= render(ButtonComponent.new(text: 'No<span class="govuk-visually-hidden">, Apply for Funding cannot store analytics cookies on your device</span>'.html_safe, classes: 'nlhf-cookie-banner__button nlhf-cookie-banner__button--reject', attributes: [{attribute: 'data-accept-cookies', value: false} , {attribute: 'aria-describedby', value: 'nlhf-cookie-banner__heading'} ] )) %>
-          <a class="govuk-link nlhf-cookie-banner__link" href=<%= help_cookie_details_path %>>How Apply for Funding uses cookies</a>
+      <%= render(ButtonComponent.new(text: (t('generic.x_yes') + '<span class="govuk-visually-hidden">, ' + t('cookie_banner.buttons.yes_button.description') + '</span>').html_safe, classes: 'nlhf-cookie-banner__button nlhf-cookie-banner__button--accept', attributes: [{attribute: 'data-accept-cookies', value: true} , {attribute: 'aria-describedby', value: 'nlhf-cookie-banner__heading'} ] )) %>
+      <%= render(ButtonComponent.new(text: (t('generic.x_no') + '<span class="govuk-visually-hidden">, ' + t('cookie_banner.buttons.no_button.description') + '</span>').html_safe, classes: 'nlhf-cookie-banner__button nlhf-cookie-banner__button--reject', attributes: [{attribute: 'data-accept-cookies', value: false} , {attribute: 'aria-describedby', value: 'nlhf-cookie-banner__heading'} ] )) %>
+          <a class="govuk-link nlhf-cookie-banner__link" href=<%= help_cookie_details_path %>>
+            <%= t('cookie_banner.how_we_use_cookies') %>
+          </a>
     </div>
   </div>
 
   <div class="nlhf-cookie-banner__confirmation" tabindex="-1">
     <p class="nlhf-cookie-banner__confirmation-message govuk-body">
-      You can <a class="govuk-link" href="<%=help_cookies_path%>">change your cookie settings</a> at any time.
+      <%= t('cookie_banner.change_text.part1') %> <a class="govuk-link" href="<%=help_cookies_path%>"><%= t('cookie_banner.links.change_your_cookie_settings') %> </a> <%= t('cookie_banner.change_text.part2') %>.
     </p>
-    <button class="nlhf-cookie-banner__hide-button govuk-link" data-hide-cookie-banner="true" role="link">Hide</button>
+    <button class="nlhf-cookie-banner__hide-button govuk-link" data-hide-cookie-banner="true" role="link"><%= t('cookie_banner.buttons.hide') %></button>
   </div>
 </div>
