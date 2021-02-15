@@ -30,6 +30,7 @@ en-GB:
     funding_application:
       common:
         about_your_project: "About your project"
+        support_for_your_project: "Support for your project"
       gp_project:
         check_your_answers:
           not_answered: " Not Answered "

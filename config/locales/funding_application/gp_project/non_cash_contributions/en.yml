@@ -1,0 +1,24 @@
+en-GB:
+  application:
+    non_cash_contributions:
+      page_title: "Non-cash contributions"
+      page_heading: "Non-cash contributions"
+      headings:
+        1: "Your non-cash contributions"
+        2: "You have not added any non-cash contributions"
+        3: "Add a non-cash contribution"
+        4: "What are non-cash contributions?"
+      text:
+        1: "Non-cash contributions are things you need for your project that you do not have to pay for."
+        2: "For example, the use of a room in a local business, or materials being donated by a local firm."
+        3: "If you have finished adding all your non-cash contributions"
+        4: "Total estimated value"
+        5: "An estimate of how much this would have cost if your project had to pay for it"
+        6: "Help with non-cash contributions"
+      buttons:
+        1: "Add non-cash contribution"
+      th:
+        1: "Description"
+        2: "Value"
+      labels:
+        1: "Description"

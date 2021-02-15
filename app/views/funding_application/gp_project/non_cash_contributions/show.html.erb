@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "Non-cash contributions"
+             page_title: t('application.non_cash_contributions.page_title')
          }
 %>
 
@@ -11,7 +11,7 @@
        role="alert" tabindex="-1" data-module="govuk-error-summary">
 
     <h2 class="govuk-error-summary__title" id="error-summary-title">
-      There is a problem
+      <%= t('generic.there_is_a_problem') %>
     </h2>
 
     <div class="govuk-error-summary__body">
@@ -35,13 +35,19 @@
   </div>
 <% end %>
 
-<span class="govuk-caption-xl">Support for your project</span>
-<h1 class="govuk-heading-xl">Non-cash contributions</h1>
+<span class="govuk-caption-xl">
+  <%= t('views.funding_application.common.support_for_your_project') %>
+</span>
+<h1 class="govuk-heading-xl">
+  <%= t('application.non_cash_contributions.page_heading') %>
+</h1>
 
 <section class="nlhf-summary nlhf-summary--non-cash govuk-!-margin-bottom-9">
 
   <header class="nlhf-summary__header">
-    <h2 class="govuk-heading-m">Your non-cash contributions</h2>
+    <h2 class="govuk-heading-m">
+      <%= t('application.non_cash_contributions.headings.1') %>
+    </h2>
   </header>
 
   <div class="nlhf-summary__body">
@@ -49,7 +55,7 @@
     <% if @funding_application.project.non_cash_contributions.first.try(:id).nil? %>
 
       <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
-        You have not added any non-cash contributions
+        <%= t('application.non_cash_contributions.headings.2') %>
       </h3>
 
     <% else %>
@@ -60,11 +66,12 @@
 
         <tr class="govuk-table__row">
 
-          <th scope="col" class="govuk-table__header">Description</th>
+          <th scope="col" class="govuk-table__header">
+            <%= t('application.non_cash_contributions.th.1') %>
+          </th>
 
-          <th scope="col"
-              class="govuk-table__header govuk-table__header--numeric">
-            Value
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">
+            <%= t('application.non_cash_contributions.th.2') %>
           </th>
 
           <th scope="col" class="govuk-table__header"></th>
@@ -101,13 +108,7 @@
                       ButtonComponent.new(
                           element: "input",
                           classes: "govuk-button--warning",
-                          text: "Delete",
-                          attributes: [
-                              {
-                                  attribute: "aria-label",
-                                  value: "Delete button"
-                              }
-                          ]
+                          text: t('generic.delete')
                       )
                   )
                 %>
@@ -129,7 +130,7 @@
         <h3 class="nlhf-summary__total__title">
 
           <span class="nlhf-summary__total__title-text">
-            Total estimated value
+            <%= t('application.non_cash_contributions.text.4') %>
           </span>
 
           <span class="nlhf-summary__total__title-val">
@@ -166,7 +167,9 @@
     <div class="nlhf-add-item govuk-!-margin-bottom-4">
 
       <header class="nlhf-add-item__header">
-        <h2 class="govuk-heading-l">Add a non-cash contribution</h2>
+        <h2 class="govuk-heading-l">
+          <%= t('application.non_cash_contributions.headings.3') %>
+        </h2>
       </header>
 
       <div class="nlhf-add-item__body">
@@ -189,7 +192,7 @@
 
               <%=
                 ncc.label :description,
-                          'Description',
+                          t('application.non_cash_contributions.labels.1'),
                           class: 'govuk-label'
               %>
 
@@ -204,8 +207,7 @@
 
             </div>
 
-            <span class="govuk-hint govuk-character-count__message"
-                  id="project_non_cash_contributions_attributes_0_description-info"></span>
+            <span class="govuk-hint govuk-character-count__message" id="project_non_cash_contributions_attributes_0_description-info"></span>
 
           </div>
 
@@ -229,8 +231,7 @@
 
             <span id="project_non_cash_contributions_attributes_0_amount-hint"
                   class="govuk-hint govuk-!-font-size-17">
-              An estimate of how much this would have cost if your project
-              had to pay for it
+              <%= t('application.non_cash_contributions.text.5') %>
             </span>
 
             <div class="nlhf-currency-denote">
@@ -262,7 +263,7 @@
             render(
                 ButtonComponent.new(
                     element: "input",
-                    text: "Add non-cash contribution",
+                    text: t('application.non_cash_contributions.buttons.1'),
                     classes: "govuk-button--secondary"
                 )
             )
@@ -286,23 +287,23 @@
   <summary class="govuk-details__summary">
 
     <span class="govuk-details__summary-text">
-      Help with non-cash contributions
+      <%= t('application.non_cash_contributions.text.6') %>
     </span>
 
   </summary>
 
   <div class="govuk-details__text">
 
-    <h3 class="govuk-heading-m">What are non-cash contributions?</h3>
+    <h3 class="govuk-heading-m">
+      <%= t('application.non_cash_contributions.headings.4') %>
+    </h3>
 
     <p class="govuk-body">
-      Non-cash contributions are things you need for your project that you do
-      not have to pay for.
+      <%= t('application.non_cash_contributions.text.1') %>
     </p>
 
     <p class="govuk-body">
-      For example, the use of a room in a local business, or materials being
-      donated by a local firm.
+      <%= t('application.non_cash_contributions.text.2') %>
     </p>
 
   </div>
@@ -312,7 +313,7 @@
 <hr class="govuk-section-break--l govuk-section-break--visible">
 
 <p class="govuk-body">
-  If you have finished adding all your non-cash contributions
+  <%= t('application.non_cash_contributions.text.3') %>
 </p>
 
 <%= render(
