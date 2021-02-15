@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "How much will your project cost?"
+             page_title: t("application.costs.page_title")
          }
 %>
 
@@ -12,7 +12,7 @@
        role="alert" tabindex="-1" data-module="govuk-error-summary">
 
     <h2 class="govuk-error-summary__title" id="error-summary-title">
-      There is a problem
+      <%= t('generic.there_is_a_problem') %>
     </h2>
 
     <div class="govuk-error-summary__body">
@@ -51,15 +51,16 @@
 
 <div class="nlhf-page-header govuk-!-margin-bottom-9">
 
-  <span class="govuk-caption-xl">About your project</span>
+  <span class="govuk-caption-xl">
+    <%= t('views.funding_application.common.about_your_project') %>
+  </span>
 
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
-    How much will your project cost?
+    <%= t('application.costs.headings.1') %>
   </h1>
 
   <p class="govuk-body-l">
-    Project costs help us understand how you plan to put your project into
-    action.
+    <%= t('application.costs.text.1') %>
   </p>
 
 </div>
@@ -67,17 +68,21 @@
 <section class="nlhf-summary govuk-!-margin-bottom-9" id="project-costs">
 
   <header class="nlhf-summary__header">
-    <h2 class="govuk-heading-m">Your project costs</h2>
+    <h2 class="govuk-heading-m">
+      <%= t('application.costs.headings.2') %>
+    </h2>
   </header>
 
   <div class="nlhf-summary__body">
 
     <% unless @funding_application.project.project_costs.first&.id.present? %>
 
-      <h3 class="govuk-heading-m">You have not added any costs yet</h3>
+      <h3 class="govuk-heading-m">
+        <%= t('application.costs.headings.3') %>
+      </h3>
 
       <p class="govuk-body">
-        Each cost will be shown here with a running total
+        <%= t('application.costs.text.2') %>
       </p>
 
     <% else %>
@@ -88,9 +93,15 @@
 
         <tr class="govuk-table__row">
 
-          <th scope="col" class="govuk-table__header">Cost type</th>
-          <th scope="col" class="govuk-table__header">Description</th>
-          <th scope="col" class="govuk-table__header">Amount</th>
+          <th scope="col" class="govuk-table__header">
+            <%= t('application.costs.th.1') %>
+          </th>
+          <th scope="col" class="govuk-table__header">
+            <%= t('application.costs.th.2') %>
+          </th>
+          <th scope="col" class="govuk-table__header">
+            <%= t('application.costs.th.3') %>
+          </th>
           <th scope="col" class="govuk-table__header"></th>
 
         </tr>
@@ -129,13 +140,7 @@
                       ButtonComponent.new(
                           element: "input",
                           classes: "govuk-button--warning",
-                          text: "Delete",
-                          attributes: [
-                              {
-                                  attribute: "aria-label",
-                                  value: "Delete button"
-                              }
-                          ]
+                          text: t('generic.delete')
                       )
                   )
                 %>
@@ -156,7 +161,7 @@
 
         <h3 class="nlhf-summary__total__title">
 
-          <span class="nlhf-summary__total__title-text">Total costs </span>
+          <span class="nlhf-summary__total__title-text"><%= t('application.costs.text.3') %> </span>
 
           <span class="nlhf-summary__total__title-val">
 
@@ -181,13 +186,16 @@
 
 </section>
 
-<h2 class="govuk-heading-l govuk-!-margin-bottom-6">Add a cost</h2>
+<h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+  <%= t('application.costs.headings.4') %>
+</h2>
 
-<h2 class="govuk-heading-s">Add a new cost for each project cost.</h2>
+<p class="govuk-heading-s">
+  <%= t('application.costs.text.4') %>
+</p>
 
 <p class="govuk-body">
-  For example, if you are doing 3 activities, add 3 separate activity cost
-  types, each with their own description and amount.
+  <%= t('application.costs.text.5') %>
 </p>
 
 <%=
@@ -253,7 +261,7 @@
         <span id="project_project_costs_attributes_0_description-info"
               class="govuk-hint govuk-character-count__message"
               aria-live="polite">
-          You have 50 words remaining
+            <%= t('generic.word_count', max_words: 500) %>
         </span>
 
       </div>
@@ -276,7 +284,7 @@
       %>
 
       <span id="cost-amount-hint" class="govuk-hint">
-        This can be an estimate
+        <%= t('application.costs.text.6') %>
       </span>
 
       <div class="nlhf-currency-denote">
@@ -304,7 +312,7 @@
       render(
           ButtonComponent.new(
               element: "input",
-              text: "Add this cost",
+              text: t('application.costs.buttons.1'),
               classes: "govuk-button--secondary"
           )
       )
@@ -320,7 +328,7 @@
   <summary class="govuk-details__summary">
 
         <span class="govuk-details__summary-text">
-          Help with cost types
+          <%= t('application.costs.text.7') %>
         </span>
 
   </summary>
@@ -328,181 +336,139 @@
   <div class="govuk-details__text">
 
     <h3 class="govuk-heading-s">
-      New staff costs
+      <%= t('application.costs.cost_types.1.heading') %>
     </h3>
 
     <p class="govuk-body">
-      Include costs of new fixed-term contracts, secondments - who are people
-      temporarily transferred to your organisation, and the costs of freelance
-      staff to help develop your project. Do not include the costs of paying
-      trainees here.
+      <%= t('application.costs.cost_types.1.text.1') %>
     </p>
-
     <p class="govuk-body">
-      You must also openly advertise all project staff posts, unless, you have
-      a suitably qualified member of staff on your payroll that you are moving
-      into a project post. You need to provide a job description for this post.
+      <%= t('application.costs.cost_types.1.text.2') %>
     </p>
-
     <p class="govuk-body">
-      If you are extending the hours of a suitably qualified member of staff
-      on your payroll, so that they can work on the project. In this case we
-      will fund the cost of the additional hours spent on the project and you
-      will need to tell us about their role.
+      <%= t('application.costs.cost_types.1.text.3') %>
     </p>
-
     <p class="govuk-body">
-      If you are moving an existing member of staff into a post created by the
-      project, then your grant can either pay for the cost of this member of
-      staff, or for the cost of backfilling their position.
+      <%= t('application.costs.cost_types.1.text.4') %>
     </p>
-
     <p class="govuk-body">
-      All salaries should be based on sector guidelines or similar posts
-      elsewhere
+      <%= t('application.costs.cost_types.1.text.5') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Professional fees
+      <%= t('application.costs.cost_types.2.heading') %>
     </h3>
 
     <p class="govuk-body">
-      Fees should be in line with professional guidelines. For example, those
-      of RIBA, The Royal Institute of British Architects, and should be based
-      on a clear written specification.
+      <%= t('application.costs.cost_types.2.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Recruitment
+      <%= t('application.costs.cost_types.3.heading') %>
     </h3>
 
     <p class="govuk-body">
-      This can include advertising and travel expenses. We expect your
-      organisation to keep to good human-resource practice and follow all
-      relevant laws.
+      <%= t('application.costs.cost_types.3.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Purchase price of heritage items
+      <%= t('application.costs.cost_types.15.heading') %>
     </h3>
 
     <p class="govuk-body">
-      If your project involves buying a heritage item, you must get an
-      independent valuation to help show that this item can be bought for a
-      realistic price. If you are a private individual or commercial
-      organisation you cannot include costs here.
+      <%= t('application.costs.cost_types.15.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Repair and conservation work
+      <%= t('application.costs.cost_types.4.heading') %>
     </h3>
 
     <p class="govuk-body">
-      This includes costs of work to repair, restore or conserve a heritage
-      item, building or site.
+      <%= t('application.costs.cost_types.4.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Event costs
+      <%= t('application.costs.cost_types.5.heading') %>
     </h3>
 
     <p class="govuk-body">
-      Costs for any events, for example, refreshments or room hire.
+      <%= t('application.costs.cost_types.5.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Digital outputs
+      <%= t('application.costs.cost_types.6.heading') %>
     </h3>
 
     <p class="govuk-body">
-      Any costs that you require to create digital outputs. Digital outputs
-      are things you create in a digital format which are designed to give
-      access to heritage. They could also help people engage with and learn
-      about heritage. For example, a collection of digital images or sound
-      files, an online heritage resource or exhibition or a smartphone app.
+      <%= t('application.costs.cost_types.6.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Equipment and materials, including learning materials
+      <%= t('application.costs.cost_types.7.heading') %>
     </h3>
 
     <p class="govuk-body">
-      For example, historic costumes, hard hats to give site access, art
-      materials or leaflets and publications.
+      <%= t('application.costs.cost_types.7.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Training for staff and training for volunteers
+      <%= t('application.costs.cost_types.8.heading') %>
     </h3>
 
     <p class="govuk-body">
-      Existing and new staff and volunteers may need training to carry out
-      your project.
+      <%= t('application.costs.cost_types.8.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Travel for staff and travel for volunteers
+      <%= t('application.costs.cost_types.9.heading') %>
     </h3>
 
     <p class="govuk-body">
-      To help staff and volunteers travel to sites. Travel costs by car
-      should be based on 45p a mile.
+      <%= t('application.costs.cost_types.9.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Expenses for staff and volunteers
+      <%= t('application.costs.cost_types.10.heading') %>
     </h3>
 
     <p class="govuk-body">
-      You can include the costs of expenses for staff and volunteers to make
-      sure they are not out of pocket.
+      <%= t('application.costs.cost_types.10.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Other
+      <%= t('application.costs.cost_types.11.heading') %>
     </h3>
 
     <p class="govuk-body">
-      Please use for any costs that do not fit with any of the other cost
-      headings. Give a clear description of these costs.
+      <%= t('application.costs.cost_types.11.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Publicity and promotion
+      <%= t('application.costs.cost_types.12.heading') %>
     </h3>
 
     <p class="govuk-body">
-      You can include the costs of promotional materials that relate directly
-      to your project.
+      <%= t('application.costs.cost_types.12.text.1') %>
     </p>
 
     <p class="govuk-body">
-      Make sure that you acknowledge the support of the National Lottery.
+      <%= t('application.costs.cost_types.12.text.2') %>
     </p>
 
-    <h3 class="govuk-heading-s">
-      Evaluation
+     <h3 class="govuk-heading-s">
+      <%= t('application.costs.cost_types.13.heading') %>
     </h3>
 
     <p class="govuk-body">
-      This cost heading is mandatory. All projects must be evaluated. Our
-      advice is to budget up to 5% of your costs towards evaluation. Depending
-      on the scale of the project and how complicated it is, you may want to
-      employ somebody to help evaluate your project and assess whether you are
-      successfully achieving the outcomes you set out in your application.
+      <%= t('application.costs.cost_types.13.text.1') %>
     </p>
 
     <h3 class="govuk-heading-s">
-      Contingency
+      <%= t('application.costs.cost_types.14.heading') %>
     </h3>
 
     <p class="govuk-body">
-      This cost heading is mandatory. A contingency is only used to pay for
-      unexpected costs required to deliver your project. The total contingency
-      figure may be up to 10% of the total costs of the project, unless you
-      have a particularly complex capital project where a higher level may be
-      required. Make sure that you only include your required contingency here
-      and not included within the other cost headings in the application.
+      <%= t('application.costs.cost_types.14.text.1') %>
     </p>
 
   </div>
@@ -510,7 +476,9 @@
 
 <hr class="govuk-section-break--l govuk-section-break--visible">
 
-<p class="govuk-body">If you have finished adding all your costs</p>
+<p class="govuk-body">
+  <%= t('application.costs.text.8') %>
+</p>
 
 <%=
   form_with url: :funding_application_gp_project_confirm_costs,
