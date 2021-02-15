@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "How will your project involve a wider range of people?"
+             page_title: t('application.involvement.page_title')
          }
 %>
 
@@ -27,22 +27,20 @@
                              @funding_application.project.errors[:involvement_description].any? %>">
 
       <h1 class="govuk-label-wrapper">
-        <span class="govuk-caption-xl">About your project</span>
+        <span class="govuk-caption-xl"><%= t('views.funding_application.common.about_your_project') %></span>
         <%=
           f.label :involvement_description,
-                  "How will your project involve a wider range of people?",
+                  t('application.involvement.page_heading'),
                   class: "govuk-label govuk-label--xl"
         %>
       </h1>
 
       <div class="govuk-inset-text">
-        This is a mandatory outcome for all projects funded by The National
-        Lottery Heritage Fund.
+        <%= t('application.involvement.text.1') %>
       </div>
 
       <span id="project_involvement_description-hint" class="govuk-hint">
-        Your answer should tell us how you will reach new groups of people
-        through your project. Include evidence to support your plans.
+        <%= t('application.involvement.text.2') %>
       </span>
 
       <%=
@@ -66,7 +64,7 @@
       <span id="project_involvement_description-info"
             class="govuk-hint govuk-character-count__message"
             aria-live="polite">
-        You can enter up to 300 words
+        <%= t('generic.word_count', max_words: 300) %>
       </span>
 
     </div>
@@ -80,7 +78,7 @@
     <summary class="govuk-details__summary">
 
       <span class="govuk-details__summary-text">
-        Help answering this question
+        <%= t('application.involvement.text.3') %>
       </span>
 
     </summary>
@@ -88,14 +86,11 @@
     <div class="govuk-details__text">
 
       <p class="govuk-body">
-        Your answer should explain how your audience or volunteer profile will
-        have changed between the start - and end - of the project.
+        <%= t('application.involvement.text.4') %>
       <p>
 
       <p class="govuk-body">
-        It might include, for example, a broader range of ages, ethnicities
-        and social backgrounds, more disabled people, or groups who have never
-        engaged with your heritage before.
+        <%= t('application.involvement.text.5') %>
       </p>
 
     </div>

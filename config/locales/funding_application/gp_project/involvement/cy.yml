@@ -1,0 +1,11 @@
+cy:
+  application:
+    involvement:
+      page_title: "How will your project involve a wider range of people?"
+      page_heading: "How will your project involve a wider range of people?"
+      text:
+        1: "This is a mandatory outcome for all projects funded by The National Lottery Heritage Fund."
+        2: "Your answer should tell us how you will reach new groups of people through your project. Include evidence to support your plans."
+        3: "Help answering this question"
+        4: "Your answer should explain how your audience or volunteer profile will have changed between the start - and end - of the project."
+        5: "It might include, for example, a broader range of ages, ethnicities and social backgrounds, more disabled people, or groups who have never engaged with your heritage before."
