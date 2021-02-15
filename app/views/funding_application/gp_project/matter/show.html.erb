@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "Why is your project important to your community?"
+             page_title: t('application.matter.page_title')
          }
 %>
 
@@ -27,17 +27,16 @@
                                          @funding_application.project.errors[:matter].any? %>">
 
       <h1 class="govuk-label-wrapper">
-        <span class="govuk-caption-xl">About your project</span>
+        <span class="govuk-caption-xl"><%= t('views.funding_application.common.about_your_project') %></span>
         <%=
           f.label :matter,
-                  "Why is your project important to your community?",
+                   t('application.matter.page_heading'),
                   class: "govuk-label govuk-label--xl"
         %>
       </h1>
 
       <span id="project_description-hint" class="govuk-hint">
-        This helps us understand how engaged your community is with your
-        project and why it is important to them.
+        <%= t('application.matter.text.1') %>
       </span>
 
       <%=
@@ -59,7 +58,7 @@
       <span id="project_matter-info"
             class="govuk-hint govuk-character-count__message"
             aria-live="polite">
-        You can enter up to 500 words
+        <%= t('generic.word_count', max_words: 500) %>
       </span>
 
     </div>

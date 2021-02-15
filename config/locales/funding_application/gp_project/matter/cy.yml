@@ -1,0 +1,7 @@
+cy:
+  application:
+    matter:
+      page_title: "Why is your project important to your community?"
+      page_heading: "Why is your project important to your community?"
+      text:
+        1: "This helps us understand how engaged your community is with your project and why it is important to them."
