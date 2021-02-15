@@ -46,7 +46,12 @@
 
     </tr>
 
-    <%# Loop through all spend items, grouping by cost type, which may or may not have matching agreed project costs from Salesforce %>
+    <%#
+      Loop through all spend items, grouping by cost type, which may or may 
+      not have matching agreed project costs from Salesforce.
+      expr0 contains the result of a SOQL query to Salesforce, where we are
+      calculating the sum of costs beneath each cost heading.
+    %>
     <% @payment_request.spends.group_by(&:cost_type_id).each do |cost_type, spends| %>
 
       <tr class="govuk-table__row">
@@ -57,6 +62,10 @@
 
         <td class="govuk-table__cell govuk-table__cell--numeric">
 
+          <%#
+            First argument to number_to_currency is the sum of agreed project costs for the
+            dynamic cost heading from the loop
+          %>
           <%=
             number_to_currency(
               @agreed_project_costs.select {|a| a.Cost_heading__c == CostType.find_by_id(cost_type).name }.map(&:expr0).inject(0, &:+),
