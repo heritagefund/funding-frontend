@@ -132,7 +132,7 @@ module PaymentDetailsAndRequestHelper
 
     # TODO: Replace hard-coded Hash used in testing with above dynamic call to SalesforceApiClient
     {
-      'grant_award': 10001,
+      'grant_award': 100001,
       'grant_percentage': 100
     }
 
