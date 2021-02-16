@@ -1,0 +1,32 @@
+cy:
+  application:
+    cash_contributions:
+      page_title: "Cash contributions"
+      page_heading: "Cash contributions"
+      headings:
+        1: "Your cash contributions"
+        2: "Add a cash contribution"
+        3: "You have not added any cash contributions yet"
+        4: "Is this cash contribution secured?"
+        5: "What do we mean by cash contributions?"
+        6: "Do I need cash contributions?"
+        7: "What is a secured contribution?"
+      text:
+        1: "Evidence could be a letter from the contributor, or a copy of bank statements to show the funds."
+        2: "Help with cash contributions"
+        3: "Cash contributions include any additional funds you expect to receive for your project."
+        4: "You do not need to have cash contributions at this grant level, so don't worry if you cannot add anything to this section."
+        5: "However, if you tell us that you are getting money from elsewhere, we will need to see evidence of this, as it helps with our assessment."
+        6: "By secured we mean the cash in your bank account reserved specifically for this project, or grant money has been formally offered. You can add evidence later in your application."
+        7: "If you have finished adding all your cash contributions"
+      th:
+        1: "Description"
+        2: "Secured"
+      labels:
+        1: "Description"
+        2: "Yes and I can provide evidence"
+        3: "Yes but I do not have evidence yet"
+        4: "No"
+        5: "Not sure"
+      buttons:
+        1: "Add cash contribution"

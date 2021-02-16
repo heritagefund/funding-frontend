@@ -16,6 +16,7 @@ en-GB:
   generic:
     x_yes: "Yes"
     x_no: "No"
+    x_not_sure: "Not sure"
     choose_all_that_apply: "Choose all that apply"
     warning: "Warning"
     error: "Error"
@@ -26,12 +27,17 @@ en-GB:
     delete: "Delete"
     there_is_a_problem: "There is a problem"
     not_answered: "Not answered"
+    evidence_attached: "Evidence attached"
+    click_to_view_file: "Click to view file"
+    total: "Total"
+    amount: "Amount"
+    description: "Description"
     for_example: "for example"
   views:
     funding_application:
       common:
         about_your_project: "About your project"
-        support_for_your_project: "Support for your project"
+        support_for_your_project: "support for your project"
       gp_project:
         check_your_answers:
           not_answered: " Not Answered "

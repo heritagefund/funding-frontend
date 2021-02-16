@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "Cash contributions"
+             page_title: t('application.cash_contributions.page_title')
          }
 %>
 
@@ -13,7 +13,7 @@
        role="alert" tabindex="-1" data-module="govuk-error-summary">
 
     <h2 class="govuk-error-summary__title" id="error-summary-title">
-      There is a problem
+      <%= t('generic.there_is_a_problem') %>
     </h2>
 
     <div class="govuk-error-summary__body">
@@ -39,13 +39,19 @@
 
 <div id="summary-errors"></div>
 
-<span class="govuk-caption-xl">Support for your project</span>
-<h1 class="govuk-heading-xl">Cash contributions</h1>
+<span class="govuk-caption-xl">
+  <%= t('generic.views.funding_application.common.support_for_your_project') %>
+</span>
+<h1 class="govuk-heading-xl">
+  <%= t('application.cash_contributions.page_heading') %>
+</h1>
 
 <section class="nlhf-summary nlhf-summary--cash govuk-!-margin-bottom-9">
 
   <header class="nlhf-summary__header">
-    <h2 class="govuk-heading-m">Your cash contributions</h2>
+    <h2 class="govuk-heading-m">
+      <%= t('application.cash_contributions.headings.1') %>
+    </h2>
   </header>
 
   <div class="nlhf-summary__body">
@@ -53,7 +59,7 @@
     <% if @funding_application.project.cash_contributions.empty? %>
 
       <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
-        You have not added any cash contributions
+      <%= t('application.cash_contributions.headings.3') %>
       </h3>
 
     <% else %>
@@ -65,14 +71,15 @@
           <tr class="govuk-table__row">
 
             <th scope="col" class="govuk-table__header govuk-!-width-one-half">
-              Description
+              <%= t('application.cash_contributions.th.1') %>
             </th>
 
-            <th scope="col" class="govuk-table__header">Secured</th>
+            <th scope="col" class="govuk-table__header">
+              <%= t('application.cash_contributions.th.2') %>
+            </th>
 
-            <th scope="col"
-                class="govuk-table__header govuk-table__header--numeric">
-              Value
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric">
+              <%= t('application.cash_contributions.th.3') %>
             </th>
 
             <th scope="col" class="govuk-table__header"></th>
@@ -100,12 +107,12 @@
                   <div class="nlhf-!-break-word govuk-!-font-size-16">
                     <%=
                       link_to(
-                          "Evidence attached",
+                          t("generic.evidence_attached"),
                           rails_blob_path(
                               cc.cash_contribution_evidence_files,
                               disposition: "attachment"
                           ),
-                          title: "Click to view file: #{cc.cash_contribution_evidence_files.filename}"
+                          title: t('generic.click_to_view_file') + ": #{cc.cash_contribution_evidence_files.filename}"
                       )
                     %>
                   </div>
@@ -136,13 +143,7 @@
                       ButtonComponent.new(
                           element: "input",
                           classes: "govuk-button--warning",
-                          text: "Delete",
-                          attributes: [
-                              {
-                                  attribute: "aria-label",
-                                  value: "Delete button"
-                              }
-                          ]
+                          text: t('generic.delete')
                       )
                   )
                 %>
@@ -163,7 +164,9 @@
 
         <h3 class="nlhf-summary__total__title">
 
-          <span class="nlhf-summary__total__title-text">Total </span>
+          <span class="nlhf-summary__total__title-text">
+            <%= t('generic.total') %>
+          </span>
 
           <span class="nlhf-summary__total__title-val">
 
@@ -203,7 +206,9 @@
     <div class="nlhf-add-item govuk-!-margin-bottom-6">
 
       <header class="nlhf-add-item__header">
-        <h2 class="govuk-heading-l">Add a cash contribution</h2>
+        <h2 class="govuk-heading-l">
+          <%= t('application.cash_contributions.headings.2') %>
+        </h2>
       </header>
 
       <div class="nlhf-add-item__body">
@@ -229,6 +234,7 @@
 
               <%=
                 cc.label :description,
+                        t('generic.description'),
                          class: 'govuk-label'
               %>
 
@@ -269,12 +275,12 @@
 
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                 <h2 class="govuk-fieldset__heading">
-                  Is this cash contribution secured?
+                  <%= t('application.cash_contributions.headings.4') %>
                 </h2>
               </legend>
 
               <span id="cash-contribution-conditional-hint" class="govuk-hint">
-                Select one option.
+                <%= t('generic.select_one_option') %>
               </span>
 
               <div class="govuk-radios govuk-radios--conditional govuk-radios--small"
@@ -291,7 +297,7 @@
 
                   <%=
                     cc.label :secured_yes_with_evidence,
-                             'Yes and I can provide evidence'.html_safe,
+                             t('application.cash_contributions.labels.2').html_safe,
                              class: "govuk-label govuk-radios__label"
                   %>
 
@@ -319,9 +325,7 @@
 
                       <%=
                         cc.label :cash_contribution_evidence_files,
-                                 "Evidence could be a letter from the " \
-                                 "contributor, or a copy of bank statements to " \
-                                 "show the funds.",
+                                  t('application.cash_contributions.text.1'),
                                  class: 'govuk-caption-m govuk-!-margin-bottom-3'
                       %>
 
@@ -353,7 +357,7 @@
 
                   <%=
                     cc.label :secured_yes_no_evidence_yet,
-                             'Yes but I do not have evidence yet'.html_safe,
+                             t('application.cash_contributions.labels.3').html_safe,
                              class: "govuk-label govuk-radios__label"
                   %>
 
@@ -369,7 +373,7 @@
 
                   <%=
                     cc.label :secured_no,
-                             'No',
+                             t('generic.x_no'),
                              class: "govuk-label govuk-radios__label"
                   %>
 
@@ -385,7 +389,7 @@
 
                   <%=
                     cc.label :secured_x_not_sure,
-                             'Not sure',
+                             t('generic.x_not_sure'),
                              class: "govuk-label govuk-radios__label"
                   %>
 
@@ -418,6 +422,7 @@
 
             <%=
               cc.label :amount,
+                      t('generic.amount'),
                        class: 'govuk-label'
             %>
 
@@ -456,7 +461,7 @@
             render(
                 ButtonComponent.new(
                     element: "input",
-                    text: "Add cash contribution",
+                    text: t('application.cash_contributions.buttons.1'),
                     classes: "govuk-button--secondary"
                 )
             )
@@ -477,28 +482,26 @@
 
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-      Help with cash contributions
+      <%= t('application.cash_contributions.text.2') %>
     </span>
   </summary>
 
   <div class="govuk-details__text">
 
     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-      What do we mean by cash contributions?
+      <%= t('application.cash_contributions.headings.5') %>
     </h3>
 
     <p class="govuk-body">
-      Cash contributions include any additional funds you expect to receive for
-      your project.
+      <%= t('application.cash_contributions.text.3') %>
     </p>
     
     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-      Do I need cash contributions?
+      <%= t('application.cash_contributions.headings.6') %>
     </h3>
 
     <p class="govuk-body govuk-!-margin-bottom-3">
-      You do not need to have cash contributions at this grant level, so don't
-      worry if you cannot add anything to this section.
+      <%= t('application.cash_contributions.text.4') %>
     </p>
 
     <div class="govuk-warning-text govuk-!-margin-bottom-4">
@@ -506,21 +509,18 @@
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
 
       <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Warning</span>
-          However, if you tell us that you are getting money from elsewhere,
-        we will need to see evidence of this, as it helps with our assessment.
+        <span class="govuk-warning-text__assistive"><%= t('generic.warning') %></span>
+        <%= t('application.cash_contributions.text.5') %>
       </strong>
 
     </div>
 
     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-      What is a secured contribution?
+      <%= t('application.cash_contributions.headings.7') %>
     </h3>
 
     <p class="govuk-body">
-      By secured we mean the cash in your bank account reserved specifically
-      for this project, or grant money has been formally offered. You can add
-      evidence later in your application.
+        <%= t('application.cash_contributions.text.6') %>
     </p>
 
   </div>
@@ -533,7 +533,7 @@
       method="get">
 
   <p class="govuk-body">
-    If you have finished adding all your cash contributions
+        <%= t('application.cash_contributions.text.7') %>
   </p>
 
   <%= render(ButtonComponent.new(element: "input")) %>
