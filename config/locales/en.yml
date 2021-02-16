@@ -26,6 +26,7 @@ en-GB:
     delete: "Delete"
     there_is_a_problem: "There is a problem"
     not_answered: "Not answered"
+    for_example: "for example"
   views:
     funding_application:
       common:

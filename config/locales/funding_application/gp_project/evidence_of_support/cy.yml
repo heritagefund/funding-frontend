@@ -1,0 +1,28 @@
+cy:
+  application:
+    evidence_of_support:
+      page_title: "Evidence of support"
+      page_heading: "Evidence of support"
+      headings:
+        1: "Your evidence of support"
+        2: "Add evidence"
+        3: "What do we mean by evidence of support?"
+      text:
+        1: "Send us evidence to support the commitments made to your project."
+        2: "You have not added any evidence"
+        3: "Evidence could be letters, emails or videos from people that support your project."
+        4: "For example:"
+        5: "If you have finished adding all your evidence"
+        6: "Help with evidence of support"
+      li:
+        1: "A supportive letter from your local MP"
+        2: "An email from people involved in your project"
+        3: "A video from your local school"
+      labels:
+        1: "Describe the evidence you are providing"
+        2: "Upload a file"
+      th:
+        1: "Description"
+        2: "Files"
+      buttons:
+        1: "Add evidence"
