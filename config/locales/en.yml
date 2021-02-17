@@ -26,6 +26,7 @@ en-GB:
     select_one_option: "Select one option"
     delete: "Delete"
     there_is_a_problem: "There is a problem"
+    we_have_found_a_problem: "We have found a problem"
     not_answered: "Not answered"
     evidence_attached: "Evidence attached"
     click_to_view_file: "Click to view file"

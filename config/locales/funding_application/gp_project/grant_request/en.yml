@@ -1,0 +1,24 @@
+en-GB:
+  application:
+    grant_request:
+      page_title: "Your grant request"
+      page_heading: "Your grant request"
+      headings:
+        1: "How did we calculate this?"
+        2: "Your total project costs"
+        3: "Your cash contributions"
+        4: "Your grant request"
+      text:
+        1: "This is what you told us the total amount of money your whole project will cost."
+        2: "This is the amount of money you told us you will receive towards your project."
+        3: "We calculated your grant request by subtracting cash contributions for your project from the total amount of project costs."
+        4: "for your project"
+        5: "You have not added any project costs or cash contributions."
+        6: "Your cash contributions are"
+        7: "more than the total cost of your project."
+        8: "Your grant request is higher than &pound;10,000 which the maximum allowable for this funding programme."
+        9: "Please review your project costs and cash contributions."
+      links:
+        1: "Change project costs"
+        2: "Change cash contributions"
+        3: "See the calculation"
