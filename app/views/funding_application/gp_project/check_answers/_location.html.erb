@@ -6,7 +6,7 @@
 
     <% unless @funding_application.project.line1.present? %>
 
-      Not Answered
+    <%= t('generic.not_answered') %>
 
     <% else %>
 

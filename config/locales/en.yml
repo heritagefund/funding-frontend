@@ -23,21 +23,29 @@ en-GB:
     word_count: "You can enter up to %{max_words} words"
     words_remaining: "You have %{remaining_words} words remaining"
     upload_a_file: "Upload a file"
+    uploaded_file: "Uploaded file"
     select_one_option: "Select one option"
     delete: "Delete"
     there_is_a_problem: "There is a problem"
     we_have_found_a_problem: "We have found a problem"
     not_answered: "Not answered"
+    description: "Description"
+    amount: "Amount"
+    secured: "Secured"
     evidence_attached: "Evidence attached"
     click_to_view_file: "Click to view file"
     total: "Total"
-    amount: "Amount"
-    description: "Description"
+    change: "Change"
+    files: "Files"
+    not_sure: "Not sure"
+    hours: "Hours"
     for_example: "for example"
   views:
     funding_application:
       common:
         about_your_project: "About your project"
+        cost_type: "Cost type"
+        total_costs: "Total costs"
         support_for_your_project: "support for your project"
       gp_project:
         check_your_answers:

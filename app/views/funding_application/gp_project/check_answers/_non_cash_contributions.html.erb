@@ -11,8 +11,12 @@
       <thead class="govuk-table__head">
 
       <tr class="govuk-table__row">
-        <th scope="col" class="govuk-table__header">Description</th>
-        <th scope="col" class="govuk-table__header">Amount</th>
+        <th scope="col" class="govuk-table__header">
+          <%= t('generic.description') %>
+        </th>
+        <th scope="col" class="govuk-table__header">
+          <%= t('generic.amount') %>
+        </th>
       </tr>
 
       </thead>
@@ -27,7 +31,9 @@
       <% end %>
 
       <tr>
-        <td class="govuk-heading-s govuk-!-padding-top-3">Total</td>
+        <td class="govuk-heading-s govuk-!-padding-top-3">
+          <%= t('generic.total') %>
+        </td>
         <td class="govuk-table__cell--numeric"><%= number_to_currency(calculate_total(@funding_application.project.non_cash_contributions), strip_insignificant_zeros: true) %></td>
       </tr>
 

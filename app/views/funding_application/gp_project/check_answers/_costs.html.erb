@@ -11,9 +11,9 @@
       <thead class="govuk-table__head">
 
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Cost Type</th>
-          <th scope="col" class="govuk-table__header">Description</th>
-          <th scope="col" class="govuk-table__header">Amount</th>
+          <th scope="col" class="govuk-table__header"><%= t('views.funding_application.common.cost_type') %></th>
+          <th scope="col" class="govuk-table__header"><%= t('generic.description') %></th>
+          <th scope="col" class="govuk-table__header"><%= t('generic.amount') %></th>
         </tr>
 
       </thead>
@@ -30,7 +30,9 @@
 
         <tr>
           <td></td>
-          <td class="govuk-heading-s govuk-!-padding-top-3">Total costs</td>
+          <td class="govuk-heading-s govuk-!-padding-top-3">
+            <%= t('views.funding_application.common.total_costs') %>
+          </td>
           <td class="govuk-table__cell--numeric"><%= number_to_currency(calculate_total(@funding_application.project.project_costs), strip_insignificant_zeros: true) %></td>
         </tr>
 

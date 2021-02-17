@@ -11,9 +11,15 @@
       <thead class="govuk-table__head">
 
       <tr class="govuk-table__row">
-        <th scope="col" class="govuk-table__header">Description</th>
-        <th scope="col" class="govuk-table__header">Secured</th>
-        <th scope="col" class="govuk-table__header">Amount</th>
+        <th scope="col" class="govuk-table__header">
+          <%= t('generic.description') %>
+        </th>
+        <th scope="col" class="govuk-table__header">
+          <%= t('generic.secured') %>
+        </th>
+        <th scope="col" class="govuk-table__header">
+          <%= t('generic.amount') %>
+        </th>
       </tr>
 
       </thead>
@@ -31,12 +37,12 @@
               <div class="nlhf-!-break-word govuk-!-font-size-16">
                 <%=
                   link_to(
-                      "Evidence attached",
+                      t('generic.evidence_attached'),
                       rails_blob_path(
                           cc.cash_contribution_evidence_files,
                           disposition: "attachment"
                       ),
-                      title: "Click to view file: #{cc.cash_contribution_evidence_files.filename}"
+                      title: t('generic.click_to_view_file') + ": #{cc.cash_contribution_evidence_files.filename}"
                   )
                 %>
               </div>
@@ -49,7 +55,7 @@
 
       <tr>
         <td></td>
-        <td class="govuk-heading-s govuk-!-padding-top-3">Total</td>
+        <td class="govuk-heading-s govuk-!-padding-top-3"><%= t('generic.total') %></td>
         <td class="govuk-table__cell--numeric"><%= number_to_currency(calculate_total(@funding_application.project.cash_contributions), strip_insignificant_zeros: true) %></td>
       </tr>
 

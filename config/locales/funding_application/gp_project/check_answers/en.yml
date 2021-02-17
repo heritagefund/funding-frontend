@@ -1,0 +1,7 @@
+en-GB:
+  application:
+    check_answers:
+      page_title: "Check your answers"
+      page_heading: "Check your answers"
+      text:
+        1: "answer to"

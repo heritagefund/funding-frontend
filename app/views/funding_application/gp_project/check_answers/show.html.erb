@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @funding_application.project,
-             page_title: "Check your answers"
+             page_title: t('application.check_answers.page_title')
          }
 %>
 
@@ -14,7 +14,9 @@
          } if @funding_application.project.errors.any?
 %>
 
-<span class="govuk-caption-xl">About your project</span>
+<span class="govuk-caption-xl">
+  <%= t('views.funding_application.common.about_your_project') %>
+</span>
 <h1 class="govuk-heading-xl"><%= t('views.funding_application.gp_project.check_your_answers.page_title') %></h1>
 
 <dl class="govuk-summary-list">

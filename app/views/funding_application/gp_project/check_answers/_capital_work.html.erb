@@ -9,7 +9,7 @@
     <% if @funding_application.project.capital_work_file.present? %>
       <br />
       <p class="govuk-body">
-        Uploaded file: <%= link_to(@funding_application.project.capital_work_file.blob.filename,
+        <%= t('generic.uploaded_file') %>: <%= link_to(@funding_application.project.capital_work_file.blob.filename,
                                    rails_blob_path(@funding_application.project.capital_work_file,
                                                    disposition: "attachment"))
       %>
