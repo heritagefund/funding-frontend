@@ -51,6 +51,8 @@
   <%= t('application.evidence_of_support.text.1') %>
 </p>
 
+<a href="#add-evidence-section" class="govuk-skip-link">Skip to add your evidence of support</a>
+
 <section class="nlhf-summary nlhf-summary--evidence govuk-!-margin-bottom-9">
 
   <header class="nlhf-summary__header">
@@ -161,7 +163,38 @@
 
     <div class="nlhf-add-item__body">
 
-      <div class="nlhf-add-item__row">
+      <div class="govuk-inset-text">
+        <div class="nlhf-add-item__row" id="add-evidence-section">
+
+            <a href="#add-evidence-form" class="govuk-skip-link">Skip to the evidence of support form</a>
+        
+            <h4 class="govuk-heading-m"><%= t('application.evidence_of_support.headings.3') %></h4>
+
+            <p class="govuk-body">
+              <%= t('application.evidence_of_support.text.3') %>
+            </p> 
+
+            <p class="govuk-body">
+              <%= t('generic.for_example') %>
+            </p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                <%= t('application.evidence_of_support.li.1') %>
+              </li>
+              <li>
+                <%= t('application.evidence_of_support.li.2') %>
+              </li>
+              <li>
+                <%= t('application.evidence_of_support.li.3') %>
+              </li>
+            </ul>
+        
+        </div>
+      </div>
+
+
+      <div class="nlhf-add-item__row" id="add-evidence-form">
 
         <div class="govuk-character-count" data-module="govuk-character-count"
              data-maxwords="50">
@@ -180,7 +213,7 @@
 
             <div id="evidence_of_support.description-errors"></div>
 
-            <label class="govuk-label" for="evidence-description">
+            <label class="govuk-label govuk-!-font-weight-bold" for="evidence-description">
               <%= t('application.evidence_of_support.labels.1') %>
             </label>
 
@@ -265,42 +298,6 @@
   </div>
     <% end %>
 <% end %>
-
-<details class="govuk-details" data-module="govuk-details">
-
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      <%= t('application.evidence_of_support.text.6') %>
-    </span>
-  </summary>
-
-  <div class="govuk-details__text">
-
-    <h4 class="govuk-heading-m"><%= t('application.evidence_of_support.headings.3') %></h4>
-
-    <p class="govuk-body">
-      <%= t('application.evidence_of_support.text.3') %>
-    </p> 
-
-    <p class="govuk-body">
-      <%= t('generic.for_example') %>
-    </p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <%= t('application.evidence_of_support.li.1') %>
-      </li>
-      <li>
-        <%= t('application.evidence_of_support.li.2') %>
-      </li>
-      <li>
-        <%= t('application.evidence_of_support.li.3') %>
-      </li>
-    </ul>
-
-  </div>
-
-</details>
 
 <hr class="govuk-section-break--l govuk-section-break--visible">
 
