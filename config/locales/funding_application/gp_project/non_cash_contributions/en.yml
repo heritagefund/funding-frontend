@@ -14,7 +14,6 @@ en-GB:
         3: "If you have finished adding all your non-cash contributions"
         4: "Total estimated value"
         5: "An estimate of how much this would have cost if your project had to pay for it"
-        6: "Help with non-cash contributions"
       buttons:
         1: "Add non-cash contribution"
       th:
