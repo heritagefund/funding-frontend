@@ -3,7 +3,6 @@ en-GB:
     page_title: "Enter your organisation's bank details"
     page_heading: "Enter your organisation's bank details"
     name_on_account_label: "Name on account"
-    sort_code_label: "Sort code"
     account_number_label: "Account number"
     account_paid_into: "This is the account your grant will be paid into."
     sort_code_hint: "Must be 6 digits long"

@@ -8,6 +8,8 @@ en-GB:
     name_on_account: "Name on account"
     account_number: "Account number"
     sort_code: "Sort code"
+    building_society_roll_number: "Building society roll number"
+    payment_reference: "Payment reference"
     evidence_file_label: "Upload evidence of bank account"
     no_evidence_uploaded: "You have not added evidence of your bank account"
     evidence_file: "Evidence of bank account file"

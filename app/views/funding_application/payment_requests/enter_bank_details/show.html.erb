@@ -19,7 +19,7 @@
   form_with model: @funding_application.payment_details,
   url: :funding_application_payment_request_bank_details,
   method: :put,
-  local: true do |f|
+  local: true do | f |
 %>
 
   <div class="govuk-form-group">
@@ -32,13 +32,13 @@
         </h1>
       </legend>
 
-      <span id="account_paid_into-hint" class="govuk-hint">
+      <div id="account_paid_into-hint" class="govuk-hint">
         <%= t('payment_details.account_paid_into') %>
-      </span>
+      </div>
 
       <div class="govuk-form-group <%= 'govuk-form-group--error' if @funding_application.payment_details.errors[:account_name].present? %>">
 
-        <%= f.label :account_name, t('payment_details.name_on_account_label'), class: "govuk-heading-m" %>
+        <%= f.label :account_name, t('payment_details.name_on_account_label'), class: "govuk-label" %>
 
         <%=
           render partial: "partials/form_input_errors",
@@ -50,7 +50,7 @@
 
         <%=
           f.text_field :account_name,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:account_name].present?}",
+                        class: "govuk-input #{'govuk-input--error' if @funding_application.payment_details.errors[:account_name].present?}",
                           'aria-describedby' => 'account_paid_into-hint',
                           value: @funding_application.payment_details.decrypt_account_name, "autocomplete" => "off"
         %>
@@ -59,7 +59,7 @@
 
       <div class="govuk-form-group <%= 'govuk-form-group--error' if @funding_application.payment_details.errors[:sort_code].present? %>">
 
-        <%= f.label :sort_code, t('payment_details.sort_code_label'), class: "govuk-heading-m" %>
+        <%= f.label :sort_code, t('payment_details.sort_code_label'), class: "govuk-label" %>
 
         <span id="sort_code_hint" class="govuk-hint">
           <%= t('payment_details.sort_code_hint') %>
@@ -75,7 +75,7 @@
 
         <%=
           f.text_field :sort_code,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:sort_code].present?}", 
+                        class: "govuk-input govuk-input--width-5 #{'govuk-input--error' if @funding_application.payment_details.errors[:sort_code].present?}", 
                          'aria-describedby' => 'sort_code_hint',
                             value: @funding_application.payment_details.decrypt_sort_code, "autocomplete" => "off", "spellcheck" => "false"
         %>
@@ -84,7 +84,7 @@
 
       <div class="govuk-form-group <%= 'govuk-form-group--error' if @funding_application.payment_details.errors[:account_number].present? %>">
 
-        <%= f.label :account_number, t('payment_details.account_number_label'), class: "govuk-heading-m" %>
+        <%= f.label :account_number, t('payment_details.account_number_label'), class: "govuk-label" %>
 
         <span id="account_number_hint" class="govuk-hint">
           <%= t('payment_details.account_number_hint') %>
@@ -100,7 +100,7 @@
 
         <%=
           f.text_field :account_number,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:account_number].present?}",
+                        class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if @funding_application.payment_details.errors[:account_number].present?}",
                           'aria-describedby' => 'account_number_hint',
                             value: @funding_application.payment_details.decrypt_account_number, "autocomplete" => "off", "spellcheck" => "false"
         %>
@@ -109,7 +109,7 @@
 
       <div class="govuk-form-group <%= 'govuk-form-group--error' if @funding_application.payment_details.errors[:building_society_roll_number].present? %>">
 
-        <%= f.label :building_society_roll_number, t('payment_details.building_society_roll_number_label'), class: "govuk-heading-m" %>
+        <%= f.label :building_society_roll_number, t('payment_details.building_society_roll_number_label'), class: "govuk-label" %>
 
         <span id="building_society_roll_number_hint" class="govuk-hint">
           <%= t('payment_details.building_society_roll_number_hint') %>
@@ -125,7 +125,7 @@
 
         <%=
           f.text_field :building_society_roll_number,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @funding_application.payment_details.errors[:building_society_roll_number].present?}",
+                        class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if @funding_application.payment_details.errors[:building_society_roll_number].present?}",
                           'aria-describedby' => 'building_society_roll_number_hint',
                             value: @funding_application.payment_details.decrypt_building_society_roll_number, "autocomplete" => "off", "spellcheck" => "false"
         %>
@@ -134,7 +134,7 @@
 
       <div class="govuk-form-group <%= 'govuk-form-group--error' if @funding_application.payment_details.errors[:payment_reference].present? %>">
 
-        <%= f.label :payment_reference, t('payment_details.payment_reference_label'), class: "govuk-heading-m" %>
+        <%= f.label :payment_reference, t('payment_details.payment_reference_label'), class: "govuk-label" %>
 
         <span id="payment_reference_hint"class="govuk-hint">
           <%= t('payment_details.payment_reference_hint') %>

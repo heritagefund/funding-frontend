@@ -34,58 +34,89 @@
   <%= t('payment_confirm_details.page_sub_heading') %>
 </h2>
 
-<table class="govuk-table">
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row"  id="name-row">
+    <dt class="govuk-summary-list__key">
+      <%= t('payment_confirm_details.name_on_account') %>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <%= @funding_application.payment_details.decrypt_account_name %>
+    </dd>
 
-    <thead class="govuk-table__head">
-
-        <tr class="govuk-table__row">
-
-            <th scope="col" class="govuk-table__header">
-              <%= t('payment_confirm_details.name_on_account') %>
-            </th>
-
-            <th scope="col" class="govuk-table__header govuk-table__header--numeric">
-              <%= t('payment_confirm_details.account_number') %>
-            </th>
-
-            <th scope="col" class="govuk-table__header govuk-table__header--numeric">
-              <%= t('payment_confirm_details.sort_code') %>
-            </th>
-
-        </tr>
-
-    </thead>
-
-    <tbody class="govuk-table__body">
-
-        <tr class="govuk-table__row">
-
-            <td class="govuk-table__cell">
-              <%= @funding_application.payment_details.decrypt_account_name %>
-            </td>
-
-            <td class="govuk-table__cell govuk-table__cell--numeric">
-              <%= @funding_application.payment_details.decrypt_account_number %>
-            </td>
-
-            <td class="govuk-table__cell govuk-table__cell--numeric">
-              <%= @funding_application.payment_details.decrypt_sort_code %>
-            </td>
-
-        </tr>
-
-    </tbody>
-
-</table>
-
-<p class="govuk-body">
-  <%=
-    link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
-      #{t('payment_confirm_details.change_span')}</span>".html_safe,
-            :funding_application_payment_request_bank_details,
-            class: "govuk-link govuk-link--no-visited-state"
-  %>
-</p>
+    <dd class="govuk-summary-list__actions">
+      <%=
+        link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
+          #{t('payment_confirm_details.change_span')} #{t('payment_confirm_details.name_on_account')}</span>".html_safe,
+                :funding_application_payment_request_bank_details,
+                class: "govuk-link govuk-link--no-visited-state"
+      %>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row" id="sort-code-row">
+    <dt class="govuk-summary-list__key">
+      <%= t('generic.sort_code') %>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <%= @funding_application.payment_details.decrypt_sort_code %>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <%=
+        link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
+          #{t('payment_confirm_details.change_span')} #{t('generic.sort_code')}</span>".html_safe,
+                :funding_application_payment_request_bank_details,
+                class: "govuk-link govuk-link--no-visited-state"
+      %>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row" id="account-number-row">
+    <dt class="govuk-summary-list__key">
+      <%= t('generic.account_number') %>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <%= @funding_application.payment_details.decrypt_account_number %>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <%=
+        link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
+          #{t('payment_confirm_details.change_span')} #{t('generic.account_number')}</span>".html_safe,
+                :funding_application_payment_request_bank_details,
+                class: "govuk-link govuk-link--no-visited-state"
+      %>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row" id="building-society-roll-number-row">
+    <dt class="govuk-summary-list__key">
+      <%= t('payment_confirm_details.building_society_roll_number') %>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <%= @funding_application.payment_details.decrypt_building_society_roll_number %>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <%=
+        link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
+          #{t('payment_confirm_details.change_span')} #{t('generic.sort_code')}</span>".html_safe,
+                :funding_application_payment_request_bank_details,
+                class: "govuk-link govuk-link--no-visited-state"
+      %>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row" id="payment-reference-row">
+    <dt class="govuk-summary-list__key">
+      <%= t('payment_confirm_details.payment_reference') %>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <%= @funding_application.payment_details.decrypt_payment_reference %>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <%=
+        link_to "#{t('payment_confirm_details.change')}<span class='govuk-visually-hidden'>
+          #{t('payment_confirm_details.change_span')} #{t('generic.sort_code')}</span>".html_safe,
+                :funding_application_payment_request_bank_details,
+                class: "govuk-link govuk-link--no-visited-state"
+      %>
+    </dd>
+  </div>
+</dl>
 
 <%=
   form_with model: @funding_application.payment_details,

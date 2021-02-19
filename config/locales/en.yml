@@ -40,6 +40,9 @@ en-GB:
     not_sure: "Not sure"
     hours: "Hours"
     for_example: "for example"
+    sort_code: "Sort code"
+    account_number: "Account number"
+    if_you_have_one: "if you have one"
   views:
     funding_application:
       common:
