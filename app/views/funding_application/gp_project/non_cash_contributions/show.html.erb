@@ -266,7 +266,7 @@
                 <%=
                   ncc.text_field :amount,
                                    min: 1,
-                                   class: "govuk-input #{'govuk-input--error' if
+                                   class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if
                                        @funding_application.project.errors['non_cash_contributions.amount'].any?}",
                                    "autocomplete" => "off",
                                    value: "#{flash[:amount] if flash[:amount].present?}"

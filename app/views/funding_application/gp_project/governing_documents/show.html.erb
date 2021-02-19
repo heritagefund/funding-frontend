@@ -39,6 +39,37 @@
           <%= I18n.t("governing_document.before_we_assess") %>
         </p>
 
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                <%= I18n.t("governing_document.what_is_a_governing_document") %>
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+
+                <p class="govuk-body">
+                  <%= I18n.t("governing_document.what_is_para_1") %>
+                </p>
+
+                <p class="govuk-body">
+                  <%= I18n.t("governing_document.what_is_para_2") %>
+                </p>
+
+                <p class="govuk-body">
+                  <%= I18n.t("governing_document.what_is_para_3") %>
+                </p>
+
+                <p class="govuk-body">
+                  <%= I18n.t("governing_document.what_is_para_4") %>
+                </p>
+
+                <p class="govuk-body">
+                  <%= I18n.t("governing_document.the_charity_commission") %> <%= link_to(t("governing_document.guidance_href_text"), "https://www.gov.uk/guidance/how-to-write-your-charitys-governing-document", target: "_blank") %>.
+                </p>
+
+            </div>
+        </details>        
+
         <p class="govuk-heading-s">
           <%= I18n.t("governing_document.we_do_not_need") %>
         </p>
@@ -153,14 +184,14 @@
               </tr>
               </thead>
               <tbody class="govuk-table__body">
-              <tr>
-                <td>
-                  <%= link_to(@funding_application.project.governing_document_file.blob.filename,
-                              rails_blob_path(@funding_application.project.governing_document_file,
-                                              disposition: "attachment"))
-                  %>
-                </td>
-              </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <%= link_to(@funding_application.project.governing_document_file.blob.filename,
+                                rails_blob_path(@funding_application.project.governing_document_file,
+                                                disposition: "attachment"))
+                    %>
+                  </td>
+                </tr>
               </tbody>
             </table>
 
@@ -180,37 +211,6 @@
   %>
 
   <% end %>
-
-    <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-            <%= I18n.t("governing_document.what_is_a_governing_document") %>
-            </span>
-        </summary>
-        <div class="govuk-details__text">
-
-            <p class="govuk-body">
-              <%= I18n.t("governing_document.what_is_para_1") %>
-            </p>
-
-            <p class="govuk-body">
-              <%= I18n.t("governing_document.what_is_para_2") %>
-            </p>
-
-            <p class="govuk-body">
-              <%= I18n.t("governing_document.what_is_para_3") %>
-            </p>
-
-            <p class="govuk-body">
-              <%= I18n.t("governing_document.what_is_para_4") %>
-            </p>
-
-            <p class="govuk-body">
-              <%= I18n.t("governing_document.the_charity_commission") %> <%= link_to(t("governing_document.guidance_href_text"), "https://www.gov.uk/guidance/how-to-write-your-charitys-governing-document", target: "_blank") %>.
-            </p>
-
-        </div>
-    </details>
 
 </div>
 <!-- /# governing-documents-form-group-main -->
