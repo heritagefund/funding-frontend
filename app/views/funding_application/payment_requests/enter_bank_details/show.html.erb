@@ -59,7 +59,7 @@
 
       <div class="govuk-form-group <%= 'govuk-form-group--error' if @funding_application.payment_details.errors[:sort_code].present? %>">
 
-        <%= f.label :sort_code, t('payment_details.sort_code_label'), class: "govuk-label" %>
+        <%= f.label :sort_code, t('generic.sort_code'), class: "govuk-label" %>
 
         <span id="sort_code_hint" class="govuk-hint">
           <%= t('payment_details.sort_code_hint') %>

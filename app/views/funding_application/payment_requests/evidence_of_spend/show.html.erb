@@ -27,15 +27,13 @@
 <% else %>
 
   <table class="govuk-table nlhf-table nlhf-table--responsive-columns" role="table">
-
     <thead class="govuk-table__head nlhf-table__head">
-
       <tr class="govuk-table__row nlhf-table__row">
         <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
           Things you have spent money on
         </th>
         <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
-          Date of spend
+          Date
         </th>
         <th scope="col" role="columnheader" class="govuk-table__header nlhf-table__header">
           Net amount
@@ -50,52 +48,37 @@
           Actions
         </th>
       </tr>
-
     </thead>
-
     <tbody class="govuk-table__body nlhf-table__body">
 
       <% @payment_request.spends.each do |s| %>
 
         <tr class="govuk-table__row nlhf-table__row">
 
-          <td class="govuk-table__cell nlhf-table__cell nlhf-table__cell-stacked-until-tablet">
+          <td class="govuk-table__cell nlhf-table__cell nlhf-table__cell-stacked-until-desktop nlhf-table__header">
             <div class="nlhf-table__cell-data">
               <div class="nlhf-table__cell-data__item">
-                <p class="govuk-body govuk-!-font-weight-bold">
-                  Type of spend
-                </p>
-                <p class="govuk-body">
-                  <%= s.cost_type.name %>
-                </p>
+                <strong>Spend type: <%= s.cost_type.name %></strong>
               </div>
               <div class="nlhf-table__cell-data__item">
-                <p class="govuk-body govuk-!-font-weight-bold">
-                  Description of spend
-                </p>
-                <p class="govuk-body">
-                  <%= s.description %>
-                </p>
+                <%= s.description %>
               </div>
               <div class="nlhf-table__cell-data__item">
-                <p class="govuk-body govuk-!-font-weight-bold">
-                  Evidence of spend
-                </p>
-                <p class="govuk-body">
-                  <%= 
-                    link_to(
-                      s.evidence_of_spend_file.blob.filename,
-                      rails_blob_path(
-                        s.evidence_of_spend_file,
-                        disposition: "attachment"
-                      )
-                    )
-                  %>
-                </p>
+                <strong>Evidence of spend: 
+                      <%= 
+                        link_to(
+                          s.evidence_of_spend_file.blob.filename,
+                          rails_blob_path(
+                            s.evidence_of_spend_file,
+                            disposition: "attachment"
+                          ),
+                          class: "govuk-link govuk-link--no-visited-state nlhf-table__cell__link"
+                        )
+                      %>
+                </strong>
               </div>
             </div>
           </td>
-
           <td class="govuk-table__cell nlhf-table__cell">
 
             <div class="nlhf-table__col-header" aria-hidden="true">

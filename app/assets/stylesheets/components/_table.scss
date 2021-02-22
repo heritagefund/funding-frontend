@@ -14,6 +14,7 @@
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
+          flex-wrap: nowrap;
           width: 100%;
           @media (min-width: 768px) {
             flex-direction: row;
@@ -21,7 +22,7 @@
         }
         
         .nlhf-table__header, .nlhf-table__cell {
-            flex: 1 0 0;
+            flex: 1 0 auto;
             &-data__item {
                 &:not(:last-child) {
                     margin-bottom: 0.75em;
@@ -29,7 +30,7 @@
             }
         }  
         
-        @include govuk-media-query($until: tablet) {
+        @include govuk-media-query($until: desktop) {
             .nlhf-table__body {
                 .nlhf-table__row {
                     border: 2px solid #000;
@@ -40,7 +41,7 @@
                     display: flex;
                 }  
                 .nlhf-table__cell {
-                    &-stacked-until-tablet{
+                    &-stacked-until-desktop{
                         display: block;
                         .nlhf-table__col-header,
                         .nlhf-table__cell-data {
@@ -56,19 +57,18 @@
                     }
                 }
             }
-        }
-            
-        .nlhf-table__body {
-            .nlhf-table__col-header {
-                flex: 0 0 140px;
-                width: 140px;
-                padding: 1em;
-                margin: -1em 1em -1em -1em;
-                font-weight: bold;
-            }
-        }        
+            .nlhf-table__body {
+                .nlhf-table__col-header {
+                    flex: 0 0 140px;
+                    width: 140px;
+                    padding: 1em;
+                    margin: -1em 1em -1em -1em;
+                    font-weight: bold;
+                }
+            }  
+        }      
 
-        @include govuk-media-query($until: tablet) {
+        @include govuk-media-query($until: desktop) {
             // even if table headers are visually hidden, 
             // it's necessary to set row as block level to 
             // avoid weird bug on VoiceOver
@@ -81,10 +81,10 @@
         }
 
 
-        @include govuk-media-query($from: tablet) {
+        @include govuk-media-query($from: desktop) {
             /* HIDE INVIDUAL CELL HEADING */
             .nlhf-table__body .nlhf-table__col-header {
-            display: none;
+                display: none;
             }
         }
         
@@ -105,5 +105,45 @@
     &-link {
         display: inline-block;
         padding: 0.2em 0;
+        word-break: break-all;
+    }
+}
+
+@include govuk-media-query($from: desktop) {
+    .nlhf-table__cell,
+    .nlhf-table__header {
+        &:not(:first-child) {
+            border-left: 2px dotted $govuk-border-colour;
+        }
+        border-color: $govuk-border-colour; // border fall back for older browser that which don't support rgba
+        border-color: rgba($govuk-border-colour,0.7);
+        padding: 0.5em;
+    }
+    // here I'm using Sass to generate what is known as a 'quantity query'
+    // so that I can set widths of th, td's based on the number of them
+    // that a present. This prevents the need for hard-coded classes
+    // see: https://alistapart.com/article/quantity-queries-for-css/
+    .nlhf-table {
+        @for $i from 1 through 10 {
+            $width: percentage(1 / $i);
+            td {
+                &:nth-last-child(n+#{$i}),
+                &:nth-last-child(n+#{$i}) ~ td {
+                    width: $width;
+                }
+            }
+            th {
+                &:nth-last-child(n+#{$i}),
+                &:nth-last-child(n+#{$i}) ~ th {
+                    width: $width;
+                }
+            }
+        }
+    }
+}
+
+.nlhf-table__cell {
+    &__link {
+        word-break: break-all;
     }
 }
