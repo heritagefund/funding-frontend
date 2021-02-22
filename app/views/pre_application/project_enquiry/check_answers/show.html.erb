@@ -46,10 +46,6 @@
             text: t('pa_project_enquiry.check_answers.buttons.submit'),
             attributes: [
                 {
-                    attribute: "aria-label",
-                    value: "Submit Project Enquiry Form button"
-                },
-                {
                     attribute: ("disabled" unless Flipper.enabled?(:project_enquiries_enabled)),
                     value: ("disabled" unless Flipper.enabled?(:project_enquiries_enabled))
                 }

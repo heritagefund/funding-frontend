@@ -46,10 +46,6 @@
             text: t('pa_expression_of_interest.check_answers.buttons.submit'),
             attributes: [
                 {
-                    attribute: "aria-label",
-                    value: "Submit Expression of Interest button"
-                },
-                {
                     attribute: ("disabled" unless Flipper.enabled?(:expressions_of_interest_enabled)),
                     value: ("disabled" unless Flipper.enabled?(:expressions_of_interest_enabled))
                 }
