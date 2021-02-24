@@ -39,6 +39,22 @@
         <%= t('application.involvement.text.1') %>
       </div>
 
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            <%= t('application.involvement.text.3') %>
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">
+            <%= t('application.involvement.text.4') %>
+          <p>
+          <p class="govuk-body">
+            <%= t('application.involvement.text.5') %>
+          </p>
+        </div>
+      </details>
+
       <span id="project_involvement_description-hint" class="govuk-hint">
         <%= t('application.involvement.text.2') %>
       </span>
@@ -72,29 +88,5 @@
   </div>
 
   <%= render(ButtonComponent.new(element: "input")) %>
-
-  <details class="govuk-details" data-module="govuk-details">
-
-    <summary class="govuk-details__summary">
-
-      <span class="govuk-details__summary-text">
-        <%= t('application.involvement.text.3') %>
-      </span>
-
-    </summary>
-
-    <div class="govuk-details__text">
-
-      <p class="govuk-body">
-        <%= t('application.involvement.text.4') %>
-      <p>
-
-      <p class="govuk-body">
-        <%= t('application.involvement.text.5') %>
-      </p>
-
-    </div>
-
-  </details>
 
 <% end %>
