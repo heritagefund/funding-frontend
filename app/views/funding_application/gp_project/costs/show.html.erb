@@ -198,130 +198,6 @@
   <%= t('application.costs.text.5') %>
 </p>
 
-<%=
-  form_with model: @funding_application.project,
-            url: :funding_application_gp_project_costs,
-            class: "govuk-!-margin-bottom-3",
-            method: :put, local: true do |f|
-%>
-
-  <%= f.fields_for :project_costs, @funding_application.project.project_costs.build do |pc| %>
-
-    <div class="govuk-form-group govuk-!-margin-top-3 <%= "govuk-form-group--error" if @funding_application.project.errors['project_costs.cost_type'].any? %>">
-
-      <%=
-        render partial: "partials/form_input_errors",
-               locals: {
-                   form_object: @funding_application.project,
-                   input_field_id: :'project_costs.cost_type'} if
-            @funding_application.project.errors['project_costs.cost_type'].any?
-      %>
-
-      <%=
-        pc.label :cost_type,
-                 class: 'govuk-label'
-      %>
-
-      <%= pc.select :cost_type,
-                    options_for_select(ProjectCost.cost_types.map { |k, _v| [k.humanize.capitalize, k] },
-                                       flash['cost_type']),
-                    {},
-                    { class: 'govuk-select' }
-      %>
-
-    </div>
-
-    <div class="govuk-character-count" data-module="govuk-character-count"
-         data-maxwords="50">
-
-      <div class="govuk-form-group <%= "govuk-form-group--error" if
-                                           @funding_application.project.errors['project_costs.description'].any? %>">
-
-        <%=
-          render partial: "partials/form_input_errors",
-                 locals: {
-                     form_object: @funding_application.project,
-                     input_field_id: :'project_costs.description'} if
-              @funding_application.project.errors['project_costs.description'].any?
-        %>
-
-        <%=
-          pc.label :description,
-                   class: 'govuk-label'
-        %>
-
-        <%=
-          pc.text_area :description,
-                       class: "govuk-textarea govuk-js-character-count #{'govuk-textarea--error' if @funding_application.project.errors['project_costs.description'].any?}",
-                       rows: 5,
-                       value: "#{flash[:description] if
-                           flash[:description].present?}"
-        %>
-
-        <span id="project_project_costs_attributes_0_description-info"
-              class="govuk-hint govuk-character-count__message"
-              aria-live="polite">
-            <%= t('generic.word_count', max_words: 500) %>
-        </span>
-
-      </div>
-
-    </div>
-
-    <div class="govuk-form-group <%= "govuk-form-group--error" if
-                                         @funding_application.project.errors['project_costs.amount'].any? %>">
-
-      <%=
-        render partial: "partials/form_input_errors",
-               locals: {
-                   form_object: @funding_application.project,
-                   input_field_id: :'project_costs.amount'} if
-            @funding_application.project.errors['project_costs.amount'].any? %>
-
-      <%=
-        pc.label :amount,
-                 class: 'govuk-label'
-      %>
-
-      <span id="cost-amount-hint" class="govuk-hint">
-        <%= t('application.costs.text.6') %>
-      </span>
-
-      <div class="nlhf-currency-denote">
-
-        <div class="nlhf-currency-denote__symbol">
-          &pound;
-        </div>
-
-        <div class="nlhf-currency-denote__capture">
-
-          <%=
-            pc.text_field :amount,
-                          "autocomplete" => "off",
-                          class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if @funding_application.project.errors['project_costs.amount'].any?}",
-                          value: "#{flash[:amount] if flash[:amount].present?}"
-          %>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <%=
-      render(
-          ButtonComponent.new(
-              element: "input",
-              text: t('application.costs.buttons.1'),
-              classes: "govuk-button--secondary"
-          )
-      )
-    %>
-
-  <% end %>
-
-<% end %>
-
 <details class="govuk-details  govuk-!-margin-bottom-6"
          data-module="govuk-details">
 
@@ -473,6 +349,130 @@
 
   </div>
 </details>
+
+<%=
+  form_with model: @funding_application.project,
+            url: :funding_application_gp_project_costs,
+            class: "govuk-!-margin-bottom-3",
+            method: :put, local: true do |f|
+%>
+
+  <%= f.fields_for :project_costs, @funding_application.project.project_costs.build do |pc| %>
+
+    <div class="govuk-form-group govuk-!-margin-top-3 <%= "govuk-form-group--error" if @funding_application.project.errors['project_costs.cost_type'].any? %>">
+
+      <%=
+        render partial: "partials/form_input_errors",
+               locals: {
+                   form_object: @funding_application.project,
+                   input_field_id: :'project_costs.cost_type'} if
+            @funding_application.project.errors['project_costs.cost_type'].any?
+      %>
+
+      <%=
+        pc.label :cost_type,
+                 class: 'govuk-label'
+      %>
+
+      <%= pc.select :cost_type,
+                    options_for_select(ProjectCost.cost_types.map { |k, _v| [k.humanize.capitalize, k] },
+                                       flash['cost_type']),
+                    {},
+                    { class: 'govuk-select' }
+      %>
+
+    </div>
+
+    <div class="govuk-character-count" data-module="govuk-character-count"
+         data-maxwords="50">
+
+      <div class="govuk-form-group <%= "govuk-form-group--error" if
+                                           @funding_application.project.errors['project_costs.description'].any? %>">
+
+        <%=
+          render partial: "partials/form_input_errors",
+                 locals: {
+                     form_object: @funding_application.project,
+                     input_field_id: :'project_costs.description'} if
+              @funding_application.project.errors['project_costs.description'].any?
+        %>
+
+        <%=
+          pc.label :description,
+                   class: 'govuk-label'
+        %>
+
+        <%=
+          pc.text_area :description,
+                       class: "govuk-textarea govuk-js-character-count #{'govuk-textarea--error' if @funding_application.project.errors['project_costs.description'].any?}",
+                       rows: 5,
+                       value: "#{flash[:description] if
+                           flash[:description].present?}"
+        %>
+
+        <span id="project_project_costs_attributes_0_description-info"
+              class="govuk-hint govuk-character-count__message"
+              aria-live="polite">
+            <%= t('generic.word_count', max_words: 500) %>
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-form-group <%= "govuk-form-group--error" if
+                                         @funding_application.project.errors['project_costs.amount'].any? %>">
+
+      <%=
+        render partial: "partials/form_input_errors",
+               locals: {
+                   form_object: @funding_application.project,
+                   input_field_id: :'project_costs.amount'} if
+            @funding_application.project.errors['project_costs.amount'].any? %>
+
+      <%=
+        pc.label :amount,
+                 class: 'govuk-label'
+      %>
+
+      <span id="cost-amount-hint" class="govuk-hint">
+        <%= t('application.costs.text.6') %>
+      </span>
+
+      <div class="nlhf-currency-denote">
+
+        <div class="nlhf-currency-denote__symbol">
+          &pound;
+        </div>
+
+        <div class="nlhf-currency-denote__capture">
+
+          <%=
+            pc.text_field :amount,
+                          "autocomplete" => "off",
+                          class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if @funding_application.project.errors['project_costs.amount'].any?}",
+                          value: "#{flash[:amount] if flash[:amount].present?}"
+          %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <%=
+      render(
+          ButtonComponent.new(
+              element: "input",
+              text: t('application.costs.buttons.1'),
+              classes: "govuk-button--secondary"
+          )
+      )
+    %>
+
+  <% end %>
+
+<% end %>
 
 <hr class="govuk-section-break--l govuk-section-break--visible">
 

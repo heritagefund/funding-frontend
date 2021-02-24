@@ -215,6 +215,45 @@
 
         <div class="nlhf-add-item__row">
 
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                <%= t('application.cash_contributions.text.2') %>
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                <%= t('application.cash_contributions.headings.5') %>
+              </h3>
+              <p class="govuk-body">
+                <%= t('application.cash_contributions.text.3') %>
+              </p>
+              <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                <%= t('application.cash_contributions.headings.6') %>
+              </h3>
+              <p class="govuk-body govuk-!-margin-bottom-3">
+                <%= t('application.cash_contributions.text.4') %>
+              </p>
+              <div class="govuk-warning-text govuk-!-margin-bottom-4">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-warning-text__assistive"><%= t('generic.warning') %></span>
+                  <%= t('application.cash_contributions.text.5') %>
+                </strong>
+              </div>
+              <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                <%= t('application.cash_contributions.headings.7') %>
+              </h3>
+              <p class="govuk-body">
+                  <%= t('application.cash_contributions.text.6') %>
+              </p>
+            </div>
+          </details>        
+          
+        </div>
+
+        <div class="nlhf-add-item__row">
+
           <div class="govuk-character-count" data-module="govuk-character-count"
                data-maxwords="50">
 
@@ -477,55 +516,6 @@
   <% end %>
 <% end %>
 <!-- /add-cost form -->
-
-<details class="govuk-details" data-module="govuk-details">
-
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      <%= t('application.cash_contributions.text.2') %>
-    </span>
-  </summary>
-
-  <div class="govuk-details__text">
-
-    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-      <%= t('application.cash_contributions.headings.5') %>
-    </h3>
-
-    <p class="govuk-body">
-      <%= t('application.cash_contributions.text.3') %>
-    </p>
-    
-    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-      <%= t('application.cash_contributions.headings.6') %>
-    </h3>
-
-    <p class="govuk-body govuk-!-margin-bottom-3">
-      <%= t('application.cash_contributions.text.4') %>
-    </p>
-
-    <div class="govuk-warning-text govuk-!-margin-bottom-4">
-
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive"><%= t('generic.warning') %></span>
-        <%= t('application.cash_contributions.text.5') %>
-      </strong>
-
-    </div>
-
-    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-      <%= t('application.cash_contributions.headings.7') %>
-    </h3>
-
-    <p class="govuk-body">
-        <%= t('application.cash_contributions.text.6') %>
-    </p>
-
-  </div>
-
-</details>
 
 <hr class="govuk-section-break--l govuk-section-break--visible">
 

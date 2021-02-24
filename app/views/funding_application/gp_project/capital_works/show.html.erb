@@ -57,6 +57,55 @@
         <%= t('capital_works.page_hint') %>
       </span>
 
+      <div class="govuk-form-group">
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              <%= t('capital_works.examples_of_capital_work') %>
+            </span>
+          </summary>
+
+          <div class="govuk-details__text">
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                <%= t('capital_works.examples_item_1') %>
+              </li>
+              <li>
+                <%= t('capital_works.examples_item_2') %>
+              </li>
+              <li>
+                <%= t('capital_works.examples_item_3') %>
+              </li>
+            </ul>
+            <p class="govuk-body">
+              <%= 
+                t(
+                  'capital_works.examples_physical_work_html',
+                  examples_gp_os_guidance: link_to(
+                    t('capital_works.examples_gp_os_guidance'),
+                    'http://www.heritagefund.org.uk/publications/receiving-grant-guidance-ps3000-ps10000#heading-8',
+                    {
+                      class: 'govuk-link',
+                      target: '_blank'
+                    }
+                  ),
+                  examples_receiving_a_grant_guidance: link_to(
+                    t('capital_works.examples_receiving_a_grant_guidance'),
+                    'https://www.heritagefund.org.uk/publications/receiving-grant-guidance-ps3000-ps10000',
+                    {
+                      class: 'govuk-link',
+                      target: '_blank'
+                    }
+                  )
+                )
+              %>
+            </p>
+          </div>
+        </details>
+
+      </div>
+
       <div class="govuk-radios govuk-radios--conditional"
            data-module="govuk-radios">
 
@@ -194,61 +243,3 @@
   <%= render(ButtonComponent.new(element: "input")) %>
 
 <% end %>
-
-<details class="govuk-details" data-module="govuk-details">
-
-  <summary class="govuk-details__summary">
-
-    <span class="govuk-details__summary-text">
-      <%= t('capital_works.examples_of_capital_work') %>
-    </span>
-
-  </summary>
-
-  <div class="govuk-details__text">
-
-    <ul class="govuk-list govuk-list--bullet">
-
-      <li>
-        <%= t('capital_works.examples_item_1') %>
-      </li>
-
-      <li>
-        <%= t('capital_works.examples_item_2') %>
-      </li>
-
-      <li>
-        <%= t('capital_works.examples_item_3') %>
-      </li>
-
-    </ul>
-
-    <p class="govuk-body">
-
-      <%= 
-        t(
-          'capital_works.examples_physical_work_html',
-          examples_gp_os_guidance: link_to(
-            t('capital_works.examples_gp_os_guidance'),
-            'http://www.heritagefund.org.uk/publications/receiving-grant-guidance-ps3000-ps10000#heading-8',
-            {
-              class: 'govuk-link',
-              target: '_blank'
-            }
-          ),
-          examples_receiving_a_grant_guidance: link_to(
-            t('capital_works.examples_receiving_a_grant_guidance'),
-            'https://www.heritagefund.org.uk/publications/receiving-grant-guidance-ps3000-ps10000',
-            {
-              class: 'govuk-link',
-              target: '_blank'
-            }
-          )
-        )
-      %>
-
-    </p>
-
-  </div>
-
-</details>
