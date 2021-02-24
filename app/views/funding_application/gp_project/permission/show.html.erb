@@ -43,11 +43,38 @@
                locals: {
                    form_object: @funding_application.project
                } if @funding_application.project.errors.any?
-      %>
+      %>      
 
-      <span id="permission-required-conditional-hint" class="govuk-hint">
+      <div id="permission-required-conditional-hint" class="govuk-hint">
         <%= t('generic.select_one_option') %>
-      </span>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            <%= t('permission.examples') %>
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <%= t('permission.examples_list.item_1') %>
+            </li>
+            <li>
+              <%= t('permission.examples_list.item_2') %>
+            </li>
+            <li>
+              <%= t('permission.examples_list.item_3') %>
+            </li>
+            <li>
+              <%= t('permission.examples_list.item_4') %>
+            </li>
+          </ul>
+          <p class="govuk-body">
+            <%= t('permission.dont_know_helper') %>
+          </p>
+        </div>
+      </details>
 
       <div class="govuk-radios govuk-radios--conditional"
            data-module="govuk-radios">
@@ -181,43 +208,3 @@
   <%= render(ButtonComponent.new(element: "input")) %>
 
 <% end %>
-
-<details class="govuk-details" data-module="govuk-details">
-
-  <summary class="govuk-details__summary">
-
-    <span class="govuk-details__summary-text">
-      <%= t('permission.examples') %>
-    </span>
-
-  </summary>
-
-  <div class="govuk-details__text">
-
-    <ul class="govuk-list govuk-list--bullet">
-
-      <li>
-        <%= t('permission.examples_list.item_1') %>
-      </li>
-
-      <li>
-        <%= t('permission.examples_list.item_2') %>
-      </li>
-
-      <li>
-        <%= t('permission.examples_list.item_3') %>
-      </li>
-
-      <li>
-        <%= t('permission.examples_list.item_4') %>
-      </li>
-
-    </ul>
-
-    <p class="govuk-body">
-      <%= t('permission.dont_know_helper') %>
-    </p>
-
-  </div>
-
-</details>
