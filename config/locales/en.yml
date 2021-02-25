@@ -59,7 +59,7 @@ en-GB:
           project_end_date: "Project completion date"
           where_is_your_project_taking_place: "Where is your project taking place?"
           description: "Describe your idea"
-          captital_work: "Will capital work be part of your project?"
+          capital_work: "Will capital work be part of your project?"
           permission: "Do you need permission from anyone else to do your project?"
           more_info_about_permission: "More information about permission"
           difference: "What difference will your project make?"
