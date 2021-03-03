@@ -1,7 +1,7 @@
 cy:
   application:
     check_answers:
-      page_title: "Check your answers"
-      page_heading: "Check your answers"
+      page_title: "Gwiriwch eich atebion"
+      page_heading: "Gwiriwch eich atebion"
       text:
-        1: "answer to"
+        1: "ateb i"

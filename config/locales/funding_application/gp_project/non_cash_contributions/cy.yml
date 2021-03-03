@@ -1,23 +1,24 @@
 cy:
   application:
     non_cash_contributions:
-      page_title: "Non-cash contributions"
-      page_heading: "Non-cash contributions"
+      page_title: "Cyfraniadau nad ydynt yn arian parod"
+      page_heading: "Cyfraniadau nad ydynt yn arian parod"
       headings:
-        1: "Your non-cash contributions"
-        2: "You have not added any non-cash contributions"
-        3: "Add a non-cash contribution"
-        4: "What are non-cash contributions?"
+        1: "Eich cyfraniadau nad ydynt yn arian parod"
+        2: "Nid ydych wedi ychwanegu unrhyw gyfraniadau nad ydynt yn arian parod"
+        3: "Ychwanegu cyfraniad nad yw'n arian parod"
+        4: "Beth yw cyfraniadau nad ydynt yn arian parod?"
       text:
-        1: "Non-cash contributions are things you need for your project that you do not have to pay for."
-        2: "For example, the use of a room in a local business, or materials being donated by a local firm."
-        3: "If you have finished adding all your non-cash contributions"
-        4: "Total estimated value"
-        5: "An estimate of how much this would have cost if your project had to pay for it"
+        1: "Mae cyfraniadau nad ydynt yn arian parod yn bethau sydd eu hangen arnoch ar gyfer eich prosiect nad oes rhaid i chi dalu amdano."
+        2: "Er enghraifft, defnyddio ystafell mewn busnes lleol, neu ddeunyddiau sy'n cael eu rhoi gan gwmni lleol."
+        3: "Os ydych wedi gorffen ychwanegu eich holl gyfraniadau nad ydynt yn arian parod"
+        4: "Cyfanswm gwerth amcangyfrifedig"
+        5: "Amcangyfrif o faint y byddai hyn wedi'i gostio pe bai'n rhaid i'ch prosiect dalu amdano"
+        6: "Cymorth gyda chyfraniadau nad ydynt yn arian parod"
       buttons:
-        1: "Add non-cash contribution"
+        1: "Ychwanegu cyfraniad nad yw'n arian parod"
       th:
-        1: "Description"
-        2: "Value"
+        1: "Disgrifiad"
+        2: "Gwerth"
       labels:
-        1: "Description"
+        1: "Disgrifiad"

@@ -1,13 +1,13 @@
 cy:
   report_a_problem:
-    page_title: "Report a problem"
-    page_heading: "Report a problem"
+    page_title: "Rhoi gwybod am broblem"
+    page_heading: "Rhoi gwybod am broblem"
     text:
-      your_message_was_sent_successfully: "Your message was sent successfully"
+      your_message_was_sent_successfully: "Anfonwyd eich neges yn llwyddiannus"
       service_status:
-        html: "%{href} to see if there are any known issues."
-        text: "Check our service status page"
+        html: "%{href} i weld a oes unrhyw broblemau hysbys."
+        testun: "Edrychwch ar ein tudalen statws gwasanaeth"
     form:
-      your_name: "Your name"
-      your_message: "Your message"
-      your_email_address: "Your email address"
+      your_name: "Eich enw"
+      your_message: "Eich neges"
+      your_email_address: "Eich cyfeiriad e-bost"

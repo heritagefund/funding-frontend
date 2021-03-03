@@ -1,7 +1,359 @@
+---
 cy:
+  funding_programmes:
+    open_small_three_to_ten_k: "£3,000-£10,000"
+  account_created_continue_link: "/organisation/type"
+  application_guidance_link: "#"
+  fair_processing_email: fair.processing@heritagefund.org.uk
+  project_outcomes_link: "#"
+  what_we_fund_link: "#"
   buttons:
     labels:
       default: "Arbed a pharhau"
       start_now: "Dechrau nawr"
-      send: "Send"
-      continue: "Continue"
+      send: "Anfon"
+      continue: "Parhau"
+  generic:
+    x_yes: "Ie"
+    x_no: "Na"
+    x_not_sure: "Ddim yn siŵr"
+    choose_all_that_apply: "Dewiswch bob un sy'n berthnasol"
+    warning: "Rhybudd"
+    error: "Gwall"
+    word_count: "Gallwch roi %{max_words} o eiriau"
+    words_remaining: "Mae gennych %{remaining_words} o eiriau yn weddill"
+    upload_a_file: "Lanlwytho ffeil"
+    select_one_option: "Dewiswch un opsiwn"
+    delete: "Dileu"
+    there_is_a_problem: "Mae yno broblem"
+    we_have_found_a_problem: "Rydym wedi dod o hyd i broblem"
+    not_answered: "Heb ateb"
+    evidence_attached: "Tystiolaeth ynghlwm"
+    click_to_view_file: "Cliciwch i weld y ffeil"
+    total: "Cyfanswm"
+    amount: "Swm"
+    description: "Disgrifiad"
+    for_example: "er enghraifft"
+  views:
+    funding_application:
+      common:
+        about_your_project: "Ynglŷn â'ch prosiect"
+        support_for_your_project: "cefnogaeth i'ch prosiect"
+      gp_project:
+        check_your_answers:
+          not_answered: "Heb ateb"
+          page_title: "Gwiriwch eich atebion"
+          project_title: "Teitl y prosiect"
+          project_start_date: "Dyddiad dechrau'r prosiect"
+          project_end_date: "Dyddiad cwblhau'r prosiect"
+          where_is_your_project_taking_place: "Ble mae eich prosiect yn digwydd?"
+          description: "Disgrifiwch eich syniad"
+          captital_work: "A fydd gwaith cyfalaf yn rhan o'ch prosiect?"
+          permission: "A oes angen caniatâd unrhyw un arall arnoch i gynnal eich prosiect?"
+          more_info_about_permission: "Mwy o wybodaeth am ganiatâd"
+          difference: "Pa wahaniaeth fydd eich prosiect yn ei wneud?"
+          community_matters: "Sut mae eich prosiect yn bwysig i chi a'ch cymuned?"
+          heritage: "Treftadaeth eich prosiect: sut ydych chi'n bwriadu sicrhau ei fod ar gael unwaith y bydd y prosiect ar ben?"
+          best_placed: "Pam mai eich sefydliad chi sydd yn y sefyllfa orau i gyflawni'r prosiect yma?"
+          involvement: "Sut bydd eich prosiect yn cynnwys ystod ehangach o bobl?"
+          other_outcomes: "A fydd eich prosiect yn cyflawni unrhyw un o'n canlyniadau eraill?"
+          other_outcomes_how: "Sut y byddwch yn cyflawni'r canlyniad yma?"
+          achieve_outcome: "Sut y byddwch yn cyflawni'r canlyniad yma?"
+          project_cost: "Faint fydd eich prosiect yn ei gostio?"
+          cash_contributions: "Ydych chi'n cael unrhyw gyfraniadau ariannol tuag at eich prosiect?"
+          possible_outcomes:
+            outcome_2: "Bydd treftadaeth mewn cyflwr gwell"
+            outcome_3: "Bydd treftadaeth yn cael ei nodi a'i hegluro'n well"
+            outcome_4: "Bydd pobl wedi datblygu sgiliau"
+            outcome_5: "Bydd pobl wedi dysgu am dreftadaeth, gan arwain at newid mewn syniadau a gweithredoedd"
+            outcome_6: "Bydd gan bobl gwell llesiant"
+            outcome_7: "Bydd y sefydliad a ariennir yn fwy gwydn"
+            outcome_8: "Bydd yr ardal leol yn lle gwell i fyw, gweithio neu ymweld ag ef"
+            outcome_9: "Bydd yr economi leol yn cael hwb"
+          evidence_of_support: "Tystiolaeth o gefnogaeth"
+  activestorage:
+    errors:
+      file_upload_error_message: "Mae lanlwytho'r ffeil yma wedi methu"
+  activemodel:
+    errors:
+      models:
+        new_application:
+          attributes:
+            application_type:
+              blank: "Dewiswch y math o gais rydych chi am ei ddechrau"
+  activerecord:
+    attributes:
+      legal_signatory:
+        name: "Enw"
+        email_addres: "Cyfeiriad e-bost"
+        phone_number: "Rhif ffôn"
+      organisation:
+        org_type: "Math o sefydliad"
+        company_number: "Rhif y cwmni"
+        charity_number: "Rhif elusen"
+    errors:
+      models:
+        person:
+          attributes:
+            name:
+              blank: "Rhowch enw person"
+            position:
+              blank: "Rhowch safle'r person yn ei sefydliad"
+            email:
+              blank: "Rhowch gyfeiriad e-bost y person"
+            phone_number:
+              blank: "Rhowch rif ffôn y person"
+        user:
+          attributes:
+            name:
+              blank: "Rhowch eich enw llawn"
+            dob_day:
+              blank: "Rhowch y diwrnod y cawsoch eich geni"
+            dob_month:
+              blank: "Rhowch y mis y cawsoch eich geni"
+            dob_year:
+              blank: "Nodwch y flwyddyn y cawsoch eich geni"
+            line 1:
+              blank: "Rhowch linell gyntaf eich cyfeiriad"
+            townCity:
+              blank: "Rhowch y dref neu'r ddinas lle rydych chi'n byw"
+            county:
+              blank: "Rhowch y sir lle rydych chi'n byw"
+            postcode:
+              blank: "Rhowch y cod post lle rydych chi'n byw"
+            language_preference:
+              inclusion: "Dewiswch iaith y dylem ei defnyddio i gyfathrebu â chi os yw eich prosiect wedi'i leoli yng Nghymru"
+            communication_needs:
+              too_long: "Mae'n rhaid i ddisgrifiad o'ch anghenion cyfathrebu fod yn llai na 50 gair"
+        organisation:
+          attributes:
+            org_type:
+              blank: "Dewiswch y math o sefydliad a fydd yn cynnal eich prosiect"
+            custom_org_type:
+              blank: "Nodwch y math o sefydliad"
+            company_number:
+              not_a_number: "Mae'n rhaid i rif cwmni fod yn rhif, fel 12345678"
+            name:
+              blank: "Rhowch enw eich sefydliad"
+            line1:
+              blank: "Rhowch linell gyntaf cyfeiriad eich sefydliad"
+            townCity:
+              blank: "Rhowch y dref neu'r ddinas lle mae eich sefydliad wedi'i leoli"
+            county:
+              blank: "Rhowch y sir lle mae eich sefydliad wedi'i leoli"
+            postcode:
+              blank: "Rhowch god post lle mae eich sefydliad wedi'i leoli"
+        legal_signatory:
+          attributes:
+            name:
+              blank: "Rhowch enw llofnodwr cyfreithiol"
+            email_address:
+              invalid: "Rhowch gyfeiriad e-bost dilys"
+            phone_number:
+              blank: "Rhowch rif ffôn llofnodwr cyfreithiol"
+        project:
+          attributes:
+            project_costs:
+              blank: "Nodwch o leiaf un gost prosiect"
+            project_title:
+              blank: "Rhowch deitl eich prosiect"
+              too_long: "Rhaid i deitl y prosiect fod yn 255 gair neu lai"
+            start_date_day:
+              blank: "Nodwch y diwrnod y bydd eich prosiect yn dechrau"
+            start_date_month:
+              blank: "Nodwch y mis y bydd eich prosiect yn dechrau"
+            start_date_year:
+              blank: "Nodwch y mis y bydd eich prosiect yn dechrau"
+            start_date:
+              invalid: "Rhowch ddyddiad cychwyn prosiect dilys"
+              after_end_date: "Ni all y dyddiad dechrau fod ar ôl y dyddiad gorffen"
+              in_past: "Ni all y dyddiad dechrau fod yn y gorffennol"
+            end_date_day:
+              blank: "Nodwch y diwrnod y bydd eich prosiect yn dod i ben"
+            end_date_month:
+              blank: "Nodwch y mis y bydd eich prosiect yn dod i ben"
+            end_date_year:
+              blank: "Nodwch y flwyddyn y bydd eich prosiect yn dod i ben"
+            end_date:
+              invalid: "Rhowch ddyddiad gorffen prosiect dilys"
+              before_start_date: "Ni all y dyddiad gorffen fod cyn y dyddiad dechrau"
+              in_past: "Ni all y dyddiad gorffen fod yn y gorffennol"
+            same_location:
+              blank: "Dewiswch a fydd eich prosiect yn cael ei gynnal yn yr un lleoliad â'ch sefydliad ai peidio"
+            line1:
+              blank: "Rhowch linell gyntaf cyfeiriad eich prosiect"
+            townCity:
+              blank: "Rhowch y dref neu'r ddinas lle mae eich prosiect wedi'i leoli"
+            county:
+              blank: "Rhowch y sir lle mae eich prosiect wedi'i leoli"
+            postcode:
+              blank: "Rhowch god post lle mae eich prosiect wedi'i leoli"
+            description:
+              blank: "Rhowch ddisgrifiad o'ch prosiect"
+              too_long: "Mae'n rhaid i ddisgrifiad y prosiect fod yn 500 gair neu'n llai"
+            difference:
+              too_long: "Mae'n rhaid i ddisgrifiad o'r gwahaniaeth y bydd eich prosiect yn ei wneud fod yn 500 gair neu lai"
+            heritage_description:
+              too_long: "Mae'n rhaid i ddisgrifiad o dreftadaeth eich prosiect fod yn 500 gair neu lai"
+            best_placed_description:
+              too_long: "Mae'n rhaid i ddisgrifiad o'r rheswm pam mai eich sefydliad chi sydd yn y sefyllfa orau i gyflawni eich prosiect fod yn 500 gair neu lai"
+            involvement_description:
+              blank: "Rhowch ddisgrifiad o sut y bydd eich prosiect yn cynnwys ystod ehangach o bobl"
+              too_long: "Mae'n rhaid i ddisgrifiad o sut y bydd eich prosiect yn cynnwys ystod ehangach o bobl fod yn 300 gair neu lai"
+            matter:
+              too_long: "Mae'n rhaid i ddisgrifiad o pam mae eich prosiect yn bwysig i chi a'ch cymuned fod yn 500 gair neu lai"
+            confirm_declaration:
+              inclusion: "Cadarnhewch eich bod wedi darllen a chytuno â'r datganiad"
+            permission_type:
+              blank: "Dewiswch opsiwn i ddweud wrthym a oes angen caniatâd eraill arnoch i gynnal eich prosiect"
+            permission_description_yes:
+              blank: "Rhowch ddisgrifiad o bwy sydd angen caniatâd arnoch i gynnal eich prosiect"
+            permission_description_x_not_sure:
+              blank: "Rhowch ddisgrifiad o bwy sydd angen caniatâd arnoch i gynnal eich prosiect"
+            capital_work:
+              inclusion: "Dewiswch a fydd gwaith cyfalaf yn rhan o'ch prosiect ai peidio"
+            cash_contributions_question:
+              inclusion: "Dewiswch a yw eich prosiect yn cael unrhyw gyfraniadau arian parod ai peidio"
+            non_cash_contributions_question:
+              inclusion: "Dewiswch a yw eich prosiect yn cael unrhyw gyfraniadau nad ydynt yn arian parod ai peidio"
+            is_partnership:
+              inclusion: "Dewiswch p'un a ydych yn gwneud cais ar ran partneriaeth ai peidio"
+            partnership_details:
+              blank: "Rhowch fanylion am y sefydliad(au) y byddwch yn cyflawni eich prosiect mewn partneriaeth"
+            governing_document_file:
+              inclusion: "Ychwanegu dogfen lywodraethol"
+            accounts_files:
+              inclusion: "Ychwanegu cyfrifon"
+            outcome_description:
+              too_long: "Mae'n rhaid i ddisgrifiad o sut y byddwch yn bodloni'r canlyniad hwn fod yn 300 gair neu lai"
+        cash_contribution:
+          attributes:
+            description:
+              blank: "Rhowch ddisgrifiad o'ch cyfraniad arian parod"
+              too_long: "Mae'n rhaid i ddisgrifiad o'ch cyfraniad arian parod fod yn 50 gair neu'n llai"
+            amount:
+              not_a_number: "Rhaid i'r swm fod yn rhif, fel 500"
+              greater_than: "Rhowch swm sy'n fwy na 0"
+            secured:
+              inclusion: "Dewiswch os ydych wedi gwarantu'r cyfraniad arian parod ai peidio"
+            cash_contribution_evidence_files:
+              inclusion: "Ychwanegu tystiolaeth ategol ar gyfer cyfraniad arian parod sydd wedi'i warantu gyda thystiolaeth"
+        non_cash_contribution:
+          attributes:
+            description:
+              blank: "Rhowch ddisgrifiad o'ch cyfraniad nad yw'n arian parod"
+            amount:
+              not_a_number: "Rhaid i'r swm fod yn rhif, fel 500"
+              greater_than: "Rhowch swm sy'n fwy na 0"
+        project_cost:
+          attributes:
+            description:
+              blank: "Rhowch ddisgrifiad o gost y prosiect rydych chi'n ei ychwanegu"
+              too_long: "Mae'n rhaid i ddisgrifiad o'ch cost fod yn 50 gair neu lai"
+            amount:
+              not_a_number: "Mae'n rhaid i'r swm fod yn rhif, fel 500"
+              greater_than: "Rhowch swm sy'n fwy na 0"
+            cost_type:
+              blank: "Dewiswch y math o gost ar gyfer cost y prosiect rydych chi'n ei ychwanegu"
+        volunteer:
+          attributes:
+            description:
+              blank: "Rhowch ddisgrifiad o wirfoddolwr eich prosiect"
+            hours:
+              not_a_number: "Mae'n rhaid i oriau fod yn rhif, fel 5"
+              greater_than: "Mae'n rhaid i oriau fod yn fwy na 0"
+        evidence_of_support:
+          attributes:
+            description:
+              blank: "Rhowch ddisgrifiad o'ch tystiolaeth o gefnogaeth"
+              too_long: "Mae'n rhaid i ddisgrifiad o'ch tystiolaeth o gefnogaeth fod yn 50 gair neu lai"
+        payment_details:
+          attributes:
+            account_name:
+              blank: "Rhowch enw deiliad y cyfrif"
+            account_number:
+              blank: "Rhowch rif y cyfrif"
+              invalid_format: "Rhowch rif cyfrif banc dilys fel 12345678"
+            sort_code:
+              blank: "Rhowch y cod didoli"
+              invalid_format: "Rhowch god didoli dilys fel 309430"
+            building_society_roll_number:
+              invalid_format: "Ni ddylai rhif cofrestr cymdeithas adeiladu fod yn fwy na 18 o nodau"
+            payment_reference:
+              too_long: "Mae'n rhaid i'r cyfeirnod talu beidio â bod yn fwy na 18 o nodau"
+              invalid_format: "Mae'n rhaid i'r cyfeirnod talu gynnwys llythrennau a rhifau yn unig"
+            evidence_file:
+              inclusion: "Ychwanegu tystiolaeth o fanylion cyfrif banc"
+        pa_project_enquiry:
+          attributes:
+            heritage_focus:
+              blank: "Nodwch ffocws eich treftadaeth"
+              too_long: "Mae'n rhaid i ddisgrifiad o dreftadaeth y prosiect fod yn %{word_count} gair neu lai"
+            what_project_does:
+              blank: "Nodwch beth mae'r prosiect yn ei wneud"
+              too_long: "Mae'n rhaid i ddisgrifiad o'r hyn y byddwch yn ei wneud yn ystod eich prosiect fod yn %{word_count} gair neu lai"
+            programme_outcomes:
+              blank: "Nodwch ganlyniadau'r rhaglen rydych chi'n gobeithio eu cyflawni"
+              too_long: "Mae'r rhaid i'r disgrifiad o ddeilliannau'r rhaglen fod yn %{word_count} gair neu lai"
+            project_reasons:
+              blank: "Nodwch y rhesymau pam yr ydych chi eisiau cyflwyno eich prosiect"
+              too_long: "Mae'n rhaid i ddisgrifiad o'r angen am eich prosiect fod yn %{word_count} gair neu lai"
+            project_participants:
+              blank: "Rhowch y bobl a fydd yn rhan o'ch prosiect"
+              too_long: "Mae'n rhaid i ddisgrifiad o bwy fydd yn cymryd rhan fod yn %{word_count} gair neu lai"
+            project_timescales:
+              blank: "Nodwch yr amserlenni ar gyfer eich prosiect"
+              too_long: "Mae'n rhaid i'r disgrifiad o amserlenni'r prosiect fod yn %{word_count} gair neu lai"
+            project_likely_cost:
+              blank: "Nodwch faint mae eich prosiect yn debygol o gostio"
+              too_long: "Mae'n rhaid i'r disgrifiad o gost debygol eich prosiect fod yn %{word_count} gair neu lai"
+            potential_funding_amount:
+              not_a_number: "Mae'n rhaid i'r swm fod yn rhif, fel 500"
+              greater_than: "Rhowch swm sy'n fwy na 0"
+              less_than: "Rhowch swm sy'n llai na 2147483648"
+            working_title:    
+              too_long: "Mae'n rhaid i deitl y prosiect gweithio fod yn %{count} nod neu lai"
+        pa_expression_of_interest:
+          attributes:
+            heritage_focus:
+              blank: "Rhowch ffocws eich treftadaeth"
+              too_long: "Mae'n rhaid i'r disgrifiad o dreftadaeth y prosiect fod yn %{word_count} gair neu lai"
+            what_project_does:
+              blank: "Nodwch beth mae'r prosiect yn ei wneud"
+              too_long: "Mae'n rhaid i ddisgrifiad o'r hyn y byddwch yn ei wneud yn ystod eich prosiect fod yn %{word_count} gair neu lai"
+            working_title:
+              too_long: "Mae'n rhaid i deitl y prosiect gweithio fod yn %{count} nod neu lai"
+            programme_outcomes:
+              blank: "Nodwch ganlyniadau'r rhaglen rydych chi'n gobeithio eu cyflawni"
+              too_long: "Mae'n rhaid i'r disgrifiad o ddeilliannau'r rhaglen fod yn %{word_count} gair neu lai"
+            project_reasons:
+              blank: "Nodwch y rhesymau pam rydych chi eisiau cyflawni eich prosiect"
+              too_long: "Mae'n rhaid i ddisgrifiad o'r angen am eich prosiect fod yn %{word_count} gair neu lai"
+            project_timescales:
+              blank: "Nodwch yr amserlenni ar gyfer eich prosiect"
+              too_long: "Mae'n rhaid i'r disgrifiad o amserlenni'r prosiect fod yn %{word_count} gair neu lai"
+            overall_cost:
+              blank: "Nodwch eich cost gyffredinol"
+              too_long: "Mae'n rhaid i'r disgrifiad o gostau'r prosiect fod yn %{word_count} gair neu lai"
+            potential_funding_amount:
+              not_a_number: "Mae'n rhaid i'r swm fod yn rhif, fel 500"
+              greater_than: "Rhowch swm sy'n fwy na 0"
+              less_than: "Rhowch swm sy'n llai na 2147483648"
+            likely_submission_description:
+              blank: "Rhowch ddisgrifiad cyflwyno tebygol"
+              too_long: "Mae'n rhaid i'r disgrifiad o'r cyflwyniad tebygol fod yn %{word_count} gair"
+        spend:
+          attributes:
+            cost_type:
+              inclusion: 'Dewiswch fath dilys o wariant'
+            description:
+              blank: "Rhowch y disgrifiad o'ch eitem wario"
+              too_long: "Mae'n rhaid i ddisgrifiad o wariant yr eitem fod yn %{word_count} gair neu lai"
+            evidence_of_spend_file:
+              inclusion: "Ychwanegu tystiolaeth o ffeil wariant"
+            net_amount:
+              not_a_number: "Mae'n rhaid i'r swm net fod yn rhif"
+            vat_amount:
+              not_a_number: "Mae'n rhaid i swm TAW fod yn rhif"
+            gross_amount:
+              not_a_number: "Mae'n rhaid i swm gros fod yn rhif"

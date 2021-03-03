@@ -1,8 +1,8 @@
 cy:
   application:
     cash_contributions_question:
-      page_title: "Are you getting any cash contributions to your project?"
-      page_heading: "Are you getting any cash contributions to your project?"
+      page_title: "Ydych chi'n cael unrhyw gyfraniadau ariannol i'ch prosiect?"
+      page_heading: "Ydych chi'n cael unrhyw gyfraniadau ariannol i'ch prosiect?"
       labels:
-        1: "Yes, I am getting cash contributions"
-        2: "No, I am not getting cash contributions"
+        1: "Ydw, rwyf yn cael cyfraniadau arian parod"
+        2: "Nac ydw, nid wyf yn cael cyfraniadau arian parod"

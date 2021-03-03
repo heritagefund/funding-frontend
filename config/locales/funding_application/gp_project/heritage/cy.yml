@@ -1,8 +1,8 @@
 cy:
   application:
     heritage:
-      page_title: "The heritage of your project"
-      page_heading: "The heritage of your project: how do you plan to make it available once the project is over?"
+      page_title: "Treftadaeth eich prosiect"
+      page_heading: "Treftadaeth eich prosiect: sut ydych chi'n bwriadu sicrhau ei fod ar gael unwaith y bydd y prosiect ar ben?"
       text:
-        1: "This helps us understand how you plan to preserve the heritage of your project and the difference it will make after the project ends."
-        2: "We use this section to assess the value for money of our investment in your project."
+        1: "Mae hyn yn ein helpu i ddeall sut rydych yn bwriadu cadw treftadaeth eich prosiect a'r gwahaniaeth y bydd yn ei wneud ar ôl i'r prosiect ddod i ben."
+        2: "Rydym yn defnyddio'r adran hon i asesu gwerth am arian ein buddsoddiad yn eich prosiect."

@@ -1,91 +1,91 @@
 cy:
   application:
     costs:
-      page_title: "How much will your project cost?"
+      page_title: "Faint fydd eich prosiect yn ei gostio?"
       headings:
-        1: "How much will your project cost?"
-        2: "Your project costs"
-        3: "You have not added any costs yet"
-        4: "Add a cost"
-        5: "New staff costs"
+        1: "Faint fydd eich prosiect yn ei gostio?"
+        2: "Costau eich prosiect"
+        3: "Nid ydych wedi ychwanegu unrhyw gostau eto"
+        4: "Ychwanegu cost"
+        5: "Costau staff newydd"
       text:
-        1: "Project costs help us understand how you plan to put your project into action."
-        2: "Each cost will be shown here with a running total"
-        3: "Total costs"
-        4: "Add a new cost for each project cost."
-        5: "For example, if you are doing 3 activities, add 3 separate activity cost types, each with their own description and amount."
-        6: "This can be an estimate"
-        7: "Help with cost types"
-        8: "If you have finished adding all your costs"
+        1: "Mae costau prosiect yn ein helpu i ddeall sut rydych chi'n bwriadu rhoi eich prosiect ar waith."
+        2: "Bydd pob cost yn cael ei dangos yma gyda chyfanswm cynnal y prosiect"
+        3: "Cyfanswm y costau"
+        4: "Ychwanegu cost newydd ar gyfer pob cost prosiect."
+        5: "Er enghraifft, os ydych yn gwneud 3 gweithgaredd, ychwanegwch 3 math gwahanol o gost gweithgaredd, pob un â'u disgrifiad a'u swm eu hunain."
+        6: "Gall hyn fod yn amcangyfrif"
+        7: "Cymorth gyda mathau o gost"
+        8: "Os ydych wedi gorffen ychwanegu eich holl gostau"
       th:
-        1: "Cost type"
-        2: "Description"
-        3: "Amount"
+        1: "Math o gost"
+        2: "Disgrifiad"
+        3: "Swm"
       buttons:
-        1: "Add this cost"
+        1: "Ychwanegu'r gost hon"
       cost_types:
         1:
-          heading: "New staff costs"
+          heading: "Costau staff newydd"
           text:
-            1: "Include costs of new fixed-term contracts, secondments - who are people temporarily transferred to your organisation, and the costs of freelance staff to help develop your project. Do not include the costs of paying trainees here."
-            2: "You must also openly advertise all project staff posts, unless, you have a suitably qualified member of staff on your payroll that you are moving into a project post. You need to provide a job description for this post."
-            3: "If you are extending the hours of a suitably qualified member of staff on your payroll, so that they can work on the project. In this case we will fund the cost of the additional hours spent on the project and you will need to tell us about their role."
-            4: "If you are moving an existing member of staff into a post created by the project, then your grant can either pay for the cost of this member of staff, or for the cost of backfilling their position."
-            5: "All salaries should be based on sector guidelines or similar posts elsewhere"
+            1: "Dylech gynnwys costau contractau cyfnod penodol newydd, secondiadau - sy'n bobl sy'n cael eu trosglwyddo dros dro i'ch sefydliad, a chostau staff llawrydd i helpu i ddatblygu eich prosiect. Peidiwch â chynnwys costau talu hyfforddeion yma."
+            2: "Rhaid i chi hefyd hysbysebu holl swyddi staff y prosiect yn agored, oni bai bod gennych aelod o staff sydd â chymwysterau addas ar eich cyflogres eich bod yn symud i swydd prosiect. Mae angen i chi ddarparu disgrifiad swydd ar gyfer y swydd hon."
+            3: "Os ydych yn ymestyn oriau aelod o staff sydd â chymwysterau addas ar eich cyflogres, fel y gallant weithio ar y prosiect. Yn yr achos hwn byddwn yn ariannu cost yr oriau ychwanegol a dreulir ar y prosiect a bydd angen i chi ddweud wrthym am eu rôl."
+            4: "Os ydych yn symud aelod presennol o staff i swydd a grëwyd gan y prosiect, yna gall eich grant naill ai dalu am gost yr aelod hwn o staff, neu am gost ôl-lenwi ei swydd."
+            5: "Dylai pob cyflog fod yn seiliedig ar ganllawiau sector neu swyddi tebyg mewn mannau eraill"
         2:
-          heading: "Professional fees"
+          heading: "Ffioedd proffesiynol"
           text:
-            1: "Fees should be in line with professional guidelines. For example, those of RIBA, The Royal Institute of British Architects, and should be based on a clear written specification."
+            1: "Dylai ffioedd fod yn unol â chanllawiau proffesiynol. Er enghraifft, rhai RIBA, Sefydliad Brenhinol Penseiri Prydain, a dylent fod yn seiliedig ar fanyleb ysgrifenedig glir."
         3:
-          heading: "Recruitment"
+          heading: "Recriwtio"
           text:
-            1: "This can include advertising and travel expenses. We expect your organisation to keep to good human-resource practice and follow all relevant laws."
+            1: "Gall hyn gynnwys hysbysebu a threuliau teithio. Disgwyliwn i'ch sefydliad gadw at arferion adnoddau dynol da a dilyn yr holl ddeddfau perthnasol."
         4:
-          heading: "Repair and conservation work"
+          heading: "Gwaith atgyweirio a chadwraeth"
           text:
-            1: "This includes costs of work to repair, restore or conserve a heritage item, building or site."
+            1: "Mae hyn yn cynnwys costau gwaith i atgyweirio, adfer neu warchod eitem, adeilad neu safle treftadaeth."
         5:
-          heading: "Event costs"
+          heading: "Costau digwyddiadau"
           text:
-            1: "Costs for any events, for example, refreshments or room hire."
+            1: "Costau ar gyfer unrhyw ddigwyddiadau, er enghraifft, lluniaeth neu logi ystafell."
         6:
-          heading: "Digital outputs"
+          heading: "Allbynnau digidol"
           text:
-            1: "Any costs that you require to create digital outputs. Digital outputs are things you create in a digital format which are designed to give access to heritage. They could also help people engage with and learn about heritage. For example, a collection of digital images or sound files, an online heritage resource or exhibition or a smartphone app."
+            1: "Unrhyw gostau sydd eu hangen arnoch i greu allbynnau digidol. Mae allbynnau digidol yn bethau rydych chi'n eu creu mewn fformat digidol sydd wedi'u cynllunio i roi mynediad i dreftadaeth. Gallent hefyd helpu pobl i ymgysylltu â threftadaeth a dysgu amdani. Er enghraifft, casgliad o ddelweddau digidol neu ffeiliau sain, adnodd neu arddangosfa treftadaeth ar-lein neu ap ffôn clyfar."
         7:
-          heading: "Equipment and materials, including learning materials"
+          heading: "Offer a deunyddiau, gan gynnwys deunyddiau dysgu"
           text:
-            1: "For example, historic costumes, hard hats to give site access, art materials or leaflets and publications."
+            1: "Er enghraifft, gwisgoedd hanesyddol, hetiau caled i roi mynediad i'r safle, deunyddiau celf neu daflenni a chyhoeddiadau."
         8:
-          heading: "Training for staff and training for volunteers"
+          heading: "Hyfforddiant i staff a hyfforddiant i wirfoddolwyr"
           text:
-            1: "      Existing and new staff and volunteers may need training to carry out your project."
+            1: "Efallai y bydd angen hyfforddiant ar staff a gwirfoddolwyr presennol a newydd i gyflawni eich prosiect."
         9:
-          heading: "Travel for staff and travel for volunteers"
+          heading: "Teithio i staff a theithio i wirfoddolwyr"
           text:
-            1: "      To help staff and volunteers travel to sites. Travel costs by car should be based on 45p a mile."
+            1: "Helpu staff a gwirfoddolwyr i deithio i safleoedd. Dylai costau teithio mewn car fod yn seiliedig ar 45c y filltir."
         10:
-          heading: "Expenses for staff and volunteers"
+          heading: "Treuliau i staff a gwirfoddolwyr"
           text:
-            1: "You can include the costs of expenses for staff and volunteers to make sure they are not out of pocket."
+            1: "Gallwch gynnwys costau treuliau i staff a gwirfoddolwyr er mwyn sicrhau nad ydynt yn gwario eu harian nhw."
         11:
-          heading: "Other"
+          heading: "Arall"
           text:
-            1: "Please use for any costs that do not fit with any of the other cost headings. Give a clear description of these costs."
+            1: "Defnyddiwch ar gyfer unrhyw gostau nad ydynt yn cyd-fynd ag unrhyw un o'r penawdau cost eraill. Rhowch ddisgrifiad clir o'r costau hyn."
         12:
-          heading: "Publicity and promotion"
+          heading: "Cyhoeddusrwydd a dyrchafiad"
           text:
-            1: "You can include the costs of promotional materials that relate directly to your project."
-            2: "Make sure that you acknowledge the support of the National Lottery."
+            1: "Gallwch gynnwys costau deunyddiau hyrwyddo sy'n ymwneud yn uniongyrchol â'ch prosiect."
+            2: "Gwnewch yn siŵr eich bod yn cydnabod cefnogaeth y Loteri Genedlaethol."
         13:
-          heading: "Evaluation"
+          heading: "Gwerthuso"
           text:
-            1: "This cost heading is mandatory. All projects must be evaluated. Our advice is to budget up to 5% of your costs towards evaluation. Depending on the scale of the project and how complicated it is, you may want to employ somebody to help evaluate your project and assess whether you are successfully achieving the outcomes you set out in your application."
+            1: "Mae'r pennawd cost hwn yn orfodol. Rhaid gwerthuso pob prosiect. Ein cyngor yw cyllidebu hyd at 5% o'ch costau tuag at werthuso. Yn dibynnu ar raddfa'r prosiect a pha mor gymhleth ydyw, efallai y byddwch am gyflogi rhywun i helpu i werthuso eich prosiect ac asesu a ydych yn llwyddo i gyflawni'r canlyniadau a nodwyd gennych yn eich cais."
         14:
-          heading: "Contingency"
+          heading: "Arian wrth gefn"
           text:
-            1: "This cost heading is mandatory. A contingency is only used to pay for unexpected costs required to deliver your project. The total contingency figure may be up to 10% of the total costs of the project, unless you have a particularly complex capital project where a higher level may be required. Make sure that you only include your required contingency here and not included within the other cost headings in the application."
+            1: "Mae'r pennawd cost hwn yn orfodol. Dim ond i dalu am gostau annisgwyl sydd eu hangen i gyflawni eich prosiect y defnyddir arian wrth gefn. Gall cyfanswm y ffigur wrth gefn fod hyd at 10% o gyfanswm costau'r prosiect, oni bai bod gennych brosiect cyfalaf arbennig o gymhleth lle y gallai fod angen lefel uwch. Gwnewch yn siŵr eich bod ond yn cynnwys eich arian wrth gefn gofynnol yma ac nad ydych wedi'i gynnwys yn y penawdau cost eraill yn y cais."
         15:
-          heading: "Purchase price of heritage items"
+          heading: "Pris prynu eitemau treftadaeth"
           text:
-            1: "If your project involves buying a heritage item, you must get an independent valuation to help show that this item can be bought for a realistic price. If you are a private individual or commercial organisation you cannot include costs here."
+            1: "Os yw eich prosiect yn cynnwys prynu eitem treftadaeth, rhaid i chi gael prisiad annibynnol i helpu i ddangos y gellir prynu'r eitem yma am bris realistig. Os ydych yn unigolyn preifat neu'n sefydliad masnachol ni allwch gynnwys costau yma."

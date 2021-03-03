@@ -1,21 +1,21 @@
 cy:
   support:
-    page_title: "Support"
-    page_heading: "Support"
+    page_title: "Cefnogaeth"
+    page_heading: "Cefnogaeth"
     headings:
-      2: "How can we help you?"
-      3: "Help and guidance"
-      4: "Other ways to contact us"
-      5: "Phone"
-      6: "Text phone"
+      2: "Sut allwn ni eich helpu chi?"
+      3: "Cymorth a chanllaw"
+      4: "Ffyrdd eraill o gysylltu â ni"
+      5: "Ffôn"
+      6: "Ffôn testun"
     items:
-      1: "Report a problem"
-      2: "Ask a question or give feedback"
+      1: "Rhoi gwybod am broblem"
+      2: "Gofynnwch gwestiwn neu rhowch adborth"
     links:
-      1: "Check what we fund"
-      2: "Get clear about your project outcomes"
-      3: "Explore our funding programmes"
+      1: "Gwiriwch beth rydym yn ei ariannu"
+      2: "Dewch yn glir ynglŷn â chanlyniadau eich prosiect"
+      3: "Archwiliwch ein rhaglenni ariannu"
     text:
       support_hours:
-        1: "We can only provide support during office hours which are 9:00am to 5:00pm, Monday to Friday."
-        2: "Outside office hours, your query will be stored for us to read the next working day."
+        1: "Dim ond yn ystod oriau swyddfa rhwng 9:00am a 5:00pm, o ddydd Llun i ddydd Gwener y gallwn ddarparu cymorth."
+        2: "Y tu allan i oriau swyddfa, bydd eich ymholiad yn cael ei storio er mwyn i ni ei ddarllen y diwrnod gwaith nesaf."

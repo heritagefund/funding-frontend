@@ -1,11 +1,11 @@
 cy:
   application:
     involvement:
-      page_title: "How will your project involve a wider range of people?"
-      page_heading: "How will your project involve a wider range of people?"
+      page_title: "Sut bydd eich prosiect yn cynnwys ystod ehangach o bobl?"
+      page_heading: "Sut bydd eich prosiect yn cynnwys ystod ehangach o bobl?"
       text:
-        1: "This is a mandatory outcome for all projects funded by The National Lottery Heritage Fund."
-        2: "Your answer should tell us how you will reach new groups of people through your project. Include evidence to support your plans."
-        3: "Help answering this question"
-        4: "Your answer should explain how your audience or volunteer profile will have changed between the start - and end - of the project."
-        5: "It might include, for example, a broader range of ages, ethnicities and social backgrounds, more disabled people, or groups who have never engaged with your heritage before."
+        1: "Mae hwn yn ganlyniad gorfodol i bob prosiect a ariennir gan Gronfa Dreftadaeth y Loteri Genedlaethol."
+        2: "Dylai eich ateb ddweud wrthym sut y byddwch yn cyrraedd grwpiau newydd o bobl drwy eich prosiect. Dylech gynnwys tystiolaeth i gefnogi eich cynlluniau."
+        3: "Cymorth i ateb y cwestiwn yma"
+        4: "Dylai eich ateb egluro sut y bydd eich proffil cynulleidfa neu wirfoddolwr wedi newid rhwng dechrau - a diwedd - y prosiect."
+        5: "Gallai gynnwys, er enghraifft, ystod ehangach o oedrannau, ethnigrwydd a chefndiroedd cymdeithasol, mwy o bobl anabl, neu grwpiau nad ydynt erioed wedi ymgysylltu â'ch treftadaeth o'r blaen."
