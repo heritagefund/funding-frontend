@@ -12,7 +12,7 @@
   </h1>
 </div>
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+<h2 class="govuk-heading-l govuk-!-margin-bottom-6">
   <%= I18n.t("pa_project_enquiry.submitted.sub_heading_1") %>
 </h2>
 
@@ -28,7 +28,9 @@
 
 </ul>
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-6">
   <%= I18n.t("pa_project_enquiry.submitted.sub_heading_2") %>
 </h2>
 
@@ -65,35 +67,41 @@
 
   <div class="govuk-form-group <%= "govuk-form-group--error" if current_user.errors.any? %>">
 
-    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes">
 
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        <%= I18n.t("pa_project_enquiry.submitted.did_you_know_sub_heading_1") %>
-      </h3>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+          <%= I18n.t("pa_project_enquiry.submitted.did_you_know_sub_heading_1") %>
+        </h3>
 
-      <p class="govuk-body">
-        <%= I18n.t("pa_project_enquiry.submitted.did_you_know_sub_description_1") %>
-      </p>
+        <p class="govuk-body">
+          <%= I18n.t("pa_project_enquiry.submitted.did_you_know_sub_description_1") %>
+        </p>
 
-      <div class="govuk-checkboxes__item">
+        <div class="govuk-checkboxes__item">
 
-        <%=
-          f.check_box :agrees_to_contact,
-                      {
-                          id: :user_agrees_to_contact,
-                          class: "govuk-checkboxes__input"
-                      },
-                      'true', 'false'
-        %>
+          <%=
+            f.check_box :agrees_to_contact,
+                        {
+                            id: :user_agrees_to_contact,
+                            class: "govuk-checkboxes__input"
+                        },
+                        'true', 'false'
+          %>
 
-        <%=
-          f.label :user_agrees_to_contact,
-                  t('pa_project_enquiry.submitted.labels.agrees_to_contact'),
-                  class: "govuk-label govuk-checkboxes__label"
-        %>
+          <%=
+            f.label :agrees_to_contact,
+                    t('pa_project_enquiry.submitted.labels.agrees_to_contact'),
+                    class: "govuk-label govuk-checkboxes__label"
+          %>
+
+        </div>
 
       </div>
 
+    </div>
+
+    <div class="govuk-form-group">
+    
       <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
         <%= I18n.t("pa_project_enquiry.submitted.did_you_know_sub_heading_2") %>
       </h3>
@@ -114,12 +122,15 @@
         %>
 
         <%=
-          f.label :user_agrees_to_user_research,
+          f.label :agrees_to_user_research,
                   t('pa_project_enquiry.submitted.labels.agrees_to_user_research'),
                   class: "govuk-label govuk-checkboxes__label"
         %>
 
       </div>
+
+    </div>
+
 
     </div>
 
