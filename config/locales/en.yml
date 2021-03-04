@@ -72,6 +72,8 @@ en-GB:
           achieve_outcome: "How will you achieve this outcome?"
           project_cost: "How much will your project cost?"
           cash_contributions: "Are you getting any cash contributions towards your project?"
+          non_cash_contributions: "Are you getting any non-cash contributions towards your project?"
+          volunteers: "Volunteers"
           possible_outcomes:
             outcome_2: "Heritage will be in a better condition"
             outcome_3: "Heritage will be identified and better explained"
