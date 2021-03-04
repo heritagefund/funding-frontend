@@ -74,9 +74,12 @@
           <%= t('application.grant_request.text.1') %>
         </p>
         <p class="govuk-body">
-          <a href="costs">
-            <%= t('application.grant_request.links.1') %>
-          </a>
+          <%=
+            link_to(
+              t('application.grant_request.links.1'),
+              :funding_application_gp_project_costs
+            )
+          %>
         </p>
       </div>
       <div class="govuk-grid-column-one-third">
@@ -98,9 +101,12 @@
           <%= t('application.grant_request.text.2') %>
         </p>
         <p class="govuk-body">
-          <a href="cash-contributions">
-            <%= t('application.grant_request.links.2') %>
-          </a>
+          <%=
+            link_to(
+              t('application.grant_request.links.2'),
+              :funding_application_gp_project_cash_contributions
+            )
+          %>
         </p>
       </div>
       <div class="govuk-grid-column-one-third">
