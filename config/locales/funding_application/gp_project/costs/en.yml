@@ -8,6 +8,10 @@ en-GB:
         3: "You have not added any costs yet"
         4: "Add a cost"
         5: "New staff costs"
+      labels:
+        cost_type: "Cost type"
+        description: "Description"
+        amount: "Amount"
       text:
         1: "Project costs help us understand how you plan to put your project into action."
         2: "Each cost will be shown here with a running total"
@@ -23,6 +27,25 @@ en-GB:
         3: "Amount"
       buttons:
         1: "Add this cost"
+      cost_types_select:
+        new_staff: "New staff"
+        professional_fees: "Professional fees"
+        recruitment: "Recruitment"
+        purchase_price_of_heritage_items: "Purchase price of heritage items"
+        repair_and_conservation_work: "Repair and conservation work"
+        event_costs: "Event costs"
+        digital_outputs: "Digital outputs"
+        equipment_and_materials_including_learning_materials: "Equipment and materials including learning materials"
+        training_for_staff: "Training for staff"
+        training_for_volunteers: "Training for volunteers"
+        travel_for_staff: "Travel for staff"
+        travel_for_volunteers: "Travel for volunteers"
+        expenses_for_staff: "Expenses for staff"
+        expenses_for_volunteers: "Expenses for volunteers"
+        other: "Other"
+        publicity_and_promotion: "Publicity and promotion"
+        evaluation: "Evaluation"
+        contingency: "Contingency"
       cost_types:
         1:
           heading: "New staff costs"
@@ -59,11 +82,11 @@ en-GB:
         8:
           heading: "Training for staff and training for volunteers"
           text:
-            1: "      Existing and new staff and volunteers may need training to carry out your project."
+            1: "Existing and new staff and volunteers may need training to carry out your project."
         9:
           heading: "Travel for staff and travel for volunteers"
           text:
-            1: "      To help staff and volunteers travel to sites. Travel costs by car should be based on 45p a mile."
+            1: To help staff and volunteers travel to sites. Travel costs by car should be based on 45p a mile."
         10:
           heading: "Expenses for staff and volunteers"
           text:

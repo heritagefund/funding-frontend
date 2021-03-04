@@ -371,11 +371,12 @@
 
       <%=
         pc.label :cost_type,
+                 t('application.costs.labels.cost_type'),
                  class: 'govuk-label'
       %>
 
       <%= pc.select :cost_type,
-                    options_for_select(ProjectCost.cost_types.map { |k, _v| [k.humanize.capitalize, k] },
+                    options_for_select(ProjectCost.cost_types.map { |k, _v| [I18n.t("application.costs.cost_types_select.#{k}"), k] },
                                        flash['cost_type']),
                     {},
                     { class: 'govuk-select' }
@@ -399,6 +400,7 @@
 
         <%=
           pc.label :description,
+                   t('application.costs.labels.description'),
                    class: 'govuk-label'
         %>
 
@@ -432,6 +434,7 @@
 
       <%=
         pc.label :amount,
+                 t('application.costs.labels.amount'),
                  class: 'govuk-label'
       %>
 

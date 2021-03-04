@@ -8,6 +8,10 @@ cy:
         3: "Nid ydych wedi ychwanegu unrhyw gostau eto"
         4: "Ychwanegu cost"
         5: "Costau staff newydd"
+      labels:
+        cost_type: "Math o gost"
+        description: "Disgrifiad"
+        amount: "Swm"
       text:
         1: "Mae costau prosiect yn ein helpu i ddeall sut rydych chi'n bwriadu rhoi eich prosiect ar waith."
         2: "Bydd pob cost yn cael ei dangos yma gyda chyfanswm cynnal y prosiect"
@@ -23,6 +27,25 @@ cy:
         3: "Swm"
       buttons:
         1: "Ychwanegu'r gost hon"
+      cost_types_select:
+        new_staff: "Staff newydd"
+        professional_fees: "Ffioedd proffesiynol"
+        recruitment: "Recriwtio"
+        purchase_price_of_heritage_items: "Pris prynu eitemau treftadaeth"
+        repair_and_conservation_work: "Gwaith atgyweirio a chadwraeth"
+        event_costs: "Costau digwyddiadau"
+        digital_outputs: "Allbynnau digidol"
+        equipment_and_materials_including_learning_materials: "Offer a deunyddiau, gan gynnwys deunyddiau dysgu"
+        training_for_staff: "Hyfforddiant i staff"
+        training_for_volunteers: "Hyfforddiant i wirfoddolwyr"
+        travel_for_staff: "Teithio i staff"
+        travel_for_volunteers: "Teithio i wirfoddolwyr"
+        expenses_for_staff: "Treuliau i staff"
+        expenses_for_volunteers: "Treuliau i wirfoddolwyr"
+        other: "Arall"
+        publicity_and_promotion: "Cyhoeddusrwydd a dyrchafiad"
+        evaluation: "Gwerthuso"
+        contingency: "Arian wrth gefn"
       cost_types:
         1:
           heading: "Costau staff newydd"
