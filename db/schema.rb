@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_085530) do
+ActiveRecord::Schema.define(version: 2021_03_03_102649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -241,6 +241,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_085530) do
     t.text "previous_contact_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "salesforce_expression_of_interest_id"
     t.index ["pre_application_id"], name: "index_pa_expressions_of_interest_on_pre_application_id"
   end
 
@@ -258,6 +259,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_085530) do
     t.integer "potential_funding_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "salesforce_project_enquiry_id"
     t.index ["pre_application_id"], name: "index_pa_project_enquiries_on_pre_application_id"
   end
 
@@ -428,6 +430,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_085530) do
     t.string "language_preference"
     t.boolean "agrees_to_contact"
     t.boolean "agrees_to_user_research"
+    t.string "salesforce_contact_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id"

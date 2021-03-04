@@ -1,7 +1,8 @@
 # Controller for the project enquiry 'submitted' page
 class PreApplication::ProjectEnquiry::SubmittedController < ApplicationController
-  include PreApplicationContext, ObjectErrorsLogger
-
+  include PreApplicationContext
+  include PreApplicationHelper
+  include ObjectErrorsLogger
 
   # This method updates the agrees_to_contact and agrees_to_user_research
   # attributes of a user, re-rendering the :show method with either a
@@ -11,6 +12,8 @@ class PreApplication::ProjectEnquiry::SubmittedController < ApplicationControlle
     logger.info "Updating preferences for user ID: #{current_user.id}"
 
     if current_user.update(user_params)
+
+      send_pre_application_user_preferences_to_salesforce(@pre_application, current_user)
 
       logger.info("Finished updating preferences for user ID: #{current_user.id}")
 
