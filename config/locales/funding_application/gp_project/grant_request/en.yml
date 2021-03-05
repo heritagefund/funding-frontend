@@ -9,7 +9,7 @@ en-GB:
         3: "Your cash contributions"
         4: "Your grant request"
       text:
-        1: "This is what you told us the total amount of money your whole project will cost."
+        1: "This is what you told us is the total cost of your project"
         2: "This is the amount of money you told us you will receive towards your project."
         3: "We calculated your grant request by subtracting cash contributions for your project from the total amount of project costs."
         4: "for your project"
