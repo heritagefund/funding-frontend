@@ -103,8 +103,7 @@ RSpec.feature 'Project', type: :feature do
 
       enter_and_save_project_importance("Description of importance")
 
-      expect(page).to have_text "The heritage of your project: how do you plan " \
-                              "to make it available once the project is over?"
+      expect(page).to have_text(I18n.t('application.heritage.page_heading'))
 
       enter_and_save_project_heritage("Description of heritage")
 
