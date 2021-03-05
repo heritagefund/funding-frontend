@@ -44,6 +44,9 @@
     <div class="govuk-form-group <%= "#{'govuk-form-group--error'}" if
                                          @model_object.errors[:name].any? %>">
       <%= f.label :name, "Organisation name", class: "govuk-label" %>
+      <div class="govuk-hint">
+        <%= t('address.hints.1') %>
+      </div>
       <%= render partial: "partials/form_input_errors",
                  locals: {form_object: @model_object,
                           input_field_id: :name} if @model_object.errors[:name].any? %>
@@ -108,7 +111,7 @@
                           input_field_id: :postcode} if @model_object.errors[:postcode].any? %>
       <%= f.text_field :postcode,
                        autocomplete: 'postal-code',
-                       class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if @model_object.errors[:postcode].any?}" %>
+                       class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if @model_object.errors[:postcode].any?}" %>
     </div>
 
     <%= f.save_and_continue %>
