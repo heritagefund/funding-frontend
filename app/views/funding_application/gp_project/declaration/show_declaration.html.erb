@@ -205,11 +205,10 @@
     %>
 
     <fieldset class="govuk-fieldset">
-      <span class="govuk-label">
-      Are you applying on behalf of a partnership?
-    </span>
-      <div class="govuk-radios govuk-radios--conditional"
-           data-module="govuk-radios">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Are you applying on behalf of a partnership?
+      </legend>
+      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
         <div class="govuk-radios__item">
           <%=
             f.radio_button(

@@ -61,8 +61,8 @@
   <%= f.fields_for :legal_signatories do |ls| %>
 
     <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
-      <legend>
-        <h2 class="govuk-heading-m" aria-label="Heading">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <h2 class="govuk-fieldset__heading">
           <%#
             We are using ls.index + 1 here to display '1' and '2'
             as :legal_signatories is zero-indexed

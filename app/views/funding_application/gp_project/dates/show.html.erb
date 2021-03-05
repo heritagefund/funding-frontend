@@ -57,9 +57,9 @@
           <%= t('dates.start_date.label') %>
         </legend>
 
-        <span id="project-start-hint" class="govuk-hint">
+        <div id="project-start-hint" class="govuk-hint">
           <%= t('dates.start_date.hint') %>
-        </span>
+        </div>
 
         <% @funding_application.project.errors.each do |attr, msg| %>
 
@@ -170,9 +170,9 @@
           <%= t('dates.end_date.label') %>
         </legend>
 
-        <span id="project-end-hint" class="govuk-hint">
+        <div id="project-end-hint" class="govuk-hint">
           <%= t('dates.end_date.hint') %>
-        </span>
+        </div>
 
         <% @funding_application.project.errors.each do |attr, msg| %>
 

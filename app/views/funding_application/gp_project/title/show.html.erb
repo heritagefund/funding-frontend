@@ -20,11 +20,11 @@
   <div class="govuk-form-group <%= "govuk-form-group--error" if
     @funding_application.project.errors[:project_title].any? %>">
 
-    <h1 class="govuk-label-wrapper">
+      <div class="govuk-caption-xl">
+        <%= t('views.funding_application.common.about_your_project') %> 
+      </div>
 
-      <span class="govuk-caption-xl">
-        <%= t('views.funding_application.common.about_your_project') %>
-      </span>
+    <h1 class="govuk-label-wrapper">
 
       <%= 
         f.label :project_title,
