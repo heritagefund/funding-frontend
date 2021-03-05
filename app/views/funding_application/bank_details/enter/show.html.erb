@@ -10,7 +10,7 @@
   render partial: "partials/summary_errors",
          locals: {
              form_object: @funding_application.payment_details,
-             first_form_element: @funding_application.payment_details.errors.size == 1 ? "payment_details_#{@funding_application.payment_details.errors.first[0]}" : nil,
+             first_form_element: @funding_application.payment_details.errors.size == 1 ? "payment_details_#{@funding_application.payment_details.errors.first.attribute}" : nil,
              form_object_name: 'payment_details'
          } if @funding_application.payment_details.errors.any?
 %>

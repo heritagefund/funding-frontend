@@ -17,7 +17,7 @@ class FundingApplication::BankDetails::ConfirmController < ApplicationController
       logger.info "Finished updating payments_details ID: " \
                   "#{@funding_application.payment_details.id}"
 
-      redirect_to(:funding_application_bank_details_confirm_bank_details)
+      redirect_to(:funding_application_bank_details_confirm)
       
     else
 
