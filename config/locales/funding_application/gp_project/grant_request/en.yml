@@ -16,7 +16,7 @@ en-GB:
         5: "You have not added any project costs or cash contributions."
         6: "Your cash contributions are"
         7: "more than the total cost of your project."
-        8: "Your grant request is higher than &pound;10,000 which the maximum allowable for this funding programme."
+        8: "Your grant request is higher than £10,000 which the maximum allowable for this funding programme."
         9: "Please review your project costs and cash contributions."
       links:
         1: "Change project costs"
