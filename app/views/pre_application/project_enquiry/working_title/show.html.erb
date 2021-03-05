@@ -45,7 +45,8 @@
       f.text_field :working_title,
                   class: "govuk-input " \
                           "#{'govuk-input--error' if
-                      @pre_application.pa_project_enquiry.errors[:working_title].any?}"
+                      @pre_application.pa_project_enquiry.errors[:working_title].any?}",
+                      "autocomplete" => "off"
     %>
 
   </div>

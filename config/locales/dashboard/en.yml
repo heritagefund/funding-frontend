@@ -3,7 +3,7 @@ en-GB:
     page_title: "Application dashboard"
     generic:
       reference: "Reference"
-      submitted: "Submitted on"
+      submitted: "Submitted"
       applications: "applications"
       you_can_also: "You can also:"
     funding_applications:

@@ -47,7 +47,8 @@
                   class: "govuk-textarea " \
                           "#{'govuk-textarea--error' if
                       @pre_application.pa_expression_of_interest.errors[:working_title].any?}",
-                  "aria-describedby" => "working_title-hint"
+                  "aria-describedby" => "working_title-hint",
+                  "autocomplete" => "off"
     %>
 
   </div>

@@ -88,6 +88,10 @@ module PreApplicationHelper
 
     end
 
+    pre_application.update(
+      submitted_on: DateTime.now
+    )
+
     user.update(
       salesforce_contact_id: salesforce_references[:salesforce_contact_reference]
     ) if user.salesforce_contact_id.nil?
