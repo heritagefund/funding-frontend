@@ -1,0 +1,35 @@
+<div class="govuk-summary-list__row">
+
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <%= t('pa_expression_of_interest.check_answers.table.row_headings.org_address') %>
+  </dt>
+
+  <dd class="govuk-summary-list__value">
+    <% unless @organisation.line1.present? %>
+        <%= t('generic.not_answered') %>
+    <% else %>
+        <%= "#{@organisation.line1 } <br />".html_safe if
+                @organisation.line1.present? %>
+        <%= "#{@organisation.line2 } <br />".html_safe if
+                @organisation.line2.present? %>
+        <%= "#{@organisation.line3 } <br />".html_safe if
+                @organisation.line3.present? %>
+        <%= "#{@organisation.townCity } <br />".html_safe if
+                @organisation.townCity.present? %>
+        <%= "#{@organisation.county } <br />".html_safe if
+                @organisation.county.present? %>
+        <%= @organisation.postcode if @organisation.townCity.present? %>
+    <% end %>
+  </dd>
+
+  <%= render partial: 'pre_application/expression_of_interest/check_answers/change_link',
+             locals: {
+                 link_url: postcode_path(
+                    'preapplication',
+                    @pre_application.id
+                ),
+                 link_hidden_label: t('pa_expression_of_interest.check_answers.change_links.org_address')
+             }
+  %>
+
+</div>

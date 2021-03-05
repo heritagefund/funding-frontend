@@ -1,0 +1,21 @@
+<div class="govuk-summary-list__row">
+
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <%= t('pa_expression_of_interest.check_answers.table.row_headings.org_type') %>
+  </dt>
+
+  <dd class="govuk-summary-list__value">
+    <%= @organisation.org_type.present? ? @organisation.org_type&.humanize : t('generic.not_answered') %>
+  </dd>
+
+  <%= render partial: 'pre_application/expression_of_interest/check_answers/change_link',
+             locals: {
+                 link_url: pre_application_organisation_type_path(
+                        @pre_application.id,
+                        @organisation.id
+                    ),
+                 link_hidden_label: t('pa_expression_of_interest.check_answers.change_links.org_type')
+             }
+  %>
+
+</div>

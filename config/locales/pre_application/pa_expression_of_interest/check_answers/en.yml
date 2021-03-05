@@ -7,7 +7,11 @@ en-GB:
         submit: "Submit Expression of Interest"
       table:
         row_headings:
-          previous_contact_name: "Have you spoken to anyone at The Fund about your idea?"
+          org_type: "Organisation managing your project is a"
+          org_name: "Organisation's name"
+          org_address: "Your organisation is based in"
+          org_mission: "Your organisation's missions, or objectives include"
+          previous_contact_name: "Have you spoken to anyone at the Fund about your idea?"
           what_project_does: "Describe what you will do during the project"
           working_title: "Project title"
           programme_outcomes: "What outcomes do you want to achieve?"
@@ -18,6 +22,10 @@ en-GB:
           potential_funding_amount: "How much funding are you planning to apply for from us?"
           likely_submission_description: "When are you likely to submit a funding application, if asked to do so?"
       change_links:
+        org_type: "type of organisation managing your project"
+        org_name: "Organisation's name"
+        org_address: "Organisation's address"
+        org_mission: "Organisation's mission or objectives"
         previous_contact_name: "previous Fund contact name"
         what_project_does: "description of what you will do during the project"
         working_title: "working project title"

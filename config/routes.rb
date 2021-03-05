@@ -92,6 +92,23 @@ Rails.application.routes.draw do
 
   # Pre-application section of the service
   scope '/pre-application', module: 'pre_application', as: :pre_application do
+
+    scope '/:pre_application_id' do
+
+      scope '/organisation', module: 'org', as: :organisation do
+
+        scope '/:organisation_id' do
+
+          get 'type', to: 'type#show'
+          put 'type', to: 'type#update'
+          get 'mission', to: 'mission#show'
+          put 'mission', to: 'mission#update'
+
+        end
+
+      end
+
+    end
     
     scope 'project-enquiry', module: 'project_enquiry', as: :project_enquiry do
 

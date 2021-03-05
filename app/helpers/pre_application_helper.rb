@@ -1,5 +1,49 @@
 module PreApplicationHelper
   include SalesforceApi
+  
+  # Method to determine which redirect path to take based on whether the
+  # Organsiation object passed into the method is complete for this journey
+  # type.
+  #
+  # If the organisation object does not have mandatory attributes
+  # populated, then the user is redirected to :pre_application_organisation_type.
+  # 
+  # Otherwise, the user is redirected to
+  # :pre_application_project_enquiry_previous_contact_path
+  #
+  # @param [Organisation] organisation An instance of an Organisation
+  def redirect_based_on_organisation_completeness(organisation, pre_application_type)
+
+    if complete_organisation_details_for_pre_application?(organisation)
+
+      logger.info("Organisation details complete for #{organisation.id}")
+
+      redirect_to(
+        pre_application_project_enquiry_previous_contact_path(
+          @pre_application.id
+        )
+      ) if pre_application_type == 'pa_project_enquiry'
+
+      redirect_to(
+        pre_application_expression_of_interest_previous_contact_path(
+          @pre_application.id
+        )
+      ) if pre_application_type == 'pa_expression_of_interest'
+
+    else
+
+      logger.info("Organisation details incomplete for #{organisation.id}")
+
+      redirect_to(
+        pre_application_organisation_type_path(
+          @pre_application.id,
+          organisation.id
+        )
+      )
+
+    end
+
+  end
 
   # Method to orchestrate sending a pre-application to Salesforce
   # Determines whether the pre-application is an project enquiry or expression of interest,

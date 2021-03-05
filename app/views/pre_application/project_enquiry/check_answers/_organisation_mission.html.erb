@@ -1,0 +1,31 @@
+<div class="govuk-summary-list__row">
+
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <%= t('pa_expression_of_interest.check_answers.table.row_headings.org_mission') %>
+  </dt>
+
+  <dd class="govuk-summary-list__value">
+    <% unless @organisation.mission.present? %>
+        <%= t('generic.not_answered') %>
+    <% else %>
+        <ul class="govuk-list">
+            <% @organisation.mission.each do |mission| %>
+                <li>
+                <%= mission&.humanize %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
+  </dd>
+
+  <%= render partial: 'pre_application/expression_of_interest/check_answers/change_link',
+             locals: {
+                 link_url: pre_application_organisation_mission_path(
+                        @pre_application.id,
+                        @organisation.id
+                    ),
+                 link_hidden_label: t('pa_expression_of_interest.check_answers.change_links.org_mission')
+             }
+  %>
+
+</div>

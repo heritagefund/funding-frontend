@@ -1,0 +1,118 @@
+<%=
+  render partial: "partials/page_title",
+         locals: {
+             model_object: @organisation,
+             page_title: "What type of organisation will be running your project?"
+         }
+%>
+
+<%=
+  render partial: "partials/summary_errors",
+         locals: {
+           form_object: @organisation,
+           first_form_element: :organisation_org_type_registered_charity
+         } if @organisation.errors.any?
+%>
+
+<%=
+  form_with model: @organisation,
+  url: :pre_application_organisation_type,
+  method: :put,
+  local: true do |f|
+%>
+
+  <div class="govuk-form-group <%= "govuk-form-group--error" if @organisation.errors.any? %>">
+
+    <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+        <h1 class="govuk-fieldset__heading">
+          What type of organisation will be running your project?
+        </h1>
+      </legend>
+
+      <%= render partial: "partials/form_group_errors", locals: {form_object: @organisation} if
+              @organisation.errors.any? %>
+
+      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "registered_charity", class: "govuk-radios__input" %>
+          <%= f.label :org_type_registered_charity, "Registered charity", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "local_authority", class: "govuk-radios__input" %>
+          <%= f.label :org_type_local_authority, "Local authority", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "other_public_sector_organisation", class: "govuk-radios__input" %>
+          <%= f.label :org_type_other_public_sector_organisation, "Other public sector organisation", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "registered_company", class: "govuk-radios__input" %>
+          <%= f.label :org_type_registered_company, "Registered company", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "community_interest_company", class: "govuk-radios__input" %>
+          <%= f.label :org_type_community_interest_company,
+                      "Community Interest Company", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "faith_based_organisation", class: "govuk-radios__input" %>
+          <%= f.label :org_type_faith_based_organisation,
+                      "Faith-based organisation", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "church_organisation", class: "govuk-radios__input" %>
+          <%= f.label :org_type_church_organisation, "Church organisation", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "community_group", class: "govuk-radios__input" %>
+          <%= f.label :org_type_community_group, "Community group", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "voluntary_group", class: "govuk-radios__input" %>
+          <%= f.label :org_type_voluntary_group, "Voluntary group", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "individual_private_owner_of_heritage", class: "govuk-radios__input" %>
+          <%= f.label :org_type_individual_private_owner_of_heritage,
+                      "Individual private owner of heritage", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__item">
+          <%= f.radio_button :org_type, "other", class: "govuk-radios__input",
+                             "data-aria-controls" => "conditional-organisation_org_type_other"
+          %>
+          <%= f.label :org_type_other, "Other", class: "govuk-label govuk-radios__label" %>
+        </div>
+
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden"
+             id="conditional-organisation_org_type_other">
+
+          <p class="govuk-body">
+            Other types of organisations also have to satisfy our applicant funding criteria.
+          </p>
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+  </div>
+
+  <%=
+    f.save_and_continue
+  %>
+
+<% end %>

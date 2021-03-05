@@ -8,11 +8,15 @@
 
 <%= render partial: "partials/summary_errors", locals: {
     form_object: @model_object,
-    first_form_element: @type == "organisation" ? :organisation_name : :"#{@type}_line1"
+    first_form_element: @type == "organisation" || @type == 'preapplication' ? :organisation_name : :"#{@type}_line1"
 } if @model_object.errors.any? %>
 
 <% if @type == "organisation" || @type == "project" %>
-  <h1 class="govuk-heading-l" aria-label="Heading">About your <%= @type %></h1>
+  <h1 class="govuk-heading-l">
+    About your <%= @type %>
+  </h1>
+<% elsif @type == 'preapplication' %>
+  <h1 class="govuk-heading-l">About your organisation</h1>
 <% else %>
   <h1 class="govuk-heading-xl">
     <span class="govuk-caption-xl">Add your details</span>
@@ -21,18 +25,22 @@
 <% end %>
 
 
-<% if @type == "organisation" %>
-  <p class="govuk-body" aria-label="information">Your organisation must be based in the UK</p>
+<% if @type == "organisation" || @type == 'preapplication' %>
+  <p class="govuk-body">Your organisation must be based in the UK</p>
 <% end %>
 
 <% if @type == "organisation" || @type == "project" %>
-  <h2 class="govuk-heading-m" aria-label="Heading">Enter
+  <h2 class="govuk-heading-m">Enter
     your <%= "#{@type}" %> address details</h2>
+<% elsif @type == 'preapplication' %>
+  <h2 class="govuk-heading-m">
+    Enter your organisation address details
+  </h2>
 <% end%>
 
 <%= form_for @model_object, url: :address, method: :put do |f|  %>
 
-  <% if @type == "organisation" %>
+  <% if @type == "organisation" || @type == 'preapplication' %>
     <div class="govuk-form-group <%= "#{'govuk-form-group--error'}" if
                                          @model_object.errors[:name].any? %>">
       <%= f.label :name, "Organisation name", class: "govuk-label" %>

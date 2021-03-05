@@ -9,6 +9,7 @@ class AddressController < ApplicationController
   def assign_address_attributes
 
     assign_attributes(@model_object)
+
     render :show
 
   end
@@ -31,9 +32,22 @@ class AddressController < ApplicationController
                   "#{@model_object.id}"
 
       if @type == 'organisation'
+
         redirect_to organisation_mission_path(params['id'])
+
+      elsif @type == 'preapplication'
+
+        redirect_to(
+          pre_application_organisation_mission_path(
+            pre_application_id: params['id'],
+            organisation_id: @model_object.id
+          )
+        )
+
       elsif @type == 'project'
+
         redirect_to funding_application_gp_project_description_path(@model_object.funding_application.id)
+
       elsif @type == 'user'
 
         # Caters to a situation where original applicants have no person assigned to the user.
@@ -61,7 +75,7 @@ class AddressController < ApplicationController
   # Checks for a known type of model in the params.
   # If correct, then assign the model type to a @type instance variable.
   def check_and_set_model_type
-    if %w[user organisation project].include? params[:type]
+    if %w[user organisation project preapplication].include? params[:type]
       @type = params[:type]
       case @type
       when 'organisation'
@@ -72,6 +86,11 @@ class AddressController < ApplicationController
         users_organisation = UsersOrganisation.find_by(organisation_id: params[:id])
         @model_object = current_user
         redirect_to :root unless users_organisation.user_id == current_user.id
+      when 'preapplication'
+        # When @type is 'preapplication', we need to actually set the
+        # address against the associated Organisation object
+        pre_application = PreApplication.find(params[:id])
+        @model_object = Organisation.find(pre_application.organisation_id)
       end
     else
       redirect_to :root
@@ -145,7 +164,15 @@ class AddressController < ApplicationController
   end
 
   def model_params
-    params.require(@type)
+
+    # Ensure that the required param is set to either the @type value,
+    # or 'organisation' if @type is equal to 'preapplication'. We do
+    # this to ensure that during a pre-application journey, we don't
+    # require a param of 'preapplication', when we are actually dealing
+    # with an organisation object
+    model_type = @type == 'preapplication' ? 'organisation' : @type
+
+    params.require(model_type)
           .permit(:name, :line1, :line2, :line3,
                   :townCity, :county, :postcode)
   end

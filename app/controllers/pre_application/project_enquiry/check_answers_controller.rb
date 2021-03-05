@@ -3,6 +3,10 @@ class PreApplication::ProjectEnquiry::CheckAnswersController < ApplicationContro
   include PreApplicationContext 
   include PreApplicationHelper
 
+  def show
+    @organisation = Organisation.find(@pre_application.organisation_id)
+  end
+
   # This method starts the process of creating an expression of interest object in Salesforce
   # and then redirects to :pre_application_project_enquiry_submitted
   def update
