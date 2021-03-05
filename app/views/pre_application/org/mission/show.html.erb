@@ -124,6 +124,34 @@
           <%= f.label :young_people_led, "Young people led", class: "govuk-label govuk-checkboxes__label" %>
         </div>
 
+        <div class="govuk-checkboxes__item">
+          <%=
+            f.check_box :mission,
+                        {
+                            multiple: true,
+                            id: :organisation_mainly_catholic_community_led,
+                            class: "govuk-checkboxes__input"
+                        },
+                        "mainly_catholic_community_led",
+                        nil
+          %>
+          <%= f.label :mainly_catholic_community_led, "Mainly led by people from Catholic communities", class: "govuk-label govuk-checkboxes__label" %>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <%=
+            f.check_box :mission,
+                        {
+                            multiple: true,
+                            id: :organisation_mainly_protestant_community_led,
+                            class: "govuk-checkboxes__input"
+                        },
+                        "mainly_protestant_community_led",
+                        nil
+          %>
+          <%= f.label :mainly_protestant_community_led, "Mainly led by people from Protestant communities", class: "govuk-label govuk-checkboxes__label" %>
+        </div>
+
       </div>
     </fieldset>
   </div>

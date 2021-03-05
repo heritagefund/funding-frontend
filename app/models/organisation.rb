@@ -69,7 +69,9 @@ class Organisation < ApplicationRecord
              "disability_led",
              "lgbt_plus_led",
              "female_led",
-             "young_people_led"].include? m
+             "young_people_led",
+             "mainly_catholic_community_led",
+             "mainly_protestant_community_led"].include? m
           errors.add(:mission, m + " is not a valid selection")
         end
       end

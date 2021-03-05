@@ -665,6 +665,10 @@ module SalesforceApi
         'Female-led'
       when 'young_people_led'
         'Young people-led'
+      when 'mainly_catholic_community_led'
+        'Mainly led by people from Catholic communities'
+      when 'mainly_protestant_community_led'
+        'Mainly led by people from Protestant communities'
       end
 
     end
