@@ -1,6 +1,10 @@
 cy:
   covid_banner:
     heading: "Cyhoeddiad pwysig"
-    content_1: "Defnyddiwch y ffurflen yma i greu cyfrif gyda Chronfa Dreftadaeth y Loteri Genedlaethol."
-    content_2_html: "Mae gennym lai o raglenni ariannu ar gael ar hyn o bryd i ganolbwyntio ar ymateb i argyfwng COVID-19, ac mae'r ffurflen yma ar gau yn y cyfamser. %{href}."
-    content_2_href: "Darganfyddwch fwy am ein rhaglenni ariannu"
+    p:
+      1: "Defnyddiwch y ffurflen yma i greu cyfrif gyda Chronfa Dreftadaeth y Loteri Genedlaethol os ydych yn gwneud cais am rhwng £3,000 a £10,000 ac mae'r prosiect wedi'i leoli yn:"
+      2: "Os ydych yn gwneud cais am unrhyw swm grant arall, neu fod y prosiect wedi'i leoli yng Nghymru neu Loegr, neu mae gennych gais sy'n bodoli eisoes %{href}."
+    links:
+      1:
+        text: "mewngofnodwch i'r porth ymgeisio"
+        url: "https://forms.hlf.org.uk/officeforms/HLF_Projects.ofml"

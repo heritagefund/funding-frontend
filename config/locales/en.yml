@@ -14,6 +14,11 @@ en-GB:
       send: "Send"
       continue: "Continue"
   generic:
+    countries:
+      scotland: "Scotland"
+      ni: "Northern Ireland"
+      wales: "Wales"
+      england: "England"
     x_yes: "Yes"
     x_no: "No"
     x_not_sure: "Not sure"

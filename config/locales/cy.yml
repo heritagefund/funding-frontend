@@ -14,6 +14,11 @@ cy:
       send: "Anfon"
       continue: "Parhau"
   generic:
+    countries:
+      scotland: "Yr Alban"
+      ni: "Gogledd Iwerddon"
+      wales: "Cymru"
+      england: "Lloegr"
     x_yes: "Ie"
     x_no: "Na"
     x_not_sure: "Ddim yn siŵr"
