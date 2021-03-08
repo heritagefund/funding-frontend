@@ -538,6 +538,7 @@ module SalesforceApi
         Contact_External_ID__c: user.id,
         LastName: user.name,
         Email: user.email,
+        Email__c: user.email,
         Birthdate: user.date_of_birth,
         MailingStreet: [user.line1, user.line2, user.line3].compact.join(', '),
         MailingCity: user.townCity,
