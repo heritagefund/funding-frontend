@@ -615,20 +615,24 @@ module SalesforceApi
     def get_organisation_type_for_salesforce(organisation)
 
       formatted_org_type_value = case organisation.org_type
+      when 'registered_charity'
+        'Registered charity'
+      when 'local_authority'
+        'Local authority'
       when 'registered_company', 'community_interest_company'
         'Registered company or Community Interest Company (CIC)'
       when 'faith_based_organisation', 'church_organisation'
         'Faith based or church organisation'
       when 'community_group', 'voluntary_group'
-        'Community of Voluntary group'
+        'Community of Voluntary group' # Typo is present in Salesforce API name
       when 'individual_private_owner_of_heritage'
         'Private owner of heritage'
       when 'other_public_sector_organisation'
         'Other public sector organisation'
       when 'other'
-        'Other'
+        'Other organisation type'
       else
-        'Other' 
+        'Other organisation type'
       end
 
     end
