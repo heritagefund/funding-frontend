@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_102651) do
+ActiveRecord::Schema.define(version: 2021_03_08_083810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -249,6 +249,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_102651) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "salesforce_expression_of_interest_id"
+    t.string "salesforce_eoi_reference"
     t.index ["pre_application_id"], name: "index_pa_expressions_of_interest_on_pre_application_id"
   end
 

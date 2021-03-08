@@ -56,8 +56,6 @@ module PreApplicationHelper
   # @param [Organisation] organisation An instance of Organisation
   def send_pre_application_to_salesforce(pre_application, user, organisation)
 
-    queue_submission_confirmation_email(pre_application)
-    
     salesforce_api_client = SalesforceApiClient.new
  
     if pre_application.pa_project_enquiry.present?
@@ -83,10 +81,13 @@ module PreApplicationHelper
       )
 
       pre_application.pa_expression_of_interest.update(
-        salesforce_expression_of_interest_id: salesforce_references[:salesforce_expression_of_interest_reference]
+        salesforce_expression_of_interest_id: salesforce_references[:salesforce_expression_of_interest_id],
+        salesforce_eoi_reference: salesforce_references[:salesforce_expression_of_interest_reference],
       ) if pre_application.pa_expression_of_interest.salesforce_expression_of_interest_id.nil?
 
     end
+
+    queue_submission_confirmation_email(pre_application)
 
     pre_application.update(
       submitted_on: DateTime.now

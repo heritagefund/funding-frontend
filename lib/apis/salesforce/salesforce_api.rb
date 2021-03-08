@@ -172,7 +172,7 @@ module SalesforceApi
 
         salesforce_contact_reference = upsert_contact_in_salesforce(user, salesforce_organisation_reference)
 
-        salesforce_expression_of_interest_reference = @client.upsert!(
+        salesforce_expression_of_interest_id = @client.upsert!(
           'Expression_Of_Interest__c',
           'Expression_Of_Interest_external_ID__c',
           Expression_Of_Interest_external_ID__c: expression_of_interest.id,
@@ -193,13 +193,14 @@ module SalesforceApi
 
         Rails.logger.info(
           'Created an expression of interest record in Salesforce with ' \
-          "reference: #{salesforce_expression_of_interest_reference}"
+          "reference: #{salesforce_expression_of_interest_id}"
         )
 
         {
           salesforce_organisation_reference: salesforce_organisation_reference,
           salesforce_contact_reference: salesforce_contact_reference,
-          salesforce_expression_of_interest_reference: salesforce_expression_of_interest_reference
+          salesforce_expression_of_interest_id: salesforce_expression_of_interest_id,
+          salesforce_expression_of_interest_reference: get_salesforce_expression_of_interest_reference(expression_of_interest)
         }
 
       rescue Restforce::MatchesMultipleError, Restforce::UnauthorizedError,
@@ -673,6 +674,63 @@ module SalesforceApi
         'Mainly led by people from Catholic communities'
       when 'mainly_protestant_community_led'
         'Mainly led by people from Protestant communities'
+      end
+
+    end
+
+
+    # Method to retrieve an expression of interest's reference from Salesforce
+    #
+    # @param [PaExpressionOfInterest] expression_of_interest An instance of PaExpressionOfInterest
+    #
+    # @return [String] expression_of_interest.Name A string representing the name/reference of 
+    # the expression of interest
+    def get_salesforce_expression_of_interest_reference(expression_of_interest)
+
+      retry_number = 0
+
+      begin
+
+        salesforce_expression_of_interest = @client.find(
+          'Expression_Of_Interest__c',
+          expression_of_interest.id,
+          'Expression_Of_Interest_external_ID__c'
+        )
+
+        salesforce_expression_of_interest.Name
+
+      rescue Restforce::MatchesMultipleError, Restforce::UnauthorizedError,
+             Restforce::EntityTooLargeError, Restforce::ResponseError => e
+
+        Rails.logger.error("Error retrieving salesforce_expression_of_interest.Name " \
+          "for expression of interest id #{expression_of_interest.id}")
+
+        # Raise and allow global exception handler to catch
+        raise
+
+      rescue Timeout::Error, Faraday::ClientError => e
+
+        if retry_number < MAX_RETRIES
+
+          retry_number += 1
+
+          max_sleep_seconds = Float(2 ** retry_number)
+
+          Rails.logger.info(
+            "Will attempt get_salesforce_expression_of_interest_reference again, retry number #{retry_number} " \
+            "after a sleeping for up to #{max_sleep_seconds} seconds"
+          )
+
+          sleep rand(0..max_sleep_seconds)
+
+          retry
+
+        else
+
+          raise
+
+        end
+
       end
 
     end
