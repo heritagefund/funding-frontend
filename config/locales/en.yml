@@ -48,6 +48,7 @@ en-GB:
     sort_code: "Sort code"
     account_number: "Account number"
     if_you_have_one: "if you have one"
+    date_of_spend: "Date of spend"
   views:
     funding_application:
       common:

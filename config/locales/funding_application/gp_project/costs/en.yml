@@ -10,7 +10,7 @@ en-GB:
         5: "New staff costs"
       labels:
         cost_type: "Cost type"
-        description: "Description"
+        description: "Description of cost"
         amount: "Amount"
       text:
         1: "Project costs help us understand how you plan to put your project into action."

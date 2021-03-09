@@ -24,7 +24,7 @@ en-GB:
         2: "Secured"
         3: "Amount"
       labels:
-        1: "Description"
+        1: "Description of cash contribution"
         2: "Yes and I can provide evidence"
         3: "Yes but I do not have evidence yet"
         4: "No"

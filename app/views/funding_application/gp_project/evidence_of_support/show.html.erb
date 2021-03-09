@@ -213,9 +213,11 @@
 
             <div id="evidence_of_support.description-errors"></div>
 
-            <label class="govuk-label govuk-!-font-weight-bold" for="evidence-description">
-              <%= t('application.evidence_of_support.labels.1') %>
-            </label>
+            <%=
+              f.label :evidence_of_support_attributes_0_description,
+              t('application.evidence_of_support.labels.1'),
+              class: "govuk-label govuk-!-font-weight-bold"
+            %>
 
             <%=
               e.text_area :description,

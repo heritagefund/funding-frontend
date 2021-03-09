@@ -13,3 +13,5 @@ en-GB:
     add_volunteer_hint: "Volunteers are people who give up their time for free to help deliver your project."
     btn_add_volunteer: "Add this volunteer"
     input_btn_hint: "If you have finished adding volunteers"
+    labels:
+      description: "Description of volunteers"

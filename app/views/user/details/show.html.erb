@@ -238,11 +238,11 @@
 
       <fieldset class="govuk-fieldset">
 
-        <%=
-          f.label :language_preference,
-          t('details.label_language_preference'),
-          class: "govuk-label"
-        %>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+          <h2 class="govuk-fieldset__heading">
+            <%= t('details.label_language_preference') %>
+          </h2>
+        </legend>      
 
         <%=
           render partial: "partials/form_input_errors",

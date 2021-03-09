@@ -20,7 +20,7 @@
 
   <div class="govuk-form-group <%= "govuk-form-group--error" if @organisation.errors.any? %>">
 
-    <fieldset class="govuk-fieldset">
+    <fieldset class="govuk-fieldset" aria-describedby="mission-hint">
 
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
         <h1 class="govuk-fieldset__heading">
@@ -28,9 +28,9 @@
         </h1>
       </legend>
 
-      <span id="mission-hint" class="govuk-hint">
+      <div id="mission-hint" class="govuk-hint">
         Select all that apply.
-      </span>
+      </div>
 
       <%=
         render partial: "partials/form_group_errors",

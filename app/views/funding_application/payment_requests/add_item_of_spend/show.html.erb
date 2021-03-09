@@ -120,81 +120,88 @@
   <%# description of spend end%>
   
   <%# Date of spend start%>
-  <div class="govuk-date-input govuk-form-group <%= 'govuk-form-group--error' if @spend.errors[:custom_date_of_spend].present? %>" id="date-of-spend">
+  <div class="govuk-form-group <%= 'govuk-form-group--error' if @spend.errors[:custom_date_of_spend].present? %>">
+    
+    <fieldset class="govuk-fieldset" role="group">
 
-    <%=
-      f.label :custom_date_of_spend,
-      'Date of spend',
-      class: 'govuk-label govuk-!-font-weight-bold'
-    %>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+        <div class="govuk-fieldset__heading">
+          <%= t('generic.date_of_spend') %>
+        </div>
+      </legend>
 
-    <%=
-      render partial: "partials/form_input_errors",
-              locals: {
-                form_object: @spend,
-                input_field_id: :custom_date_of_spend
-              } if @spend.errors[:custom_date_of_spend].any?
-    %>
-
-    <div class="govuk-date-input__item">
-
-      <div class="govuk-form-group">
-
+      <div class="govuk-date-input" id="date-of-spend">
         <%=
-          f.label 'custom_date_of_spend(3i)',
-                  t('dates.day'),
-                  class: "govuk-label govuk-date-input__label"
+          render partial: "partials/form_input_errors",
+                  locals: {
+                    form_object: @spend,
+                    input_field_id: :custom_date_of_spend
+                  } if @spend.errors[:custom_date_of_spend].any?
         %>
 
-        <%= 
-          f.number_field 'custom_date_of_spend(3i)',
-          class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
-          value: "#{@spend.custom_date_of_spend[3] if @spend.custom_date_of_spend.present?}"
-        %>
+        <div class="govuk-date-input__item">
+
+          <div class="govuk-form-group">
+
+            <%=
+              f.label 'custom_date_of_spend(3i)',
+                      t('dates.day'),
+                      class: "govuk-label govuk-date-input__label"
+            %>
+
+            <%= 
+              f.number_field 'custom_date_of_spend(3i)',
+              class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
+              value: "#{@spend.custom_date_of_spend[3] if @spend.custom_date_of_spend.present?}"
+            %>
+
+          </div>
+
+        </div>
+
+        <div class="govuk-date-input__item">
+
+          <div class="govuk-form-group">
+
+            <%=
+              f.label 'custom_date_of_spend(2i)',
+                      t('dates.month'),
+                      class: "govuk-label govuk-date-input__label"
+            %>
+
+            <%= 
+              f.number_field 'custom_date_of_spend(2i)',
+              class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
+              value: "#{@spend.custom_date_of_spend[2] if @spend.custom_date_of_spend.present?}"
+            %>
+
+          </div>
+
+        </div>
+
+        <div class="govuk-date-input__item">
+
+          <div class="govuk-form-group">
+
+            <%=
+              f.label 'custom_date_of_spend(1i)',
+                      t('dates.year'),
+                      class: "govuk-label govuk-date-input__label"
+            %>
+
+            <%= 
+              f.number_field 'custom_date_of_spend(1i)',
+              class: "govuk-input govuk-date-input__input govuk-input--width-4 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
+              value: "#{@spend.custom_date_of_spend[1] if @spend.custom_date_of_spend.present?}"
+            %>
+
+          </div>
+
+        </div>
 
       </div>
 
-    </div>
-
-    <div class="govuk-date-input__item">
-
-      <div class="govuk-form-group">
-
-        <%=
-          f.label 'custom_date_of_spend(2i)',
-                  t('dates.month'),
-                  class: "govuk-label govuk-date-input__label"
-        %>
-
-        <%= 
-          f.number_field 'custom_date_of_spend(2i)',
-          class: "govuk-input govuk-date-input__input govuk-input--width-2 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
-          value: "#{@spend.custom_date_of_spend[2] if @spend.custom_date_of_spend.present?}"
-        %>
-
-      </div>
-
-    </div>
-
-    <div class="govuk-date-input__item">
-
-      <div class="govuk-form-group">
-
-        <%=
-          f.label 'custom_date_of_spend(1i)',
-                  t('dates.year'),
-                  class: "govuk-label govuk-date-input__label"
-        %>
-
-        <%= 
-          f.number_field 'custom_date_of_spend(1i)',
-          class: "govuk-input govuk-date-input__input govuk-input--width-4 #{"govuk-input--error" if @spend.errors[:custom_date_of_spend].any?}",
-          value: "#{@spend.custom_date_of_spend[1] if @spend.custom_date_of_spend.present?}"
-        %>
-
-      </div>
-
-    </div>
+    </fieldset>
 
   </div>
 
