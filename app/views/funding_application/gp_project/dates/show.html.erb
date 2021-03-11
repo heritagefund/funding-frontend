@@ -61,14 +61,14 @@
           <%= t('dates.start_date.hint') %>
         </div>
 
-        <% @funding_application.project.errors.each do |attr, msg| %>
+        <% @funding_application.project.errors.each do |error| %>
 
-          <% if attr.to_s.include? "start" %>
+          <% if error.attribute.to_s.include? "start" %>
 
-            <span id="project[<%= attr %>]-error" class="govuk-error-message">
+            <span id="project[<%= error.attribute %>]-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">
                 <%= t('generic.error') %>:
-              </span> <%= msg %>
+              </span> <%= error.message %>
             </span>
 
           <% end %>
@@ -174,14 +174,14 @@
           <%= t('dates.end_date.hint') %>
         </div>
 
-        <% @funding_application.project.errors.each do |attr, msg| %>
+        <% @funding_application.project.errors.each do |error| %>
 
-          <% if attr.to_s.include? "end" %>
+          <% if error.attribute.to_s.include? "end" %>
 
-            <span id="project[<%= attr %>]-error" class="govuk-error-message">
+            <span id="project[<%= error.attribute %>]-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">
                 <%= t('generic.error') %>:
-              </span> <%= msg %>
+              </span> <%= error.message %>
             </span>
 
           <% end %>

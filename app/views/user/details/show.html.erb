@@ -88,18 +88,18 @@
 
     <div
       class="govuk-form-group <%= "govuk-form-group--error" if
-        current_user.errors.keys.find {|k| "dob".in? k.to_s or "date_of_birth".in? k.to_s} %>"
+        current_user.errors.attribute_names.find {|k| "dob".in? k.to_s or "date_of_birth".in? k.to_s} %>"
       id="user_date_of_birth">
 
-      <% current_user.errors.each do |attr, msg| %>
+      <% current_user.errors.each do |error| %>
 
-        <% if "dob".in? attr.to_s or "date_of_birth".in? attr.to_s %>
+        <% if "dob".in? error.attribute.to_s or "date_of_birth".in? error.attribute.to_s %>
 
-            <span id="user[<%= attr %>]-error" class="govuk-error-message">
+            <span id="user[<%= error.attribute %>]-error" class="govuk-error-message">
 
               <span class="govuk-visually-hidden">
                 <%= t('details.error') %>
-              </span> <%= msg %>
+              </span> <%= error.message %>
               
             </span>
 

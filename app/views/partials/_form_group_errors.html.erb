@@ -1,5 +1,5 @@
-<% form_object.errors.each do |attr, msg| %>
-  <span id="<%= form_object.class.name.downcase %>[<%= attr %>]-error" class="govuk-error-message">
-    <span class="govuk-visually-hidden">Error:</span> <%= msg %>
+<% form_object.errors.each do |error| %>
+  <span id="<%= form_object.class.name.downcase %>[<%= error.attribute %>]-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> <%= error.message %>
   </span>
 <% end %>

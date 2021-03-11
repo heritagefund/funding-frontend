@@ -1,7 +1,7 @@
 class DoesNotMatchOtherSignatoryValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     if record == record.organisation.legal_signatories.second && value == record.organisation.legal_signatories.first.email_address
-      record.errors[attribute] << (options[:message] || "must be different to first signatory email address")
+      record.errors.add(attribute, (options[:message] || "must be different to first signatory email address"))
     end
   end
 end
