@@ -94,11 +94,11 @@ module PreApplicationHelper
     )
 
     user.update(
-      salesforce_contact_id: salesforce_references[:salesforce_contact_reference]
+      salesforce_contact_id: salesforce_references[:salesforce_contact_id]
     ) if user.salesforce_contact_id.nil?
 
     organisation.update(
-      salesforce_account_id: salesforce_references[:salesforce_organisation_reference]
+      salesforce_account_id: salesforce_references[:salesforce_account_id]
     ) if organisation.salesforce_account_id.nil?
     
   end

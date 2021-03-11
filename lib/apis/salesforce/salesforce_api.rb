@@ -168,9 +168,9 @@ module SalesforceApi
 
       begin
 
-        salesforce_organisation_reference = create_organisation_in_salesforce(organisation)
+        salesforce_account_id = create_organisation_in_salesforce(organisation)
 
-        salesforce_contact_reference = upsert_contact_in_salesforce(user, salesforce_organisation_reference)
+        salesforce_contact_id = upsert_contact_in_salesforce(user, salesforce_account_id)
 
         salesforce_expression_of_interest_id = @client.upsert!(
           'Expression_Of_Interest__c',
@@ -187,8 +187,8 @@ module SalesforceApi
           Project_Title__c: expression_of_interest.working_title,
           Overall_cost__c: expression_of_interest.overall_cost,
           Likely_Submission_Description__c: expression_of_interest.likely_submission_description,
-          Contact__c: salesforce_contact_reference,
-          Name_of_your_organisation__c: salesforce_organisation_reference
+          Contact__c: salesforce_contact_id,
+          Name_of_your_organisation__c: salesforce_account_id
         )
 
         Rails.logger.info(
@@ -197,8 +197,8 @@ module SalesforceApi
         )
 
         {
-          salesforce_organisation_reference: salesforce_organisation_reference,
-          salesforce_contact_reference: salesforce_contact_reference,
+          salesforce_account_id: salesforce_account_id,
+          salesforce_contact_id: salesforce_contact_id,
           salesforce_expression_of_interest_id: salesforce_expression_of_interest_id,
           salesforce_expression_of_interest_reference: get_salesforce_expression_of_interest_reference(expression_of_interest)
         }
@@ -261,9 +261,9 @@ module SalesforceApi
 
       begin
         
-        salesforce_organisation_reference = create_organisation_in_salesforce(organisation)
+        salesforce_account_id = create_organisation_in_salesforce(organisation)
 
-        salesforce_contact_reference = upsert_contact_in_salesforce(user, salesforce_organisation_reference)
+        salesforce_contact_id = upsert_contact_in_salesforce(user, salesforce_account_id)
 
         salesforce_project_enquiry_reference = @client.upsert!(
           'Project_Enquiry__c',
@@ -280,8 +280,8 @@ module SalesforceApi
           Project_Participants__c: project_enquiry.project_participants,
           Timescales__c: project_enquiry.project_timescales, 
           Project_Title__c: project_enquiry.working_title,
-          Contact__c: salesforce_contact_reference,
-          Name_of_your_organisation__c: salesforce_organisation_reference
+          Contact__c: salesforce_contact_id,
+          Name_of_your_organisation__c: salesforce_account_id
         )
  
         Rails.logger.info(
@@ -289,8 +289,8 @@ module SalesforceApi
         )
 
         {
-          salesforce_organisation_reference: salesforce_organisation_reference,
-          salesforce_contact_reference: salesforce_contact_reference,
+          salesforce_account_id: salesforce_account_id,
+          salesforce_contact_id: salesforce_contact_id,
           salesforce_project_enquiry_reference: salesforce_project_enquiry_reference
         }
 
@@ -492,14 +492,37 @@ module SalesforceApi
 
     private
 
-    # Method to upsert a Salesforce Organisation record. Retries accounted for in outer scope call.
+    # Method to upsert a Salesforce Organisation record. Calling function should handle exceptions/retries
     #
     # @param [Organisation] organisation An instance of an Organisation object
     #
-    # @return [String] A salesforce reference for the Organisation
+    # @return [String] A salesforce id for the Account (Organisation is an alias of Account)
     def create_organisation_in_salesforce(organisation)
+      
+      salesforce_account_id = find_matching_account_for_organisation(organisation)
 
-      salesforce_organisation_reference = @client.upsert!(
+      if salesforce_account_id.nil?
+        salesforce_account_id = upsert_account_by_organisation_id(organisation)
+      else
+        upsert_account_by_salesforce_id(organisation, salesforce_account_id)    
+      end
+
+      Rails.logger.info(
+        "Upserted an Account record in Salesforce with reference: #{salesforce_account_id}"
+      )
+
+      salesforce_account_id
+
+    end
+
+    # Upserts to an Account record in Salesforce using the organisation.id
+    # Calling function should handle exceptions/retries
+    #
+    # @param [Organisation] organisation An instance of a Organisation object
+    #
+    # @return [String] salesforce_account_id A Salesforce Account Id for the Organisation
+    def upsert_account_by_organisation_id(organisation)
+      @client.upsert!(
         'Account',
         'Account_External_ID__c', 
         Name: organisation.name,
@@ -514,28 +537,84 @@ module SalesforceApi
         Organisation_Type__c: get_organisation_type_for_salesforce(organisation),
         Organisation_s_Mission_and_Objectives__c: convert_to_salesforce_mission_types(organisation.mission)
       )
+    end
+
+    # Upserts to an Account record in Salesforce using the salesforce Account Id
+    # Calling function should handle exceptions/retries
+    #
+    # @param [Organisation] organisation An instance of a Organisation object
+    # @param [String] salesforce_account_id A salesforce Account Id 
+    #                                       for the User's organisation
+    #
+    # @return [String] salesforce_account_id A Salesforce Account Id for the Organisation
+    def upsert_account_by_salesforce_id(organisation, salesforce_account_id)
+      @client.upsert!(
+        'Account',
+        'Id', 
+        Id: salesforce_account_id,
+        Name: organisation.name,
+        Account_External_ID__c: organisation.id,
+        BillingStreet: [organisation.line1, organisation.line2, organisation.line3].compact.join(', '),
+        BillingCity: organisation.townCity,
+        BillingState: organisation.county,
+        BillingPostalCode: organisation.postcode,
+        Company_Number__c: organisation.company_number,
+        Charity_Number__c: organisation.charity_number,
+        Charity_Number_NI__c: organisation.charity_number_ni,
+        Organisation_Type__c: get_organisation_type_for_salesforce(organisation),
+        Organisation_s_Mission_and_Objectives__c: convert_to_salesforce_mission_types(organisation.mission)
+      )
+    end
+
+    # Method to orchestrate upserting a Salesforce Contact record. 
+    # Tries to find an existing Contact record in Salesforce first.
+    # Then calls an appropriate upsert.  Upserts by Salesforce's
+    # Contact Id if known.  Otherwise upserts by the User objects id.
+    # Calling function should handle exceptions/retries
+    #
+    # @param [User] user An instance of a User object
+    # @param [String] salesforce_account_id a salesforce organisation 
+    #                                                   reference for the User's organisation
+    #
+    # @return [String] salesforce_contact_id A Salesforce contact Id for the Contact/User
+    def upsert_contact_in_salesforce(user, salesforce_account_id)
+      
+      salesforce_contact_id = find_matching_contact_for_user(user)
+
+      if salesforce_contact_id.nil?
+        salesforce_contact_id = upsert_contact_by_user_id(user, salesforce_account_id)       
+      else
+        upsert_contact_by_salesforce_id(user, salesforce_contact_id, salesforce_account_id)    
+      end
 
       Rails.logger.info(
-        "Created an Organisation record in Salesforce with reference: #{salesforce_organisation_reference}"
+        "Upserted a Contact record in Salesforce with Id: #{salesforce_contact_id}"
       )
 
-      salesforce_organisation_reference
+      salesforce_contact_id
 
     end
 
-    # Method to upsert a Salesforce Contact record. Retries accounted for in outer scope call.
+    # Upserts to a Contact record in Salesforce using the Contact record's Id
+    # Removes the FirstName, MiddleName, Suffix attributes, and 
+    # populates LastName with the User.name value from Funding Frontend
+    # Calling function should handle exceptions/retries
     #
     # @param [User] user An instance of a User object
-    # @param [String] salesforce_organisation_reference a salesforce organisation 
+    # @param [String] salesforce_contact_id The Contact record's Id
+    # @param [String] salesforce_account_id A salesforce organisation 
     #                                                   reference for the User's organisation
-    #
-    # @return [String] A Salesforce reference for the Contact/User
-    def upsert_contact_in_salesforce(user, salesforce_organisation_reference)
-
-      salesforce_contact_reference = @client.upsert!(
+    # @return [String] salesforce_contact_id A Salesforce contact Id for the Contact/User
+    def upsert_contact_by_salesforce_id(user, salesforce_contact_id, salesforce_account_id) 
+      salesforce_contact_id = @client.upsert!(
         'Contact',
-        'Contact_External_ID__c',
+        'Id',
+        Id: salesforce_contact_id,
         Contact_External_ID__c: user.id,
+        Salutation: '',
+        FirstName: '',
+        MiddleName: '',
+        Suffix: '',
         LastName: user.name,
         Email: user.email,
         Email__c: user.email,
@@ -549,16 +628,43 @@ module SalesforceApi
         # Ensure we use a type of language preference known to Salesforce. If a different type, cover ourselves with both
         Language_Preference__c: (['english', 'welsh', 'both'].include? user.language_preference) ? user.language_preference : 'both',
         Agrees_To_User_Research__c: (user.agrees_to_user_research.present?) ? user.agrees_to_user_research : false,
-        AccountId: salesforce_organisation_reference
-       )
+        AccountId: salesforce_account_id
+       ) 
+    end 
 
-       Rails.logger.info(
-         "Created a Contact record in Salesforce with reference: #{salesforce_contact_reference}"
-        )
-
-       salesforce_contact_reference
-
-    end
+    # Upserts to a Contact record in Salesforce using the User instance's id
+    # Removes the Salutation, FirstName, MiddleName, Suffix attributes, and 
+    # populates LastName with the User.name value from Funding Frontend
+    # Calling function should handle exceptions/retries
+    #
+    # @param [User] user An instance of a User object
+    # @param [String] salesforce_account_id A salesforce organisation 
+    #                                                   reference for the User's organisation
+    def upsert_contact_by_user_id(user, salesforce_account_id) 
+      salesforce_contact_id = @client.upsert!(
+        'Contact',
+        'Contact_External_ID__c',
+        Contact_External_ID__c: user.id,
+        Salutation: '',
+        FirstName: '',
+        MiddleName: '',
+        Suffix: '',
+        LastName: user.name,
+        Email: user.email,
+        Email__c: user.email,
+        Birthdate: user.date_of_birth,
+        MailingStreet: [user.line1, user.line2, user.line3].compact.join(', '),
+        MailingCity: user.townCity,
+        MailingState: user.county,
+        MailingPostalCode: user.postcode,
+        Phone: user.phone_number,
+        Other_communication_needs_for_contact__c: user.communication_needs,
+        # Ensure we use a type of language preference known to Salesforce. If a different type, cover ourselves with both
+        Language_Preference__c: (['english', 'welsh', 'both'].include? user.language_preference) ? user.language_preference : 'both',
+        Agrees_To_User_Research__c: (user.agrees_to_user_research.present?) ? user.agrees_to_user_research : false,
+        AccountId: salesforce_account_id
+       ) 
+    end 
 
     # Method to initialise a new Restforce client, called as part of object instantiation
     def initialise_client
@@ -679,7 +785,6 @@ module SalesforceApi
 
     end
 
-
     # Method to retrieve an expression of interest's reference from Salesforce
     #
     # @param [PaExpressionOfInterest] expression_of_interest An instance of PaExpressionOfInterest
@@ -733,6 +838,95 @@ module SalesforceApi
         end
 
       end
+
+    end
+
+    # Method check Salesforce for existing Contact records for the passed User instance
+    # Firstly checks if a Contact record exists with an external ID matching the user.id
+    # If no match found, then tries to find a Contact record with a matching email
+    # A Salesforce Id for the Contact record is returned if a match is made.  Otherwise nil.
+    # Calling function should handle exceptions/retries
+    #
+    # @param [User] user An instance of User which is the current user
+    #
+    # @return [String] contact_salesforce_id A string representing Salesforce Id 
+    #                                        for the Contact record, or nil
+    def find_matching_contact_for_user(user)
+      
+      begin
+
+        contact_salesforce_id =  @client.find(
+          'Contact',
+          user.id,
+          'Contact_External_ID__c'
+        ).Id
+
+      rescue Restforce::NotFoundError
+        Rails.logger.info("Unable to find contact with external id #{user.id} " \
+          "will attempt to find contact using a name and Email match")  
+      end
+      
+      unless contact_salesforce_id 
+
+        contact_collection_from_salesforce = 
+          @client.query_all("select Id from Contact where Email = '#{user.email}'")
+
+        contact_salesforce_id = contact_collection_from_salesforce&.first&.Id
+
+      end
+
+      Rails.logger.info("Unable to find contact with matching name and email for "\
+        "user id #{user.id}") if contact_salesforce_id.nil?
+      
+      contact_salesforce_id
+
+    end
+
+    # Method check Salesforce for existing Account (Organisation) records for the passed 
+    # Organisation instance.
+    # Firstly checks if an Account record exists with an external ID matching the organisation.id
+    # If no match found, then tries to find a Account record with a matching 
+    # organisation name and postcode combination.  
+    # A Salesforce Id for the Account record is returned if a match is made.  Otherwise nil.
+    # Calling function should handle exceptions/retries.
+    #
+    # @param [Organisation] organisation An instance of Organisation which is the 
+    # organisation for the current user.
+    #
+    # @return [String] Account_salesforce_id A string representing Salesforce Id 
+    #                                        for the Account record, or nil
+    def find_matching_account_for_organisation(organisation)
+      
+      begin
+
+        account_salesforce_id =  @client.find(
+          'Account',
+          organisation.id,
+          'Account_External_ID__c'
+        ).Id
+
+      rescue Restforce::NotFoundError
+        Rails.logger.info("Unable to find account with external id #{organisation.id} " \
+          "will attempt to find account using a name and postcode match")  
+      end
+      
+      unless account_salesforce_id 
+        
+        # Ruby unusual in its approach to escaping.  This is the regex approach other devs adopt: 
+        # https://github.com/restforce/restforce/issues/314
+        escaped_org_name = organisation.name.gsub(/[']/,"\\\\'")
+    
+        account_collection_from_salesforce = 
+          @client.query_all("select Id from Account where name = '#{escaped_org_name}' and BillingPostalCode = '#{organisation.postcode}'")
+
+        account_salesforce_id = account_collection_from_salesforce&.first&.Id
+
+      end
+
+      Rails.logger.info("Unable to find account with matching name and postcode for "\
+        "organisation id #{organisation.id}") if account_salesforce_id.nil?
+      
+      account_salesforce_id
 
     end
 
