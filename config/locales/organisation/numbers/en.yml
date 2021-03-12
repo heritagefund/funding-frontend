@@ -1,0 +1,11 @@
+en-GB:
+  organisation:
+    numbers:
+      page_title: "About your organisation"
+      page_heading: "About your organisation"
+      labels:
+        company_number: "What is your company number?"
+        charity_number: "What is your charity number?"
+      hints:
+        company_number: "If you have a company number, related to this project, it would be helpful if you provide it."
+        charity_number: "If you have a charity number, related to this project, it would be helpful if you provide it."

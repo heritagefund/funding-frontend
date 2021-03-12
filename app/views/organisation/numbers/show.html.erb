@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @organisation,
-             page_title: "About your organisation"
+             page_title: t('organisation.numbers.page_title')
          }
 %>
 
@@ -13,16 +13,18 @@
 } if @organisation.errors.any?
 %>
 
-<h1 class="govuk-heading-xl" aria-label="Heading">About your organisation</h1>
+<h1 class="govuk-heading-xl">
+  <%= t('organisation.numbers.page_heading') %>
+</h1>
 
 <%= form_with model: @organisation, url: :organisation_numbers, method: :put, local: true do |f|  %>
 
   <div class="govuk-form-group">
 
-    <%= f.label :company_number, "What is your company number?", class: "govuk-heading-m" %>
+    <%= f.label :company_number, t('organisation.numbers.labels.company_number'), class: "govuk-heading-m" %>
 
     <span class="govuk-hint">
-        If you have a company number, related to this project, it would be helpful if you provide it.
+      <%= t('organisation.numbers.hints.company_number') %>
     </span>
 
     <%=
@@ -43,10 +45,10 @@
 
   <div class="govuk-form-group">
 
-    <%= f.label :charity_number, "What is your charity number?", class: "govuk-heading-m" %>
+    <%= f.label :charity_number, t('organisation.numbers.labels.charity_number'), class: "govuk-heading-m" %>
 
     <span class="govuk-hint">
-      If you have a charity number, related to this project, it would be helpful if you provide it.
+      <%= t('organisation.numbers.hints.charity_number') %>
     </span>
 
     <%=
@@ -65,6 +67,6 @@
 
   </div>
 
-  <%= f.save_and_continue %>
+  <%= render(ButtonComponent.new(element: 'input')) %>
 
 <% end %>
