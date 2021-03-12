@@ -1,0 +1,13 @@
+en-GB:
+  organisation:
+    mission:
+      page_title: "Tell us about the mission, or objectives, of your organisation"
+      page_heading: "Tell us about the mission, or objectives, of your organisation"
+      labels:
+        black_or_minority_ethnic_led: "Black or minority ethnic led"
+        disability_led: "Disability led"
+        lgbt_plus_led: "LGBT+ led"
+        female_led: "Female led"
+        young_people_led: "Young people led"
+        mainly_catholic_community_led: "Mainly led by people from Catholic communities"
+        mainly_protestant_community_led: "Mainly led by people from Protestant communities"

@@ -23,6 +23,7 @@ en-GB:
     x_no: "No"
     x_not_sure: "Not sure"
     choose_all_that_apply: "Choose all that apply"
+    select_all_that_apply: "Select all that apply."
     warning: "Warning"
     error: "Error"
     word_count: "You can enter up to %{max_words} words"
@@ -50,6 +51,9 @@ en-GB:
     if_you_have_one: "if you have one"
     date_of_spend: "Date of spend"
   views:
+    organisation:
+      common:
+        about_your_organisation: "About your organisation"
     funding_application:
       common:
         about_your_project: "About your project"

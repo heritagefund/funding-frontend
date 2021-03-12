@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @organisation,
-             page_title: "Tell us about the mission, or objectives, of your organisation"
+             page_title: t('organisation.mission.page_title')
          }
 %>
 
@@ -14,7 +14,9 @@
          } if @organisation.errors.any?
 %>
 
-<h1 class="govuk-heading-xl" aria-label="Heading">About your organisation</h1>
+<div class="govuk-caption-xl">
+  <%= t('views.organisation.common.about_your_organisation') %>
+</div>
 
 <%= form_with model: @organisation, url: organisation_mission_path, method: :put, local: true do |f| %>
 
@@ -22,14 +24,14 @@
 
     <fieldset class="govuk-fieldset" aria-describedby="mission-hint">
 
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
         <h1 class="govuk-fieldset__heading">
-          Tell us about the mission, or objectives, of your organisation
+          <%= t('organisation.mission.page_heading') %>
         </h1>
       </legend>
 
       <div id="mission-hint" class="govuk-hint">
-        Select all that apply.
+        <%= t('generic.select_all_that_apply') %>
       </div>
 
       <%=
@@ -54,7 +56,7 @@
           %>
           <%=
             f.label :mission_black_or_minority_ethnic_led,
-                    "Black or minority ethnic led",
+                    t('organisation.mission.labels.black_or_minority_ethnic_led'),
                     class: "govuk-label govuk-checkboxes__label"
           %>
         </div>
@@ -72,7 +74,7 @@
           %>
           <%=
             f.label :mission_disability_led,
-                    "Disability led",
+                    t('organisation.mission.labels.disability_led'),
                     class: "govuk-label govuk-checkboxes__label"
           %>
         </div>
@@ -88,7 +90,11 @@
                         "lgbt_plus_led",
                         nil
           %>
-          <%= f.label :mission_lgbt_plus_led, "LGBT+ led", class: "govuk-label govuk-checkboxes__label" %>
+          <%=
+            f.label :mission_lgbt_plus_led,
+            t('organisation.mission.labels.lgbt_plus_led'),
+            class: "govuk-label govuk-checkboxes__label"
+          %>
         </div>
 
         <div class="govuk-checkboxes__item">
@@ -102,7 +108,11 @@
                         "female_led",
                         nil
           %>
-          <%= f.label :mission_female_led, "Female led", class: "govuk-label govuk-checkboxes__label" %>
+          <%=
+            f.label :mission_female_led,
+            t('organisation.mission.labels.female_led'),
+            class: "govuk-label govuk-checkboxes__label"
+          %>
         </div>
 
         <div class="govuk-checkboxes__item">
@@ -116,7 +126,11 @@
                         "young_people_led",
                         nil
           %>
-          <%= f.label :young_people_led, "Young people led", class: "govuk-label govuk-checkboxes__label" %>
+          <%=
+            f.label :young_people_led,
+            t('organisation.mission.labels.young_people_led'),
+            class: "govuk-label govuk-checkboxes__label"
+          %>
         </div>
 
         <div class="govuk-checkboxes__item">
@@ -130,7 +144,11 @@
                         "mainly_catholic_community_led",
                         nil
           %>
-          <%= f.label :mainly_catholic_community_led, "Mainly led by people from Catholic communities", class: "govuk-label govuk-checkboxes__label" %>
+          <%=
+            f.label :mainly_catholic_community_led,
+            t('organisation.mission.labels.mainly_catholic_community_led'),
+            class: "govuk-label govuk-checkboxes__label"
+          %>
         </div>
 
         <div class="govuk-checkboxes__item">
@@ -144,15 +162,17 @@
                         "mainly_protestant_community_led",
                         nil
           %>
-          <%= f.label :mainly_protestant_community_led, "Mainly led by people from Protestant communities", class: "govuk-label govuk-checkboxes__label" %>
+          <%=
+            f.label :mainly_protestant_community_led,
+            t('organisation.mission.labels.mainly_protestant_community_led'),
+            class: "govuk-label govuk-checkboxes__label"
+          %>
         </div>
 
       </div>
     </fieldset>
   </div>
 
-  <%=
-    f.save_and_continue
-  %>
+  <%= render(ButtonComponent.new(element: 'input')) %>
 
 <% end %>
