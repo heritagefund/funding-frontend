@@ -1,0 +1,24 @@
+en-GB:
+  organisation:
+    summary:
+      page_title: "Organisation summary"
+      page_heading: "Check your answers"
+      warning:
+        heading: ""
+        text: "By saving this information you are confirming, that to the best of your knowledge, the details you are providing are correct."
+      list_keys:
+        type: "Organisation managing your project is a"
+        company_number: "Organisation's company number"
+        charity_number: "Organisation's charity number"
+        name: "Organisation's name"
+        location: "Your organisation is based in"
+        mission: "Your organisation's mission, or objectives include"
+        legal_signatories: "Legal signatories"
+      change_links:
+        type: "organisation type"
+        company_number: "Organisation's company number"
+        charity_number: "Organisation's charity number"
+        name: "Organisation's name"
+        location: "Organisation's location"
+        mission: "Organisation's mission, or objectives"
+        legal_signatories: "Organisation's legal signatories"

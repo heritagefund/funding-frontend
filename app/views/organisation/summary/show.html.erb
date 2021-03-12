@@ -2,29 +2,33 @@
   render partial: "partials/page_title",
          locals: {
              model_object: @organisation,
-             page_title: "Organisation summary"
+             page_title: t('organisation.summary.page_title')
          }
 %>
 
-<h1 class="govuk-heading-xl" aria-label="Heading">Check your answers</h1>
+<h1 class="govuk-heading-xl">
+  <%= t('organisation.summary.page_heading') %>
+</h1>
 
 <dl class="govuk-summary-list">
 
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Organisation managing your project is a
+      <%= t('organisation.summary.list_keys.type') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
-      <%= @organisation.org_type.present? ?
-              @organisation.org_type&.humanize : "Not answered" %>
+      <%=
+        @organisation.org_type.present? ?
+          t("organisation.type.labels.#{@organisation.org_type}") : t('generic.not_answered')
+      %>
     </dd>
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'>
-        organisation type</span>".html_safe,
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.type')}</span>".html_safe,
                 :organisation_type,
                 organisation_id: @organisation.id,
                 class: "govuk-link govuk-link--no-visited-state"
@@ -36,18 +40,18 @@
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Organisation's company number
+      <%= t('organisation.summary.list_keys.company_number') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
       <%= @organisation.company_number.present? ?
-              @organisation.company_number : "Not answered" %>
+              @organisation.company_number : t('generic.not_answered') %>
     </dd>
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'>
-         company number</span>".html_safe,
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.company_number')}</span>".html_safe,
                 :organisation_numbers,
                 organisation_id: @organisation.id,
                 class: "govuk-link govuk-link--no-visited-state"
@@ -59,18 +63,18 @@
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Organisation's charity number
+      <%= t('organisation.summary.list_keys.charity_number') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
       <%= @organisation.charity_number.present? ?
-              @organisation.charity_number : "Not answered" %>
+              @organisation.charity_number : t('generic.not_answered') %>
     </dd>
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'>
-         charity number</span>".html_safe,
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.charity_number')}</span>".html_safe,
                 :organisation_numbers,
                 organisation_id: @organisation.id,
                 class: "govuk-link govuk-link--no-visited-state"
@@ -82,18 +86,19 @@
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Organisation's name
+      <%= t('organisation.summary.list_keys.name') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
-      <%= @organisation.name.present? ? @organisation.name : "Not answered" %>
+      <%= @organisation.name.present? ? @organisation.name : t('generic.not_answered') %>
     </dd>
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'> name</span>"
-                    .html_safe, postcode_path('organisation', @organisation.id),
-                class: "govuk-link govuk-link--no-visited-state"
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.name')}</span>".html_safe,
+        postcode_path('organisation', @organisation.id),
+        class: "govuk-link govuk-link--no-visited-state"
       %>
     </dd>
 
@@ -102,32 +107,57 @@
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Your organisation is based in
+      <%= t('organisation.summary.list_keys.location') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
       <% unless @organisation.line1.present? %>
-        Not answered
+        <%= t('generic.not_answered') %>
       <% else %>
-        <%= "#{@organisation.line1 } <br />".html_safe if
-                @organisation.line1.present? %>
-        <%= "#{@organisation.line2 } <br />".html_safe if
-                @organisation.line2.present? %>
-        <%= "#{@organisation.line3 } <br />".html_safe if
-                @organisation.line3.present? %>
-        <%= "#{@organisation.townCity } <br />".html_safe if
-                @organisation.townCity.present? %>
-        <%= "#{@organisation.county } <br />".html_safe if
-                @organisation.county.present? %>
-        <%= @organisation.postcode if @organisation.townCity.present? %>
+        <% if @organisation.line1.present? %>
+          <p class="govuk-body">
+            <%= @organisation.line1 %>
+          </p>
+        <% end %>
+
+        <% if @organisation.line2.present? %>
+          <p class="govuk-body">
+            <%= @organisation.line2 %>
+          </p>
+        <% end %>
+
+        <% if @organisation.line3.present? %>
+          <p class="govuk-body">
+            <%= @organisation.line3 %>
+          </p>
+        <% end %>
+
+        <% if @organisation.townCity.present? %>
+          <p class="govuk-body">
+            <%= @organisation.townCity %>
+          </p>
+        <% end %>
+
+        <% if @organisation.county.present? %>
+          <p class="govuk-body">
+            <%= @organisation.county %>
+          </p>
+        <% end %>
+
+        <% if @organisation.postcode.present? %>
+          <p class="govuk-body">
+            <%= @organisation.postcode %>
+          </p>
+        <% end %>
       <% end %>
     </dd>
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'> location</span>"
-                    .html_safe, postcode_path('organisation', @organisation.id),
-                class: "govuk-link govuk-link--no-visited-state"
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.location')}</span>".html_safe,
+        postcode_path('organisation', @organisation.id),
+        class: "govuk-link govuk-link--no-visited-state"
       %>
     </dd>
 
@@ -136,18 +166,18 @@
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Your organisation's mission, or objectives include
+      <%= t('organisation.summary.list_keys.mission') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
       <ul class="govuk-list">
 
         <% unless @organisation.mission.present? %>
-          Not answered
+          <%= t('generic.not_answered') %>
         <% else %>
           <% @organisation.mission.each do |mission| %>
             <li>
-              <%= mission&.humanize %>
+              <%= t("organisation.mission.labels.#{mission}") %>
             </li>
           <% end %>
         <% end %>
@@ -156,8 +186,8 @@
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'>
-         mission or objectives</span>".html_safe,
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.mission')}</span>".html_safe,
                 :organisation_mission,
                 organisation_id: @organisation.id,
                 class: "govuk-link govuk-link--no-visited-state"
@@ -169,13 +199,13 @@
   <div class="govuk-summary-list__row">
 
     <dt class="govuk-summary-list__key">
-      Legal signatories
+      <%= t('organisation.summary.list_keys.legal_signatories') %>
     </dt>
 
     <dd class="govuk-summary-list__value">
       <ul class="govuk-list">
         <% unless @organisation.legal_signatories.present? %>
-          Not answered
+          <%= t('generic.not_answered') %>
         <% else %>
           <% @organisation.legal_signatories.each do |legal_signatory| %>
             <li>
@@ -188,8 +218,8 @@
 
     <dd class="govuk-summary-list__actions">
       <%=
-        link_to "Change<span class='govuk-visually-hidden'>
-         legal signatories</span>".html_safe,
+        link_to "#{t('generic.change')}<span class='govuk-visually-hidden'>
+        #{t('organisation.summary.change_links.legal_signatories')}</span>".html_safe,
                 :organisation_signatories,
                 organisation_id: @organisation.id,
                 class: "govuk-link govuk-link--no-visited-state"
@@ -202,12 +232,19 @@
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Declaration</span>
-    By saving this information you are confirming, that to the best of your
-    knowledge, the details you are providing are correct.
+    <span class="govuk-warning-text__assistive">
+      <%= t('organisation.summary.warning.heading') %>
+    </span>
+    <%= t('organisation.summary.warning.text') %>
   </strong>
 </div>
 
-<a href="<%= "#{start_an_application_url}" %>" role="button" class="govuk-button govuk-button--start" data-module="govuk-button">
-  Save and continue
-</a>
+<%=
+  render(
+    ButtonComponent.new(
+      href: start_an_application_url,
+      element: "a",
+      text: t("buttons.labels.default")
+    )
+  ) 
+%>
