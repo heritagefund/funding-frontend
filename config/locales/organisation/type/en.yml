@@ -1,0 +1,18 @@
+en-GB:
+  organisation:
+    type:
+      page_title: "What type of organisation will be running your project?"
+      page_heading: "What type of organisation will be running your project?"
+      labels:
+        registered_charity: "Registered charity"
+        registered_company: "Registered company"
+        local_authority: "Local authority"
+        other_public_sector_organisation: "Other public sector organisation"
+        community_interest_company: "Community Interest Company"
+        faith_based_organisation: "Faith-based organisation"
+        church_organisation: "Church organisation"
+        community_group: "Community group"
+        voluntary_group: "Voluntary group"
+        individual_private_owner_of_heritage: "Individual private owner of heritage"
+        other: "Other"
+      other_criteria: "Other types of organisations also have to satisfy our applicant funding criteria."
