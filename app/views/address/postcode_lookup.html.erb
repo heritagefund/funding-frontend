@@ -11,7 +11,7 @@
 } if flash[:errors] %>
 
 <% if @type == "organisation" || @type == "project" %>
-  <div class="govuk-caption-xl" aria-label="Heading">About your <%= @type %></div>
+  <div class="govuk-caption-xl">About your <%= @type %></div>
 <% else %>
   <h1 class="govuk-heading-xl">
     <span class="govuk-caption-xl">Add your details</span>
@@ -24,7 +24,7 @@
 <% end %>
 
 <% if @type == "organisation" %>
-  <p class="govuk-body" aria-label="information">Your organisation must be based in the UK</p>
+  <p class="govuk-body govuk-hint govuk-!-margin-bottom-8">Your organisation must be based in the UK</p>
 <% end %>
 
 <%= form_with(url: address_results_path, local: true) do |p| %>

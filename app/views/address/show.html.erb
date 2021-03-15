@@ -25,7 +25,9 @@
 <% end %>
 
 <% if @type == "organisation" || @type == "project" %>
-  <h1 class="govuk-heading-xl">Enter your <%= "#{@type}" %> address details</h1>
+  <h1 class="govuk-heading-xl">
+    Enter your <%= "#{@type}" %> address details
+  </h1>
 <% elsif @type == 'preapplication' %>
   <h1 class="govuk-heading-xl">
     Enter your organisation address details
@@ -33,7 +35,7 @@
 <% end%>
 
 <% if @type == "organisation" || @type == 'preapplication' %>
-  <p class="govuk-body">Your organisation must be based in the UK</p>
+  <p class="govuk-hint govuk-!-margin-bottom-8">Your organisation must be based in the UK</p>
 <% end %>
 
 <%= form_for @model_object, url: :address, method: :put do |f|  %>

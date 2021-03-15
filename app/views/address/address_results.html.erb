@@ -9,7 +9,7 @@
 <fieldset class="govuk-fieldset">
 
 <% if @type == "organisation" || @type == "project" %>
-  <div class="govuk-caption-xl" aria-label="Heading">About your <%= @type %></div>
+  <div class="govuk-caption-xl">About your <%= @type %></div>
 <% else %>
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -32,7 +32,7 @@
 <% end %>
 
 <% if @type == "organisation" %>
-  <p class="govuk-body" aria-label="information">Your organisation must be based in the UK</p>
+  <p class="govuk-body govuk-hint govuk-!-margin-bottom-8">Your organisation must be based in the UK</p>
 <% end %>
 
 <%= form_with(url: address_details_path, method: :put, local: true) do |p| %>
