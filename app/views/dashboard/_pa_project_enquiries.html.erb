@@ -19,7 +19,7 @@
         <li class="nlhf-list__item">
 
           <%= link_to_unless(pre_application.submitted_on.present?, pre_application.pa_project_enquiry&.working_title.present? ? pre_application.pa_project_enquiry&.working_title : t('dashboard.pa_project_enquiries.untitled'), pre_application_project_enquiry_previous_contact_path(pre_application_id: pre_application.id), class: 'govuk-link govuk-link--no-visited-state') do |name|
-            "#{name} - #{I18n.t("dashboard.generic.submitted")}#{' - ' + I18n.t("dashboard.generic.reference") + ': '  + pre_application.project_reference_number if pre_application.project_reference_number.present?}"
+            ("#{name} &ndash; #{I18n.t("dashboard.generic.submitted")}#{' &ndash; ' + I18n.t("dashboard.generic.reference") + ': '}").html_safe + pre_application.project_reference_number if pre_application.project_reference_number.present?
           end
           %>
 

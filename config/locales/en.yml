@@ -1,7 +1,7 @@
 ---
 en-GB:
   funding_programmes:
-    open_small_three_to_ten_k: "£3-10k"
+    open_small_three_to_ten_k: "£3,000 &ndash; £10,0000"
   account_created_continue_link: "/organisation/type"
   application_guidance_link: "#"
   fair_processing_email: fair.processing@heritagefund.org.uk
