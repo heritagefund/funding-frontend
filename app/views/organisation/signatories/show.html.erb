@@ -1,9 +1,11 @@
 <%=
-  render partial: "partials/page_title",
-         locals: {
-             model_object: @organisation,
-             page_title: "Who is your legal signatory?"
-         }
+  render(
+    partial: "partials/page_title",
+    locals: {
+      model_object: @organisation,
+      page_title: t('organisation.signatories.page_title')
+    }
+  )
 %>
 
 <% if @organisation.errors.any? %>
@@ -11,7 +13,7 @@
        role="alert" tabindex="-1" data-module="govuk-error-summary">
 
     <h2 class="govuk-error-summary__title" id="error-summary-title">
-      There is a problem
+      <%= t('generic.there_is_a_problem') %>
     </h2>
 
     <div class="govuk-error-summary__body">
@@ -35,20 +37,24 @@
   </div>
 <% end %>
 
-<h1 class="govuk-heading-xl govuk-!-margin-bottom-5" aria-label="Heading">
-  Who is your legal signatory?
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+  <%= t('organisation.signatories.page_heading') %>
 </h1>
 
 <p class="govuk-body" id="legal-signatory-1-fieldset-hint">
-  A signatory is a person who is authorised to sign legal documents on behalf
-  of your organisation. Please tell us the names of 2 legal, or authorised,
-  signatories for your organisation.</p>
+  <%= t('organisation.signatories.page_hint') %>
+</p>
 
 <p class="govuk-body govuk-!-margin-bottom-7">
-  We expect an organisation to have 2 legal signatories. However, we can
-  accept 1 signatory in some limited cases,
-  <a href="https://www.heritagefund.org.uk/about/contact-us" target="_blank">
-    contact us</a> to discuss your application.
+  <%=
+    t(
+      'organisation.signatories.expected_amount_html',
+      href: link_to(
+        t('organisation.signatories.expected_amount_href'),
+        'https://www.heritagefund.org.uk/about/contact-us'
+      )
+    )
+  %>
 </p>
 
 <%=
@@ -67,68 +73,84 @@
             We are using ls.index + 1 here to display '1' and '2'
             as :legal_signatories is zero-indexed
           %>
-          Legal signatory <%= ls.index + 1 %>
+          <%= "#{t('organisation.signatories.legal_signatory')} #{ls.index + 1}" %>
         </h2>
       </legend>
       <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
           @organisation.legal_signatories[ls.index].errors[:name].any?}" %>">
 
         <%=
-          render partial: "partials/form_input_errors",
-                 locals: {
-                     form_object: @organisation.legal_signatories[ls.index],
-                     input_field_id: :name
-                 } if @organisation.legal_signatories[ls.index].errors[:name].any?
+          render(
+            partial: "partials/form_input_errors",
+            locals: {
+              form_object: @organisation.legal_signatories[ls.index],
+              input_field_id: :name
+            }
+          ) if @organisation.legal_signatories[ls.index].errors[:name].any?
         %>
 
-        <%= ls.label :name, "Full name", class: "govuk-label" %>
+        <%=
+          ls.label :name,
+          t('organisation.signatories.labels.full_name'),
+          class: "govuk-label"
+        %>
 
         <%=
           ls.text_field :name,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-                            @organisation.legal_signatories[ls.index].errors[:name].any?}"
+          class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
+            @organisation.legal_signatories[ls.index].errors[:name].any?}"
         %>
       </div>
 
       <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
-          @organisation.legal_signatories[ls.index].errors[:email_address].any?}"
-      %>">
+          @organisation.legal_signatories[ls.index].errors[:email_address].any?}" %>">
 
         <%=
-          render partial: "partials/form_input_errors",
-                 locals: {
-                     form_object: @organisation.legal_signatories[ls.index],
-                     input_field_id: :email_address
-                 } if @organisation.legal_signatories[ls.index].errors[:email_address].any?
+          render(
+            partial: "partials/form_input_errors",
+            locals: {
+              form_object: @organisation.legal_signatories[ls.index],
+              input_field_id: :email_address
+            }
+          ) if @organisation.legal_signatories[ls.index].errors[:email_address].any?
         %>
 
-        <%= ls.label :email_address, "Email address", class: "govuk-label" %>
+        <%=
+          ls.label :email_address,
+          t('organisation.signatories.labels.email_address'),
+          class: "govuk-label"
+        %>
 
         <%=
           ls.text_field :email_address,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-                            @organisation.legal_signatories[ls.index].errors[:email_address].any?}"
+          class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
+            @organisation.legal_signatories[ls.index].errors[:email_address].any?}"
         %>
       </div>
 
       <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
-          @organisation.legal_signatories[ls.index].errors[:phone_number].any?}"
-      %>">
+          @organisation.legal_signatories[ls.index].errors[:phone_number].any?}" %>">
 
         <%=
-          render partial: "partials/form_input_errors",
-                 locals: {
-                     form_object: @organisation.legal_signatories[ls.index],
-                     input_field_id: :phone_number
-                 } if @organisation.legal_signatories[ls.index].errors[:phone_number].any?
+          render(
+            partial: "partials/form_input_errors",
+            locals: {
+              form_object: @organisation.legal_signatories[ls.index],
+              input_field_id: :phone_number
+            }
+          ) if @organisation.legal_signatories[ls.index].errors[:phone_number].any?
         %>
 
-        <%= ls.label :phone_number, "Phone number", class: "govuk-label" %>
+        <%=
+          ls.label :phone_number,
+          t('organisation.signatories.labels.phone_number'),
+          class: "govuk-label"
+        %>
 
         <%=
           ls.text_field :phone_number,
-                        class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-                            @organisation.legal_signatories[ls.index].errors[:phone_number].any?}"
+          class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
+            @organisation.legal_signatories[ls.index].errors[:phone_number].any?}"
         %>
 
       </div>
@@ -137,6 +159,6 @@
 
   <% end %>
 
-  <%= f.save_and_continue %>
+  <%= render(ButtonComponent.new(element: 'input')) %>
 
 <% end %>

@@ -1,0 +1,13 @@
+en-GB:
+  organisation:
+    signatories:
+      page_title: "Who is your legal signatory?"
+      page_heading: "Who is your legal signatory?"
+      page_hint: "A signatory is a person who is authorised to sign legal documents on behalf of your organisation. Please tell us the names of 2 legal, or authorised, signatories for your organisation."
+      expected_amount_html: "We expect an organisation to have 2 legal signatories. However, we can accept 1 signatory in some limited cases, %{href} to discuss your application."
+      expected_amount_href: "contact us"
+      legal_signatory: "Legal signatory"
+      labels:
+        full_name: "Full name"
+        email_address: "Email address"
+        phone_number: "Phone number"
