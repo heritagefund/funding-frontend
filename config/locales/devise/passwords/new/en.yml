@@ -2,6 +2,7 @@ en-GB:
   passwords:
     new:
       page_title: "Forgot your password?"
+      page_heading: "Forgot your password?"
       label_email: "Enter your email address"
       label_email_hint: "The email address associated with your account."
       buttons: 

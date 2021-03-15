@@ -12,11 +12,11 @@
 } if @model_object.errors.any? %>
 
 <% if @type == "organisation" || @type == "project" %>
-  <h1 class="govuk-heading-l">
+  <div class="govuk-caption-xl">
     About your <%= @type %>
-  </h1>
+  </div>
 <% elsif @type == 'preapplication' %>
-  <h1 class="govuk-heading-l">About your organisation</h1>
+  <div class="govuk-caption-xl">About your organisation</div>
 <% else %>
   <h1 class="govuk-heading-xl">
     <span class="govuk-caption-xl">Add your details</span>
@@ -24,19 +24,17 @@
   </h1>
 <% end %>
 
+<% if @type == "organisation" || @type == "project" %>
+  <h1 class="govuk-heading-xl">Enter your <%= "#{@type}" %> address details</h1>
+<% elsif @type == 'preapplication' %>
+  <h1 class="govuk-heading-xl">
+    Enter your organisation address details
+  </h1>
+<% end%>
 
 <% if @type == "organisation" || @type == 'preapplication' %>
   <p class="govuk-body">Your organisation must be based in the UK</p>
 <% end %>
-
-<% if @type == "organisation" || @type == "project" %>
-  <h2 class="govuk-heading-m">Enter
-    your <%= "#{@type}" %> address details</h2>
-<% elsif @type == 'preapplication' %>
-  <h2 class="govuk-heading-m">
-    Enter your organisation address details
-  </h2>
-<% end%>
 
 <%= form_for @model_object, url: :address, method: :put do |f|  %>
 

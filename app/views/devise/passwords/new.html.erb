@@ -2,7 +2,7 @@
   render partial: "partials/page_title",
          locals: {
              model_object: resource,
-             page_title: t('passwords.new.page_heading')
+             page_title: t('passwords.new.page_title')
          }
 %>
 
@@ -22,22 +22,33 @@
 
   <div class="govuk-form-group">
 
-    <%= 
-      f.label :email,
-      t('passwords.new.label_email'),
-      class: "govuk-label" 
-    %>
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          <%= t('passwords.new.page_heading') %>
+        </h1>
+      </legend>    
+    
+      <%= 
+        f.label :email,
+        t('passwords.new.label_email'),
+        class: "govuk-label" 
+      %>
 
-    <span id="email-hint" class="govuk-hint">
-      <%= t('passwords.new.label_email_hint') %>
-    </span>
+      <span id="email-hint" class="govuk-hint">
+        <%= t('passwords.new.label_email_hint') %>
+      </span>
 
-    <%= 
-      f.text_field :email,
-      autofocus: true,
-      autocomplete: "email",
-      class: "govuk-input govuk-input--width-20" 
-    %>
+      <%= 
+        f.text_field :email,
+        autofocus: true,
+        autocomplete: "email",
+        class: "govuk-input govuk-input--width-20" 
+      %>
+    
+    </fieldset>
+
+
 
   </div>
 

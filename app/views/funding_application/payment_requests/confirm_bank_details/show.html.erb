@@ -126,6 +126,7 @@
 %>
 
   <div class="govuk-form-group nlhf-highlight-content govuk-!-margin-bottom-6">
+    <fieldset class="govuk-fieldset">
 
     <div class="govuk-form-group <%= "govuk-form-group--error" if @funding_application.payment_details.errors.any? %>" id="evidence_file-form-group" data-form-group="file">
 
@@ -138,11 +139,13 @@
 
       <div class="govuk-form-group">
 
-        <%=
-          f.label :evidence_file,
-                  t('payment_confirm_details.evidence_file_label'),
-                  class: "govuk-heading-m nlhf-content-hightlight__title"
-        %>
+        <h2 class="govuk-label-wrapper">
+          <%=
+            f.label :evidence_file,
+                    t('payment_confirm_details.evidence_file_label'),
+                    class: "govuk-label govuk-label--m nlhf-content-hightlight__title"
+          %>
+        </h2>
 
         <div id="evidence_file-errors"></div>
 
@@ -217,6 +220,7 @@
 
     <% end %>
 
+  </fieldset>
   </div>
 
 <% end %>

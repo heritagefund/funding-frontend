@@ -16,7 +16,7 @@
   <%= I18n.t("pa_expression_of_interest.submitted.sub_heading_1") %>
 </h2>
 
-<ul class="govuk-list govuk-list--number">
+<ul class="govuk-list govuk-list--number govuk-list--spaced">
 
   <li>
     <%= I18n.t("pa_expression_of_interest.submitted.list_1_item_1") %>
@@ -43,12 +43,12 @@
   <% if flash[:user_preferences_success] %>
 
     <div class="govuk-notification-banner govuk-notification-banner--success" role="region"
-      aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      aria-labelledby="notification-banner-title" data-module="govuk-notification-banner">
 
       <div class="govuk-notification-banner__header">
 
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          <%= t('generic.success') %>
+        <h2 class="govuk-notification-banner__title" id="notification-banner-title">
+          <%= t('generic.notifications.success.title') %>
         </h2>
 
       </div>

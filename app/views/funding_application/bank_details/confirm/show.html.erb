@@ -95,100 +95,103 @@
 %>
 
   <div class="govuk-form-group nlhf-highlight-content govuk-!-margin-bottom-6">
-
-    <div class="govuk-form-group <%= "govuk-form-group--error" if @funding_application.payment_details.errors.any? %>" id="evidence_file-form-group" data-form-group="file">
-
-      <%=
-        render partial: "partials/form_group_errors",
-                locals: {
-                    form_object: @funding_application.payment_details
-                } if @funding_application.payment_details.errors.any?
-      %>
-
-      <div class="govuk-form-group">
-
-        <%=
-          f.label :evidence_file,
-                  t('payment_confirm_details.evidence_file_label'),
-                  class: "govuk-heading-m nlhf-content-hightlight__title"
-        %>
-
-        <div id="evidence_file-errors"></div>
-
-        <%=
-          f.file_field :evidence_file,
-                      multiple: false,
-                      direct_upload: true,
-                      class: "govuk-file-upload #{"govuk-file-upload--error" if @funding_application.payment_details.errors.any?}",
-                      'data-input-identifier': 'file',
-                      'data-attribute': :evidence_file,
-                      'data-model': :funding_application,
-                      'autocomplete' => 'off'
-        %>
-
-      </div>
-
-      <%# See https://blog.yorkxin.org/2014/02/06/ajax-with-formdata-is-broken-on-ie10-ie11.html
-          for the reasoning behind this workaround %>
-      <input type="hidden" name="ieworkaround">
-
-      <div class="govuk-form-group">
-
-        <%=
-          render(ButtonComponent.new(
-              text: t('payment_confirm_details.buttons.add_evidence.text'),
-              classes: "govuk-button--secondary",
-              ))
-        %>
+    <fieldset class="govuk-fieldset">
       
+      <div class="govuk-form-group <%= "govuk-form-group--error" if @funding_application.payment_details.errors.any? %>" id="evidence_file-form-group" data-form-group="file">
+        
+        <%=
+          render partial: "partials/form_group_errors",
+                  locals: {
+                      form_object: @funding_application.payment_details
+                  } if @funding_application.payment_details.errors.any?
+        %>
+
+        <div class="govuk-form-group">
+
+          <h2 class="govuk-label-wrapper">
+            <%=
+              f.label :evidence_file,
+                      t('payment_confirm_details.evidence_file_label'),
+                      class: "govuk-label govuk-label--m nlhf-content-hightlight__title"
+            %>
+          </h2>
+
+          <div id="evidence_file-errors"></div>
+
+          <%=
+            f.file_field :evidence_file,
+                        multiple: false,
+                        direct_upload: true,
+                        class: "govuk-file-upload #{"govuk-file-upload--error" if @funding_application.payment_details.errors.any?}",
+                        'data-input-identifier': 'file',
+                        'data-attribute': :evidence_file,
+                        'data-model': :funding_application,
+                        'autocomplete' => 'off'
+          %>
+
+        </div>
+
+        <%# See https://blog.yorkxin.org/2014/02/06/ajax-with-formdata-is-broken-on-ie10-ie11.html
+            for the reasoning behind this workaround %>
+        <input type="hidden" name="ieworkaround">
+
+        <div class="govuk-form-group">
+
+          <%=
+            render(ButtonComponent.new(
+                text: t('payment_confirm_details.buttons.add_evidence.text'),
+                classes: "govuk-button--secondary",
+                ))
+          %>
+        
+        </div>
+
       </div>
 
-    </div>
+      <% unless @funding_application.payment_details.evidence_file.attached? %>
+        <p class="govuk-body">
+          <%= t('payment_confirm_details.no_evidence_uploaded') %>
+        </p>
+      <% else %>
+        <table class="govuk-table">
 
-    <% unless @funding_application.payment_details.evidence_file.attached? %>
+          <thead class="govuk-table__head">
 
-      <p class="govuk-body">
-        <%= t('payment_confirm_details.no_evidence_uploaded') %>
-      </p>
+            <tr class="govuk-table__row">
 
-    <% else %>
+              <th scope="col" class="govuk-table__header">
+                <%= I18n.t("payment_confirm_details.evidence_file") %>
+              </th>
 
-    <table class="govuk-table">
+            </tr>
 
-      <thead class="govuk-table__head">
+          </thead>
 
-        <tr class="govuk-table__row">
+          <tbody class="govuk-table__body">
 
-          <th scope="col" class="govuk-table__header">
-            <%= I18n.t("payment_confirm_details.evidence_file") %>
-          </th>
+            <tr>
 
-        </tr>
+              <td>
+                <%= link_to(@funding_application.payment_details.evidence_file.blob.filename,
+                            rails_blob_path(@funding_application.payment_details.evidence_file,
+                                            disposition: "attachment"))
+                %>
+              </td>
 
-      </thead>
+            </tr>
 
-      <tbody class="govuk-table__body">
+          </tbody>
 
-        <tr>
+        </table>
+      <% end %>
 
-          <td>
-            <%= link_to(@funding_application.payment_details.evidence_file.blob.filename,
-                        rails_blob_path(@funding_application.payment_details.evidence_file,
-                                        disposition: "attachment"))
-            %>
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-    <% end %>
+    </fieldset>
 
   </div>
 
 <% end %>
+
+
 
 <div class="govuk-form-group">
 

@@ -50,6 +50,9 @@ en-GB:
     account_number: "Account number"
     if_you_have_one: "if you have one"
     date_of_spend: "Date of spend"
+    notifications:
+      success:
+        title: "Success"
   views:
     organisation:
       common:
