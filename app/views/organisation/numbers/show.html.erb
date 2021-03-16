@@ -19,53 +19,15 @@
 
 <%= form_with model: @organisation, url: :organisation_numbers, method: :put, local: true do |f|  %>
 
-  <div class="govuk-form-group">
-
-    <%= f.label :company_number, t('organisation.numbers.labels.company_number'), class: "govuk-heading-m" %>
-
-    <span class="govuk-hint">
-      <%= t('organisation.numbers.hints.company_number') %>
-    </span>
-
-    <%=
-      render partial: "partials/form_input_errors",
-             locals: {
-                 form_object: @organisation,
-                 input_field_id: :company_number
-             } if @organisation.errors[:company_number].any?
-    %>
-
-    <%=
-      f.text_field :company_number,
-                     class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-                         @organisation.errors[:company_number].any?}"
-    %>
-
-  </div>
-
-  <div class="govuk-form-group">
-
-    <%= f.label :charity_number, t('organisation.numbers.labels.charity_number'), class: "govuk-heading-m" %>
-
-    <span class="govuk-hint">
-      <%= t('organisation.numbers.hints.charity_number') %>
-    </span>
-
-    <%=
-      render partial: "partials/form_input_errors",
-             locals: {
-                 form_object: @organisation,
-                 input_field_id: :charity_number
-             } if @organisation.errors[:charity_number].any?
-    %>
-
-    <%=
-      f.text_field :charity_number,
-                   class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-                       @organisation.errors[:charity_number].any?}"
-    %>
-
-  </div>
+  <%=
+    render(
+      partial: 'partials/organisation/numbers_question',
+      locals: {
+        model_object: @organisation,
+        form_object: f
+      }
+    )
+  %>
 
   <%= render(ButtonComponent.new(element: 'input')) %>
 

@@ -1,0 +1,59 @@
+<div class="govuk-form-group">
+
+  <%=
+    form_object.label :company_number,
+    t('organisation.numbers.labels.company_number'),
+    class: "govuk-heading-m"
+  %>
+
+  <span class="govuk-hint">
+    <%= t('organisation.numbers.hints.company_number') %>
+  </span>
+
+  <%=
+    render(
+      partial: "partials/form_input_errors",
+      locals: {
+        form_object: model_object,
+        input_field_id: :company_number
+      } 
+    ) if model_object.errors[:company_number].any?
+  %>
+
+  <%=
+    form_object.text_field :company_number,
+    class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if 
+      model_object.errors[:company_number].any?}"
+  %>
+
+</div>
+
+<div class="govuk-form-group">
+
+  <%=
+    form_object.label :charity_number,
+    t('organisation.numbers.labels.charity_number'),
+    class: "govuk-heading-m"
+  %>
+
+  <span class="govuk-hint">
+    <%= t('organisation.numbers.hints.charity_number') %>
+  </span>
+
+  <%=
+    render(
+      partial: "partials/form_input_errors",
+      locals: {
+        form_object: model_object,
+        input_field_id: :charity_number
+      }
+    ) if model_object.errors[:charity_number].any?
+  %>
+
+  <%=
+    form_object.text_field :charity_number,
+    class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
+      model_object.errors[:charity_number].any?}"
+  %>
+
+</div>
