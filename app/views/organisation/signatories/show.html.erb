@@ -21,10 +21,10 @@
       <ul class="govuk-list govuk-error-summary__list">
 
         <% @organisation.legal_signatories.each_with_index do |ls, index| %>
-          <% ls.errors.each do |attr, msg| %>
+          <% ls.errors.each do |error| %>
             <li>
-              <a href='#organisation_legal_signatories_attributes_<%= index %>_<%= attr %>'>
-                <%= msg %>
+              <a href='#organisation_legal_signatories_attributes_<%= index %>_<%= error.attribute %>'>
+                <%= error.message %>
               </a>
             </li>
           <% end %>
@@ -59,105 +59,20 @@
 
 <%=
   form_with model: @organisation,
-            url: :organisation_signatories,
-            method: :put,
-            local: true do |f|
+  url: :organisation_signatories,
+  method: :put,
+  local: true do |f|
 %>
 
-  <%= f.fields_for :legal_signatories do |ls| %>
-
-    <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-        <h2 class="govuk-fieldset__heading">
-          <%#
-            We are using ls.index + 1 here to display '1' and '2'
-            as :legal_signatories is zero-indexed
-          %>
-          <%= "#{t('organisation.signatories.legal_signatory')} #{ls.index + 1}" %>
-        </h2>
-      </legend>
-      <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
-          @organisation.legal_signatories[ls.index].errors[:name].any?}" %>">
-
-        <%=
-          render(
-            partial: "partials/form_input_errors",
-            locals: {
-              form_object: @organisation.legal_signatories[ls.index],
-              input_field_id: :name
-            }
-          ) if @organisation.legal_signatories[ls.index].errors[:name].any?
-        %>
-
-        <%=
-          ls.label :name,
-          t('organisation.signatories.labels.full_name'),
-          class: "govuk-label"
-        %>
-
-        <%=
-          ls.text_field :name,
-          class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-            @organisation.legal_signatories[ls.index].errors[:name].any?}"
-        %>
-      </div>
-
-      <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
-          @organisation.legal_signatories[ls.index].errors[:email_address].any?}" %>">
-
-        <%=
-          render(
-            partial: "partials/form_input_errors",
-            locals: {
-              form_object: @organisation.legal_signatories[ls.index],
-              input_field_id: :email_address
-            }
-          ) if @organisation.legal_signatories[ls.index].errors[:email_address].any?
-        %>
-
-        <%=
-          ls.label :email_address,
-          t('organisation.signatories.labels.email_address'),
-          class: "govuk-label"
-        %>
-
-        <%=
-          ls.text_field :email_address,
-          class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-            @organisation.legal_signatories[ls.index].errors[:email_address].any?}"
-        %>
-      </div>
-
-      <div class="govuk-form-group <%= "#{'govuk-form-group--error' if
-          @organisation.legal_signatories[ls.index].errors[:phone_number].any?}" %>">
-
-        <%=
-          render(
-            partial: "partials/form_input_errors",
-            locals: {
-              form_object: @organisation.legal_signatories[ls.index],
-              input_field_id: :phone_number
-            }
-          ) if @organisation.legal_signatories[ls.index].errors[:phone_number].any?
-        %>
-
-        <%=
-          ls.label :phone_number,
-          t('organisation.signatories.labels.phone_number'),
-          class: "govuk-label"
-        %>
-
-        <%=
-          ls.text_field :phone_number,
-          class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if
-            @organisation.legal_signatories[ls.index].errors[:phone_number].any?}"
-        %>
-
-      </div>
-
-    </fieldset>
-
-  <% end %>
+  <%=
+    render(
+      partial: 'partials/organisation/signatories_question',
+      locals: {
+        model_object: @organisation,
+        form_object: f
+      }
+    )
+  %>
 
   <%= render(ButtonComponent.new(element: 'input')) %>
 
