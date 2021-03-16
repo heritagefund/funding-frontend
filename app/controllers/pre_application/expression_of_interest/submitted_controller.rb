@@ -33,7 +33,6 @@ class PreApplication::ExpressionOfInterest::SubmittedController < ApplicationCon
 
     end
 
-
   end
 
   private
