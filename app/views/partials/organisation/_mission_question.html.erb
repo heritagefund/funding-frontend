@@ -1,0 +1,177 @@
+<div class="govuk-form-group <%= "govuk-form-group--error" if model_object.errors.any? %>">
+
+  <fieldset class="govuk-fieldset" aria-describedby="mission-hint">
+
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        <%= t('organisation.mission.page_heading') %>
+      </h1>
+    </legend>
+
+    <div id="mission-hint" class="govuk-hint">
+      <%= t('generic.select_all_that_apply') %>
+    </div>
+
+    <%=
+      render(
+        partial: "partials/form_group_errors",
+        locals: {
+          form_object: model_object
+        }
+      ) if model_object.errors.any?
+    %>
+
+    <div class="govuk-checkboxes">
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_mission_black_or_minority_ethnic_led,
+            class: "govuk-checkboxes__input"
+          },
+          "black_or_minority_ethnic_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :mission_black_or_minority_ethnic_led,
+          t('organisation.mission.labels.black_or_minority_ethnic_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_mission_disability_led,
+            class: "govuk-checkboxes__input"
+          },
+          "disability_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :mission_disability_led,
+          t('organisation.mission.labels.disability_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_mission_lgbt_plus_led,
+            class: "govuk-checkboxes__input"
+          },
+          "lgbt_plus_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :mission_lgbt_plus_led,
+          t('organisation.mission.labels.lgbt_plus_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_mission_female_led,
+            class: "govuk-checkboxes__input"
+          },
+          "female_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :mission_female_led,
+          t('organisation.mission.labels.female_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_young_people_led,
+            class: "govuk-checkboxes__input"
+          },
+          "young_people_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :young_people_led,
+          t('organisation.mission.labels.young_people_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_mainly_catholic_community_led,
+            class: "govuk-checkboxes__input"
+          },
+          "mainly_catholic_community_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :mainly_catholic_community_led,
+          t('organisation.mission.labels.mainly_catholic_community_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+      <div class="govuk-checkboxes__item">
+
+        <%=
+          form_object.check_box :mission,
+          {
+            multiple: true,
+            id: :organisation_mainly_protestant_community_led,
+            class: "govuk-checkboxes__input"
+          },
+          "mainly_protestant_community_led",
+          nil
+        %>
+
+        <%=
+          form_object.label :mainly_protestant_community_led,
+          t('organisation.mission.labels.mainly_protestant_community_led'),
+          class: "govuk-label govuk-checkboxes__label"
+        %>
+
+      </div>
+
+    </div>
+
+  </fieldset>
+
+</div>

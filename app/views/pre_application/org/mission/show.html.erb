@@ -1,163 +1,44 @@
 <%=
-  render partial: "partials/page_title",
-         locals: {
-             model_object: @organisation,
-             page_title: "Tell us about the mission, or objectives, of your organisation"
-         }
+  render(
+    partial: "partials/page_title",
+    locals: {
+      model_object: @organisation,
+      page_title: t('organisation.mission.page_title')
+    }
+  )
 %>
 
 <%=
-  render partial: "partials/summary_errors",
-         locals: {
-             form_object: @organisation,
-             first_form_element: :organisation_mission_black_or_minority_ethnic_led
-         } if @organisation.errors.any?
+  render(
+    partial: "partials/summary_errors",
+    locals: {
+      form_object: @organisation,
+      first_form_element: :organisation_mission_black_or_minority_ethnic_led
+    }
+  ) if @organisation.errors.any?
 %>
 
-<h1 class="govuk-heading-xl" aria-label="Heading">About your organisation</h1>
+<div class="govuk-caption-xl">
+  <%= t('views.organisation.common.about_your_organisation') %>
+</div>
 
 <%=
-    form_with model: @organisation,
-    url: :pre_application_organisation_mission,
-    method: :put,
-    local: true do |f|
+  form_with model: @organisation,
+  url: :pre_application_organisation_mission,
+  method: :put,
+  local: true do |f|
 %>
-
-  <div class="govuk-form-group <%= "govuk-form-group--error" if @organisation.errors.any? %>">
-
-    <fieldset class="govuk-fieldset">
-
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-        <h1 class="govuk-fieldset__heading">
-          Tell us about the mission, or objectives, of your organisation
-        </h1>
-      </legend>
-
-      <span id="mission-hint" class="govuk-hint">
-        Select all that apply.
-      </span>
-
-      <%=
-        render partial: "partials/form_group_errors",
-               locals: {
-                   form_object: @organisation
-               } if @organisation.errors.any?
-      %>
-
-      <div class="govuk-checkboxes">
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_mission_black_or_minority_ethnic_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "black_or_minority_ethnic_led",
-                        nil
-          %>
-          <%=
-            f.label :mission_black_or_minority_ethnic_led,
-                    "Black or minority ethnic led",
-                    class: "govuk-label govuk-checkboxes__label"
-          %>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_mission_disability_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "disability_led",
-                        nil
-          %>
-          <%=
-            f.label :mission_disability_led,
-                    "Disability led",
-                    class: "govuk-label govuk-checkboxes__label"
-          %>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_mission_lgbt_plus_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "lgbt_plus_led",
-                        nil
-          %>
-          <%= f.label :mission_lgbt_plus_led, "LGBT+ led", class: "govuk-label govuk-checkboxes__label" %>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_mission_female_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "female_led",
-                        nil
-          %>
-          <%= f.label :mission_female_led, "Female led", class: "govuk-label govuk-checkboxes__label" %>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_young_people_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "young_people_led",
-                        nil
-          %>
-          <%= f.label :young_people_led, "Young people led", class: "govuk-label govuk-checkboxes__label" %>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_mainly_catholic_community_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "mainly_catholic_community_led",
-                        nil
-          %>
-          <%= f.label :mainly_catholic_community_led, "Mainly led by people from Catholic communities", class: "govuk-label govuk-checkboxes__label" %>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <%=
-            f.check_box :mission,
-                        {
-                            multiple: true,
-                            id: :organisation_mainly_protestant_community_led,
-                            class: "govuk-checkboxes__input"
-                        },
-                        "mainly_protestant_community_led",
-                        nil
-          %>
-          <%= f.label :mainly_protestant_community_led, "Mainly led by people from Protestant communities", class: "govuk-label govuk-checkboxes__label" %>
-        </div>
-
-      </div>
-    </fieldset>
-  </div>
 
   <%=
-    f.save_and_continue
+    render(
+      partial: 'partials/organisation/mission_question',
+      locals: {
+        model_object: @organisation,
+        form_object: f
+      }
+    )
   %>
+
+  <%= render(ButtonComponent.new(element: 'input')) %>
 
 <% end %>
