@@ -1,0 +1,39 @@
+<div class="govuk-form-group <%= "govuk-form-group--error" if
+  model_object.errors[:project_title].any? %>">
+
+  <div class="govuk-caption-xl">
+    <%= t('views.funding_application.common.about_your_project') %> 
+  </div>
+
+  <h1 class="govuk-label-wrapper">
+
+    <%= 
+      form_object.label :project_title,
+      t('title.page_heading'),
+      class: "govuk-label govuk-label--xl govuk-!-margin-bottom-4"
+    %>
+
+  </h1>
+
+  <div id="project-title-hint" class="govuk-hint">
+    <%= t('title.page_hint') %>
+  </div>
+
+  <%= 
+    render(
+      partial: "partials/form_input_errors",
+      locals: {
+        form_object: model_object,
+        input_field_id: :project_title
+      }
+    ) if model_object.errors[:project_title].any?
+  %>
+
+  <%=
+    form_object.text_field :project_title,
+    class: "govuk-input#{' govuk-input--error' if 
+      model_object.errors[:project_title].any?}",
+    'aria-describedby' => 'project-title-hint'
+  %>
+
+</div>
