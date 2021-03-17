@@ -1,0 +1,50 @@
+<div class="govuk-character-count" data-module="govuk-character-count"
+  data-maxwords="500">
+
+  <div  class="govuk-form-group <%= "govuk-form-group--error" if
+    model_object.errors[:description].any? %>">
+
+    <h1 class="govuk-label-wrapper">
+
+      <span class="govuk-caption-xl">
+        <%= t('views.funding_application.common.about_your_project') %>
+      </span>
+
+      <%=
+        form_object.label :description,
+        t('description.page_heading'),
+        class: "govuk-label govuk-label--xl"
+      %>
+
+    </h1>
+
+    <span id="project_description-hint" class="govuk-hint">
+      <%= t('description.page_hint') %>
+    </span>
+
+    <%=
+      render(
+        partial: "partials/form_input_errors",
+        locals: {
+          form_object: model_object,
+          input_field_id: :description
+          }
+      ) if model_object.errors[:description].any?
+    %>
+
+    <%=
+      form_object.text_area :description,
+      rows: 10,
+      class: "govuk-textarea govuk-js-character-count " \
+        "#{'govuk-input--error' if model_object.errors[:description].any?}",
+      "aria-describedby" => "project_description-info project_description-hint"
+    %>
+
+    <span id="project_description-info" class="govuk-hint govuk-character-count__message"
+      aria-live="polite">
+      <%= t('generic.word_count', max_words: 500) %>
+    </span>
+
+  </div>
+
+</div>
