@@ -34,9 +34,15 @@
 
         <li class="nlhf-list__item">
 
-          <%= link_to_unless(funding_application.submitted_on.present?, funding_application.project&.project_title.present? ? funding_application.project&.project_title : t('dashboard.funding_applications.untitled'), funding_application_gp_project_title_path(application_id: funding_application.id), class: 'govuk-link govuk-link--no-visited-state') do |name|
-            "#{name} - #{I18n.t("dashboard.generic.submitted")}#{' - ' + I18n.t("dashboard.generic.reference") + ': '  + funding_application.project_reference_number if funding_application.project_reference_number.present?}"
-          end
+          <%=
+            link_to_unless(
+              funding_application.submitted_on.present?,
+              funding_application.project&.project_title.present? ? funding_application.project&.project_title : t('dashboard.funding_applications.untitled'),
+              funding_application_gp_project_title_path(application_id: funding_application.id),
+              class: 'govuk-link govuk-link--no-visited-state'
+            ) do |name|
+              ("#{name} &ndash; #{I18n.t("dashboard.generic.submitted")}".html_safe) + ("#{' &ndash; ' + I18n.t("dashboard.generic.reference") + ': ' }".html_safe + funding_application.project_reference_number if funding_application.project_reference_number.present?)
+            end
           %>
 
         </li>
