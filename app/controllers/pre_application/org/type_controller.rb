@@ -3,7 +3,7 @@ class PreApplication::Org::TypeController < ApplicationController
     include OrganisationContext
     include ObjectErrorsLogger
     include PreApplicationContext
-  
+
     # This method updates the org_type attribute of an organisation,
     # redirecting to :pre_application_organisation_ if successful and re-rendering
     # :show method if unsuccessful

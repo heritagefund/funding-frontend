@@ -3,7 +3,13 @@
 module PreApplicationContext
   extend ActiveSupport::Concern
   included do
-    before_action :authenticate_user!, :set_pre_application
+    # This module is included alongside other Context modules
+    # which causes an issue with :authenticate_user! being
+    # run twice when no user is signed in. To remedy this,
+    # we only run :authenticate_user! when a user is signed
+    # in.
+    before_action :authenticate_user! unless :user_signed_in?
+    before_action :set_pre_application
   end
 
   # This method retrieves a PreApplication object based on the id
